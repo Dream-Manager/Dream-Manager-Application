@@ -8,3 +8,12 @@ cd Dream Manager
 git init
 git remote add origin https://github.com/Dream-Manager/Dream-Manager-Application.git
 git pull origin master
+
+# Domain (for Grails config)
+# 	dream-manager
+
+# Coding Styles
+#	Tabular Indention
+# 	Braces clause instance and on line of and terminal line of clause
+#		Example {
+#		}
