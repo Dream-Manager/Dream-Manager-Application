@@ -1,0 +1,10 @@
+# Generate key:
+ssh-keygen -t rsa -C "email@email.com"
+# Copy contents of C:\Users\username\.ssh\id_rsa.pub and add to https://github.com/settings/ssh
+
+# Clone repository:
+mkdir Dream Manager
+cd Dream Manager
+git init
+git remote add origin https://github.com/Dream-Manager/Dream-Manager-Application.git
+git pull origin master
