@@ -6,11 +6,11 @@ ssh-keygen -t rsa -C "email@email.com"
 mkdir Dream Manager
 cd Dream Manager
 git init
-git remote add origin https://github.com/Dream-Manager/Dream-Manager-Application.git
+git remote add origin https://github.com/dreammanager/dreammanager-Application.git
 git pull origin master
 
 # Domain (for Grails config)
-# 	dream-manager
+# 	dreammanager
 
 # Coding Styles
 #	Tabular Indention

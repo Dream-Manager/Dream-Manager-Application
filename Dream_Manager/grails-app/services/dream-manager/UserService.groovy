@@ -1,4 +1,4 @@
-package dream-manager
+package dreammanager
 
 class UserService {
 
