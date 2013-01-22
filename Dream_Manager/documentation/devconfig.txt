@@ -10,7 +10,7 @@ git remote add origin https://github.com/Dream-Manager/Dream-Manager-Application
 git pull origin master
 
 # Domain (for Grails config)
-# 	dreammanager
+# 	dream_manager
 
 # Coding Styles
 #	Tabular Indention

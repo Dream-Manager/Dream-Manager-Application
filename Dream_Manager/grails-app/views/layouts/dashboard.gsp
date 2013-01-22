@@ -18,10 +18,27 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
-		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
-		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+		<div id="page">
+			<div id="topbar">
+				<g:render template="/common/topbar" />
+			</div>
+			
+			<div id='header'>
+				<g:render template="/common/header" />
+			</div>
+			
+			<div id="content"> 
+				<g:layoutBody />
+			</div>
+			
+			<div id='navbar'>
+				<g:render template="/common/navbar" />
+			</div>
+			
+			<div id="footer">
+				<g:render template="/common/footer" />
+			</div>
+		</div>
 		<g:javascript library="application"/>
 		<r:layoutResources />
 	</body>
