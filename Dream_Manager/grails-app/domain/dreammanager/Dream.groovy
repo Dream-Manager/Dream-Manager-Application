@@ -3,10 +3,10 @@ package dreammanager
 class Dream {
 	
 	String description
-	Date created
-	Date lastUpdated
-	Date completed
-	int progress
+	Date created = Date.toTimestamp()
+	Date lastUpdated = Date.toTimestamp()
+	Date completed = null
+	int progress = 0
 	String notes
 	
 	// Each Dream is related to a user
@@ -14,5 +14,7 @@ class Dream {
 	
     static constraints = {
 		userToDream unique: true
+		completed nullable: true
+		notes nullable: true	
     }
 }
