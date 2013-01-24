@@ -1,11 +1,10 @@
-package dreammanager
+package dream_manager
 
-class Resource {
+class Asset {
 
 	String name
-	Date validFrom
-	Date validTo
-	
+	Date validFrom = null
+	Date validTo = null
 	
     static constraints = {
 		validFrom nullable:true

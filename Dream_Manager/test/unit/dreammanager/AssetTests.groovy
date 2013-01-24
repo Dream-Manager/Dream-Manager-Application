@@ -1,4 +1,4 @@
-package dreammanager
+package dream_manager
 
 
 
@@ -9,7 +9,7 @@ import org.junit.*
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
 @TestFor(Resource)
-class ResourceTests {
+class AssetTests {
 
     void testSomething() {
        fail "Implement me"

@@ -1,17 +1,17 @@
-package dreammanager
+package dream_manager
 
 
 
 import grails.test.mixin.*
 import org.junit.*
 
-import dream_manager.ResourceService;
+import dream_manager.AssetService;
 
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
-@TestFor(ResourceService)
-class ResourceServiceTests {
+@TestFor(AssetService)
+class AssetServiceTests {
 
     void testSomething() {
         fail "Implement me"

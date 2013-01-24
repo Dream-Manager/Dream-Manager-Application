@@ -1,10 +1,10 @@
-package dreammanager
+package dream_manager
 
 class Dream {
 	
 	String description
-	Date created = Date.toTimestamp()
-	Date lastUpdated = Date.toTimestamp()
+	Date created
+	Date lastUpdated
 	Date completed = null
 	int progress = 0
 	String notes

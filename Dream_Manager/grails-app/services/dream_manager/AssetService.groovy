@@ -1,6 +1,6 @@
 package dream_manager
 
-class ResourceService {
+class AssetService {
 
     def serviceMethod() {
 
