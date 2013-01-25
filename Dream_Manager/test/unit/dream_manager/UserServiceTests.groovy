@@ -1,17 +1,17 @@
-package dreammanager
+package dream_manager
 
 
 
 import grails.test.mixin.*
 import org.junit.*
 
-import dream_manager.TemplateService;
+import dream_manager.UserService;
 
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
-@TestFor(TemplateService)
-class TemplateServiceTests {
+@TestFor(UserService)
+class UserServiceTests {
 
     void testSomething() {
         fail "Implement me"

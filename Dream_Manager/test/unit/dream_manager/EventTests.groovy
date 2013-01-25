@@ -1,17 +1,17 @@
-package dreammanager
+package dream_manager
 
 
 
 import grails.test.mixin.*
 import org.junit.*
 
-import dream_manager.UserToSkill;
+import dream_manager.Event;
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(UserToSkill)
-class UserToSkillTests {
+@TestFor(Event)
+class EventTests {
 
     void testSomething() {
        fail "Implement me"
