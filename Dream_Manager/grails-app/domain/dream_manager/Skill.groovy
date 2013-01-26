@@ -2,7 +2,7 @@ package dream_manager
 
 class Skill {
 
-	String description
+	String description = ""
 	
     static constraints = {
     }
