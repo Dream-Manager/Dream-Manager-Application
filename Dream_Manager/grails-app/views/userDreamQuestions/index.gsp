@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 <meta name="layout" content="main"/>
-<title>Insert title here</title>
+<title>Dream Manager - User Questions</title>
 </head>
 <body>
   <div class="body">
