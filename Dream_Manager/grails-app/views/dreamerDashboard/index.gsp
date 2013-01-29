@@ -3,21 +3,15 @@
 <head>
 <meta name="layout" content="dashboard" />
 <title>Dream Manager - Dreamer Dashboard</title>
-<link type="text/css" href="${resource(dir: 'web-app/css', file: 'reset.css')}" />
 </head>
 <body>
-	<div class = "container_16">
+	<div class="container_16">
 		<!--  Left Column -->
-		<div class = "grid_4">
-		Test For Columns
-		</div>
+		<div class="grid_4">This is first left column </div>
 		<!--  Center Column -->
-		<div class= "grid_8">Center Column</div>
+		<div class="grid_8">Dashboard will go in this column. This includes all the tabs and pages associated.</div>
 		<!--  Right Column -->
-		<div class= "grid_4"> </div>
-		<div>Right Column
-		<button>hello</button>
-		</div>
+		<div class="grid_4">This will be the Feed column</div>
 	</div>
 </body>
 </html>
