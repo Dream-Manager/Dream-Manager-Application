@@ -10,6 +10,10 @@ class DreamTask {
 	
 	// Each DreamTask is related to a Dream
 	static belongsTo = [dream:Dream]
+
+	String toString() {
+		name
+	}
 	
     static constraints = {
     }
