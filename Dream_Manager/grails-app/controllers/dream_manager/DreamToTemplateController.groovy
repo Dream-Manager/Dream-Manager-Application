@@ -2,7 +2,6 @@ package dream_manager
 
 class DreamToTemplateController {
 
-	def scaffolding = true
+	static scaffold = DreamToTemplate
 	
-    def index() { }
 }

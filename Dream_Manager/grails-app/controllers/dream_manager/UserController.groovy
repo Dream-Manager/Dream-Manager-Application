@@ -2,7 +2,6 @@ package dream_manager
 
 class UserController {
 
-	def scaffolding = true
+	static scaffold = User
 	
-    def index() { }
 }

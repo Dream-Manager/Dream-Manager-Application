@@ -2,7 +2,6 @@ package dream_manager
 
 class DreamController {
 
-	def scaffolding = true
+	static scaffold = Dream
 	
-    def index() { }
 }

@@ -2,7 +2,6 @@ package dream_manager
 
 class SkillController {
 
-	def scaffolding = true
+	static scaffold = Skill
 	
-    def index() { }
 }

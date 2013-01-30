@@ -2,7 +2,6 @@ package dream_manager
 
 class EventController {
 
-	def scaffolding = true
+	static scaffold = Event
 	
-    def index() { }
 }

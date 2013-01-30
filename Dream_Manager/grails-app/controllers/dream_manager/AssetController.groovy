@@ -2,7 +2,6 @@ package dream_manager
 
 class AssetController {
 	
-	def scaffolding = true
+	static scaffold = Asset
 
-    def index() { }
 }
