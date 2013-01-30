@@ -7,6 +7,10 @@ class DreamTask {
 	Integer size
 	Boolean completed = false
 
+	String toString() {
+		name
+	}
+	
     static constraints = {
     }
 }

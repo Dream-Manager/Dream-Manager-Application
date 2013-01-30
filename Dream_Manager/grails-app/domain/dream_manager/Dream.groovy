@@ -10,6 +10,10 @@ class Dream {
 	Integer progress = 0
 	String notes
 	
+	String toString() {
+		name
+	}
+	
 	// Each Dream is related to a user
 	static belongsTo = [user:User]
 	

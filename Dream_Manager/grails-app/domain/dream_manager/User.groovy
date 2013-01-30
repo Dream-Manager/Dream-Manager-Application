@@ -15,13 +15,15 @@ class User {
 	Date dateOfBirth
 	String zipcode
 	
-	
+	String toString() {
+		firstName + " " + lastName
+	}
 	
 	// Each User has many Dreams, Skills
-	static hasMany = [dream:Dream, skill:Skill]
+	static hasMany = [dreams:Dream, skills:Skill]
 	
 	// Each User has one manager
-	static belongsTo = [manager: User]
+	static belongsTo = [manager:User]
 	
 	static constraints = {
 		firstName(blank: false, nullable: false, size:1..20)
@@ -32,10 +34,10 @@ class User {
 		streetAddress1(nullable: true)
 		streetAddress2(nullable: true)
 		poBox(nullable: true)
+		dateOfBirth(nullable: true)
 		city(nullable: true)
 		state(nullable: true)
-		dateOfBirth(nullable: true)
 		zipcode (nullable:true, size:5..5, matches:"[0-9]+")
-		manager nullabale: true
+		manager(nullable: true)
     }
 }
