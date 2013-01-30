@@ -14,7 +14,7 @@ class User {
 	String state
 	Date dateOfBirth
 	String zipcode
-	
+	boolean isManager = false
 	String toString() {
 		firstName + " " + lastName
 	}
@@ -39,5 +39,6 @@ class User {
 		state(nullable: true)
 		zipcode (nullable:true, size:5..5, matches:"[0-9]+")
 		manager(nullable: true)
+		
     }
 }
