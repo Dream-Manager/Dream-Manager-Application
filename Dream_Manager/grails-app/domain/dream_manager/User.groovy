@@ -12,7 +12,8 @@ class User {
 	String poBox
 	String city
 	String state
-	int zipcode
+	Date dateOfBirth
+	String zipcode
 	
 	
 	
@@ -23,6 +24,18 @@ class User {
 	static belongsTo = [manager: User]
 	
 	static constraints = {
-		manager nullable: true
+		firstName(blank: false, nullable: false, size:1..20)
+		lastName(blank: false, nullable: false, size:1..20)
+		email(email: true, blank: false, unique: true, nullable: false, size:1..30)
+		password(blank: false, nullable: false)
+		avatarLocation(nullable: true)
+		streetAddress1(nullable: true)
+		streetAddress2(nullable: true)
+		poBox(nullable: true)
+		city(nullable: true)
+		state(nullable: true)
+		dateOfBirth(nullable: true)
+		zipcode (nullable:true, size:5..5, matches:"[0-9]+")
+		manager nullabale: true
     }
 }
