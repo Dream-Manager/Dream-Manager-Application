@@ -16,9 +16,13 @@ class User {
 	
 	
 	
-	// Each User has many Dreams
-	static hasMany = [userToDream:UserToDream]
-    
+	// Each User has many Dreams, Skills
+	static hasMany = [dream:Dream, skill:Skill]
+	
+	// Each User has one manager
+	static belongsTo = [manager: User]
+	
 	static constraints = {
+		manager nullable: true
     }
 }

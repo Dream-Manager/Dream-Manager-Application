@@ -10,10 +10,9 @@ class Dream {
 	String notes
 	
 	// Each Dream is related to a user
-	UserToDream userToDream
+	static belongsTo = [user:User]
 	
     static constraints = {
-		userToDream unique: true
 		completed nullable: true
 		notes nullable: true	
     }
