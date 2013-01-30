@@ -2,11 +2,12 @@ package dream_manager
 
 class Dream {
 	
-	String description
+	String name
+	Date estimatedCompletion
 	Date created
 	Date lastUpdated
 	Date completed = null
-	int progress = 0
+	Integer progress = 0
 	String notes
 	
 	// Each Dream is related to a user
