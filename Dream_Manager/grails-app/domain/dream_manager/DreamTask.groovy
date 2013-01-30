@@ -6,7 +6,11 @@ class DreamTask {
 	Date estimatedCompletion
 	Integer size
 	Boolean completed = false
-
+	String description
+	
+	// Each DreamTask is related to a Dream
+	static belongsTo = [dream:Dream]
+	
     static constraints = {
     }
 }

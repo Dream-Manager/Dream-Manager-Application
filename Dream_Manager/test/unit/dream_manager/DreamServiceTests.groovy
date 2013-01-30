@@ -13,7 +13,7 @@ import dream_manager.DreamService;
 @TestFor(DreamService)
 class DreamServiceTests {
 
-    void testSomething() {
+    void dreamTaskSearchTest() {
         fail "Implement me"
     }
 }
