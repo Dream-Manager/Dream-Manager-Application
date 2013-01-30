@@ -27,7 +27,7 @@ class User {
 		firstName(blank: false, nullable: false, size:1..20)
 		lastName(blank: false, nullable: false, size:1..20)
 		email(email: true, blank: false, unique: true, nullable: false, size:1..30)
-		password(blank: false, nullable: false)
+		password(blank: false, nullable: false, size:6..20)
 		avatarLocation(nullable: true)
 		streetAddress1(nullable: true)
 		streetAddress2(nullable: true)
