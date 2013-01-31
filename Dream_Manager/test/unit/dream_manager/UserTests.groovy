@@ -5,21 +5,18 @@ import dream_manager.User;
 
 @TestFor(User)
 class UserTests {
-
+	
 	@Before
 	void before() {
+		// Delete any extra records
+		User.createCriteria().list{}*.delete()
+		
 		// Populate User table
 		new User (
 			firstName:"John",
 			lastName:"Smith",
 			password:"1234567890",
 			email:"john@smith.com").save()
-	}
-	
-	@After
-	void after() {
-		// Clear User records
-		User.createCriteria().list{}*.delete()
 	}
 
 	// Test toString() method
