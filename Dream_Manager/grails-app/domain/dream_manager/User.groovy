@@ -15,6 +15,11 @@ class User {
 	Date dateOfBirth
 	String zipcode
 	boolean isManager = false
+	
+	/**
+	 * Returns a String containing the user's full name.
+	 * @return      the firstName + ' ' + lastName
+	 */
 	String toString() {
 		firstName + " " + lastName
 	}

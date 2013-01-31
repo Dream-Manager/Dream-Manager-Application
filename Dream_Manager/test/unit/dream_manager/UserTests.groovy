@@ -1,19 +1,29 @@
 package dream_manager
-
-
-
 import grails.test.mixin.*
 import org.junit.*
-
 import dream_manager.User;
 
-/**
- * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
- */
 @TestFor(User)
 class UserTests {
 
-    void testSomething() {
-       fail "Implement me"
+	@Before
+	void before() {
+		// Populate User table
+		new User (
+			firstName:"John",
+			lastName:"Smith",
+			password:"1234567890",
+			email:"john@smith.com").save()
+	}
+	
+	@After
+	void after() {
+		// Clear User records
+		User.createCriteria().list{}*.delete()
+	}
+
+	// Test toString() method
+    void testToString() {
+		assertEquals("John Smith",User.get(1).toString())
     }
 }
