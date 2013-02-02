@@ -23,7 +23,7 @@ target(default: "Generates documentation and makes it available on gh-pages bran
 	executeGit("checkout gh-pages")
 	FileUtils.copyDirectory(tmpDocsDir, docsDir)
 	ant.delete(dir: tmpDocsDir.absolutePath)
-	executeGit("add docs")
+	executeGit("add * -f")
 	executeGit(["commit", "-m", "Auto-publication of docs.", "-a"])
 	executeGit("push")
 	executeGit("checkout master")
