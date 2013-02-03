@@ -9,17 +9,38 @@ includeTargets << grailsScript("_GrailsDocs")
 
 target(main: "Generates documentation and makes it available on gh-pages branch.") {
     remoteUrl = "http://github.com/Dream-Manager/Dream-Manager-Application"
+	
 	def docsDir = grailsSettings.docsOutputDir
+	def tmpDocsDir = new File("${basedir}/docs-temp")
+	
+	// Remove any existing docs
 	ant.delete(dir: docsDir.absolutePath)
+	
+	// Generate new ones
 	docs()
-	def tmpDocsDir = new File("${basedir}/docs-${System.currentTimeMillis()}")
+	
+	// Rename the generated folder to a temporary one
 	docsDir.renameTo(tmpDocsDir)
+	
+	// Change to gh-pages branch
 	executeGit("checkout gh-pages")
-	FileUtils.copyDirectory(tmpDocsDir, docsDir)
+	
+	// Copy docs to root folder
+	FileUtils.copyDirectory(tmpDocsDir, "${basedir}")
+	
+	// Remove temporary copy
 	ant.delete(dir: tmpDocsDir.absolutePath)
-	executeGit("add docs -f")
+	
+	// Touch all docs
+	executeGit("add * -f")
+	
+	// Commit to gh-pages
 	executeGit(["commit", "-m", "Auto-publication of docs.", "-a"])
+	
+	// Push to repo
 	executeGit("push")
+	
+	// Change to master branch
 	executeGit("checkout master")
 }
 
