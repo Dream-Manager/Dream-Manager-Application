@@ -10,6 +10,7 @@ includeTargets << grailsScript("_GrailsDocs")
 target(main: "Generates documentation and makes it available on gh-pages branch.") {
     remoteUrl = "http://github.com/Dream-Manager/Dream-Manager-Application"
 	
+	/*
 	// Get current branch name
 	def output = executeGit("branch")
 	def m = output =~ /\*\s+(\S+)/
@@ -22,6 +23,7 @@ target(main: "Generates documentation and makes it available on gh-pages branch.
 		logError("Unable to find out current branch. Output from 'git branch' was:\n\n  ${output}".toString())
 		exit(1)
 	}
+	*/
 	
 	def docsDir = grailsSettings.docsOutputDir
 	def tmpDocsDir = new File("${basedir}/docs-temp")
@@ -35,8 +37,10 @@ target(main: "Generates documentation and makes it available on gh-pages branch.
 	// Rename the generated folder to a temporary one
 	docsDir.renameTo(tmpDocsDir)
 	
+	/*
 	// Change to gh-pages branch
 	executeGit("checkout gh-pages")
+	*/
 	
 	// Copy docs to root folder
 	FileUtils.copyDirectory(tmpDocsDir, new File("${basedir}/.."))
@@ -53,8 +57,10 @@ target(main: "Generates documentation and makes it available on gh-pages branch.
 	// Push to repo
 	executeGit("push")
 	
+	/*
 	// Change to last used branch
 	executeGit("checkout ${branch}")
+	*/
 }
 
 setDefaultTarget(main)

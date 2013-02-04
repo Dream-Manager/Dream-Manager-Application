@@ -40,12 +40,3 @@ Icon?
 ehthumbs.db
 Thumbs.db
 
-# Heirarchy from GH-PAGES branch #
-##################################
-/api
-/css
-/gapi
-/guide
-/img
-/js
-/ref
