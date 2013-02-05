@@ -4,15 +4,15 @@ import java.security.SecureRandom
 import org.springframework.dao.DataIntegrityViolationException
 import org.apache.shiro.SecurityUtils
 import org.apache.shiro.subject.Subject
-import grails.util.Environment
-/*
+import grails.util.Environment  
+/**
  * This controller handles all the requests for dreamers acquiring and losing managers. 
  * The relation ship is binary and requires both sides approve, however only one person has to terminate it. 
  * A manager may claim a user that is already claimed and if the dreamer accepts the previous manager will be 
  * replaced with the new.
  */
 class ManagerToDreamerController {
-	/*
+	/**
 	 * This allows Managers to request to be a users Dream Manager
 	 */
 	def claimDreamer = {
@@ -46,7 +46,7 @@ class ManagerToDreamerController {
 			flash.message = "Cannot Claim already Managed User"
 		}
 	}
-	/*
+	/**
 	 * This allows Dreamers to request to be a managed by Dream Manager
 	 */
 	def requestManager = {
@@ -73,7 +73,7 @@ class ManagerToDreamerController {
 		}
 	}
 
-	/*
+	/**
 	 * This allows both dreamers and managers to accept a request for a relation.
 	 */
 	def acceptManagerDreamerRelationshipRequest = {
@@ -104,7 +104,7 @@ class ManagerToDreamerController {
 			redirect(uri:'/')
 		}
 	}
-	/*
+	/**
 	 * This allows a Manager to stop managing a dreamer.
 	 */
 	def unclaimDreamer = {
@@ -129,7 +129,7 @@ class ManagerToDreamerController {
 			flash.message = "Failed to unclaim dreamer."
 		}
 	}
-	/*
+	/**
 	 * This allows Dreamer to remove his manager.
 	 */
 	def removeManager = {
@@ -146,7 +146,7 @@ class ManagerToDreamerController {
 			flash.message = "Failed to remove Manager."
 		}
 	}
-	/*
+	/**
 	 * This allows either dreamer or manager to reject the request for a relationship.
 	 */
 	def rejectManagerDreamerRelationshipRequest = {

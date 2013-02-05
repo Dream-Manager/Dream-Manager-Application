@@ -5,6 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException
 class TaskController {
 	
 	def taskService
+	def dreamService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -31,9 +32,11 @@ class TaskController {
             render(view: "create", model: [taskInstance: taskInstance])
             return
         }
-
+		
         flash.message = message(code: 'default.created.message', args: [message(code: 'task.label', default: 'Task'), taskInstance.id])
+		dreamService.markCompletionBasedOnTasks(taskInstance.dream.id)
         redirect(action: "show", id: taskInstance.id)
+		
     }
 
     def show(Long id) {
@@ -84,7 +87,8 @@ class TaskController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'task.label', default: 'Task'), taskInstance.id])
-        redirect(action: "show", id: taskInstance.id)
+		dreamService.markCompletionBasedOnTasks(taskInstance.dream.getId())
+		redirect(action: "show", id: taskInstance.id)
     }
 
     def delete(Long id) {
@@ -96,7 +100,9 @@ class TaskController {
         }
 
         try {
+			def dreamID = taskInstance.dream.getID()
             taskInstance.delete(flush: true)
+			dreamService.markCompletionBasedOnTasks(dreamID)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'task.label', default: 'Task'), id])
             redirect(action: "list")
         }
