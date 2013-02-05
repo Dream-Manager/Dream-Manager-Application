@@ -48,10 +48,10 @@ target(main: "Generates documentation and makes it available on gh-pages branch.
 	executeGit("add ../* -f")
 	
 	// Commit to gh-pages
-	executeGit(["commit", "-m", "Auto-publication of docs.", "-a"])
+	executeGit(["commit","-m","Auto-publication of docs.","-a"])
 	
 	// Push to repo
-	executeGit("push")
+	executeGit(["push","origin","gh-pages"])
 	
 	// Change to last used branch
 	executeGit("checkout ${branch}")
