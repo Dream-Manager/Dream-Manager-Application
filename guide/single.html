@@ -25,6 +25,8 @@ function addJsClass(el) {
                             
                             <div class="toc-item" style="margin-left:0"><a href="#introduction"><strong>1</strong><span>Introduction</span></a></div>
                             
+                            <div class="toc-item" style="margin-left:0"><a href="#development"><strong>2</strong><span>Development</span></a></div>
+                            
                         </div>
                     </div>
                 </li>
@@ -62,6 +64,12 @@ function addJsClass(el) {
                             
                             <div class="toc-item" style="margin-left:0px"><a href="#introduction"><strong>1</strong><span>Introduction</span></a></div>
                             
+                            <div class="toc-item" style="margin-left:0px"><a href="#development"><strong>2</strong><span>Development</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#api"><strong>2.1</strong><span>API Documentation</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#contribution"><strong>2.2</strong><span>Configuring for Contribution</span></a></div>
+                            
                             <div style="clear:both" ></div>
                         </div>
                         
@@ -79,6 +87,27 @@ This application is designed to assist users ("Dreamers") in accomplishing their
 <li>Tuan Nguyen &#60;ndtuan@asu.edu&#62;</li>
 <li>James Harris &#60;jcharri4@asu.edu&#62;</li>
 </ul><p class="paragraph"/>
+
+
+<h1 id="development">2 Development</h1>
+Specifics about development.
+
+
+<h2 id="api">2.1 API Documentation</h2>
+../gapi/index.html
+
+
+<h2 id="contribution">2.2 Configuring for Contribution</h2>
+<h1>Generating SSH Key</h1>
+<div class="code"><pre>ssh&#45;keygen &#45;t rsa &#45;C <span class="java&#45;quote">"email@email.com"</span></pre></div>
+Copy contents of C:&#85;sers&#117;sername&#46;ssh&#105;d_rsa.pub and add to https://github.com/settings/ssh<p class="paragraph"/><h2>Setting Up Local Git Repository</h2>
+<div class="code"><pre>mkdir Dream Manager
+cd Dream Manager
+git init
+git remote add origin https://github.com/Dream&#45;Manager/Dream&#45;Manager&#45;Application.git
+git pull origin master</pre></div><p class="paragraph"/><h3>Grails Domain</h3>
+dream_manager
+
 
                     </div>
                 </td>

@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>1 Introduction 0.1</title>
+    <title>2.2 Configuring for Contribution 0.1</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -20,14 +20,14 @@ function addJsClass() {
     <ul>
         <li>
             <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
-                <a href="../guide/index.html" class="button">Table of contents</a>
+                <a href="../../guide/index.html" class="button">Table of contents</a>
 
                 <div id="nav-summary-childs" style="display:none;">
                     
-                    <div class="toc-item" style="margin-left:0"><a href="../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
+                    <div class="toc-item" style="margin-left:0"><a href="../../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0"><a href="../guide/development.html"><strong>2</strong><span>Development</span></a>
+                    <div class="toc-item" style="margin-left:0"><a href="../../guide/development.html"><strong>2</strong><span>Development</span></a>
                     </div>
                     
                 </div>
@@ -53,16 +53,16 @@ function addJsClass() {
             <div id="main" class="corner-all">
 
                 
+                    <div class="toc-item prev-left"><a href="../../guide/introduction.html">&lt;&lt; <strong>1</strong><span>Introduction</span></a></div>
+                
 
                 <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
 
                 
-                    <div class="toc-item next-right"><a href="../guide/development.html"><strong>2</strong><span>Development</span> >></a></div>
-                
 
 
                 <div class="project">
-                    <h1>1 Introduction - Reference Documentation</h1>
+                    <h1>2.2 Configuring for Contribution - Reference Documentation</h1>
 
                     <p><strong>Authors:</strong> </p>
 
@@ -75,23 +75,22 @@ function addJsClass() {
 
                 
 
-<h1 id="introduction">1 Introduction</h1>
-This application is designed to assist users ("Dreamers") in accomplishing their life goals by promoting accountability towards accomplishing those dreams, as described in <a href="http://www.amazon.com/The-Dream-Manager-Matthew-Kelly/dp/B003XU7VZQ" target="blank">The Dream Manager</a> by Matthew Kelly.<p class="paragraph"/>Development is primarily by students at <a href="http://campus.asu.edu/polytechnic/" target="blank">Arizona State University&#39;s Polytechnic</a> campus focused on Software Engineering, and is sponsored by <a href="http://www.infusionsoft.com/" target="blank">Infusionsoft</a>.<p class="paragraph"/><strong class="bold">Project Sponsors</strong>
-<ul class="star">
-<li>Dr. Perry Reinert &#60;perryr@infusionsoft.com&#62;</li>
-<li>Lennard Fuller &#60;lennard.fuller@infusionsoft.com&#62;,</li>
-</ul><p class="paragraph"/><strong class="bold">Development Team</strong>
-<ul class="star">
-<li>Robbie Miller &#60;Robert.P.Miller@asu.edu&#62;</li>
-<li>Tom Scott &#60;tsscott1@asu.edu&#62;</li>
-<li>Tuan Nguyen &#60;ndtuan@asu.edu&#62;</li>
-<li>James Harris &#60;jcharri4@asu.edu&#62;</li>
-</ul><p class="paragraph"/>
+<h2 id="contribution">2.2 Configuring for Contribution</h2>
+<h1>Generating SSH Key</h1>
+<div class="code"><pre>ssh&#45;keygen &#45;t rsa &#45;C <span class="java&#45;quote">"email@email.com"</span></pre></div>
+Copy contents of C:&#85;sers&#117;sername&#46;ssh&#105;d_rsa.pub and add to https://github.com/settings/ssh<p class="paragraph"/><h2>Setting Up Local Git Repository</h2>
+<div class="code"><pre>mkdir Dream Manager
+cd Dream Manager
+git init
+git remote add origin https://github.com/Dream&#45;Manager/Dream&#45;Manager&#45;Application.git
+git pull origin master</pre></div><p class="paragraph"/><h3>Grails Domain</h3>
+dream_manager
+
 
 
                 <div style="clear:both;margin-top:15px;"></div>
                 
-                    <div class="toc-item next-right"><a href="../guide/development.html"><strong>2</strong><span>Development</span> >></a></div>
+                    <div class="toc-item prev-left"><a href="../../guide/introduction.html">&lt;&lt; <strong>1</strong><span>Introduction</span></a></div>
                 
                 <div style="clear:both"></div>
             </div>
@@ -99,7 +98,7 @@ This application is designed to assist users ("Dreamers") in accomplishing their
         <td id="col2">
             <div class="local clearfix">
                 <div class="local-title">
-                    <a href="../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <a href="../../guide/index.html" target="mainFrame">Quick Reference</a>
                     <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
                 </div>
                 <div class="menu">
