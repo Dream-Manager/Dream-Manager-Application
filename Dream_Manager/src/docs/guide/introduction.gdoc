@@ -1,13 +1,13 @@
-This is an example documentation template. The syntax format is similar to "Textile":http://textile.thresholdstate.com/.
+This application is designed to assist users ("Dreamers") in accomplishing their life goals by promoting accountability towards accomplishing those dreams, as described in [The Dream Manager|http://www.amazon.com/The-Dream-Manager-Matthew-Kelly/dp/B003XU7VZQ] by Matthew Kelly. 
 
-You can apply formatting such as *bold*, _italic_ and @code@. Bullets are possible too:
+Development is primarily by students at [Arizona State University's Polytechnic|http://campus.asu.edu/polytechnic/] campus focused on Software Engineering, and is sponsored by [Infusionsoft|http://www.infusionsoft.com/].
 
-* Bullet 1
-* Bullet 2
+*Project Sponsors*
+* Dr. Perry Reinert
+* Lennard Fuller
 
-As well as numbered lists:
-
-# Number 1
-# Number 2
-
-The documentation also handles links to [guide items|guide:introduction] as well as [reference|items]
+*Development Team*
+* Robbie Miller
+* Tom Scott
+* Tuan Nguyen
+* James Harris

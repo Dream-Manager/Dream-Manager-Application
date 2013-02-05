@@ -1,1 +1,5 @@
 introduction: Introduction
+development:
+  title: Development
+  api: API Documentation
+  contribution: Configuring for Contribution
