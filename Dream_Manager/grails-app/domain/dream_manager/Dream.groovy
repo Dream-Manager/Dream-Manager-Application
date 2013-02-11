@@ -3,11 +3,12 @@ package dream_manager
 class Dream {
 	
 	String name
+	String category
 	Date estimatedCompletion
+	Boolean isShortTerm = true
 	Date created
 	Date lastUpdated
 	Date completed = null
-	Integer progress = 0
 	String notes
 	
 	String toString() {
@@ -16,6 +17,9 @@ class Dream {
 	
 	// Each Dream is related to a user
 	static belongsTo = [user:User]
+	
+	// Each Dream can have many Tasks
+	static hasMany = [tasks:DreamTask]
 	
     static constraints = {
 		completed nullable: true
