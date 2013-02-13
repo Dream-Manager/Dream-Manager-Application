@@ -4,9 +4,9 @@ class Dream {
 	
 	String name
 	String category
-	Date estimatedCompletion
+	Date estimatedCompletion = null
 	Boolean isShortTerm = true
-	Date created
+	Date created = new Date()
 	Date lastUpdated
 	Date completed = null
 	String notes
@@ -23,6 +23,8 @@ class Dream {
 	
     static constraints = {
 		completed nullable: true
+		estimatedCompletion nullable: true
 		notes nullable: true	
+		category inList: ["Adventure","Character","Creative","Emotional","Financial","Intellectual","Legacy","Material","Physical","Professional","Psychological","Spiritual"]
     }
 }

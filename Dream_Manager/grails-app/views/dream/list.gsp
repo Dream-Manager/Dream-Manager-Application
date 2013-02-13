@@ -24,13 +24,13 @@
 				<thead>
 					<tr>
 					
+						<g:sortableColumn property="category" title="${message(code: 'dream.category.label', default: 'Category')}" />
+					
+						<g:sortableColumn property="name" title="${message(code: 'dream.name.label', default: 'Name')}" />
+					
 						<g:sortableColumn property="completed" title="${message(code: 'dream.completed.label', default: 'Completed')}" />
 					
 						<g:sortableColumn property="notes" title="${message(code: 'dream.notes.label', default: 'Notes')}" />
-					
-						<g:sortableColumn property="category" title="${message(code: 'dream.category.label', default: 'Category')}" />
-					
-						<g:sortableColumn property="created" title="${message(code: 'dream.created.label', default: 'Created')}" />
 					
 						<g:sortableColumn property="estimatedCompletion" title="${message(code: 'dream.estimatedCompletion.label', default: 'Estimated Completion')}" />
 					
@@ -42,15 +42,15 @@
 				<g:each in="${dreamInstanceList}" status="i" var="dreamInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${dreamInstance.id}">${fieldValue(bean: dreamInstance, field: "completed")}</g:link></td>
+						<td>${fieldValue(bean: dreamInstance, field: "category")}</td>
+						
+						<td><g:link action="show" id="${dreamInstance.id}">${fieldValue(bean: dreamInstance, field: "name")}</g:link></td>
 					
+						<td><g:formatDate format="MM-dd-yyyy" date="${dreamInstance.completed}" /></td>
+						
 						<td>${fieldValue(bean: dreamInstance, field: "notes")}</td>
 					
-						<td>${fieldValue(bean: dreamInstance, field: "category")}</td>
-					
-						<td><g:formatDate date="${dreamInstance.created}" /></td>
-					
-						<td><g:formatDate date="${dreamInstance.estimatedCompletion}" /></td>
+						<td><g:formatDate format="MM-dd-yyyy" date="${dreamInstance.estimatedCompletion}" /></td>
 					
 						<td><g:formatBoolean boolean="${dreamInstance.isShortTerm}" /></td>
 					
