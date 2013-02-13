@@ -26,13 +26,13 @@
 	<g:field type="email" name="email" maxlength="50" required="" value="${userInstance?.email}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'password', 'error')} required">
-	<label for="password">
-		<g:message code="user.password.label" default="Password" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field type="password" name="password" maxlength="20" required="" value="${userInstance?.password}"/>
-</div>
+	<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'password', 'error')} required">
+		<label for="password">
+			<g:message code="user.password.label" default="Password" />
+			<span class="required-indicator">*</span>
+		</label>
+		<g:field type="password" name="password" maxlength="20" required="" value="${userInstance?.password}"/>
+	</div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'avatarLocation', 'error')} ">
 	<label for="avatarLocation">
@@ -103,25 +103,9 @@
 		<g:message code="user.manager.label" default="Manager" />
 		
 	</label>
-	<g:select id="manager" name="manager.id" from="${dream_manager.User.list()}" optionKey="id" value="${userInstance?.manager?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="manager" name="manager.id" from="${User.createCriteria().list(){eq("isManager",true)}}" optionKey="id" value="${userInstance?.manager?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'dreams', 'error')} ">
-	<label for="dreams">
-		<g:message code="user.dreams.label" default="Dreams" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${userInstance?.dreams?}" var="d">
-    <li><g:link controller="dream" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="dream" action="create" params="['user.id': userInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'dream.label', default: 'Dream')])}</g:link>
-</li>
-</ul>
-
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'isManager', 'error')} ">
 	<label for="isManager">
@@ -131,6 +115,7 @@
 	<g:checkBox name="isManager" value="${userInstance?.isManager}" />
 </div>
 
+<!-- Might use in the future
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'skills', 'error')} ">
 	<label for="skills">
 		<g:message code="user.skills.label" default="Skills" />
@@ -147,4 +132,5 @@
 </ul>
 
 </div>
+ -->
 
