@@ -6,12 +6,13 @@
 </head>
 <body>
 	<div class="container_16">
-		<!--  Left Column -->
-		<div class="grid_4">This is first left column </div>
 		<!--  Center Column -->
-		<div class="grid_8">Dashboard will go in this column. This includes all the tabs and pages associated.</div>
+		<div class="grid_12 alpha">
+			Create Dream:
+			<g:include controller="dream" action="showCreateAjax" />
+		</div>
 		<!--  Right Column -->
-		<div class="grid_4">This will be the Feed column</div>
+		<div class="grid_4 omega">This will be the Feed column</div>
 	</div>
 </body>
 </html>
