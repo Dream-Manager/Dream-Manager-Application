@@ -2,5 +2,6 @@ package dream_manager
 
 class AuthenticationController {
 
-    def index() { }
+    def login() { }
+	def signup() { }
 }
