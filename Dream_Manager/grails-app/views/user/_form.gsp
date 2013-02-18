@@ -26,13 +26,21 @@
 	<g:field type="email" name="email" maxlength="50" required="" value="${userInstance?.email}"/>
 </div>
 
-	<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'password', 'error')} required">
-		<label for="password">
-			<g:message code="user.password.label" default="Password" />
-			<span class="required-indicator">*</span>
-		</label>
-		<g:field type="password" name="password" maxlength="20" required="" value="${userInstance?.password}"/>
-	</div>
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'password', 'error')} required">
+	<label for="password">
+		<g:message code="user.password.label" default="Password" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field type="password" name="password" maxlength="20" required=""/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'confirmPassword', 'error')} required">
+	<label for="confirmPassword">
+		<g:message code="user.confirmPassword.label" default="Confirm Password" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field type="password" name="confirmPassword" maxlength="20" required=""/>
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'avatarLocation', 'error')} ">
 	<label for="avatarLocation">
@@ -44,7 +52,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'streetAddress1', 'error')} ">
 	<label for="streetAddress1">
-		<g:message code="user.streetAddress1.label" default="Street Address1" />
+		<g:message code="user.streetAddress1.label" default="Street Address 1" />
 		
 	</label>
 	<g:textField name="streetAddress1" value="${userInstance?.streetAddress1}"/>
@@ -52,7 +60,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'streetAddress2', 'error')} ">
 	<label for="streetAddress2">
-		<g:message code="user.streetAddress2.label" default="Street Address2" />
+		<g:message code="user.streetAddress2.label" default="Street Address 2" />
 		
 	</label>
 	<g:textField name="streetAddress2" value="${userInstance?.streetAddress2}"/>
@@ -60,7 +68,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'poBox', 'error')} ">
 	<label for="poBox">
-		<g:message code="user.poBox.label" default="Po Box" />
+		<g:message code="user.poBox.label" default="PO Box" />
 		
 	</label>
 	<g:textField name="poBox" value="${userInstance?.poBox}"/>
