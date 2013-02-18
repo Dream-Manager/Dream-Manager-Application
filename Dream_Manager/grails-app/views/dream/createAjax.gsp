@@ -5,6 +5,13 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'dream.label', default: 'Dream')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
+		
+		<g:javascript>
+			// Register AJAX spinner events
+		     function showSpinner(visible) { $('spinner').style.display = visible ? "inline" : "none"; }
+		     jQuery.ajaxStart(function(){ showSpinner(true) });
+		     jQuery.ajaxComplete(function(){ showSpinner(false) });
+		</g:javascript>
 	</head>
 	<body>
 		<a href="#create-dream" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -26,14 +33,15 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form action="save" >
+			<g:formRemote name="createAjax" update="results" url="[controller: 'dream', action:'createAjax']">
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<input type="submit" name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>
-			</g:form>
+			</g:formRemote>
+			
 		</div>
 	</body>
 </html>
