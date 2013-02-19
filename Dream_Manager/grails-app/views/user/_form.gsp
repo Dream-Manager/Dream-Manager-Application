@@ -42,6 +42,7 @@
 	<g:field type="password" name="confirmPassword" maxlength="20" required=""/>
 </div>
 
+<!-- for future use in adding avatar to account
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'avatarLocation', 'error')} ">
 	<label for="avatarLocation">
 		<g:message code="user.avatarLocation.label" default="Avatar Location" />
@@ -49,7 +50,7 @@
 	</label>
 	<g:textField name="avatarLocation" value="${userInstance?.avatarLocation}"/>
 </div>
-
+-->
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'streetAddress1', 'error')} ">
 	<label for="streetAddress1">
 		<g:message code="user.streetAddress1.label" default="Street Address 1" />
@@ -121,6 +122,14 @@
 		
 	</label>
 	<g:checkBox name="isManager" value="${userInstance?.isManager}" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'isAdmin', 'error')} ">
+	<label for="isAdmin">
+		<g:message code="user.isAdmin.label" default="Is Administrator" />
+		
+	</label>
+	<g:checkBox name="isAdmin" value="${userInstance?.isAdmin}" />
 </div>
 
 <!-- Might use in the future

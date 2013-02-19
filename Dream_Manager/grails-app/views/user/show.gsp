@@ -151,6 +151,15 @@
 					
 				</li>
 				</g:if>
+				
+				<g:if test="${userInstance?.isAdmin}">
+				<li class="fieldcontain">
+					<span id="isAdmin-label" class="property-label"><g:message code="user.isAdmin.label" default="Is Administrator" /></span>
+					
+						<span class="property-value" aria-labelledby="isAdmin-label"><g:formatBoolean boolean="${userInstance?.isAdmin}" /></span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${userInstance?.skills}">
 				<li class="fieldcontain">
@@ -162,6 +171,8 @@
 					
 				</li>
 				</g:if>
+				
+				
 			
 			</ol>
 			<g:form>

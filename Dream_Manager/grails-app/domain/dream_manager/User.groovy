@@ -16,6 +16,7 @@ class User {
 	Date dateOfBirth
 	String zipcode
 	boolean isManager = false
+	boolean isAdmin = false
 	
 	/**
 	 * Returns a String containing the user's full name.
@@ -49,3 +50,4 @@ class User {
 		
     }
 }
+
