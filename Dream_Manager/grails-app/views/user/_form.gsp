@@ -1,6 +1,12 @@
 <%@ page import="dream_manager.User" %>
 
-
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'username', 'error')} required">
+	<label for="username">
+		<g:message code="user.username.label" default="username" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="username" maxlength="20" required="" value="${userInstance?.username}"/>
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'firstName', 'error')} required">
 	<label for="firstName">
