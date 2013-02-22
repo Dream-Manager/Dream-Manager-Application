@@ -7,8 +7,6 @@ class User {
 	String firstName
 	String lastName
 	String email
-	String password
-	String confirmPassword
 	String avatarLocation
 	String streetAddress1
 	String streetAddress2
@@ -39,8 +37,6 @@ class User {
 		firstName(blank: false, nullable: false, size:1..20)
 		lastName(blank: false, nullable: false, size:1..20)
 		email(email: true, blank: false, unique: true, nullable: false, size:1..50)
-		password(password: true, blank: false, nullable: false, size:6..20)
-		confirmPassword(password: true, size:6..20, nullable: false, blank: false, validator: {val, obj ->obj.properties['password'] == val})
 		avatarLocation(nullable: true)
 		streetAddress1(nullable: true)
 		streetAddress2(nullable: true)
