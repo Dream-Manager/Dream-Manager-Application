@@ -12,7 +12,7 @@ class SecurityFilters {
      * encompasses all actions within the controller.
      */
     static nonAuthenticatedActions = [
-            [controller: 'home', action: 'index']
+            [controller: 'Auth', action: 'login']
     ]
 
     /**
@@ -20,7 +20,7 @@ class SecurityFilters {
      * role. The map also includes the roles which the controller/action pair will match
      * against.
      */
-    static authenticatedActions = [    ]
+    static authenticatedActions = [ [controller: 'Asset' , action: '*'] , [controller: 'Dream', action: '*'], [controller: 'DreamerDashboard', action: '*'], [controller: 'DreamToTemplate', action: '*'] , [controller: 'Skill', action: '*'] ]
 
     def filters = {
 
