@@ -7,12 +7,18 @@
 </head>
 <body>
 	<div class="container_16">
-		<!--  Left Column -->
-		<div class="grid_4"><shiro:principal/></div>
 		<!--  Center Column -->
-		<div class="grid_8">-- <shiro:principal li="string" /></div>
+		<div class="grid_12 alpha">
+			<shiro:principal/>
+				Create Dream:
+				<g:include controller="dream" action="showCreateAjax" />
+			<shiro:principal li="string" />
+		</div>
+
 		<!--  Right Column -->
-		<div class="grid_4"></div>
+		<div class="grid_4 omega">
+			Social Grid
+		</div>
 	</div>
 
 </body>

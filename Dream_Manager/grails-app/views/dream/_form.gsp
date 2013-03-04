@@ -19,10 +19,10 @@
 	     
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: dreamInstance, field: 'name', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: dreamInstance, field: 'name', 'error')} required">
 	<label for="name">
 		<g:message code="dream.name.label" default="Name" />
-		
+		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="name" value="${dreamInstance?.name}"/>
 </div>
