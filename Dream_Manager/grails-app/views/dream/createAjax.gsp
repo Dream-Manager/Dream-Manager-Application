@@ -33,6 +33,7 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
+			
 			<g:formRemote name="createAjax" update="results" url="[controller: 'dream', action:'createAjax']">
 				<fieldset class="form">
 					<g:render template="form"/>
