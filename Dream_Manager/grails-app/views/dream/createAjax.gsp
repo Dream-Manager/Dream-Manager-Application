@@ -3,7 +3,6 @@
 <html>
 	<head>
 		<g:javascript>
-			// Register AJAX spinner events
 		     function showSpinner(visible) { $('spinner').style.display = visible ? "inline" : "none"; }
 		     jQuery.ajaxStart(function(){ showSpinner(true) });
 		     jQuery.ajaxComplete(function(){ showSpinner(false) });
@@ -22,14 +21,25 @@
 			</ul>
 			</g:hasErrors>
 			
-			<g:formRemote name="createAjax" update="results" url="[controller: 'dream', action:'createAjax']">
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<input type="submit" name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				</fieldset>
-			</g:formRemote>
+			<div id="inline-create-dream-toggle">
+				<g:img src="" alt="Create Dream Toggle" />
+				X
+			</div>
+			<div id="inline-create-dream-form" style="display:none;">
+				<g:formRemote name="createAjax" update="results" url="[controller: 'dream', action:'create']">
+					<fieldset class="form">
+						<g:render template="form"/>
+						<input type="submit" name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					</fieldset>
+				</g:formRemote>
+			</div>
+			<g:javascript>
+				jQuery(function(){
+					jQuery("#inline-create-dream-toggle").click(function({
+						jQuery("#inline-create-dream-form").toggle();
+					}));
+				});
+			</g:javascript>
 		</div>
 	</body>
 </html>

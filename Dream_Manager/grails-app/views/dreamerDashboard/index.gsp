@@ -3,16 +3,13 @@
 <head>
 <meta name="layout" content="dashboard" />
 <meta name="authentication" content="signup" />
-<title>Dream Manager - Dreamer Dashboard</title>
+<title>Dream Manager - Dashboard</title>
 </head>
 <body>
 	<div class="container_16">
 		<!--  Center Column -->
-		<div class="grid_12 alpha">
-			<shiro:principal/>
-				Create Dream:
-				<g:include controller="dream" action="showCreateAjax" />
-			<shiro:principal li="string" />
+		<div class="grid_12 alpha">	
+			<g:include controller="dream" action="showCreateAjax" />
 		</div>
 
 		<!--  Right Column -->

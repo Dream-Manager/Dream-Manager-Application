@@ -1,4 +1,6 @@
 package dream_manager
+import org.apache.shiro.subject.Subject
+import org.apache.shiro.SecurityUtils
 
 class DreamController {
 
@@ -29,7 +31,11 @@ class DreamController {
 		  
 	}
 	  
-	def createAjax = {
+	def create = {
+		
+		// Append current user's login to record
+		def params = params + [user:User.createCriteria().get{eq(username,SecurityUtils.subject.principal)}]
+		
 		// Create new Dream record
 		def dreamInstance = new Dream(params)
 		// If saved with no errors
@@ -41,6 +47,5 @@ class DreamController {
 			flash.message = "Failure"
 		}  
 	}
-	
 	
 }
