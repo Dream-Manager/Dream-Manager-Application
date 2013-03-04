@@ -1,26 +1,36 @@
 package dream_manager
 import grails.test.mixin.*
+import org.apache.shiro.crypto.hash.Sha256Hash
 import org.junit.*
 import dream_manager.User;
 
 @TestFor(User)
 class UserTests {
-	
+
 	@Before
 	void before() {
 		// Delete any extra records
 		User.createCriteria().list{}*.delete()
-		
+
 		// Populate User table
 		new User (
-			firstName:"John",
-			lastName:"Smith",
-			password:"1234567890",
-			email:"john@smith.com").save()
+				username: "adminuser@gmail.com",
+				passwordHash: new Sha256Hash("password").toHex(),
+				firstName:"John",
+				lastName:"Smith",
+				avatarLocation:null,
+				streetAddress1:null,
+				streetAddress2:null,
+				poBox:null,
+				dateOfBirth:null,
+				city:null,
+				state:null,
+				zipcode:85219,
+				isManager:false ).save()
 	}
 
 	// Test toString() method
-    void testToString() {
+	void testToString() {
 		assertEquals("John Smith",User.get(1).toString())
-    }
+	}
 }

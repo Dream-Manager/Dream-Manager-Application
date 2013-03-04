@@ -2,13 +2,34 @@ import org.apache.shiro.crypto.hash.Sha256Hash
 import dream_manager.*
 
 class BootStrap {
-	
-    def init = { servletContext ->
-        def user = new User(username: "adminuser@gmail.com", passwordHash: new Sha256Hash("password").toHex(), firstName:"James", lastName:"HARRIS", email:"adminuser@gmail.com", password:"password", confirmPassword:"password", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219,isManager:false  )
-        user.addToPermissions("*:*")
-        user.save()
-    }
 
-    def destroy = {
-    }
+	def init = { servletContext ->
+
+		// Create the admin role
+		def adminRole = new Role(name: 'ROLE_ADMIN').save(flush: true, failOnError: true)
+
+		// Create the user role
+		def userRole = new Role(name: 'ROLE_USER').save(flush: true, failOnError: true)
+
+		def adminUser = new User(username: "adminuser@gmail.com", passwordHash: new Sha256Hash("password").toHex(), firstName:"James", lastName:"HARRIS", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219,isManager:false )
+		adminUser.save(flush: true, failOnError: true)
+
+		// Add roles to the admin user
+		assert adminUser.addToRoles(adminRole)
+		.addToRoles(userRole)
+		.save(flush: true, failOnError: true)
+
+		// Create an standard user
+		def standardUser = new User(username: "standarduser@gmail.com",passwordHash: new Sha256Hash('password').toHex(), firstName:"Joe", lastName:"Smoe", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219,isManager:false )
+		standardUser.save(flush: true, failOnError: true)
+
+		// Add role to the standard user
+		assert standardUser.addToRoles(userRole)
+		.save(flush: true, failOnError: true)
+
+
+	}
+
+	def destroy = {
+	}
 }

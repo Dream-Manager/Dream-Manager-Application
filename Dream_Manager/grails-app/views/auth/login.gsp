@@ -33,9 +33,9 @@
 					</tr>
 				</tbody>
 			</shiro:isNotLoggedIn>
-			<shiro:isLoggedIn>You Are signed in as<tr>
+			<shiro:isLoggedIn>You are signed in as<tr>
 					<shiro:principal></shiro:principal>
-					<g:actionSubmit value="signOut"
+					<g:actionSubmit value="Logout" action="signOut"
 						onclick="return confirm('Are you sure???')" />
 			</shiro:isLoggedIn>
 		</table>

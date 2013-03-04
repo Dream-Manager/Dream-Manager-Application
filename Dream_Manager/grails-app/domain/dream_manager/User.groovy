@@ -6,7 +6,6 @@ class User {
 	String passwordHash
 	String firstName
 	String lastName
-	String email
 	String avatarLocation
 	String streetAddress1
 	String streetAddress2
@@ -21,11 +20,11 @@ class User {
 	/**
 	 * Returns a String containing the user's full name.
 	 * @return      the firstName + ' ' + lastName
-	 *
+	 */
 	String toString() {
 		firstName + " " + lastName
 	}
-	*/
+	
 	// Each User has many Dreams, Skills
 	static hasMany = [dreams:Dream, skills:Skill, roles: Role, permissions: String ]
 	
@@ -33,10 +32,9 @@ class User {
 	static belongsTo = [manager:User]
 	
 	static constraints = {
-		username(nullable: false, blank: false, unique: true)
+		username(email: true, blank: false, unique: true, nullable: false, size:1..50)
 		firstName(blank: false, nullable: false, size:1..20)
 		lastName(blank: false, nullable: false, size:1..20)
-		email(email: true, blank: false, unique: true, nullable: false, size:1..50)
 		avatarLocation(nullable: true)
 		streetAddress1(nullable: true)
 		streetAddress2(nullable: true)

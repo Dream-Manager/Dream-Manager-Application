@@ -20,7 +20,17 @@ class SecurityFilters {
      * role. The map also includes the roles which the controller/action pair will match
      * against.
      */
-    static authenticatedActions = [ [controller: 'Asset' , action: '*'] , [controller: 'Dream', action: '*'], [controller: 'DreamerDashboard', action: '*'], [controller: 'DreamToTemplate', action: '*'] , [controller: 'Skill', action: '*'] ]
+    static authenticatedActions = [ [controller: 'Asset' , action: '*', roles: ['ROLE_ADMIN']] ,
+		 [controller: 'dream', action: '*', roles: ['ROLE_ADMIN']],
+		 [controller: 'dreamerDashboard', action: '*', roles: ['ROLE_ADMIN']],
+		 [controller: 'dreamToTemplate', action: '*', roles: ['ROLE_ADMIN']] ,
+		 [controller: 'skill', action: '*', roles: ['ROLE_ADMIN']],
+		 [controller: 'template', action: '*', roles: ['ROLE_ADMIN']],
+		 [controller: 'api', action: '*', roles: ['ROLE_ADMIN']],
+		 [controller: 'asset', action: '*', roles: ['ROLE_ADMIN']],
+		 [controller: 'user', action: '*', roles: ['ROLE_ADMIN']],
+		 [controller: 'userDreamQuestions', action: '*', roles: ['ROLE_ADMIN']]
+	]
 
     def filters = {
 
@@ -44,12 +54,13 @@ class SecurityFilters {
 
                     if (authRoles) {
 
-                        // Perform the access control for each of the roles provided in the authRoles
+                         //Perform the access control for each of the roles provided in the authRoles
                         accessControl {
                             authRoles.roles.each { roleName ->
                                 role(roleName)
                             }
                         }
+						
                     }
 
                     // Skip authentication if the authRoles was not found
