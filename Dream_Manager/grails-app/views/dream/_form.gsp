@@ -1,15 +1,5 @@
 <%@ page import="dream_manager.Dream" %>
 
-<!--
-<div class="fieldcontain ${hasErrors(bean: dreamInstance, field: 'user', 'error')} required">
-	<label for="user">
-		<g:message code="dream.user.label" default="User" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="user" name="user.id" from="${dream_manager.User.list()}" optionKey="id" required="" value="${dreamInstance?.user?.id}" class="many-to-one"/>
-</div>
--->
-
 <div class="fieldcontain ${hasErrors(bean: dreamInstance, field: 'category', 'error')} ">
 	<label for="category">
 		<g:message code="dream.category.label" default="Category" />
