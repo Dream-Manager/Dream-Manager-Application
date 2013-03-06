@@ -6,15 +6,34 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 <body>
 
-<h1>Dream In Process</h1>
+<div>
+
+<h1>DREAMS IN PROGRESS</h1>
+<p>Category<span>              </span>CAT1-2-3</p>
+<p>New Dream<span>        </span>newDream1</p>
+<p>Details<span>  </span>[<span class=SpellE>addDream</span>]</p>
+<p>Estimated Completion: [MM-DD-YYYY]</p>
+
+<p>Notes</p>
+<p>[Notes for Dreamer in box HERE]</p>
+<p></p>
+<p></p><p></p><p></p><p></p>
 <br>
-<br>
-<br>Category
-<br>New Dream
-<br>Details
-<br>Add Dream
-<br>Estimated Completion
-<br>Short Term				Long Term
-<br>Notes:
+<p>Add task [Click]<span>                                                 </span>[AddDream]</p>
+
+<p>Task Name<span>                          [taskName]</span></p>
+
+<p>Estimated Completion: [MM-DD-YYYY]</p>
+
+<p>Size [Size]</p>
+
+<p>Task List [<span>addTask</span>]</p>
+
+<p>[Scroll List Box]</p>
+<br><br><br><br>
+
+</div>
+
 </body>
+
 </html>
