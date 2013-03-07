@@ -3,6 +3,7 @@ package dream_manager
 import org.apache.shiro.authc.UsernamePasswordToken
 import org.apache.shiro.crypto.hash.Sha256Hash
 import org.springframework.dao.DataIntegrityViolationException
+import org.apache.shiro.SecurityUtils
 
 
 class UserController {
@@ -62,6 +63,8 @@ class UserController {
 								zipcode:params.zipCode,
 								isManager:false,
 								admin:false)
+		def authToken = new UsernamePasswordToken(params.username, params.password)
+
         if (!userInstance.save(flush: true)) {
             render(view: "create", model: [userInstance: userInstance])
             return

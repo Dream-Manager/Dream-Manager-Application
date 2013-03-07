@@ -32,6 +32,7 @@
 	<g:field type="password" name="password" maxlength="20" required=""/>
 </div>
 
+
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'passwordConfirm', 'error')} required">
 	<label for="passwordConfirm">
 		<g:message code="user.passwordConfirm.label" default="Confirm Password" />
