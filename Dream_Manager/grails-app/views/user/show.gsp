@@ -41,15 +41,23 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${userInstance?.email}">
+				<g:if test="${userInstance?.username}">
 				<li class="fieldcontain">
-					<span id="email-label" class="property-label"><g:message code="user.email.label" default="Email" /></span>
+					<span id="username-label" class="property-label"><g:message code="user.username.label" default="Email" /></span>
 					
-						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${userInstance}" field="email"/></span>
+						<span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${userInstance}" field="username"/></span>
 					
 				</li>
 				</g:if>
 			
+				<g:if test="${userInstance?.passwordHash}">
+				<li class="fieldcontain">
+					<span id="passwordHash-label" class="property-label"><g:message code="user.passwordHash.label" default="Password Hash" /></span>
+					
+						<span class="property-value" aria-labelledby="passwordHash-label"><g:fieldValue bean="${userInstance}" field="passwordHash"/></span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${userInstance?.avatarLocation}">
 				<li class="fieldcontain">

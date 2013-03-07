@@ -20,11 +20,48 @@ class UserController {
     }
 
     def create() {
-        [userInstance: new User(params)]
+        [userInstance: new User(username: params.username,
+								firstName:params.firstName,
+								lastName:params.lastName,
+								email:params.username,
+								passwordHash:params.passwordHash,
+								avatarLocation:null,
+								streetAddress1:params.streetAddress1,
+								streetAddress2:params.streetAddress2,
+								poBox:params.poBox,
+								dateOfBirth:params.dateOfBirth,
+								city:params.city,
+								state:params.state,
+								zipcode:params.zipCode,
+								isManager:false,
+								admin:false)
+		]
     }
 
     def save() {
-        def userInstance = new User(params)
+		if (params.password != params.passwordConfirm) {
+			redirect(controller: 'user', action: 'create')
+			flash.message = "Passwords do not match"
+			render('index')
+		}
+
+		// Passwords match. Let's attempt to save the user
+		else {
+        def userInstance = new User(username: params.username,
+								firstName:params.firstName,
+								lastName:params.lastName,
+								email:params.username,
+								passwordHash:shiroSecurityService.encodePassword(params.password),
+								avatarLocation:null,
+								streetAddress1:params.streetAddress1,
+								streetAddress2:params.streetAddress2,
+								poBox:params.poBox,
+								dateOfBirth:params.dateOfBirth,
+								city:params.city,
+								state:params.state,
+								zipcode:params.zipCode,
+								isManager:false,
+								admin:false)
         if (!userInstance.save(flush: true)) {
             render(view: "create", model: [userInstance: userInstance])
             return
@@ -32,6 +69,7 @@ class UserController {
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
         redirect(action: "show", id: userInstance.id)
+		}
     }
 
     def show(Long id) {

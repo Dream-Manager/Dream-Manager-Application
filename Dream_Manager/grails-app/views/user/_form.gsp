@@ -1,13 +1,5 @@
 <%@ page import="dream_manager.User" %>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'username', 'error')} required">
-	<label for="username">
-		<g:message code="user.username.label" default="username" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="username" maxlength="20" required="" value="${userInstance?.username}"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'firstName', 'error')} required">
 	<label for="firstName">
 		<g:message code="user.firstName.label" default="First Name" />
@@ -24,12 +16,12 @@
 	<g:textField name="lastName" maxlength="20" required="" value="${userInstance?.lastName}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'email', 'error')} required">
-	<label for="email">
-		<g:message code="user.email.label" default="Email" />
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'username', 'error')} required">
+	<label for="username">
+		<g:message code="user.username.label" default="Email Address" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field type="email" name="email" maxlength="50" required="" value="${userInstance?.email}"/>
+	<g:textField type="email" name="username" maxlength="50" required="" value="${userInstance?.username}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'password', 'error')} required">
@@ -40,12 +32,12 @@
 	<g:field type="password" name="password" maxlength="20" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'confirmPassword', 'error')} required">
-	<label for="confirmPassword">
-		<g:message code="user.confirmPassword.label" default="Confirm Password" />
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'passwordConfirm', 'error')} required">
+	<label for="passwordConfirm">
+		<g:message code="user.passwordConfirm.label" default="Confirm Password" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field type="password" name="confirmPassword" maxlength="20" required=""/>
+	<g:field type="password" name="passwordConfirm" maxlength="20" required=""/>
 </div>
 
 <!-- for future use in adding avatar to account
