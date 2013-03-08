@@ -10,7 +10,7 @@
 			${flash.message}
 		</div>
 	</g:if>
-	<div class="grid_1">
+	<div>
 		<g:form action="signIn">
 			<input type="hidden" name="targetUri" value="${targetUri}" />
 			<table>
@@ -30,12 +30,9 @@
 						</tr>
 						<tr>
 							<td />
-							<td><input type="submit" value="Sign in" /></td>
+							<td><input type="submit" value="Sign in" /><g:link controller="User" action="register">Not Registered?</g:link></td>
 						</tr>
 						<tr>
-							<g:actionSubmit value="Signup" action="register"
-								onclick="return confirm('Signup?')" />
-						<tr />
 					</tbody>
 				</shiro:isNotLoggedIn>
 				<shiro:isLoggedIn>You are signed in as<tr>

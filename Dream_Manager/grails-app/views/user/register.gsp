@@ -8,7 +8,7 @@
 
 <body>
 
-	<h1>Signup</h1>
+	<h1>Register</h1>
 
 	<g:if test="${flash.message}">
 		<div class="alert alert-info">
@@ -63,9 +63,6 @@
 				 />
 		</p>
 		
-		
-
-
 		<p>
 			<g:submitButton name="submit" value="Submit" />
 		</p>
