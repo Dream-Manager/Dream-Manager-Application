@@ -14,7 +14,8 @@ class SecurityFilters {
      */
     static nonAuthenticatedActions = [
             [controller: 'auth', action: 'login'],
-			[controller: 'user', action: 'register']
+			[controller: 'user', action: 'register'],
+			[controller: 'user', action: 'signup']
     ]
 
     /**

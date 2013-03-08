@@ -22,7 +22,7 @@
 		</div>
 	</g:hasErrors>
 
-	<g:form action="register">
+	<g:form action="signup">
 		<p>
 			<label for="username"> <g:message code="user.username.label"
 					default="username" /> <span class="required-indicator">*</span>

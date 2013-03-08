@@ -145,6 +145,59 @@ class UserController {
         }
     }
 	
+	def signup(){
+		// Check to see if the username already exists
+				def user = User.findByUsername(params.username)
+				if (user) {
+					redirect(action: 'register')
+					flash.message = "User already exists with the username '${params.username}'"
+				}
+		
+				// User doesn't exist with username. Let's create one
+				else {
+		
+					// Make sure the passwords match
+					if (params.password != params.confirmPassowrd) {
+						redirect(action: 'register')
+						flash.message = "Passwords do not match"
+					}
+		
+					// Passwords match. Let's attempt to save the user
+					else {
+						// Create user
+						user = new User(username: params.username,
+										firstName:params.firstName,
+										lastName:params.lastName,
+										email:params.username,
+										passwordHash:shiroSecurityService.encodePassword(params.password),
+										avatarLocation:null,
+										streetAddress1:params.streetAddress1,
+										streetAddress2:params.streetAddress2,
+										poBox:params.poBox,
+										dateOfBirth:params.dateOfBirth,
+										city:params.city,
+										state:params.state,
+										zipcode:params.zipCode,
+										isManager:false,
+										admin:false)
+						user.addToPermissions("*:*")
+		
+						 if (user.save(flush: true)) {
+						 // Add USER role to new user
+						 //user.addToRoles(Role.findByName('ROLE_USER'))
+						 // Login user
+							 render "SAVE"
+						 def authToken = new UsernamePasswordToken(user.username, params.password)
+						 SecurityUtils.subject.login(authToken)
+						 redirect(controller:'DreamerDashboard', action:'index')
+						 }
+						 else {
+							 redirect(action: 'register')
+						 }
+					}
+				}
+	}
+	
 	def register() {
 //		// Check to see if the username already exists
 //		def user = User.findByUsername(params.username)
