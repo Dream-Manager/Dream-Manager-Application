@@ -114,7 +114,7 @@
 	<g:select id="manager" name="manager.id" from="${User.createCriteria().list(){eq("isManager",true)}}" optionKey="id" value="${userInstance?.manager?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
-<shiro:hasRole name="manager">
+<shiro:hasAnyRole in="['ROLE_ADMIN', 'ROLE_MANAGER']">
 	<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'isManager', 'error')} ">
 		<label for="isManager">
 			<g:message code="user.isManager.label" default="Is Manager" />
@@ -122,9 +122,9 @@
 		</label>
 		<g:checkBox name="isManager" value="${userInstance?.isManager}" />
 	</div>
-</shiro:hasRole>
+</shiro:hasAnyRole>
 
-<shiro:hasRole name="admin">
+<shiro:hasRole name="ROLE_ADMIN">
 	<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'isAdmin', 'error')} ">
 		<label for="isAdmin">
 			<g:message code="user.isAdmin.label" default="Is Administrator" />
