@@ -7,6 +7,9 @@ class BootStrap {
 
 		// Create the admin role
 		def adminRole = new Role(name: 'ROLE_ADMIN').save(flush: true, failOnError: true)
+		
+		// Create the dream manager role
+		def managerRole = new Role(name: 'ROLE_MANAGER').save(flush: true, failOnError: true)
 
 		// Create the user role
 		def userRole = new Role(name: 'ROLE_USER').save(flush: true, failOnError: true)
@@ -16,6 +19,14 @@ class BootStrap {
 
 		// Add roles to the admin user
 		assert adminUser.addToRoles(adminRole)
+		.addToRoles(userRole)
+		.save(flush: true, failOnError: true)
+		
+		def managerUser = new User(username: "manageruser@gmail.com", passwordHash: new Sha256Hash("password").toHex(), firstName:"Rob", lastName:"Miller", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219,isManager:false )
+		managerUser.save(flush: true, failOnError: true)
+
+		// Add roles to the manager user
+		assert managerUser.addToRoles(managerRole)
 		.addToRoles(userRole)
 		.save(flush: true, failOnError: true)
 
