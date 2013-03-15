@@ -45,5 +45,3 @@
 	</label>
 	<g:textField name="notes" value="${dreamInstance?.notes}"/>
 </div>
-
-</div>

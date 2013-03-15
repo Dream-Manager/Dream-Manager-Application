@@ -15,8 +15,6 @@
 		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 		
-		<link  rel="stylesheet" href="css/ui-lightness/jquery-ui-1.10.2.custom.css" type="text/css">
-		
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		
@@ -24,8 +22,11 @@
 		<title>Dream Manager - Dashboard</title>
 		
 		<g:javascript library="jquery" />
+		
 		<r:layoutResources />
+		
 		<g:external dir="js" file="jquery-ui-1.10.2.custom.js"/>
+		<g:external dir="css" file="ui-lightness/jquery-ui-1.10.2.custom.css"/>
 	</head>
 	<body>
 		<div id="page">
@@ -38,15 +39,32 @@
 			</div>
 			
 			<div id="content" class="container_16"> 
-				<!--  Center Column -->
+								
 				<div class="grid_12 alpha">	
-					<g:include controller="dream" action="showCreateAjax" />
+					<div id="tabs">
+						<ul>
+						    <li><a href="#tabs-1">Your Progress</a></li>
+						    <li><a href="#tabs-2">Search Dreams</a></li>
+						    <li><a href="#tabs-3">Manage Dreamers</a></li>
+						</ul>
+						<div id="tabs-1">
+							<g:include controller="dream" action="showCreateAjax" />
+							Dream Progress
+						</div>
+						<div id="tabs-2">
+							Search Dreams
+						</div>
+						<div id="tabs-3">
+							Manage Dreamers
+						</div>
+					</div>
 				</div>
 		
-				<!--  Right Column -->
+				
 				<div class="grid_4 omega">
 					Social Grid
 				</div>
+				
 			</div>
 			
 			<div id='navbar'>
@@ -60,4 +78,4 @@
 		<g:javascript library="application"/>
 		<r:layoutResources />
 	</body>
-</html>
+</html

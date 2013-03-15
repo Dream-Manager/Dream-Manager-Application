@@ -6,8 +6,8 @@ if (typeof jQuery !== 'undefined') {
 			$(this).fadeOut();
 		});
 		
-		
 		$(".datepicker").datepicker();
+		$("#tabs").tabs();
 		
 	})(jQuery);
 }
