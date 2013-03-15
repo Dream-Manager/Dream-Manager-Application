@@ -21,7 +21,6 @@
 		<title>Dream Manager - Dashboard</title>
 		
 		<g:javascript library="jquery" />
-		<g:javascript src="events.js" />
 		<r:layoutResources />
 	</head>
 	<body>

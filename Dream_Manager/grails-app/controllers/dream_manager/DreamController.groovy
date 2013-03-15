@@ -10,11 +10,12 @@ class DreamController {
 		render (view: "createAjax")
 	}
 	
-	def updateAjax = {
+	def update = {
 		def dreamInstance = Dream.get( params.id )
 		if(dreamInstance) {
 			dreamInstance.properties = params
-
+			dreamInstance.lastUpdated = new Date()
+			
 			if(!dreamInstance.hasErrors() && dreamInstance.save()) {
 				flash.message = "Success"
 			} else {
@@ -32,7 +33,7 @@ class DreamController {
 		
 		if(!dreamInstance.hasErrors() && dreamInstance.save()) {
 			flash.message = "Success"
-			render(view:'show', model: dreamInstance)
+			render(view:'show',model: dreamInstance)
 		} else {
 			// Need a second else for cases where the create action was called just to render the create.gsp
 			//flash.message = "Failure"
