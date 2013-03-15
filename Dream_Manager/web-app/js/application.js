@@ -5,5 +5,9 @@ if (typeof jQuery !== 'undefined') {
 		}).ajaxStop(function() {
 			$(this).fadeOut();
 		});
+		
+		
+		$(".datepicker").datepicker();
+		
 	})(jQuery);
 }
