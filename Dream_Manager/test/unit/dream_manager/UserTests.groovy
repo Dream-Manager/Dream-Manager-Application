@@ -10,7 +10,7 @@ class UserTests {
 	@Before
 	void before() {
 		// Delete any extra records
-		User.createCriteria().list{}*.delete()
+		User.findAll().delete()
 
 		// Populate User table
 		new User (

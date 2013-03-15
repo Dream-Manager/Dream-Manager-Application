@@ -31,16 +31,11 @@
 	</g:radioGroup>
 </div>
 
-
 <div class="fieldcontain ${hasErrors(bean: dreamInstance, field: 'estimatedCompletion', 'error')}">
 	<label for="estimatedCompletion">
 		<g:message code="dream.estimatedCompletion.label" default="Estimated Completion" />
 	</label>
-	<g:datePicker name="estimatedCompletion" 
-		default="none"
-		noSelection="['':'']"
-		precision="day"
-		value="${dreamInstance?.estimatedCompletion}" />
+	<input name="estimatedCompletion" type="text" class="datepicker" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: dreamInstance, field: 'notes', 'error')} ">
@@ -49,6 +44,4 @@
 		
 	</label>
 	<g:textField name="notes" value="${dreamInstance?.notes}"/>
-</div>
-
 </div>

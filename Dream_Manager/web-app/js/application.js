@@ -6,12 +6,8 @@ if (typeof jQuery !== 'undefined') {
 			$(this).fadeOut();
 		});
 		
-		// Dashboard Create Dream Toggle
-		jQuery(function(){
-			jQuery("#inline_create_dream_toggle").click(function(){
-				jQuery("#inline_create_dream_form").toggle();
-			});
-		});
+		$(".datepicker").datepicker();
+		$("#tabs").tabs();
 		
 	})(jQuery);
 }
