@@ -4,6 +4,7 @@ import org.apache.shiro.authc.UsernamePasswordToken
 import org.apache.shiro.crypto.hash.Sha256Hash
 import org.springframework.dao.DataIntegrityViolationException
 import org.apache.shiro.SecurityUtils
+import org.apache.shiro.subject.Subject
 
 
 class UserController {
@@ -19,7 +20,16 @@ class UserController {
         params.max = Math.min(max ?: 10, 100)
         [userInstanceList: User.list(params), userInstanceTotal: User.count()]
     }
-
+	
+	def getCurrentUserId ={
+		def user = User.findByUsername(SecurityUtils.subject.principal).id
+		render user
+	}
+	def getCurrentUserFirstName = {
+		def user = User.findByUsername(SecurityUtils.subject.principal).firstName
+		render user
+	}
+	
     def create() {
         [userInstance: new User(username: params.username,
 								firstName:params.firstName,
@@ -97,6 +107,18 @@ class UserController {
         [userInstance: userInstance]
     }
 
+	def editCurrentProfile () {
+		def userInstance = User.findByUsername(SecurityUtils.subject.principal)
+		if (!userInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
+			redirect(action: "list")
+			return
+		}
+
+		render(view:'edit', model: [userInstance: userInstance])
+	}
+	
+	
     def update(Long id, Long version) {
         def userInstance = User.get(id)
         if (!userInstance) {
