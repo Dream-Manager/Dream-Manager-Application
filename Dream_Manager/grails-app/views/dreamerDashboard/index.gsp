@@ -45,7 +45,9 @@
 						<ul>
 						    <li><a href="#tabs-1">Your Progress</a></li>
 						    <li><a href="#tabs-2">Search Dreams</a></li>
-						    <li><a href="#tabs-3">Manage Dreamers</a></li>
+						    <shiro:hasRole name="ROLE_MANAGER">
+						    	<li><a href="#tabs-3">Manage Dreamers</a></li>
+						    </shiro:hasRole>
 						</ul>
 						<div id="tabs-1">
 							<g:include controller="dream" action="showCreateAjax" />
@@ -54,9 +56,11 @@
 						<div id="tabs-2">
 							Search Dreams
 						</div>
-						<div id="tabs-3">
-							Manage Dreamers
-						</div>
+						<shiro:hasRole name="ROLE_MANAGER">
+							<div id="tabs-3">
+								Manage Dreamers
+							</div>
+						</shiro:hasRole>
 					</div>
 				</div>
 		
