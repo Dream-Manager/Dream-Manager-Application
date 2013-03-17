@@ -34,9 +34,16 @@ class DreamController {
 		if(!dreamInstance.hasErrors() && dreamInstance.save()) {
 			flash.message = "Success"
 			render(view:'show',model: dreamInstance)
-		} else {
-			// Need a second else for cases where the create action was called just to render the create.gsp
-			//flash.message = "Failure"
-		}		
+		}
 	}	
+	
+	def createAjax = {
+		def dreamInstance = new Dream(params)
+		def user = User.findByUsername(SecurityUtils.subject.principal)
+		dreamInstance.user = user
+		
+		if(!dreamInstance.hasErrors() && dreamInstance.save()) {
+			flash.message = "Success"
+		}
+	}
 }

@@ -53,6 +53,16 @@
 						</div>
 						<div id="tabs-2">
 							Search Dreams
+							<input type="text" id="ajaxSearchDreams" />
+							
+							<script type="text/javascript">
+								$(function(){
+									$('#ajaxSearchDreams').autocomplete({
+		                				source: '<g:createLink controller='dream' action='ajaxSearchDreams'/>'
+		              				});
+								}); 
+							</script>
+							
 						</div>
 						<div id="tabs-3">
 							Manage Dreamers
