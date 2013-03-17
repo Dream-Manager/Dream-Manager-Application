@@ -52,8 +52,9 @@
 							Dream Progress
 						</div>
 						<div id="tabs-2">
-							Search Dreams
-							<input type="text" id="ajaxSearchDreams" />
+							<!-- Search Dreams -->
+							<label for="ajaxSearchDreams">Search Dreams: </label>
+							<input type="text" id="ajaxSearchDreams" name="searchDreamsTerm" />
 							
 							<script type="text/javascript">
 								$(function(){

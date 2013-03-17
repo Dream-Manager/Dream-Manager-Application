@@ -1,7 +1,5 @@
 package dream_manager
 
-import grails.converters.*
-
 class Dream {
 	
 	String name
@@ -29,11 +27,4 @@ class Dream {
 		notes nullable: true	
 		category inList: ["Adventure","Character","Creative","Emotional","Financial","Intellectual","Legacy","Material","Physical","Professional","Psychological","Spiritual"]
     }
-	
-	def ajaxSearchDreams = {
-		def dreams = Dream.withCriteria {
-			ilike 'name', '%' + params.term + '%'
-		}
-		render dreams as JSON		
-	}
 }

@@ -25,9 +25,6 @@
 					$("#createDreamByAjax").submit(function(){
 						$("#createDreamByAjax").reset();
 					});
-					$(document).ajaxSuccess(function(event, xhr, settings) {
-						$("#createDreamAjaxResponse").text(xhr.responseText).show("slide");
-					});
 				});
 			</script>
 		</div>

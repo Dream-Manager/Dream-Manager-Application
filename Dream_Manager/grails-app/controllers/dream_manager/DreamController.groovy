@@ -1,5 +1,6 @@
 package dream_manager
 import org.apache.shiro.subject.Subject
+import grails.converters.*
 import org.apache.shiro.SecurityUtils
 
 class DreamController {
@@ -45,5 +46,14 @@ class DreamController {
 		if(!dreamInstance.hasErrors() && dreamInstance.save()) {
 			flash.message = "Success"
 		}
+	}
+	
+	def ajaxSearchDreams = {
+		def dreams = Dream.withCriteria {
+			eq('user',User.findByUsername(SecurityUtils.subject.principal))
+			ilike('name', '%' + 'test' + '%')
+		}
+		def dreams2 = Dream.findAll()
+		render dreams2 as JSON
 	}
 }
