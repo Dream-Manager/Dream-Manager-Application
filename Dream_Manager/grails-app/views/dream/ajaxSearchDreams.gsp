@@ -1,4 +1,3 @@
-<%@ page import="dream_manager.Dream" %>
 <table>
 	<thead>
 		<tr>
@@ -9,12 +8,12 @@
 		</tr>
 	</thead>
 	<tbody>
-	<g:each in="${dreams}" status="i" var="dreams">
+	<g:each in="${dreams}" status="i" var="dream">
 		<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-			<td>${fieldValue(bean: dreamInstance, field: "category")}</td>
-			<td><g:link action="show" id="${dreamInstance.id}">${fieldValue(bean: dreamInstance, field: "name")}</g:link></td>
-			<td><g:formatDate format="MM-dd-yyyy" date="${dreamInstance.estimatedCompletion}" /></td>
-			<td><g:formatBoolean boolean="${dreamInstance.isShortTerm}" /></td>
+			<td>${dream.category}</td>
+			<td><g:link action="show" id="${dream.id}">${dream.name}</g:link></td>
+			<td><g:formatDate format="MM-dd-yyyy" date="${dream.estimatedCompletion}" /></td>
+			<td><g:formatBoolean boolean="${dream.isShortTerm}" /></td>
 		</tr>
 	</g:each>
 	</tbody>
