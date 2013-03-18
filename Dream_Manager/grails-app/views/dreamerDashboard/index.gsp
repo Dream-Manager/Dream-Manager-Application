@@ -53,13 +53,15 @@
 						</div>
 						<div id="tabs-2">
 							<!-- Search Dreams -->
-							<label for="ajaxSearchDreams">Search Dreams: </label>
-							<input type="text" id="ajaxSearchDreams" name="searchDreamsTerm" />
 							
+							<div class='ui-widget'">
+								<label for="ajaxSearchDreams">Search Dreams: </label>
+								<input type="text" id="ajaxSearchDreams"/>
+							</div>
 							<script type="text/javascript">
 								$(function(){
 									$('#ajaxSearchDreams').autocomplete({
-		                				source: '<g:createLink controller='dream' action='ajaxSearchDreams'/>'
+		                				source: '<g:createLink controller='dream' action='ajaxSearchDreamsAutocomplete'/>'
 		              				});
 								}); 
 							</script>

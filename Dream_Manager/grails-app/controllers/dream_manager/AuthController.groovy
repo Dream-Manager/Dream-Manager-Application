@@ -76,7 +76,7 @@ class AuthController {
         if (ConfigUtils.getCasEnable() && ConfigUtils.isFromCas(principal)) {
             redirect(uri:ConfigUtils.getLogoutUrl())
         }else {
-            redirect(uri: "/")
+			redirect(action: "login")
         }
         ConfigUtils.removePrincipal(principal)
     }

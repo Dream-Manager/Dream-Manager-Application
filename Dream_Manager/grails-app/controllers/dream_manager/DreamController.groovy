@@ -2,6 +2,7 @@ package dream_manager
 import org.apache.shiro.subject.Subject
 import grails.converters.*
 import org.apache.shiro.SecurityUtils
+import org.bouncycastle.asn1.ocsp.ResponseData;
 
 class DreamController {
 
@@ -48,12 +49,12 @@ class DreamController {
 		}
 	}
 	
-	def ajaxSearchDreams = {
+	def ajaxSearchDreamsAutocomplete = {
 		def dreams = Dream.withCriteria {
-			eq('user',User.findByUsername(SecurityUtils.subject.principal))
-			ilike('name', '%' + 'test' + '%')
+			//eq('user',User.findByUsername(SecurityUtils.subject.principal))
+			ilike('name', '%' + params + '%')
 		}
-		def dreams2 = Dream.findAll()
-		render dreams2 as JSON
+		
+		render (dreams*.name) as JSON
 	}
 }
