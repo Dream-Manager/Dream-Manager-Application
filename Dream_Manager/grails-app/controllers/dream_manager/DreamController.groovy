@@ -50,15 +50,10 @@ class DreamController {
 	}
 	
 	def ajaxSearchDreams = {
-		/*
-		def dreams = Dream.withCriteria { 
+		def dreamList = Dream.withCriteria { 
 			eq('user',User.findByUsername(SecurityUtils.subject.principal))
-			ilike('name', '%' + params.term + '%')
+			ilike('name', '%' + params.ajaxSearchDreamsTerm + '%')
 		}
-		*/
-
-		def dreamList = Dream.findAll()
-		
 		render(view:'ajaxSearchDreams.gsp', model: ['dreams': dreamList])
 	}
 	
