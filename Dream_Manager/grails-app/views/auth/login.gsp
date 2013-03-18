@@ -11,7 +11,7 @@
 			${flash.message}
 		</div>
 	</g:if>
-	<div>
+	<div class="grid_5">
 		<g:form action="signIn">
 			<input type="hidden" name="targetUri" value="${targetUri}" />
 			<table>

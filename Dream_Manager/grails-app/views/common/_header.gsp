@@ -20,5 +20,12 @@
 			});
 		</script>
 	</div>
+	<div class="prefix_7 grid_3">
+		<shiro:isLoggedIn>You are signed in as<tr>
+				<shiro:principal></shiro:principal>
+				<g:link controller="Auth" action="signOut">Logout</g:link>
+		</shiro:isLoggedIn>
+
+	</div>
 </div>
 <div class="clear"></div>

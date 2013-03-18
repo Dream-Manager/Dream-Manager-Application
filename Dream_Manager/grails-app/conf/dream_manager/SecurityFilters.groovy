@@ -25,7 +25,7 @@ class SecurityFilters {
      */
     static authenticatedActions = [ [controller: 'Asset' , action: '*', roles: ['ROLE_ADMIN']] ,
 		 [controller: 'dream', action: '*', roles: ['ROLE_ADMIN']],
-		 [controller: 'dreamerDashboard', action: '*', roles: ['ROLE_ADMIN']],
+		 [controller: 'dreamerDashboard', action: '*', roles: ['ROLE_USER']],
 		 [controller: 'dreamToTemplate', action: '*', roles: ['ROLE_ADMIN']] ,
 		 [controller: 'skill', action: '*', roles: ['ROLE_ADMIN']],
 		 [controller: 'template', action: '*', roles: ['ROLE_ADMIN']],
