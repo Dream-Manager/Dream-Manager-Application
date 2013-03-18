@@ -52,6 +52,8 @@
 						<div id="tabs-1">
 							<g:include controller="dream" action="showCreateAjax" />
 							Dream Progress
+								<div>Short Term</div>
+								<div>Long Term</div>
 						</div>
 						<div id="tabs-2">
 							<!-- Search Dreams -->
@@ -64,7 +66,6 @@
 								<input type="submit"/>
 							</g:formRemote>								
 							</div>
-							
 							<div id="searchDreamsResults"></div>
 							
 							<script type="text/javascript">
