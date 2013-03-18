@@ -1,3 +1,4 @@
+<%@ page import="dream_manager.User" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -30,7 +31,7 @@
 						</tr>
 						<tr>
 							<td />
-							<td><input type="submit" value="Sign in" /><g:link controller="User" action="register">Not Registered?</g:link></td>
+							<td><input type="submit" value="Sign in" />  <g:link controller="User" action="register">Not Registered?</g:link></td>
 						</tr>
 						<tr>
 					</tbody>
@@ -38,7 +39,7 @@
 				<shiro:isLoggedIn>You are signed in as<tr>
 						<shiro:principal></shiro:principal>
 						<g:actionSubmit value="Logout" action="signOut"
-							onclick="return confirm('Are you sure???')" />
+							onclick="return confirm('Are you sure?')" />
 				</shiro:isLoggedIn>
 			</table>
 		</g:form>

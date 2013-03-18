@@ -133,23 +133,3 @@
 		<g:checkBox name="isAdmin" value="${userInstance?.isAdmin}" />
 	</div>
 </shiro:hasRole>
-
-<!-- Might use in the future
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'skills', 'error')} ">
-	<label for="skills">
-		<g:message code="user.skills.label" default="Skills" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${userInstance?.skills?}" var="s">
-    <li><g:link controller="skill" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="skill" action="create" params="['user.id': userInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'skill.label', default: 'Skill')])}</g:link>
-</li>
-</ul>
-
-</div>
- -->
-

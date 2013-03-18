@@ -179,7 +179,7 @@ class UserController {
 				else {
 		
 					// Make sure the passwords match
-					if (params.password != params.confirmPassowrd) {
+					if (params.password != params.passwordConfirm) {
 						redirect(action: 'register')
 						flash.message = "Passwords do not match"
 					}
