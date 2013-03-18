@@ -1,6 +1,8 @@
 package dream_manager
 import org.apache.shiro.subject.Subject
+import grails.converters.*
 import org.apache.shiro.SecurityUtils
+import org.bouncycastle.asn1.ocsp.ResponseData;
 
 class DreamController {
 
@@ -34,9 +36,37 @@ class DreamController {
 		if(!dreamInstance.hasErrors() && dreamInstance.save()) {
 			flash.message = "Success"
 			render(view:'show',model: dreamInstance)
-		} else {
-			// Need a second else for cases where the create action was called just to render the create.gsp
-			//flash.message = "Failure"
-		}		
+		}
 	}	
+	
+	def createAjax = {
+		def dreamInstance = new Dream(params)
+		def user = User.findByUsername(SecurityUtils.subject.principal)
+		dreamInstance.user = user
+		
+		if(!dreamInstance.hasErrors() && dreamInstance.save()) {
+			flash.message = "Success"
+		}
+	}
+	
+	def ajaxSearchDreams = {
+		/*
+		def dreams = Dream.withCriteria { 
+			eq('user',User.findByUsername(SecurityUtils.subject.principal))
+			ilike('name', '%' + params.ajaxSearchDreamsTerm + '%')
+		}
+		*/
+
+		def dreamList = Dream.findAll()
+		
+		render(view:'ajaxSearchDreams.gsp', model: ['dreams': dreamList])
+	}
+	
+	def ajaxSearchDreamsAutocomplete = {
+		def dreams = Dream.withCriteria {
+			eq('user',User.findByUsername(SecurityUtils.subject.principal))
+			ilike('name', '%' + params.ajaxSearchDreamsTerm + '%')
+		}
+		render (dreams*.name) as JSON
+	}
 }

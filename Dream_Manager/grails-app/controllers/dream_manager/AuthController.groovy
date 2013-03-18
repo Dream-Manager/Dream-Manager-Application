@@ -76,7 +76,7 @@ class AuthController {
         if (ConfigUtils.getCasEnable() && ConfigUtils.isFromCas(principal)) {
             redirect(uri:ConfigUtils.getLogoutUrl())
         }else {
-            redirect(uri: "/dreamerDashboard/index")
+			redirect(uri: "/dreamerDashboard/index")
         }
         ConfigUtils.removePrincipal(principal)
     }

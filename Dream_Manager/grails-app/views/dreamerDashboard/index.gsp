@@ -54,7 +54,27 @@
 							Dream Progress
 						</div>
 						<div id="tabs-2">
-							Search Dreams
+							<!-- Search Dreams -->
+							
+							<div class='ui-widget'">
+							<g:formRemote name="ajaxSearchDreams" on404="alert('not found!')" update="searchDreamsResults"
+              					url="[controller: 'dream', action:'ajaxSearchDreams']">
+								<label for="ajaxSearchDreamsTerm">Search Dreams: </label>
+								<input type="text" id="ajaxSearchDreamsTerm"/>
+								<input type="submit"/>
+							</g:formRemote>								
+							</div>
+							
+							<div id="searchDreamsResults"></div>
+							
+							<script type="text/javascript">
+								$(function(){
+									$('#ajaxSearchDreams').autocomplete({
+		                				source: '<g:createLink controller='dream' action='ajaxSearchDreamsAutocomplete'/>'
+		              				});
+								}); 
+							</script>
+							
 						</div>
 						<shiro:hasRole name="ROLE_MANAGER">
 							<div id="tabs-3">
@@ -66,7 +86,7 @@
 		
 				
 				<div class="grid_4 omega">
-					Social Grid
+					<div style="width:100%;height:300px;border:1px solid darkblue;text-align:center;padding-top:1em;">Social</div>
 				</div>
 				
 			</div>
