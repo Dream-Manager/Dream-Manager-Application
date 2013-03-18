@@ -53,7 +53,7 @@ class DreamController {
 		/*
 		def dreams = Dream.withCriteria { 
 			eq('user',User.findByUsername(SecurityUtils.subject.principal))
-			ilike('name', '%' + params.ajaxSearchDreamsTerm + '%')
+			ilike('name', '%' + params.term + '%')
 		}
 		*/
 
@@ -65,7 +65,7 @@ class DreamController {
 	def ajaxSearchDreamsAutocomplete = {
 		def dreams = Dream.withCriteria {
 			eq('user',User.findByUsername(SecurityUtils.subject.principal))
-			ilike('name', '%' + params.ajaxSearchDreamsTerm + '%')
+			ilike('name', '%' + params.term + '%')
 		}
 		render (dreams*.name) as JSON
 	}

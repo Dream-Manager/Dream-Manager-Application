@@ -6,12 +6,12 @@ class UrlMappings {
 				// apply constraints here
 			}
 		}
+
+		//"/"(view:"/index")
+		
+		"/" (controller:"dreamerDashboard")
+		"/controllers" (view:"/index")
+
 		"500"(view:'/error')
-		
-		 
-		"/" (view:"/index")
-		// "/" (controller:"dreamerDashboard")
-		// "/controllers"(view:"/index")
-		
 	}
 }

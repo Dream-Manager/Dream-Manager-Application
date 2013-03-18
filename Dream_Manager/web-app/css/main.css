@@ -594,3 +594,8 @@ a.skip {
 	position: absolute;
 	left: -9999px;
 }
+
+.popup {
+	position: absolute;
+	z-index: 2147483646;
+}
