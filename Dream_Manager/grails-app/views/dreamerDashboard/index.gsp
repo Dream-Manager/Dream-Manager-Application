@@ -55,9 +55,16 @@
 							<!-- Search Dreams -->
 							
 							<div class='ui-widget'">
-								<label for="ajaxSearchDreams">Search Dreams: </label>
-								<input type="text" id="ajaxSearchDreams"/>
+							<g:formRemote name="ajaxSearchDreams" on404="alert('not found!')" update="searchDreamsResults"
+              					url="[controller: 'dream', action:'ajaxSearchDreams']">
+								<label for="ajaxSearchDreamsTerm">Search Dreams: </label>
+								<input type="text" id="ajaxSearchDreamsTerm"/>
+								<input type="submit"/>
+							</g:formRemote>								
 							</div>
+							
+							<div id="searchDreamsResults"></div>
+							
 							<script type="text/javascript">
 								$(function(){
 									$('#ajaxSearchDreams').autocomplete({
@@ -75,7 +82,7 @@
 		
 				
 				<div class="grid_4 omega">
-					Social Grid
+					<div style="width:100%;height:300px;border:1px solid darkblue;text-align:center;padding-top:1em;">Social</div>
 				</div>
 				
 			</div>

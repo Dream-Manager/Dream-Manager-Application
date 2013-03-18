@@ -49,12 +49,24 @@ class DreamController {
 		}
 	}
 	
+	def ajaxSearchDreams = {
+		/*
+		def dreams = Dream.withCriteria { 
+			eq('user',User.findByUsername(SecurityUtils.subject.principal))
+			ilike('name', '%' + params.ajaxSearchDreamsTerm + '%')
+		}
+		*/
+
+		def dreamList = Dream.findAll()
+		
+		render(view:'ajaxSearchDreams.gsp', model: ['dreams': dreamList])
+	}
+	
 	def ajaxSearchDreamsAutocomplete = {
 		def dreams = Dream.withCriteria {
-			//eq('user',User.findByUsername(SecurityUtils.subject.principal))
-			ilike('name', '%' + params + '%')
+			eq('user',User.findByUsername(SecurityUtils.subject.principal))
+			ilike('name', '%' + params.ajaxSearchDreamsTerm + '%')
 		}
-		
 		render (dreams*.name) as JSON
 	}
 }
