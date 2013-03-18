@@ -22,18 +22,31 @@
 </head>
 <body>
 
-<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="/Dream_Manager/static/images/grails_logo.png" alt="Grails"/></a></div>
-	<a href="#list-user" class="skip" tabindex="-1">Skip to content&hellip;</a>
-	<div class="nav" role="navigation">
-		<ul>
-			<li><a class="home" href="/Dream_Manager/">Home</a></li>
-		</ul>
-	</div>
 <div>
 
 <h1>DREAMS IN PROGRESS</h1>
-<p>Category<span>              </span>CAT1-2-3</p>
-<p>New Dream<span>        </span>newDream1</p>
+<p>Category<span>              </span>
+
+	<input type="hidden" name="validFrom" value="" />
+<select name="" id="">
+<option value="" selected="selected"></option>
+<option value="1">Cat 1</option>
+<option value="2">Cat 2</option>
+<option value="3">Cat 3</option>
+
+</select>
+</p>
+
+<p>New Dream<span>        </span>
+	<input type="hidden" name="validFrom" value="" />
+<select name="" id="">
+<option value="" selected="selected"></option>
+<option value="1">New Dream 1</option>
+<option value="2">New Dream 2</option>
+<option value="3">New Dream 3</option>
+
+</select>
+</p>
 <p>Details<span>  </span>[<span class=SpellE>addDream</span>]</p>
 <div class="fieldcontain  ">
 	<label for="validFrom">
