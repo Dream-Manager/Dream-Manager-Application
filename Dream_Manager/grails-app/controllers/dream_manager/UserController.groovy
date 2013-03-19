@@ -21,15 +21,42 @@ class UserController {
         [userInstanceList: User.list(params), userInstanceTotal: User.count()]
     }
 	
+	/**
+	 * returns the id of the current logged in user
+	 * @return the users id
+	 */
 	def getCurrentUserId ={
 		def user = User.findByUsername(SecurityUtils.subject.principal).id
 		render user
 	}
+	
+	/**
+	 * returns the currently logged in users first name
+	 * @return the users first name
+	 */
 	def getCurrentUserFirstName = {
 		def user = User.findByUsername(SecurityUtils.subject.principal).firstName
 		render user
 	}
 	
+	/**
+	 * creates a new user record 
+	 * @param username 	the email address of the user
+	 * @param firstName	the first name of the user
+	 * @param lastName	the last name of the user
+	 * @param email		the email of the user
+	 * @param passwordHash	the hashed password
+	 * @param avatarLocation	the location of the profile image
+	 * @param streetAddress1	the address of the user
+	 * @param streetAddress2	the address of the user
+	 * @param poBox		users PO box
+	 * @param dateOfBirth	users date of birth
+	 * @param city		current city user lives in
+	 * @param state		current state user lives in
+	 * @param zipcode	users zipcode
+	 * @param isManager	if user is manager or not
+	 * @param admin		if user is an administrator
+	 */
     def create() {
         [userInstance: new User(username: params.username,
 								firstName:params.firstName,
@@ -49,6 +76,24 @@ class UserController {
 		]
     }
 
+	/**
+	 * saves the information to the database
+	 * @param username 	the email address of the user
+	 * @param firstName	the first name of the user
+	 * @param lastName	the last name of the user
+	 * @param email		the email of the user
+	 * @param passwordHash	the hashed password
+	 * @param avatarLocation	the location of the profile image
+	 * @param streetAddress1	the address of the user
+	 * @param streetAddress2	the address of the user
+	 * @param poBox		users PO box
+	 * @param dateOfBirth	users date of birth
+	 * @param city		current city user lives in
+	 * @param state		current state user lives in
+	 * @param zipcode	users zipcode
+	 * @param isManager	if user is manager or not
+	 * @param admin		if user is an administrator
+	 */
     def save() {
 		if (params.password != params.passwordConfirm) {
 			redirect(controller: 'user', action: 'create')
@@ -167,6 +212,24 @@ class UserController {
         }
     }
 	
+	/**
+	 * creates a new user and logs them in
+	 * @param username 	the email address of the user
+	 * @param firstName	the first name of the user
+	 * @param lastName	the last name of the user
+	 * @param email		the email of the user
+	 * @param passwordHash	the hashed password
+	 * @param avatarLocation	the location of the profile image
+	 * @param streetAddress1	the address of the user
+	 * @param streetAddress2	the address of the user
+	 * @param poBox		users PO box
+	 * @param dateOfBirth	users date of birth
+	 * @param city		current city user lives in
+	 * @param state		current state user lives in
+	 * @param zipcode	users zipcode
+	 * @param isManager	if user is manager or not
+	 * @param admin		if user is an administrator
+	 */
 	def signup(){
 		// Check to see if the username already exists
 				def user = User.findByUsername(params.username)
@@ -220,6 +283,24 @@ class UserController {
 				}
 	}
 	
+	/**
+	 * registers a new user
+	 * @param username 	the email address of the user
+	 * @param firstName	the first name of the user
+	 * @param lastName	the last name of the user
+	 * @param email		the email of the user
+	 * @param passwordHash	the hashed password
+	 * @param avatarLocation	the location of the profile image
+	 * @param streetAddress1	the address of the user
+	 * @param streetAddress2	the address of the user
+	 * @param poBox		users PO box
+	 * @param dateOfBirth	users date of birth
+	 * @param city		current city user lives in
+	 * @param state		current state user lives in
+	 * @param zipcode	users zipcode
+	 * @param isManager	if user is manager or not
+	 * @param admin		if user is an administrator
+	 */
 	def register() {
 		[userInstance: new User(username: params.username,
 								firstName:params.firstName,
