@@ -28,6 +28,11 @@ class DreamController {
 		}
 	}
 	  
+	/**
+	 * Creates a new Dream record for the current user
+	 * @param params All required fields for the Dream object
+	 * Redirects the user to the "show" view for the created record on completion.
+	 */
 	def create = {
 		def dreamInstance = new Dream(params)
 		def user = User.findByUsername(SecurityUtils.subject.principal)
@@ -39,6 +44,10 @@ class DreamController {
 		}
 	}	
 	
+	/**
+	 * Creates a new Dream record for the current user
+	 * @param params All required fields for the Dream object
+	 */
 	def createAjax = {
 		def dreamInstance = new Dream(params)
 		def user = User.findByUsername(SecurityUtils.subject.principal)
@@ -49,6 +58,11 @@ class DreamController {
 		}
 	}
 	
+	/**
+	 * Executes a search of the current user's dreams.
+	 * @param ajaxSearchDreamsTerm	A term to be searched on
+	 * @return Table of results in HTML
+	 */
 	def ajaxSearchDreams = {
 		def dreamList = Dream.withCriteria { 
 			eq('user',User.findByUsername(SecurityUtils.subject.principal))
@@ -57,6 +71,11 @@ class DreamController {
 		render(view:'ajaxSearchDreams.gsp', model: ['dreams': dreamList])
 	}
 	
+	/**
+	 * Executes a search of the current user's dreams for an Autocomplete field.
+	 * @param term	A term to be searched on.
+	 * @return A JSON array of dream names.
+	 */
 	def ajaxSearchDreamsAutocomplete = {
 		def dreams = Dream.withCriteria {
 			eq('user',User.findByUsername(SecurityUtils.subject.principal))
