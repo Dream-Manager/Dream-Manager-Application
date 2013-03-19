@@ -1,19 +1,48 @@
 package dream_manager
-
-
-
 import org.junit.*
 import grails.test.mixin.*
+import org.apache.shiro.crypto.hash.Sha256Hash
 
 @TestFor(UserController)
 @Mock(User)
 class UserControllerTests {
 
+	def controller = new UserController()
+	
+	@Before
+	void before(){
+		User.findAll().delete()
+		
+				// Populate User table
+				new User (
+					username: "testuser@gmail.com",
+					passwordHash: new Sha256Hash("password").toHex(),
+					firstName:"John",
+					lastName:"Smith",
+					avatarLocation:null,
+					streetAddress1:null,
+					streetAddress2:null,
+					poBox:null,
+					dateOfBirth:null,
+					city:null,
+					state:null,
+					zipcode:85219,
+					isManager:false
+				).save()
+				
+	}
+	
     def populateValidParams(params) {
         assert params != null
         // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
     }
+	
+	void testGetCurrentUserFirstName(){
+		controller.getCurrentUserFirstName()
+		
+		assertEquals("John",controller.getCurrentUserFirstName().response.contentAsString)
+	}
 
     void testIndex() {
         controller.index()
