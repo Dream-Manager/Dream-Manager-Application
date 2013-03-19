@@ -9,7 +9,7 @@
 		$("#headerMenuButton")
 			.button()
 			.click(function(){
-				$("#headerMenu").toggle();
+				$("#headerMenu").toggle('fade');
 			});
 		$("#headerMenu").menu();
 	});
