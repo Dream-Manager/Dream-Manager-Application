@@ -3,12 +3,21 @@ import java.util.Date;
 import org.apache.shiro.crypto.hash.Sha256Hash
 import grails.test.mixin.*
 import org.junit.*
+import dream_manager.Dream
+import dream_manager.User
+import dream_manager.DreamController
 
 @TestFor(DreamController)
 class DreamControllerTests {
 
+	def controller = new DreamController()
+	
 	@Before
 	void before() {
+		
+		mockDomain(Dream)
+		mockDomain(User)
+		
 		Dream.findAll().delete()
 		User.findAll().delete()
 
@@ -40,10 +49,9 @@ class DreamControllerTests {
 	}	
 	
 	void testUpdate () {
-		def controller = new DreamController()
-		controller.metaClass.getParams = {->
-				return ["id":1]
-		}
+		def dream = Dream.get(1)
+		dream.category = "Emotional"
+		controller.params = dream
 		controller.update()
 		def response = controller.response.contentAsString
 		assertTrue response.contains("Success")

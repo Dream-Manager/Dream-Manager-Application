@@ -599,3 +599,7 @@ a.skip {
 	position: absolute;
 	z-index: 2147483646;
 }
+
+.social {
+	padding-top:1em;
+}

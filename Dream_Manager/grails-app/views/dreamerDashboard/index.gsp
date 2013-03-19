@@ -34,14 +34,9 @@
 				<g:render template="/common/topbar" />
 			</div>
 			
-			<div id='header'>
-				<g:render template="/common/header" />
-			</div>
-			
-			<div id="content" class="container_16"> 
-								
+			<div id="content" class="container_16" style="margin-top:.5em;">			
 				<div class="grid_12 alpha">	
-					<div id="tabs">
+					<div id="tabs" style="margin-left:.5em">
 						<ul>
 						    <li><a href="#tabs-1">Your Progress</a></li>
 						    <li><a href="#tabs-2">Search Dreams</a></li>
@@ -120,9 +115,18 @@
 					</div>
 				</div>
 		
-				
 				<div class="grid_4 omega">
-					<div style="width:100%;height:300px;border:1px solid darkblue;text-align:center;padding-top:1em;">Social</div>
+					<div class="grid_2 alpha">
+						Welcome back, <g:include controller="user" action="getCurrentUserFirstName"/>!
+					</div>
+					<div class="grid_2 omega">
+						<g:render template="/common/menu" />
+					</div>
+					<div class="clear"></div>
+					
+					<div class="grid_4 alpha omega" class="social">
+						Share Accomplishments
+					</div>
 				</div>
 				
 			</div>
