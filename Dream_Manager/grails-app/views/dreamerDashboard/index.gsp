@@ -120,7 +120,9 @@
 						Welcome back, <g:include controller="user" action="getCurrentUserFirstName"/>!
 					</div>
 					<div class="grid_2 omega">
-						<g:render template="/common/menu" />
+						<div style="margin-left:3em;">
+							<g:render template="/common/menu" />
+						</div>
 					</div>
 					<div class="clear"></div>
 					

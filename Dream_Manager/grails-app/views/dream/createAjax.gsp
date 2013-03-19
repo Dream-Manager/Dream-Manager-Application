@@ -15,7 +15,7 @@
 	<script type="text/javascript">
 		$(function(){
 			$("#inline_create_dream_toggle").click(function(){
-				$("#inline_create_dream_form").toggle();
+				$("#inline_create_dream_form").toggle('fade');
 			}).button();
 			$("#createDreamByAjax").submit(function(){
 				$("#createDreamByAjax")[0].reset();
