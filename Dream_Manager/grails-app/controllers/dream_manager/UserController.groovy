@@ -160,7 +160,7 @@ class UserController {
 		   to UserInstance.email
 		   from grailsApplication.config.grails.mail.username
 		   subject "Your account was successfully created!"
-		   body "Hello ${UserInstance.firstName} ${UserInstance.lastName},\n\nYour account was successfully created!\n\nHere is your password : ${password}\n\n${createLink(absolute:true,uri:'/')}\n\nBest Regards".toString()
+		   body "Hello ${UserInstance.firstName} ${UserInstance.lastName},\n\nYour account was successfully created!\n\nHere is your password : ${password}\n\n${createLink(absolute:true,uri:'/')}\n\nGood Luck With Your Dreams!".toString()
 		}
 		flash.message = message(code: 'default.created.message', args: [message(code: 'User.label', default: 'User'), UserInstance.id])
 		redirect(action: "show", id: UserInstance.id)

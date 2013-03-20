@@ -92,8 +92,7 @@ class AuthController {
 	def unauthorized = { render "You do not have permission to access this page." }
 	def lostPassword = { render(view:'lostPassword') }
 
-	def updatePassword = {
-	}
+	def updatePassword = { render(view:'updatePassword') }
 	def newPassword = { render(view:'resetPassword') }
 
 	def doResetPassword = {
@@ -133,6 +132,13 @@ class AuthController {
 					user.passwordHash = new Sha256Hash(params.password1).toHex()
 					if (user.save()){
 						flash.message = "Password successfully updated"
+						def resetRequest = new PasswordResetRequest(user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true)
+						sendMail {
+							to user.username
+							from grailsApplication.config.grails.mail.username
+							subject "Your account password has been changed!"
+							body "Hello ${user.firstName} ${user.lastName},\n\nYour account password has been changed\n\nHere is your password : ${params.password1} \n\n\n\nGood Luck With Your Dreams!\n\n\n\n If you did not change your password please click here: \n ${createLink(absolute:true,controller:'auth',action:'resetPassword',id:resetRequest.token)} ".toString()
+						 }
 						redirect(uri:'/')
 					} else {
 						flash.message = "Password update failed."
@@ -172,7 +178,7 @@ class AuthController {
 			mailService.sendMail {
 				to UserInstance.username
 				subject "Reset your password"
-				body "Hello ${UserInstance.firstName} ${UserInstance.lastName},\n\nYou have requested resetting your password. Please ignore this message if it's not you who have made the request.\n\nIn order to reset your password, please follow this link :\n\n ${createLink(absolute:true,controller:'auth',action:'resetPassword',id:resetRequest.token)}\n\nBest Regards".toString()
+				body "Hello ${UserInstance.firstName} ${UserInstance.lastName},\n\nYou have requested resetting your password. Please ignore this message if it's not you who have made the request.\n\nIn order to reset your password, please follow this link :\n\n ${createLink(absolute:true,controller:'auth',action:'resetPassword',id:resetRequest.token)}\n\nGood Luck With Your Dreams!".toString()
 			}
 		} else {
 			flash.message = "No such user, please try again."
