@@ -127,7 +127,7 @@
 					<div class="clear"></div>
 					
 					<div class="grid_4 alpha omega" class="social">
-						Share Accomplishments
+						<div style="margin-top:1em;padding:1em;border:2px solid gray;">Share Accomplishments</div>
 					</div>
 				</div>
 				

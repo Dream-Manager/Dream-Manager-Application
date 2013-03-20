@@ -23,7 +23,10 @@
 				$("#inline_create_dream_toggle IMG").toggle();
 			}).button();
 			$("#createDreamByAjax").submit(function(){
+				var category = $("#createDreamByAjax [name='category']").val();
 				$("#createDreamByAjax")[0].reset();
+				$("#createDreamByAjax [name='category']").val(category);
+				$("#createDreamByAjax [name='name']").focus()
 			});
 		});
 		function createDreamByAjaxResponseHandler(){
