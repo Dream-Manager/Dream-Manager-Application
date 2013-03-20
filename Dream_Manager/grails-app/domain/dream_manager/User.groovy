@@ -3,7 +3,6 @@ package dream_manager
 import java.util.Date;
 
 class User {
-	
 	String username
 	String passwordHash
 	String firstName

@@ -21,16 +21,9 @@
 				<div>You can reset your password here :<br/><br/></div>
 					<div class="fieldcontain">
 						<label for="username">
-							<g:message code="User.username.label" default="Username" />
+							<g:message code="User.username.label" default="Username or Email" />
 						</label>
 						<g:textField name="username"/>
-					</div>
-					<div class="fieldcontain"><b>OR</b></div>
-					<div class="fieldcontain">
-						<label for="email">
-							<g:message code="User.email.label" default="Email" />
-						</label>
-						<g:textField name="email"/>
 					</div>
 				</fieldset>
 				<fieldset class="buttons">

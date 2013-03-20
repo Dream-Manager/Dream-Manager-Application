@@ -32,6 +32,7 @@
 						<tr>
 							<td />
 							<td><input type="submit" value="Sign in" />  <g:link controller="User" action="register">Not Registered?</g:link></td>
+							<td><g:link controller="auth" action="lostPassword">Forgot Password?</g:link></td>
 						</tr>
 						<tr>
 					</tbody>
