@@ -1,12 +1,13 @@
 <%@ page import="dream_manager.Dream" %>
-<div id="createDreamAjaxResponse" style="display:hidden"></div>
+<div id="createDreamAjaxResponse" style="display:none;position:absolute;top:0px;left:0px;width:100%;text-align:center;"></div>
+
 <div id="create-dream" class="content scaffold-create" role="main">
 	<div id="inline_create_dream_toggle" style="float:right">
 		<g:img file="add.png" width="15" height="15" />
 		<g:img file="remove.png" width="15" height="15" style="display:none;"/>
 	</div>
 	<div id="inline_create_dream_form" style="display:none;border:.2em solid grey;background:white;" class="popup" >
-		<g:formRemote name="createDreamByAjax" url="[controller: 'dream', action:'createAjax']">
+		<g:formRemote update="createDreamAjaxResponse" name="createDreamByAjax" url="[controller: 'dream', action:'createAjax']" onSuccess="createDreamByAjaxResponseHandler()">
 			<fieldset>
 				<div style="margin-bottom:2em;">
 					<g:render template="form"/>
@@ -25,5 +26,11 @@
 				$("#createDreamByAjax")[0].reset();
 			});
 		});
+		function createDreamByAjaxResponseHandler(){
+			$("#createDreamAjaxResponse")
+				.fadeIn({duration:800,complete:function(){
+					$("#createDreamAjaxResponse").fadeOut({duration:800});
+				}});
+		};
 	</script>
 </div>

@@ -53,9 +53,19 @@ class DreamController {
 		def user = User.findByUsername(SecurityUtils.subject.principal)
 		dreamInstance.user = user
 		
+		def output = ""
+		def cssClass = ""
+		
 		if(!dreamInstance.hasErrors() && dreamInstance.save()) {
-			flash.message = "Success"
+			output = "Dream Saved"
+			cssClass = "ui-state-highlight"
 		}
+		else{
+			output = "Failed to Save Dream: "+ dreamInstance.renderErrors()
+			cssClass = "ui-state-error"
+		}
+		
+		render ("<div class='"+cssClass+"'>"+output+"</div>")
 	}
 	
 	/**
