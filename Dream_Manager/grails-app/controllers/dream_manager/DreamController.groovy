@@ -77,6 +77,8 @@ class DreamController {
 		def dreamList = Dream.withCriteria { 
 			eq('user',User.findByUsername(SecurityUtils.subject.principal))
 			ilike('name', '%' + params.ajaxSearchDreamsTerm + '%')
+			order("category", "asc")
+			order("name", "asc")
 		}
 		render(view:'ajaxSearchDreams.gsp', model: ['dreams': dreamList])
 	}
