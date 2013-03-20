@@ -1,5 +1,6 @@
 package dream_manager
 
+import java.security.SecureRandom
 import org.apache.shiro.authc.UsernamePasswordToken
 import org.apache.shiro.crypto.hash.Sha256Hash
 import org.springframework.dao.DataIntegrityViolationException
@@ -95,6 +96,30 @@ class UserController {
 
         [userInstance: userInstance]
     }
+	
+	def ManagerSave = {
+		if (!grailsApplication.config.grails.mail.username) {
+			throw new RuntimeException(message(code: 'mail.plugin.not.configured', 'default' : 'Mail plugin not configured'))
+		}
+		def UserInstance = new User(params)
+		def password = ""
+		if (!UserInstance.passwordHash) {password = new BigInteger(130, new SecureRandom()).toString(32)
+			UserInstance.passwordHash = new Sha256Hash(password).toHex()
+		}
+		UserInstance.passwordChangeRequiredOnNextLogon = true
+		if (!UserInstance.save(flush: true)) {
+			render(view: "create", model: [UserInstance: UserInstance])
+			return
+		}
+		sendMail {
+		   to UserInstance.email
+		   from grailsApplication.config.grails.mail.username
+		   subject "Your account was successfully created!"
+		   body "Hello ${UserInstance.firstName} ${UserInstance.lastName},\n\nYour account was successfully created!\n\nHere is your password : ${password}\n\n${createLink(absolute:true,uri:'/')}\n\nBest Regards".toString()
+		}
+		flash.message = message(code: 'default.created.message', args: [message(code: 'User.label', default: 'User'), UserInstance.id])
+		redirect(action: "show", id: UserInstance.id)
+	}
 
     def edit(Long id) {
         def userInstance = User.get(id)

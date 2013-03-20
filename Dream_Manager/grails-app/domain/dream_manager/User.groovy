@@ -1,5 +1,7 @@
 package dream_manager
 
+import java.util.Date;
+
 class User {
 	
 	String username
@@ -14,13 +16,17 @@ class User {
 	String state
 	Date dateOfBirth
 	String zipcode
+	Date dateCreated
+	Date lastUpdated
 	boolean isManager = false
 	boolean isAdmin = false
+	Boolean passwordChangeRequiredOnNextLogon = false
 	
 	/**
 	 * Returns a String containing the user's full name.
 	 * @return      the firstName + ' ' + lastName
 	 */
+	@Override
 	String toString() {
 		firstName + " " + lastName
 	}
@@ -44,7 +50,15 @@ class User {
 		state(inList: ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"], nullable: true)
 		zipcode (nullable:true, size:5..5, matches:"[0-9]+")
 		isManager(nullable: true)
+		passwordHash(display:false)
+		passwordChangeRequiredOnNextLogon(nullable: true)
 		
+	}
+	
+	static mapping = {
+		cache true
+		roles cache: true
+		permissions cache: true
 	}
 }
 
