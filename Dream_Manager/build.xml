@@ -119,6 +119,13 @@
     </target>
 
     <!-- =================================
+          target: codenarc
+         ================================= -->
+    <target name="codenarc" depends="-init-grails" description="--> Run Grails static analysis">
+        <grails script="CodeNarc"/>
+    </target>
+	
+    <!-- =================================
           target: run
          ================================= -->
     <target name="run" depends="-init-grails" description="--> Runs a Grails application using embedded Jetty">
