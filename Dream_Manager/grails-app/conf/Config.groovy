@@ -59,6 +59,20 @@ grails.exceptionresolver.params.exclude = ['password']
 // configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
 grails.hibernate.cache.queries = false
 
+//This is for the mail plugin Which is how password resets and lost passwords are handled
+grails {
+	mail {
+	  host = "smtp.gmail.com"
+	  port = 465
+	  username = "dreammanager.noreply@gmail.com"
+	  password = "thedreaming324!"
+	  props = ["mail.smtp.auth":"true",
+			   "mail.smtp.socketFactory.port":"465",
+			   "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+			   "mail.smtp.socketFactory.fallback":"false"]
+	}
+ }
+
 environments {
     development {
         grails.logging.jul.usebridge = true

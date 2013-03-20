@@ -1,5 +1,6 @@
 package dream_manager
 
+import java.security.SecureRandom
 import org.apache.shiro.SecurityUtils
 import org.apache.shiro.authc.AuthenticationException
 import org.apache.shiro.authc.UsernamePasswordToken
@@ -10,7 +11,9 @@ import org.apache.shiro.grails.ConfigUtils
 
 class AuthController {
     def shiroSecurityManager
-
+	
+	def mailService
+	
     def index = { redirect(action: "login", params: params) }
 
     def login = {
@@ -84,4 +87,95 @@ class AuthController {
     def unauthorized = {
         render "You do not have permission to access this page."
     }
+	def lostPassword = { render(view:'lostPassword') }
+	
+		def updatePassword = {
+		}
+	
+		def newPassword = { render(view:'resetPassword') }
+	
+		def doResetPassword = {
+			if (params.password1!=params.password2) {
+				flash.message = "Please enter same passwords."
+				flash.status = "error"
+				redirect(action:'resetPassword',id:params.token)
+			} else {
+				def resetRequest = (params.token ? PasswordResetRequest.findByToken(params.token) : null)
+				def connectedUser = SecurityUtils.subject?.principal
+				def user = resetRequest?.user ?: (connectedUser ? User.findByUsername(connectedUser) : null)
+				if (user) {
+					user.passwordHash = new Sha256Hash(params.password1).toHex()
+					user.passwordChangeRequiredOnNextLogon = false
+					if (user.save()){
+						resetRequest?.delete()
+						flash.message = "Password successfully updated"
+						redirect(uri:'/')
+					}
+				} else {
+					flash.status = "error"
+					flash.message = "Unknown user"
+					redirect(action:'resetPassword',id:params.token)
+				}
+			}
+		}
+	
+		def doUpdatePassword =  {
+			if (params.password1!=params.password2) {
+				flash.message = "Please enter same passwords."
+				flash.status = "error"
+				redirect(action:'updatePassword')
+			} else {
+				def user = User.findByUsername(SecurityUtils.subject?.principal)
+				if (user) {
+					if (user.passwordHash == new Sha256Hash(params.oldpassword).toHex()){
+						user.passwordHash = new Sha256Hash(params.password1).toHex()
+						if (user.save()){
+							flash.message = "Password successfully updated"
+							redirect(uri:'/')
+						} else {
+							flash.message = "Password update failed."
+							flash.status = "error"
+							redirect(action:'updatePassword')
+						}
+					} else {
+						flash.message = "Incorrect old password ."
+						flash.status = "error"
+						redirect(action:'updatePassword')
+					}
+				} else {
+					flash.message = "Unknown user."
+					flash.status = "error"
+					redirect(action:'updatePassword')
+				}
+			}
+		}
+	
+		def resetPassword = {
+			if (params.id){
+				def resetRequest = PasswordResetRequest.findByToken(params.id)
+				if (resetRequest) {
+					[resetRequest:resetRequest]
+				} else {
+					flash.message = "Not a valid request."
+					redirect(uri:'/')
+				}
+			}
+		}
+	
+		def sendPasswordResetRequest =  {
+			def UserInstance = (params.email ? User.findByEmail(params.email) : (params.username ? User.findByUsername(params.username) : null))
+			if (UserInstance) {
+				flash.message = "An email is being sent to you with instructions on how to reset your password."
+				def resetRequest = new PasswordResetRequest(user:UserInstance,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true)
+				mailService.sendMail {
+					to UserInstance.email
+					subject "Reset your password"
+					body "Hello ${UserInstance.firstName} ${UserInstance.lastName},\n\nYou have requested resetting your password. Please ignore this message if it's not you who have made the request.\n\nIn order to reset your password, please follow this link :\n\n ${createLink(absolute:true,controller:'auth',action:'resetPassword',id:resetRequest.token)}\n\nBest Regards".toString()
+				}
+			} else {
+				flash.message = "No such user, please try again."
+			}
+			redirect(uri:'/')
+		}
+	
 }
