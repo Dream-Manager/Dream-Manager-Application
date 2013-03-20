@@ -12,6 +12,13 @@ grails.project.source.level = 1.6
 //   run: [maxMemory:1024, minMemory:64, debug:false, maxPerm:256]
 //]
 
+codenarc.reports = {
+	HtmlReport('html') { 
+		outputFile = 'Dream_Manager/target/test-reports/html/CodeNarc.html'
+		title = 'CodeNarc Static Analysis Report'
+	}
+}
+
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
