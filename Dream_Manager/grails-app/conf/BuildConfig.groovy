@@ -12,6 +12,13 @@ grails.project.source.level = 1.6
 //   run: [maxMemory:1024, minMemory:64, debug:false, maxPerm:256]
 //]
 
+codenarc.reports = {
+	HtmlReport('html') { 
+		outputFile = 'Dream_Manager/target/test-reports/html/CodeNarc.html'
+		title = 'CodeNarc Static Analysis Report'
+	}
+}
+
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
@@ -60,7 +67,7 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.2.1"
 		compile ":shiro:1.1.4"
         compile ':cache:1.0.1'
-		compile ":shiro-ui:1.2.0-SNAPSHOT"
+		compile: "shiro-ui:1.2.0-SNAPSHOT"
 		compile ":mail:1.0.1"
 		compile ":codenarc:0.18.1"
     }
