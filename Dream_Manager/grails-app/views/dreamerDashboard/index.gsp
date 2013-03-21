@@ -34,15 +34,16 @@
 				<g:render template="/common/topbar" />
 			</div>
 			
-			<div id="content" class="container_16" style="margin-top:.5em;">			
+			<div id="content" class="container_16"> 
+								
 				<div class="grid_12 alpha">	
-					<div id="tabs" style="margin-left:.5em">
+					<div id="tabs">
 						<ul>
 						    <li><a href="#tabs-1">Your Progress</a></li>
 						    <li><a href="#tabs-2">Search Dreams</a></li>
-						    <shiro:hasAnyRole in="['ROLE_MANAGER','ROLE_ADMIN']">
+						    <shiro:hasRole name="ROLE_MANAGER">
 						    	<li><a href="#tabs-3">Manage Dreamers</a></li>
-						    </shiro:hasAnyRole>
+						    </shiro:hasRole>
 						</ul>
 						<div id="tabs-1">
 							<g:include controller="dream" action="showCreateAjax" />
@@ -107,28 +108,17 @@
 							</script>
 							
 						</div>
-						<shiro:hasAnyRole in="['ROLE_MANAGER','ROLE_ADMIN']">
+						<shiro:hasRole name="ROLE_MANAGER">
 							<div id="tabs-3">
 								Manage Dreamers
 							</div>
-						</shiro:hasAnyRole>
+						</shiro:hasRole>
 					</div>
 				</div>
 		
+				
 				<div class="grid_4 omega">
-					<div class="grid_2 alpha">
-						Welcome back, <g:include controller="user" action="getCurrentUserFirstName"/>!
-					</div>
-					<div class="grid_2 omega">
-						<div style="margin-left:3em;">
-							<g:render template="/common/menu" />
-						</div>
-					</div>
-					<div class="clear"></div>
-					
-					<div class="grid_4 alpha omega" class="social">
-						<div style="margin-top:1em;padding:1em;border:2px solid gray;">Share Accomplishments</div>
-					</div>
+					<div style="width:100%;height:300px;border:1px solid darkblue;text-align:center;padding-top:1em;">Social</div>
 				</div>
 				
 			</div>
