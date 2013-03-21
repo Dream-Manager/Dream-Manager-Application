@@ -76,7 +76,23 @@
 			</div>
 			<shiro:hasAnyRole in="['ROLE_MANAGER','ROLE_ADMIN']">
 				<div id="tabs-3">
-					Manage Dreamers
+					<!-- Search Dreams -->
+					
+					<div class='ui-widget'" style="margin-bottom:1em;">
+					<g:formRemote name="ajaxSearchUsers" on404="alert('not found!')" update="searchUsersResults"
+	           					url="[controller: 'user', action:'ajaxSearchUsers']">
+						<label for="ajaxSearchUsersTerm">Search Users: </label>
+						<input type="text" name="ajaxSearchUsersTerm" id="ajaxSearchUsersTerm"/>
+						<input type="submit"/>
+					</g:formRemote>								
+					</div>
+					<div id="searchUsersResults"></div>
+					<script type="text/javascript">
+						$(function(){
+							$("#ajaxSearchUsers").submit();
+						});
+					</script>
+					
 				</div>
 			</shiro:hasAnyRole>
 		</div>

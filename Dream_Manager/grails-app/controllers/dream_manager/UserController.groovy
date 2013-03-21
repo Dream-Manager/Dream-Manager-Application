@@ -41,6 +41,32 @@ class UserController {
 	}
 	
 	/**
+	 * Executes a search of users, with users that are managed by the current user in a separate table.
+	 * @param ajaxSearchUsersTerm	A term to be searched on
+	 * @return Table of results in HTML
+	 */
+	def ajaxSearchUsers = {
+		def managedUsers = User.withCriteria {
+			eq('manager',User.findByUsername(SecurityUtils.subject.principal))
+			or {
+				ilike('firstName', '%' + params.ajaxSearchUsersTerm + '%')
+				ilike('lastName', '%' + params.ajaxSearchUsersTerm + '%')	
+			}
+			order("lastName", "asc")
+		}
+		
+		def otherUsers = User.withCriteria {
+			or {
+				ilike('firstName', '%' + params.ajaxSearchUsersTerm + '%')
+				ilike('lastName', '%' + params.ajaxSearchUsersTerm + '%')	
+			}
+			order("lastName", "asc")
+		}
+		
+		render(view:'ajaxSearchUsers.gsp', model: ['managedUsers': managedUsers, 'otherUsers': otherUsers], contentType: 'text/plain')
+	}
+	
+	/**
 	 * creates a new user record 
 	 * @param username 	the email address of the user
 	 * @param firstName	the first name of the user
