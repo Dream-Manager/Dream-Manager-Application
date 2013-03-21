@@ -1,4 +1,3 @@
-
 <%@ page import="dream_manager.User" %>
 <!DOCTYPE html>
 <html>

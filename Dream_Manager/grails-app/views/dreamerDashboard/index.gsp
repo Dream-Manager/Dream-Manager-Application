@@ -80,7 +80,21 @@
 	</div>
 	
 	<div class="grid_4 omega">
-		<div style="width:100%;height:300px;border:1px solid darkblue;text-align:center;padding-top:1em;">Social</div>
-		</div>	
+	<div style="margin-top:.5em">
+		<div class="grid_2 alpha">
+			Welcome back, <g:include controller="user" action="getCurrentUserFirstName"/>!
+		</div>
+		<div class="grid_2 omega">
+			<div style="margin-left:3em;">
+				<g:render template="/common/menu" />
+			</div>
+		</div>
+		<div class="clear"></div>
+
+		<div class="grid_4 alpha omega" class="social">
+			<div style="margin-top:1em;padding:1em;border:2px solid gray;">Share Accomplishments</div>
+		</div>
+	</div>
+	</div>	
 	</body>
 </html>			

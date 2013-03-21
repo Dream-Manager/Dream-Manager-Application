@@ -1,4 +1,5 @@
 <%@ page import="dream_manager.Dream" %>
+<!DOCTYPE html>
 <html>
 	<head>		
 		<g:set var="entityName" value="${message(code: 'dream.label', default: 'Dream')}" />

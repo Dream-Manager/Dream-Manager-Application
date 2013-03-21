@@ -2,7 +2,6 @@ package dream_manager
 import org.apache.shiro.subject.Subject
 import grails.converters.*
 import org.apache.shiro.SecurityUtils
-import org.bouncycastle.asn1.ocsp.ResponseData;
 
 class DreamController {
 

@@ -36,10 +36,12 @@
 			<div id="topbar">
 				<g:render template="/common/topbar" />
 			</div>
+			<div class="clear"></div>
 			
-			<div id="content" class="container_16"> 
+			<div id="content" class="container_16" style="min-height:40em;"> 
 				<g:layoutBody />
 			</div>
+			<div class="clear"></div>
 
 			<div id="footer">
 				<g:render template="/common/footer" />
