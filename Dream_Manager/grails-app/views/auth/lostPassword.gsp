@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		
 		<g:set var="title" value="${message(code: 'lostPassword', default: 'Lost Password')}" />
 		<title>${title}</title>
 	</head>

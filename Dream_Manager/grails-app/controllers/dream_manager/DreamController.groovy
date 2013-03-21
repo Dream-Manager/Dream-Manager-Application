@@ -80,7 +80,7 @@ class DreamController {
 			order("category", "asc")
 			order("name", "asc")
 		}
-		render(view:'ajaxSearchDreams.gsp', model: ['dreams': dreamList])
+		render(view:'ajaxSearchDreams.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
 	}
 	
 	/**

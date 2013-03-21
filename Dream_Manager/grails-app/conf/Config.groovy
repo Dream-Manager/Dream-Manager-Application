@@ -103,3 +103,10 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+// Set Code-Coverage plugin for Test-App to run by default
+coverage { 
+	enabledByDefault = true 
+}
+
+grails.sitemesh.default.layout='application'

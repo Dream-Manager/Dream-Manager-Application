@@ -63,6 +63,7 @@ grails.project.dependency.resolution = {
 		compile: "shiro-ui:1.2.0-SNAPSHOT"
 		compile ":mail:1.0.1"
 		compile ":codenarc:0.18.1"
+		compile ":code-coverage:1.2.5"
     }
 }
 
