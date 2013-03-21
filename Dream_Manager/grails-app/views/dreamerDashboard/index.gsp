@@ -76,7 +76,16 @@
 			</div>
 			<shiro:hasAnyRole in="['ROLE_MANAGER','ROLE_ADMIN']">
 				<div id="tabs-3">
-					<!-- Search Dreams -->
+					<!-- Search Users -->
+					
+					<g:link controller="user" action="create"> 
+						<div style="float:right" id="buttonCreateUserLink">
+							<g:img file="add.png" width="15" height="15" />
+						</div>	
+					</g:link>
+					<script type="text/javascript">
+						$("#buttonCreateUserLink").button();
+					</script>
 					
 					<div class='ui-widget'" style="margin-bottom:1em;">
 					<g:formRemote name="ajaxSearchUsers" on404="alert('not found!')" update="searchUsersResults"

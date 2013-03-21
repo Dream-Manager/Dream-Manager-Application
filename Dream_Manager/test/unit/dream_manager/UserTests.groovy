@@ -9,6 +9,7 @@ class UserTests {
 
 	@Before
 	void before() {
+		/*
 		// Delete any extra records
 		User.findAll().delete()
 
@@ -27,6 +28,7 @@ class UserTests {
 				state:null,
 				zipcode:85219,
 				isManager:false ).save()
+		*/
 	}
 
 	// Test toString() method
