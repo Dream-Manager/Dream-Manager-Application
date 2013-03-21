@@ -1,4 +1,7 @@
 <html>
+	<head>
+		<title>Dream Manager - Dashboard</title>
+	</head>
 	<body>							
 		<div class="grid_12 alpha">	
 			<div id="tabs">

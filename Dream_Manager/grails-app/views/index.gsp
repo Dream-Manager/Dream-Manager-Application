@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main"/>
+		
 		<title>Dream Manager Application!</title>
 		<style type="text/css" media="screen">
 			#status {

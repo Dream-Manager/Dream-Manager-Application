@@ -7,6 +7,8 @@ class DreamController {
 
 	static scaffold = Dream
 	
+	static layout = "application"
+	
 	def showCreateAjax = {
 		render (view: "createAjax")
 	}

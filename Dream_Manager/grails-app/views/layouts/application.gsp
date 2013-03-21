@@ -20,7 +20,8 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		
 		<meta name="authentication" content="signup" />
-		<title>Dream Manager - Dashboard</title>
+		
+		<title><g:layoutTitle /></title>
 		
 		<g:javascript library="jquery" />
 		
