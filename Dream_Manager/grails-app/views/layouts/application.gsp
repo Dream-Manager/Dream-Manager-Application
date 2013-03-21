@@ -28,6 +28,8 @@
 		
 		<g:external dir="js" file="jquery-ui-1.10.2.custom.js"/>
 		<g:external dir="css" file="ui-lightness/jquery-ui-1.10.2.custom.css"/>
+		
+		<g:layoutHead />
 	</head>
 	<body>
 		<div id="page">
