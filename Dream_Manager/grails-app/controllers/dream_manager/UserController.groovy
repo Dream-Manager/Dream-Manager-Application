@@ -168,7 +168,7 @@ class UserController {
         [userInstance: userInstance]
     }
 	
-	def ManagerSave = {
+	def managerSave = {
 		if (!grailsApplication.config.grails.mail.username) {
 			throw new RuntimeException(message(code: 'mail.plugin.not.configured', 'default' : 'Mail plugin not configured'))
 		}
@@ -183,7 +183,7 @@ class UserController {
 			return
 		}
 		sendMail {
-		   to UserInstance.email
+		   to UserInstance.username
 		   from grailsApplication.config.grails.mail.username
 		   subject "Your account was successfully created!"
 		   body "Hello ${UserInstance.firstName} ${UserInstance.lastName},\n\nYour account was successfully created!\n\nHere is your password : ${password}\n\n${createLink(absolute:true,uri:'/')}\n\nGood Luck With Your Dreams!".toString()
