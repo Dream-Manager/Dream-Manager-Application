@@ -182,6 +182,12 @@ class UserController {
 			render(view: "create", model: [UserInstance: UserInstance])
 			return
 		}
+		if(UserInstance.isManager==true){
+			UserInstance.addToRoles(Role.findByName('ROLE_MANAGER'))
+		}
+		if(UserInstance.isAdmin==true){
+			UserInstance.addToRoles(Role.findByName('ROLE_ADMIN'))
+		}
 		sendMail {
 		   to UserInstance.username
 		   from grailsApplication.config.grails.mail.username
