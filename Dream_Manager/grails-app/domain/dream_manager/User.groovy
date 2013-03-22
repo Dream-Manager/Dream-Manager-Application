@@ -18,6 +18,7 @@ class User {
 	Date dateCreated
 	Date lastUpdated
 	User manager
+	boolean managerConfirmed
 	boolean isManager = false
 	boolean isAdmin = false
 	Boolean passwordChangeRequiredOnNextLogon = false

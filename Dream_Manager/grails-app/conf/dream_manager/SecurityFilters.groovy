@@ -31,7 +31,9 @@ class SecurityFilters {
 		 [controller: 'template', action: '*', roles: ['ROLE_ADMIN']],
 		 [controller: 'api', action: '*', roles: ['ROLE_ADMIN']],
 		 [controller: 'asset', action: '*', roles: ['ROLE_ADMIN']],
-		 [controller: 'user', action: '*', roles: ['ROLE_ADMIN']],
+		 [controller: 'user', action: 'list', roles: ['ROLE_ADMIN']],
+		 [controller: 'user', action: 'edit', roles: ['ROLE_USER']],
+		 [controller: 'user', action: 'show', roles: ['ROLE_ADMIN']],
 		 [controller: 'userDreamQuestions', action: '*', roles: ['ROLE_ADMIN']]
 	]
 
