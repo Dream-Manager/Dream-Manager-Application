@@ -1,4 +1,7 @@
 package dream_manager
+import java.util.Date
+
+
 import org.apache.shiro.subject.Subject
 import grails.converters.*
 import org.apache.shiro.SecurityUtils
@@ -35,10 +38,14 @@ class DreamController {
 	 * Redirects the user to the "show" view for the created record on completion.
 	 */
 	def create = {
-		def dreamInstance = new Dream(params)
+		def dreamInstance = new Dream(name: params.name,
+									  category:params.category,
+									  isShortTerm: params.isShortTerm,
+									  notes: params.notes)									  
 		def user = User.findByUsername(SecurityUtils.subject.principal)
+		if(params.estimatedCompletion)
+			dreamInstance.estimatedCompletion = Date.parse("MM/dd/yy",params.estimatedCompletion)
 		dreamInstance.user = user
-		
 		if(!dreamInstance.hasErrors() && dreamInstance.save()) {
 			flash.message = "Success"
 			render(view:'show',model: dreamInstance)
@@ -50,9 +57,15 @@ class DreamController {
 	 * @param params All required fields for the Dream object
 	 */
 	def createAjax = {
-		def dreamInstance = new Dream(params)
+		def dreamInstance = new Dream(name: params.name,
+									  category:params.category,
+									  isShortTerm: params.isShortTerm,
+									  notes: params.notes)
 		def user = User.findByUsername(SecurityUtils.subject.principal)
 		dreamInstance.user = user
+		if(params.estimatedCompletion) 
+			dreamInstance.estimatedCompletion = Date.parse("MM/dd/yy",params.estimatedCompletion)
+		
 		
 		def output = ""
 		def cssClass = ""
@@ -62,7 +75,7 @@ class DreamController {
 			cssClass = "ui-state-highlight"
 		}
 		else{
-			output = "Failed to Save Dream: "+ dreamInstance.renderErrors()
+			output = "Failed to Save Dream: "+ dreamInstance.errors.allErrors.collect{g.message([error:it])}
 			cssClass = "ui-state-error"
 		}
 		
