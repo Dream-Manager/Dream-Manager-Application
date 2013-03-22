@@ -13,5 +13,6 @@ class UrlMappings {
 		"/controllers" (view:"/index")
 
 		"500"(view:'/error')
+		name home: "/dreamerDashboard"(view:"/dreamerDashboard/index")
 	}
 }
