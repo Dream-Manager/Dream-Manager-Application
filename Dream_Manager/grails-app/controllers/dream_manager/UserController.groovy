@@ -119,7 +119,7 @@ class UserController {
 	 * @param state		current state user lives in
 	 * @param zipcode	users zipcode
 	 * @param isManager	if user is manager or not
-	 * @param admin		if user is an administrator
+	 * @param isAdmin  if user is an administrator
 	 */
 	def save() {
 		if (params.password != params.passwordConfirm) {

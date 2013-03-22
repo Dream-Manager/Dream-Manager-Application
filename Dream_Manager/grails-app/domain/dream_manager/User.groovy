@@ -17,6 +17,7 @@ class User {
 	String zipcode
 	Date dateCreated
 	Date lastUpdated
+	User manager
 	boolean isManager = false
 	boolean isAdmin = false
 	Boolean passwordChangeRequiredOnNextLogon = false
@@ -32,9 +33,6 @@ class User {
 	
 	// Each User has many Dreams, Skills
 	static hasMany = [dreams:Dream, skills:Skill, roles: Role, permissions: String ]
-	
-	// Each User has one manager
-	static belongsTo = [manager:User]
 	
 	static constraints = {
 		username(email: true, blank: false, unique: true, nullable: false, size:1..50)
