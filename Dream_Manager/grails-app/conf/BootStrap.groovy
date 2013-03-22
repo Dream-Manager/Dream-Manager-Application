@@ -14,7 +14,7 @@ class BootStrap {
 		// Create the user role
 		def userRole = new Role(name: 'ROLE_USER').save(flush: true, failOnError: true)
 
-		def adminUser = new User(username: "adminuser@gmail.com", passwordHash: new Sha256Hash("password").toHex(), firstName:"James", lastName:"HARRIS", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219,isManager:false, isAdmin:true, passwordChangeRequiredOnNextLogon:false )
+		def adminUser = new User(username: "adminuser@gmail.com", passwordHash: new Sha256Hash("password").toHex(), firstName:"James", lastName:"HARRIS", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219,isManager:false, passwordChangeRequiredOnNextLogon:false, isAdmin:true )
 		adminUser.save(flush: true, failOnError: true)
 
 		// Add roles to the admin user
@@ -22,7 +22,8 @@ class BootStrap {
 		.addToRoles(userRole)
 		.save(flush: true, failOnError: true)
 
-		def managerUser = new User(username: "manageruser@gmail.com", passwordHash: new Sha256Hash("password").toHex(), firstName:"Rob", lastName:"Miller", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219,isManager:true,isAdmin:false, passwordChangeRequiredOnNextLogon:false)
+
+		def managerUser = new User(username: "manageruser@gmail.com", passwordHash: new Sha256Hash("password").toHex(), firstName:"Rob", lastName:"Miller", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219,isManager:true , passwordChangeRequiredOnNextLogon:false , isAdmin:false)
 		managerUser.save(flush: true, failOnError: true)
 
 		// Add roles to the manager user
@@ -31,7 +32,9 @@ class BootStrap {
 		.save(flush: true, failOnError: true)
 
 		// Create an standard user
-		def standardUser = new User(username: "standarduser@gmail.com",passwordHash: new Sha256Hash('password').toHex(), firstName:"Joe", lastName:"Smoe", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219,isManager:false, passwordChangeRequiredOnNextLogon:false)
+
+		def standardUser = new User(username: "standarduser@gmail.com",passwordHash: new Sha256Hash('password').toHex(), firstName:"Joe", lastName:"Smoe", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219,isManager:false, passwordChangeRequiredOnNextLogon:false , isAdmin:false)
+
 		standardUser.save(flush: true, failOnError: true)
 
 		// Add role to the standard user

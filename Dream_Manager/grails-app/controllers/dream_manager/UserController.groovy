@@ -11,17 +11,17 @@ import org.apache.shiro.subject.Subject
 class UserController {
 	def shiroSecurityService
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def index() {
-        redirect(action: "list", params: params)
-    }
+	def index() {
+		redirect(action: "list", params: params)
+	}
 
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [userInstanceList: User.list(params), userInstanceTotal: User.count()]
-    }
-	
+	def list(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		[userInstanceList: User.list(params), userInstanceTotal: User.count()]
+	}
+
 	/**
 	 * returns the id of the current logged in user
 	 * @return the users id
@@ -30,7 +30,7 @@ class UserController {
 		def user = User.findByUsername(SecurityUtils.subject.principal).id
 		render user
 	}
-	
+
 	/**
 	 * returns the currently logged in users first name
 	 * @return the users first name
@@ -39,7 +39,7 @@ class UserController {
 		def user = User.findByUsername(SecurityUtils.subject.principal).firstName
 		render user
 	}
-	
+
 	/**
 	 * Executes a search of users, with users that are managed by the current user in a separate table.
 	 * @param ajaxSearchUsersTerm	A term to be searched on
@@ -50,22 +50,22 @@ class UserController {
 			eq('manager',User.findByUsername(SecurityUtils.subject.principal))
 			or {
 				ilike('firstName', '%' + params.ajaxSearchUsersTerm + '%')
-				ilike('lastName', '%' + params.ajaxSearchUsersTerm + '%')	
+				ilike('lastName', '%' + params.ajaxSearchUsersTerm + '%')
 			}
 			order("lastName", "asc")
 		}
-		
+
 		def otherUsers = User.withCriteria {
 			or {
 				ilike('firstName', '%' + params.ajaxSearchUsersTerm + '%')
-				ilike('lastName', '%' + params.ajaxSearchUsersTerm + '%')	
+				ilike('lastName', '%' + params.ajaxSearchUsersTerm + '%')
 			}
 			order("lastName", "asc")
 		}
-		
+
 		render(view:'ajaxSearchUsers.gsp', model: ['managedUsers': managedUsers, 'otherUsers': otherUsers], contentType: 'text/plain')
 	}
-	
+
 	/**
 	 * creates a new user record 
 	 * @param username 	the email address of the user
@@ -84,24 +84,24 @@ class UserController {
 	 * @param isManager	if user is manager or not
 	 * @param admin		if user is an administrator
 	 */
-    def create() {
-        [userInstance: new User(username: params.username,
-								firstName:params.firstName,
-								lastName:params.lastName,
-								email:params.username,
-								passwordHash:params.passwordHash,
-								avatarLocation:null,
-								streetAddress1:params.streetAddress1,
-								streetAddress2:params.streetAddress2,
-								poBox:params.poBox,
-								dateOfBirth:params.dateOfBirth,
-								city:params.city,
-								state:params.state,
-								zipcode:params.zipCode,
-								isManager:false,
-								admin:false)
+	def create() {
+		[userInstance: new User(username: params.username,
+			firstName:params.firstName,
+			lastName:params.lastName,
+			email:params.username,
+			passwordHash:params.passwordHash,
+			avatarLocation:null,
+			streetAddress1:params.streetAddress1,
+			streetAddress2:params.streetAddress2,
+			poBox:params.poBox,
+			dateOfBirth:params.dateOfBirth,
+			city:params.city,
+			state:params.state,
+			zipcode:params.zipCode,
+			isManager:false,
+			admin:false)
 		]
-    }
+	}
 
 	/**
 	 * saves the information to the database
@@ -121,7 +121,7 @@ class UserController {
 	 * @param isManager	if user is manager or not
 	 * @param admin		if user is an administrator
 	 */
-    def save() {
+	def save() {
 		if (params.password != params.passwordConfirm) {
 			redirect(controller: 'user', action: 'create')
 			flash.message = "Passwords do not match"
@@ -130,49 +130,63 @@ class UserController {
 
 		// Passwords match. Let's attempt to save the user
 		else {
-        def userInstance = new User(username: params.username,
-								firstName:params.firstName,
-								lastName:params.lastName,
-								email:params.username,
-								passwordHash:shiroSecurityService.encodePassword(params.password),
-								avatarLocation:null,
-								streetAddress1:params.streetAddress1,
-								streetAddress2:params.streetAddress2,
-								poBox:params.poBox,
-								dateOfBirth:params.dateOfBirth,
-								city:params.city,
-								state:params.state,
-								zipcode:params.zipCode,
-								isManager:false,
-								admin:false)
-		def authToken = new UsernamePasswordToken(params.username, params.password)
+			def userInstance = new User(username: params.username,
+			firstName:params.firstName,
+			lastName:params.lastName,
+			email:params.username,
+			passwordHash:shiroSecurityService.encodePassword(params.password),
+			avatarLocation:null,
+			streetAddress1:params.streetAddress1,
+			streetAddress2:params.streetAddress2,
+			poBox:params.poBox,
+			dateOfBirth:params.dateOfBirth,
+			city:params.city,
+			state:params.state,
+			zipcode:params.zipCode,
+			isManager:params.isManager,
+			isAdmin:params.isAdmin)
+			userInstance.addr
+			def authToken = new UsernamePasswordToken(params.username, params.password)
 
-        if (!userInstance.save(flush: true)) {
-            render(view: "create", model: [userInstance: userInstance])
-            return
-        }
+			if (!userInstance.save(flush: true)) {
+				render(view: "create", model: [userInstance: userInstance])
+				return
+			}
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
-        redirect(action: "show", id: userInstance.id)
+			flash.message = message(code: 'default.created.message', args: [
+				message(code: 'user.label', default: 'User'),
+				userInstance.id
+			])
+			redirect(action: "show", id: userInstance.id)
 		}
-    }
+	}
 
-    def show(Long id) {
-        def userInstance = User.get(id)
-        if (!userInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
-            redirect(action: "list")
-            return
-        }
+	def show(Long id) {
+		def userInstance = User.get(id)
+		if (!userInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [
+				message(code: 'user.label', default: 'User'),
+				id
+			])
+			redirect(action: "list")
+			return
+		}
 
-        [userInstance: userInstance]
-    }
-	
+		[userInstance: userInstance]
+	}
+
 	def managerSave = {
 		if (!grailsApplication.config.grails.mail.username) {
 			throw new RuntimeException(message(code: 'mail.plugin.not.configured', 'default' : 'Mail plugin not configured'))
 		}
 		def UserInstance = new User(params)
+		UserInstance.addToRoles(Role.findByName('ROLE_USER'))
+		if (params.isAdmin!=null&&params.isAdmin){
+			UserInstance.addToRoles(Role.findByName('ROLE_ADMIN'))
+		}
+		if(params.isManager!=null&&params.isManager){
+			UserInstance.addToRoles(Role.findByName('ROLE_MANAGER'))
+		}
 		def password = ""
 		if (!UserInstance.passwordHash) {password = new BigInteger(130, new SecureRandom()).toString(32)
 			UserInstance.passwordHash = new Sha256Hash(password).toHex()
@@ -189,86 +203,111 @@ class UserController {
 			UserInstance.addToRoles(Role.findByName('ROLE_ADMIN'))
 		}
 		sendMail {
-		   to UserInstance.username
-		   from grailsApplication.config.grails.mail.username
-		   subject "Your account was successfully created!"
-		   body "Hello ${UserInstance.firstName} ${UserInstance.lastName},\n\nYour account was successfully created!\n\nHere is your password : ${password}\n\n${createLink(absolute:true,uri:'/')}\n\nGood Luck With Your Dreams!".toString()
+			to UserInstance.username
+			from grailsApplication.config.grails.mail.username
+			subject "Your account was successfully created!"
+			body "Hello ${UserInstance.firstName} ${UserInstance.lastName},\n\nYour account was successfully created!\n\nHere is your password : ${password}\n\n${createLink(absolute:true,uri:'/')}\n\nGood Luck With Your Dreams!".toString()
 		}
-		flash.message = message(code: 'default.created.message', args: [message(code: 'User.label', default: 'User'), UserInstance.id])
+		flash.message = message(code: 'default.created.message', args: [
+			message(code: 'User.label', default: 'User'),
+			UserInstance.id
+		])
 		redirect(action: "show", id: UserInstance.id)
 	}
 
-    def edit(Long id) {
-        def userInstance = User.get(id)
-        if (!userInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
-            redirect(action: "list")
-            return
-        }
+	def edit(Long id) {
+		def userInstance = User.get(id)
+		if (!userInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [
+				message(code: 'user.label', default: 'User'),
+				id
+			])
+			redirect(action: "list")
+			return
+		}
 
-        [userInstance: userInstance]
-    }
+		[userInstance: userInstance]
+	}
 
 	def editCurrentProfile () {
 		def userInstance = User.findByUsername(SecurityUtils.subject.principal)
 		if (!userInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
+			flash.message = message(code: 'default.not.found.message', args: [
+				message(code: 'user.label', default: 'User'),
+				id
+			])
 			redirect(action: "list")
 			return
 		}
 
 		render(view:'edit', model: [userInstance: userInstance])
 	}
-	
-	
-    def update(Long id, Long version) {
-        def userInstance = User.get(id)
-        if (!userInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
-            redirect(action: "list")
-            return
-        }
 
-        if (version != null) {
-            if (userInstance.version > version) {
-                userInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'user.label', default: 'User')] as Object[],
-                          "Another user has updated this User while you were editing")
-                render(view: "edit", model: [userInstance: userInstance])
-                return
-            }
-        }
 
-        userInstance.properties = params
+	def update(Long id, Long version) {
+		def userInstance = User.get(id)
+		if (!userInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [
+				message(code: 'user.label', default: 'User'),
+				id
+			])
+			redirect(action: "list")
+			return
+		}
 
-        if (!userInstance.save(flush: true)) {
-            render(view: "edit", model: [userInstance: userInstance])
-            return
-        }
+		if (version != null) {
+			if (userInstance.version > version) {
+				userInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+						[
+							message(code: 'user.label', default: 'User')] as Object[],
+						"Another user has updated this User while you were editing")
+				render(view: "edit", model: [userInstance: userInstance])
+				return
+			}
+		}
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
-        redirect(action: "show", id: userInstance.id)
-    }
+		userInstance.properties = params
 
-    def delete(Long id) {
-        def userInstance = User.get(id)
-        if (!userInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
-            redirect(action: "list")
-            return
-        }
+		if (!userInstance.save(flush: true)) {
+			render(view: "edit", model: [userInstance: userInstance])
+			return
+		}
 
-        try {
-            userInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
-            redirect(action: "show", id: id)
-        }
-    }
-	
+		flash.message = message(code: 'default.updated.message', args: [
+			message(code: 'user.label', default: 'User'),
+			userInstance.id
+		])
+		redirect(action: "show", id: userInstance.id)
+	}
+
+	def delete(Long id) {
+		def userInstance = User.get(id)
+		if (!userInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [
+				message(code: 'user.label', default: 'User'),
+				id
+			])
+			redirect(action: "list")
+			return
+		}
+
+		try {
+			userInstance.delete(flush: true)
+			flash.message = message(code: 'default.deleted.message', args: [
+				message(code: 'user.label', default: 'User'),
+				id
+			])
+			redirect(action: "list")
+		}
+		catch (DataIntegrityViolationException e) {
+			flash.message = message(code: 'default.not.deleted.message', args: [
+				message(code: 'user.label', default: 'User'),
+				id
+			])
+			redirect(action: "show", id: id)
+		}
+	}
+
 	/**
 	 * creates a new user and logs them in
 	 * @param username 	the email address of the user
@@ -289,57 +328,55 @@ class UserController {
 	 */
 	def signup(){
 		// Check to see if the username already exists
-				def user = User.findByUsername(params.username)
-				if (user) {
-					redirect(action: 'register')
-					flash.message = "User already exists with the username '${params.username}'"
+		def user = User.findByUsername(params.username)
+		if (user) {
+			redirect(action: 'register')
+			flash.message = "User already exists with the username '${params.username}'"
+		}
+
+		// User doesn't exist with username. Let's create one
+		else {
+
+			// Make sure the passwords match
+			if (params.password != params.passwordConfirm) {
+				redirect(action: 'register')
+				flash.message = "Passwords do not match"
+			}
+
+			// Passwords match. Let's attempt to save the user
+			else {
+				// Create user
+				user = new User(username: params.username,
+				firstName:params.firstName,
+				lastName:params.lastName,
+				email:params.username,
+				passwordHash:shiroSecurityService.encodePassword(params.password),
+				avatarLocation:null,
+				streetAddress1:params.streetAddress1,
+				streetAddress2:params.streetAddress2,
+				poBox:params.poBox,
+				dateOfBirth:params.dateOfBirth,
+				city:params.city,
+				state:params.state,
+				zipcode:params.zipCode,
+				isManager:false,
+				admin:false)
+				// Add USER role to new user
+				user.addToRoles(Role.findByName('ROLE_USER'))
+				if (user.save(flush: true)) {
+					// Login user
+					render "SAVE"
+					def authToken = new UsernamePasswordToken(user.username, params.password)
+					SecurityUtils.subject.login(authToken)
+					redirect(controller:'DreamerDashboard', action:'index')
 				}
-		
-				// User doesn't exist with username. Let's create one
 				else {
-		
-					// Make sure the passwords match
-					if (params.password != params.passwordConfirm) {
-						redirect(action: 'register')
-						flash.message = "Passwords do not match"
-					}
-		
-					// Passwords match. Let's attempt to save the user
-					else {
-						// Create user
-						user = new User(username: params.username,
-										firstName:params.firstName,
-										lastName:params.lastName,
-										email:params.username,
-										passwordHash:shiroSecurityService.encodePassword(params.password),
-										avatarLocation:null,
-										streetAddress1:params.streetAddress1,
-										streetAddress2:params.streetAddress2,
-										poBox:params.poBox,
-										dateOfBirth:params.dateOfBirth,
-										city:params.city,
-										state:params.state,
-										zipcode:params.zipCode,
-										isManager:false,
-										admin:false)
-						user.addToPermissions("*:*")
-		
-						 if (user.save(flush: true)) {
-						 // Add USER role to new user
-						 //user.addToRoles(Role.findByName('ROLE_USER'))
-						 // Login user
-							 render "SAVE"
-						 def authToken = new UsernamePasswordToken(user.username, params.password)
-						 SecurityUtils.subject.login(authToken)
-						 redirect(controller:'DreamerDashboard', action:'index')
-						 }
-						 else {
-							 redirect(action: 'register')
-						 }
-					}
+					redirect(action: 'register')
 				}
+			}
+		}
 	}
-	
+
 	/**
 	 * registers a new user
 	 * @param username 	the email address of the user
@@ -360,22 +397,22 @@ class UserController {
 	 */
 	def register() {
 		[userInstance: new User(username: params.username,
-								firstName:params.firstName,
-								lastName:params.lastName,
-								email:params.username,
-								passwordHash:params.passwordHash,
-								avatarLocation:null,
-								streetAddress1:params.streetAddress1,
-								streetAddress2:params.streetAddress2,
-								poBox:params.poBox,
-								dateOfBirth:params.dateOfBirth,
-								city:params.city,
-								state:params.state,
-								zipcode:params.zipCode,
-								isManager:false,
-								admin:false)
+			firstName:params.firstName,
+			lastName:params.lastName,
+			email:params.username,
+			passwordHash:params.passwordHash,
+			avatarLocation:null,
+			streetAddress1:params.streetAddress1,
+			streetAddress2:params.streetAddress2,
+			poBox:params.poBox,
+			dateOfBirth:params.dateOfBirth,
+			city:params.city,
+			state:params.state,
+			zipcode:params.zipCode,
+			isManager:false,
+			admin:false)
 		]
 	}
-	
-	
+
+
 }
