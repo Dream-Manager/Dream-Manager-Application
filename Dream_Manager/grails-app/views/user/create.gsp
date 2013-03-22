@@ -52,7 +52,7 @@
 		<shiro:user>
 			<g:form action="managerSave">
 				<fieldset class="form">
-					<g:render template="managerform" />
+					<g:render template="form" />
 				</fieldset>
 				<fieldset class="buttons">
 				<g:submitButton name="create" class="managerSave"
