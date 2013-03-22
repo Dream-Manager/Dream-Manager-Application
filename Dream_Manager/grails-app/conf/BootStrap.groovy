@@ -14,7 +14,7 @@ class BootStrap {
 		// Create the user role
 		def userRole = new Role(name: 'ROLE_USER').save(flush: true, failOnError: true)
 
-		def adminUser = new User(username: "adminuser@gmail.com", passwordHash: new Sha256Hash("password").toHex(), firstName:"James", lastName:"HARRIS", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219,isManager:false, passwordChangeRequiredOnNextLogon:false, isAdmin:true )
+		def adminUser = new User(username: "adminuser@gmail.com", passwordHash: new Sha256Hash("password").toHex(), firstName:"James", lastName:"HARRIS", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219,isManager:false, passwordChangeRequiredOnNextLogon:false, isAdmin:true, confirmedByManager:true, confirmedByDreamer:true)
 		adminUser.save(flush: true, failOnError: true)
 
 		// Add roles to the admin user

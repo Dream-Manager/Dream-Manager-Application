@@ -125,8 +125,14 @@
 				<li class="fieldcontain">
 					<span id="manager-label" class="property-label"><g:message code="user.manager.label" default="Manager" /></span>
 					
-						<span class="property-value" aria-labelledby="manager-label"><g:link controller="user" action="show" id="${userInstance?.manager?.id}">${userInstance?.manager?.encodeAsHTML()}</g:link></span>
-					
+						<span class="property-value" aria-labelledby="manager-label"><g:link controller="user" action="show" id="${userInstance?.manager?.id}">${userInstance?.manager?.encodeAsHTML()}</g:link>
+						<g:if test="${userInstance?.confirmedByManager}" test="${userInstance?.confirmedByDreamer}">
+						Confirmed
+						</g:if>
+						<g:else>
+						Not Confirmed
+						</g:else>
+						</span>
 				</li>
 				</g:if>
 			

@@ -119,7 +119,7 @@ class UserController {
 	 * @param state		current state user lives in
 	 * @param zipcode	users zipcode
 	 * @param isManager	if user is manager or not
-	 * @param isAdmin  if user is an administrator
+	 * @param isAdmin if user is an administrator
 	 */
 	def save() {
 		if (params.password != params.passwordConfirm) {
@@ -145,8 +145,7 @@ class UserController {
 			zipcode:params.zipCode,
 			isManager:params.isManager,
 			isAdmin:params.isAdmin)
-			userInstance.addr
-			def authToken = new UsernamePasswordToken(params.username, params.password)
+			userInstance.addToRoles(Role.findByName('ROLE_USER'))
 
 			if (!userInstance.save(flush: true)) {
 				render(view: "create", model: [userInstance: userInstance])
@@ -346,21 +345,7 @@ class UserController {
 			// Passwords match. Let's attempt to save the user
 			else {
 				// Create user
-				user = new User(username: params.username,
-				firstName:params.firstName,
-				lastName:params.lastName,
-				email:params.username,
-				passwordHash:shiroSecurityService.encodePassword(params.password),
-				avatarLocation:null,
-				streetAddress1:params.streetAddress1,
-				streetAddress2:params.streetAddress2,
-				poBox:params.poBox,
-				dateOfBirth:params.dateOfBirth,
-				city:params.city,
-				state:params.state,
-				zipcode:params.zipCode,
-				isManager:false,
-				admin:false)
+				user = new User(params)
 				// Add USER role to new user
 				user.addToRoles(Role.findByName('ROLE_USER'))
 				if (user.save(flush: true)) {
