@@ -14,9 +14,11 @@
 			</ul>
 			<div id="tabs-1">
 				<g:include controller="dream" action="showCreateAjax" />
-				Dream Progress
+				<h2>Dream Progress</h2>
 					<!-- Shorterm Dreams -->
-					<div>Short Term</div>
+					<div>
+					<h1>Short Term</h1>
+					</div>
 					<div>
 					<table id="shorterm" border=1 cellspacing=0 cellpadding=0>
 					<tr>
@@ -37,7 +39,9 @@
 					<br>
 
 					<!-- Longterm Dreams -->
-					<div>Long Term</div>
+					<div>
+					<h1>Long Term</h1>
+					</div>
 					<table id="longterm" border=1 cellspacing=0 cellpadding=0>
 					<tr>
 						<td>Dream 1</td>
@@ -52,6 +56,26 @@
 						<td>% Completed 3</td>
 					</tr>
 					</table>
+					
+					<!-- Upcoming Dreams -->
+					<div>
+					<h1>Upcoming Dreams</h1>
+					</div>
+					
+					<div class='ui-widget' style="margin-bottom:1em;">
+						<g:formRemote name="ajaxUpcomingDreams" on404="alert('not found!')" update="upcomingDreamsResults"
+		           					url="[controller: 'dream', action:'ajaxUpcomingDreams']">
+						</g:formRemote>								
+					</div>
+					
+					<div id="upcomingDreamsResults"></div>
+					<script type="text/javascript">
+						$(function(){
+							$("#ajaxUpcomingDreams").submit();
+						});
+					</script>
+					
+					
 			</div>
 			<div id="tabs-2">
 				<!-- Search Dreams -->
