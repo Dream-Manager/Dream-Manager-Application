@@ -111,7 +111,7 @@
 						$("#buttonCreateUserLink").button();
 					</script>
 					
-					<div class='ui-widget'" style="margin-bottom:1em;">
+					<div class='ui-widget' style="margin-bottom:1em;">
 					<g:formRemote name="ajaxSearchUsers" on404="alert('not found!')" update="searchUsersResults"
 	           					url="[controller: 'user', action:'ajaxSearchUsers']">
 						<label for="ajaxSearchUsersTerm">Search Users: </label>
