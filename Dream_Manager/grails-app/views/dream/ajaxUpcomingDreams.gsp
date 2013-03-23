@@ -1,9 +1,9 @@
 <table>
 	<thead>
 		<tr>
-			<th>Estimated Completion</th>
-			<th>Title</th>
-			<th>Category</th>	
+			<th width="25%">Estimated Completion</th>
+			<th width="50%">Dream</th>
+			<th width="25%">Category</th>	
 		</tr>
 	</thead>
 	<tbody>
