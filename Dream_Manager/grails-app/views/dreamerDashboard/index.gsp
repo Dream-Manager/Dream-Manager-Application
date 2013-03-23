@@ -80,7 +80,7 @@
 			<div id="tabs-2">
 				<!-- Search Dreams -->
 				
-				<div class='ui-widget'" style="margin-bottom:1em;">
+				<div class='ui-widget' style="margin-bottom:1em;">
 				<g:formRemote name="ajaxSearchDreams" on404="alert('not found!')" update="searchDreamsResults"
            					url="[controller: 'dream', action:'ajaxSearchDreams']">
 					<label for="ajaxSearchDreamsTerm">Search Dreams: </label>

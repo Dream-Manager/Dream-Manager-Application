@@ -101,6 +101,8 @@ class DreamController {
 		def dreamList = Dream.withCriteria {
 			eq('user',User.findByUsername(SecurityUtils.subject.principal))
 			isNotNull("estimatedCompletion")
+			Date currentDate = new Date()
+			ge("estimatedCompletion", currentDate)
 			maxResults(3)
 			order("estimatedCompletion", "asc")
 			order("name", "asc")
