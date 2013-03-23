@@ -12,8 +12,8 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/dreamerDashboard/index')}"><g:message code="default.home.label"/></a></li>
 				<shiro:hasRole name="ROLE_ADMIN">
-					<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-					<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+					<li><a class="list" href="${createLink(uri: '/#tabs-3')}"><g:message code="Dreamer List" args="[entityName]" /></a></li>
+					<li><g:link class="create" action="create"><g:message code="New Dreamer" args="[entityName]" /></g:link></li>
 				</shiro:hasRole>
 			</ul>
 		</div>

@@ -15,9 +15,9 @@
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
 						code="default.home.label" /></a></li>
-			<li><g:link class="list" action="list">
-					<g:message code="default.list.label" args="[entityName]" />
-				</g:link></li>
+			<li><a class="list" href="${createLink(uri: '/#tabs-3')}">
+					<g:message code="Dreamer List" args="[entityName]" />
+				</a></li>
 		</ul>
 	</div>
 	<div id="create-user" class="content scaffold-create" role="main">
@@ -55,7 +55,7 @@
 					<g:render template="form" />
 				</fieldset>
 				<fieldset class="buttons">
-				<g:submitButton name="create" class="managerSave"
+				<g:submitButton name="create" class="save"
 					value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>
 			</g:form>

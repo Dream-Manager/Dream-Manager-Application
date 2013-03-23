@@ -11,8 +11,8 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><a class="list" href="${createLink(uri:'/#tabs-3') }"><g:message code="Dreamer List" args="[entityName]" /></a></li>
+				<li><g:link class="create" action="create"><g:message code="New Dreamer" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-user" class="content scaffold-show" role="main">
@@ -45,15 +45,6 @@
 					<span id="username-label" class="property-label"><g:message code="user.username.label" default="Email" /></span>
 					
 						<span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${userInstance}" field="username"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.passwordHash}">
-				<li class="fieldcontain">
-					<span id="passwordHash-label" class="property-label"><g:message code="user.passwordHash.label" default="Password Hash" /></span>
-					
-						<span class="property-value" aria-labelledby="passwordHash-label"><g:fieldValue bean="${userInstance}" field="passwordHash"/></span>
 					
 				</li>
 				</g:if>
