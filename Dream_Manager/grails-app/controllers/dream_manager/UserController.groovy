@@ -398,6 +398,20 @@ class UserController {
 			admin:false)
 		]
 	}
-
-
+	
+	def claimDreamer (Long id) {
+		def user = User.get(id)
+		user.confirmedByManager = true
+		user.save(flush: true)
+		sendMail {
+			to user.username
+			from grailsApplication.config.grails.mail.username
+			subject "A Dream Manager has decided to help you out!"
+			body "Hello ${user.firstName} ${user.lastName},\n\nA dream manager has decided to claim you as their's to manage.\n\nClick here to accept:  \n\n\n\nGood Luck With Your Dreams!\n\n\n\n Click here to reject: \n".toString()
+		 }		
+		redirect(uri: "/#tabs-3")
+		
+		
+	}
+	
 }
