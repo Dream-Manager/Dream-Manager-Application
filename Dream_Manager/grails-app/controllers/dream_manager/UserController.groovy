@@ -257,9 +257,9 @@ class UserController {
 		if (version != null) {
 			if (userInstance.version > version) {
 				userInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-						[
-							message(code: 'user.label', default: 'User')] as Object[],
-						"Another user has updated this User while you were editing")
+								[
+									message(code: 'user.label', default: 'User')] as Object[],
+								"Another user has updated this User while you were editing")
 				render(view: "edit", model: [userInstance: userInstance])
 				return
 			}
@@ -398,20 +398,54 @@ class UserController {
 			admin:false)
 		]
 	}
-	
+
 	def claimDreamer (Long id) {
+		def manager = User.findByUsername(SecurityUtils.subject.principal)
 		def user = User.get(id)
 		user.confirmedByManager = true
 		user.save(flush: true)
+		def resetRequest = new PasswordResetRequest(user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
 		sendMail {
 			to user.username
 			from grailsApplication.config.grails.mail.username
 			subject "A Dream Manager has decided to help you out!"
-			body "Hello ${user.firstName} ${user.lastName},\n\nA dream manager has decided to claim you as their's to manage.\n\nClick here to accept:  \n\n\n\nGood Luck With Your Dreams!\n\n\n\n Click here to reject: \n".toString()
-		 }		
+			body "Hello ${user.firstName} ${user.lastName},\n\n${manager.firstName} ${manager.lastName} has decided to claim you as their's to manage.\n\nClick here to accept: ${createLink(absolute:true,controller:'user',action:'acceptClaim',id:resetRequest.token)} \n\n\n\nGood Luck With Your Dreams!\n\n\n\n Click here to reject: \n".toString()
+
+		}
 		redirect(uri: "/#tabs-3")
-		
-		
+	}
+	def unclaimDreamer = {
+		def manager = User.findByUsername(SecurityUtils.subject.principal)
+		def user = User.get(params.id)
+		user.confirmedByDreamer = false
+		user.confirmedByManager = false
+		user.save(flush:true)
+		redirect(uri: "/#tabs-3")
+	}
+	def acceptClaim = {
+		if (params.id){
+			def claim = PasswordResetRequest.findByToken(params.id)
+			if (claim) {
+				def dreamer = claim.user
+				dreamer.manager = params.manager
+				dreamer.confirmedByDreamer = true
+				dreamer.save(flush: true)
+				flash.message = "Request Accepted."
+				redirect(uri: "/")
+			} else {
+				flash.message = "Not a valid request."
+				redirect(uri:'/')
+			}
+		}
 	}
 	
+	def removeManager = {
+		
+	}
+
+
+
+
 }
+
+
