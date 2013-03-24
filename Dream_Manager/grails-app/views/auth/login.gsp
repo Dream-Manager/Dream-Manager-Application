@@ -6,11 +6,6 @@
 <title>Login</title>
 </head>
 <body>
-	<g:if test="${flash.message}">
-		<div class="message">
-			${flash.message}
-		</div>
-	</g:if>
 	<div class="grid_5">
 		<g:form action="signIn">
 			<input type="hidden" name="targetUri" value="${targetUri}" />

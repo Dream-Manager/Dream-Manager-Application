@@ -12,9 +12,6 @@
         </div>
         <div class="body">
 			<h1>${title}</h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
 			<g:form action="doUpdatePassword" >
 				<fieldset class="form">
 					<div class="fieldcontain">

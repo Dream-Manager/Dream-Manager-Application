@@ -15,20 +15,15 @@
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
 						code="default.home.label" /></a></li>
-			<li><a class="list" href="${createLink(uri: '/#tabs-3')}">
-					<g:message code="Dreamer List" args="[entityName]" />
-				</a></li>
+			<li><a class="list" href="${createLink(uri: '/#tabs-3')}"> <g:message
+						code="Dreamer List" args="[entityName]" />
+			</a></li>
 		</ul>
 	</div>
 	<div id="create-user" class="content scaffold-create" role="main">
 		<h1>
 			<g:message code="default.create.label" args="[entityName]" />
 		</h1>
-		<g:if test="${flash.message}">
-			<div class="message" role="status">
-				${flash.message}
-			</div>
-		</g:if>
 		<g:hasErrors bean="${userInstance}">
 			<ul class="errors" role="alert">
 				<g:eachError bean="${userInstance}" var="error">
@@ -44,8 +39,8 @@
 					<g:render template="form" />
 				</fieldset>
 				<fieldset class="buttons">
-				<g:submitButton name="create" class="save"
-					value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton name="create" class="save"
+						value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>
 			</g:form>
 		</shiro:notUser>
@@ -55,8 +50,8 @@
 					<g:render template="form" />
 				</fieldset>
 				<fieldset class="buttons">
-				<g:submitButton name="create" class="save"
-					value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton name="create" class="save"
+						value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>
 			</g:form>
 		</shiro:user>
