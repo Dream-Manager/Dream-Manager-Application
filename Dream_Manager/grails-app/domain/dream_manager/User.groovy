@@ -18,12 +18,11 @@ class User {
 	Date dateCreated
 	Date lastUpdated
 	User manager
-	boolean confirmedByManager = false
-	boolean confirmedByDreamer = false
+	boolean managerConfirmed = false
 	boolean isManager = false
 	boolean isAdmin = false
 	Boolean passwordChangeRequiredOnNextLogon = false
-	
+
 	/**
 	 * Returns a String containing the user's full name.
 	 * @return      the firstName + ' ' + lastName
@@ -32,10 +31,10 @@ class User {
 	String toString() {
 		firstName + " " + lastName
 	}
-	
+
 	// Each User has many Dreams, Skills
 	static hasMany = [dreams:Dream, skills:Skill, roles: Role, permissions: String ]
-	
+
 	static constraints = {
 		username(email: true, blank: false, unique: true, nullable: false, size:1..50)
 		firstName(blank: false, nullable: false, size:1..20)
@@ -46,14 +45,65 @@ class User {
 		poBox(nullable: true)
 		dateOfBirth(nullable: true)
 		city(nullable: true)
-		state(inList: ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"], nullable: true)
+		state(inList: [
+			"AL",
+			"AK",
+			"AZ",
+			"AR",
+			"CA",
+			"CO",
+			"CT",
+			"DE",
+			"FL",
+			"GA",
+			"HI",
+			"ID",
+			"IL",
+			"IN",
+			"IA",
+			"KS",
+			"KY",
+			"LA",
+			"ME",
+			"MD",
+			"MA",
+			"MI",
+			"MN",
+			"MS",
+			"MO",
+			"MT",
+			"NE",
+			"NV",
+			"NH",
+			"NJ",
+			"NM",
+			"NY",
+			"NC",
+			"ND",
+			"OH",
+			"OK",
+			"OR",
+			"PA",
+			"RI",
+			"SC",
+			"SD",
+			"TN",
+			"TX",
+			"UT",
+			"VT",
+			"VA",
+			"WA",
+			"WV",
+			"WI",
+			"WY"
+		], nullable: true)
 		zipcode (nullable:true, size:5..5, matches:"[0-9]+")
 		isManager(nullable: true)
 		passwordHash(display:false)
 		passwordChangeRequiredOnNextLogon(nullable: true)
-		
+
 	}
-	
+
 	static mapping = {
 		cache true
 		roles cache: true

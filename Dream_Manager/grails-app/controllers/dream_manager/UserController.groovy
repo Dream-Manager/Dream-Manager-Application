@@ -56,14 +56,13 @@ class UserController {
 		}
 
 		def otherUsers = User.withCriteria {
-			
+			isNull('manager')
 			or {
 				ilike('firstName', '%' + params.ajaxSearchUsersTerm + '%')
 				ilike('lastName', '%' + params.ajaxSearchUsersTerm + '%')
 			}
 			order("lastName", "asc")
 		}
-
 		render(view:'ajaxSearchUsers.gsp', model: ['managedUsers': managedUsers, 'otherUsers': otherUsers], contentType: 'text/plain')
 	}
 
@@ -139,10 +138,7 @@ class UserController {
 				return
 			}
 
-			flash.message = message(code: 'default.created.message', args: [
-				message(code: 'user.label', default: 'User'),
-				userInstance.id
-			])
+			flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
 			redirect(action: "show", id: userInstance.id)
 		}
 	}
@@ -150,10 +146,7 @@ class UserController {
 	def show(Long id) {
 		def userInstance = User.get(id)
 		if (!userInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [
-				message(code: 'user.label', default: 'User'),
-				id
-			])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
 			redirect(action: "list")
 			return
 		}
@@ -208,22 +201,16 @@ class UserController {
 			to UserInstance.username
 			from grailsApplication.config.grails.mail.username
 			subject "Your account was successfully created!"
-			body "Hello ${UserInstance.firstName} ${UserInstance.lastName},\n\nYour account was successfully created!\n\nHere is your password : ${password}\n\n${createLink(absolute:true,uri:'/')}\n\nGood Luck With Your Dreams!".toString()
+			body "Hello ${UserInstance.toString()},\n\nYour account was successfully created!\n\nHere is your password : ${password}\n\n${createLink(absolute:true,uri:'/')}\n\nGood Luck With Your Dreams!".toString()
 		}
-		flash.message = message(code: 'default.created.message', args: [
-			message(code: 'User.label', default: 'User'),
-			UserInstance.id
-		])
+		flash.message = message(code: 'default.created.message', args: [message(code: 'User.label', default: 'User'), UserInstance.id])
 		redirect(action: "show", id: UserInstance.id)
 	}
 
 	def edit(Long id) {
 		def userInstance = User.get(id)
 		if (!userInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [
-				message(code: 'user.label', default: 'User'),
-				id
-			])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
 			redirect(action: "list")
 			return
 		}
@@ -234,10 +221,7 @@ class UserController {
 	def editCurrentProfile () {
 		def userInstance = User.findByUsername(SecurityUtils.subject.principal)
 		if (!userInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [
-				message(code: 'user.label', default: 'User'),
-				id
-			])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
 			redirect(action: "list")
 			return
 		}
@@ -249,10 +233,7 @@ class UserController {
 	def update(Long id, Long version) {
 		def userInstance = User.get(id)
 		if (!userInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [
-				message(code: 'user.label', default: 'User'),
-				id
-			])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
 			redirect(action: "list")
 			return
 		}
@@ -260,8 +241,7 @@ class UserController {
 		if (version != null) {
 			if (userInstance.version > version) {
 				userInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-								[
-									message(code: 'user.label', default: 'User')] as Object[],
+								[message(code: 'user.label', default: 'User')] as Object[],
 								"Another user has updated this User while you were editing")
 				render(view: "edit", model: [userInstance: userInstance])
 				return
@@ -275,37 +255,25 @@ class UserController {
 			return
 		}
 
-		flash.message = message(code: 'default.updated.message', args: [
-			message(code: 'user.label', default: 'User'),
-			userInstance.id
-		])
+		flash.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
 		redirect(action: "show", id: userInstance.id)
 	}
 
 	def delete(Long id) {
 		def userInstance = User.get(id)
 		if (!userInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [
-				message(code: 'user.label', default: 'User'),
-				id
-			])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
 			redirect(action: "list")
 			return
 		}
 
 		try {
 			userInstance.delete(flush: true)
-			flash.message = message(code: 'default.deleted.message', args: [
-				message(code: 'user.label', default: 'User'),
-				id
-			])
+			flash.message = message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
 			redirect(action: "list")
 		}
 		catch (DataIntegrityViolationException e) {
-			flash.message = message(code: 'default.not.deleted.message', args: [
-				message(code: 'user.label', default: 'User'),
-				id
-			])
+			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
 			redirect(action: "show", id: id)
 		}
 	}
@@ -353,13 +321,14 @@ class UserController {
 				user.addToRoles(Role.findByName('ROLE_USER'))
 				if (user.save(flush: true)) {
 					// Login user
-					render "SAVE"
 					def authToken = new UsernamePasswordToken(user.username, params.password)
 					SecurityUtils.subject.login(authToken)
 					redirect(controller:'DreamerDashboard', action:'index')
+					flash.message = "Account created"
 				}
 				else {
 					redirect(action: 'register')
+					flash.message = "Account not created"
 				}
 			}
 		}
@@ -401,57 +370,6 @@ class UserController {
 			admin:false)
 		]
 	}
-
-	def claimDreamer (Long id) {
-		def manager = User.findByUsername(SecurityUtils.subject.principal)
-		def user = User.get(id)
-		user.confirmedByManager = true
-		user.save(flush: true)
-		def resetRequest = new PasswordResetRequest(user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
-		sendMail {
-			to user.username
-			from grailsApplication.config.grails.mail.username
-			subject "A Dream Manager has decided to help you out!"
-			body "Hello ${user.firstName} ${user.lastName},\n\n${manager.firstName} ${manager.lastName} has decided to help you achieve your dreams.\n\nTo accept ${manager.firstName} ${manager.lastName} as your dream manager click here: ${createLink(absolute:true,controller:'user',action:'acceptClaim',id:resetRequest.token,manager:manager)} \n\n\n\nGood Luck With Your Dreams!\n\n\n\n Click here to reject: \n".toString()
-
-		}
-		redirect(uri: "/#tabs-3")
-	}
-	def unclaimDreamer = {
-		def manager = User.findByUsername(SecurityUtils.subject.principal)
-		def user = User.get(params.id)
-		user.confirmedByDreamer = false
-		user.confirmedByManager = false
-		user.manager = null
-		user.save(flush:true)
-		redirect(uri: "/#tabs-3")
-	}
-	def acceptClaim = {
-		if (params.id){
-			def claim = PasswordResetRequest.findByToken(params.id)
-			if (claim) {
-				def dreamer = claim.user
-				dreamer.manager = params.manager
-				dreamer.confirmedByDreamer = true
-				dreamer.save(flush: true)
-				flash.message = "Request Accepted."
-				//redirect(uri: "/")
-				render "${params.manager}"
-				claim.delete()
-			} else {
-				flash.message = "Not a valid request."
-				redirect(uri:'/')
-			}
-		}
-	}
-
-	def removeManager = {
-
-	}
-
-
-
-
 }
 
 

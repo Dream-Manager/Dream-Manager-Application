@@ -12,5 +12,6 @@ class PasswordResetRequest {
 	}
 
     static constraints = {
+		user(unique:true)
     }
 }

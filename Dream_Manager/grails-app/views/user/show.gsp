@@ -115,19 +115,14 @@
 							bean="${userInstance}" field="zipcode" /></span></li>
 			</g:if>
 
-			<g:if test="${userInstance?.manager}">
+			<g:if test="${userInstance?.manager}" test="${userInstance?.managerConfirmed}">
 				<li class="fieldcontain"><span id="manager-label"
 					class="property-label"><g:message code="user.manager.label"
 							default="Manager" /></span> <span class="property-value"
 					aria-labelledby="manager-label"><g:link controller="user"
 							action="show" id="${userInstance?.manager?.id}">
 							${userInstance?.manager?.encodeAsHTML()}
-						</g:link> <g:if test="${userInstance?.confirmedByManager}"
-							test="${userInstance?.confirmedByDreamer}">
-						Confirmed
-						</g:if> <g:else>
-						Not Confirmed
-						</g:else> </span></li>
+						</g:link></span></li>
 			</g:if>
 
 			<g:if test="${userInstance?.dreams}">
