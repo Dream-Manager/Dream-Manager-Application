@@ -26,7 +26,7 @@ class UserController {
 	 * returns the id of the current logged in user
 	 * @return the users id
 	 */
-	def getCurrentUserId ={
+	def getCurrentUser ={
 		def user = User.findByUsername(SecurityUtils.subject.principal).id
 		render user
 	}
@@ -56,6 +56,7 @@ class UserController {
 		}
 
 		def otherUsers = User.withCriteria {
+			
 			or {
 				ilike('firstName', '%' + params.ajaxSearchUsersTerm + '%')
 				ilike('lastName', '%' + params.ajaxSearchUsersTerm + '%')
@@ -130,21 +131,7 @@ class UserController {
 
 		// Passwords match. Let's attempt to save the user
 		else {
-			def userInstance = new User(username: params.username,
-			firstName:params.firstName,
-			lastName:params.lastName,
-			email:params.username,
-			passwordHash:shiroSecurityService.encodePassword(params.password),
-			avatarLocation:null,
-			streetAddress1:params.streetAddress1,
-			streetAddress2:params.streetAddress2,
-			poBox:params.poBox,
-			dateOfBirth:params.dateOfBirth,
-			city:params.city,
-			state:params.state,
-			zipcode:params.zipCode,
-			isManager:params.isManager,
-			isAdmin:params.isAdmin)
+			def userInstance = new User(params)
 			userInstance.addToRoles(Role.findByName('ROLE_USER'))
 
 			if (!userInstance.save(flush: true)) {
@@ -173,7 +160,23 @@ class UserController {
 
 		[userInstance: userInstance]
 	}
-
+	/**
+	 * When a manager creates a user this is called to save it to database. 
+	 * @param username 	the email address of the user
+	 * @param firstName	the first name of the user
+	 * @param lastName	the last name of the user
+	 * @param email		the email of the user
+	 * @param avatarLocation	the location of the profile image
+	 * @param streetAddress1	the address of the user
+	 * @param streetAddress2	the address of the user
+	 * @param poBox		users PO box
+	 * @param dateOfBirth	users date of birth
+	 * @param city		current city user lives in
+	 * @param state		current state user lives in
+	 * @param zipcode	users zipcode
+	 * @param isManager	if user is manager or not
+	 * @param isAdmin if user is an administrator
+	 */
 	def managerSave = {
 		if (!grailsApplication.config.grails.mail.username) {
 			throw new RuntimeException(message(code: 'mail.plugin.not.configured', 'default' : 'Mail plugin not configured'))
@@ -409,7 +412,7 @@ class UserController {
 			to user.username
 			from grailsApplication.config.grails.mail.username
 			subject "A Dream Manager has decided to help you out!"
-			body "Hello ${user.firstName} ${user.lastName},\n\n${manager.firstName} ${manager.lastName} has decided to claim you as their's to manage.\n\nClick here to accept: ${createLink(absolute:true,controller:'user',action:'acceptClaim',id:resetRequest.token)} \n\n\n\nGood Luck With Your Dreams!\n\n\n\n Click here to reject: \n".toString()
+			body "Hello ${user.firstName} ${user.lastName},\n\n${manager.firstName} ${manager.lastName} has decided to help you achieve your dreams.\n\nTo accept ${manager.firstName} ${manager.lastName} as your dream manager click here: ${createLink(absolute:true,controller:'user',action:'acceptClaim',id:resetRequest.token,manager:manager)} \n\n\n\nGood Luck With Your Dreams!\n\n\n\n Click here to reject: \n".toString()
 
 		}
 		redirect(uri: "/#tabs-3")
@@ -419,6 +422,7 @@ class UserController {
 		def user = User.get(params.id)
 		user.confirmedByDreamer = false
 		user.confirmedByManager = false
+		user.manager = null
 		user.save(flush:true)
 		redirect(uri: "/#tabs-3")
 	}
@@ -431,16 +435,18 @@ class UserController {
 				dreamer.confirmedByDreamer = true
 				dreamer.save(flush: true)
 				flash.message = "Request Accepted."
-				redirect(uri: "/")
+				//redirect(uri: "/")
+				render "${params.manager}"
+				claim.delete()
 			} else {
 				flash.message = "Not a valid request."
 				redirect(uri:'/')
 			}
 		}
 	}
-	
+
 	def removeManager = {
-		
+
 	}
 
 
