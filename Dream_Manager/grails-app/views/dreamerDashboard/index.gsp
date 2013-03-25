@@ -24,9 +24,6 @@
 					<tr>
 						<td>Dream 1</td>
 						<td>% Completed 1</td>
-						<table>
-						<tr>Task Name           Size        Completed?</tr>
-						</table>
 					</tr>
 					<tr>
 						<td>Dream 2</td>
