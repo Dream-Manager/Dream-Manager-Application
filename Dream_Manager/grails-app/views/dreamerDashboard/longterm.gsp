@@ -1,7 +1,6 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-<meta name="layout" content="main"/>
+
 <title>Long term</title>
 </head>
 <body>
@@ -11,6 +10,10 @@
 			<tr>
 				<td>Dream 1</td>
 				<td>% Completed 1</td>
+						<table>
+						<tr>Task Name           Size        Completed?</tr>
+						</table>
+				
 			</tr>
 			<tr>
 				<td>Dream 2</td>

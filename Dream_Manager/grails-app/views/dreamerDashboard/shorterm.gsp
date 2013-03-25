@@ -1,4 +1,3 @@
-<%@ page import="dream_manager.User" %>
 <html>
 <head>
 <title>Short Term</title>
