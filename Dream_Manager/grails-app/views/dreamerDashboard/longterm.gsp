@@ -24,5 +24,6 @@
   	<p>Size</p>
   	<p>Completed</p>
   </div>
+  </div>
 </body>
 </html>

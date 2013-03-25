@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>Dream Manager - Dashboard</title>
+		<script>  $(function() {    $( "#shorterm2" ).accordion(); $( "#longterm2" ).accordion();  });  </script>
 	</head>
 	<body>							
 		<div class="grid_12 alpha">	
@@ -20,19 +21,27 @@
 					<h1>Short Term</h1>
 					</div>
 					<div>
-					<table id="shorterm" border=1 cellspacing=0 cellpadding=0>
-					<tr>
-						<td>Dream 1</td>
-						<td>% Completed 1</td>
-					</tr>
-					<tr>
-						<td>Dream 2</td>
-						<td>% Completed 2</td>
-					</tr>
-					<tr>
-						<td>Dream 3</td>
-						<td>% Completed 3</td>
-					</tr>
+					<table id="shortterm" border=1 cellspacing=0 cellpadding=0>
+						<div id="shorterm2"> 
+							<h3>Dream 1</h3>
+							<div>
+								<p>Task Name</p>
+							  	<p>Size</p>
+							  	<p>Completed</p>
+							  </div>
+ 							 <h3>Dream 2</h3>
+ 							<div>
+							  	<p>Task Name</p>
+							  	<p>Size</p>
+							  	<p>Completed</p>
+							</div>
+  							<h3>Dream 3</h3>
+  							<div>
+ 							 	<p>Task Name</p>
+							  	<p>Size</p>
+ 							 	<p>Completed</p>
+ 							</div>
+ 						</div>
 					</table>
 
 					</div>
@@ -42,20 +51,31 @@
 					<div>
 					<h1>Long Term</h1>
 					</div>
+					<div>
 					<table id="longterm" border=1 cellspacing=0 cellpadding=0>
-					<tr>
-						<td>Dream 1</td>
-						<td>% Completed 1</td>
-					</tr>
-					<tr>
-						<td>Dream 2</td>
-						<td>% Completed 2</td>
-					</tr>
-					<tr>
-						<td>Dream 3</td>
-						<td>% Completed 3</td>
-					</tr>
+						<div id="longterm2"> 
+							<h3>Dream 1</h3>
+							<div>
+								<p>Task Name</p>
+							  	<p>Size</p>
+							  	<p>Completed</p>
+							  </div>
+ 							 <h3>Dream 2</h3>
+ 							<div>
+							  	<p>Task Name</p>
+							  	<p>Size</p>
+							  	<p>Completed</p>
+							</div>
+  							<h3>Dream 3</h3>
+  							<div>
+ 							 	<p>Task Name</p>
+							  	<p>Size</p>
+ 							 	<p>Completed</p>
+ 							</div>
+ 						</div>
 					</table>
+
+					</div>
 					
 					<!-- Upcoming Dreams -->
 					<div>
