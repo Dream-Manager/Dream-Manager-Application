@@ -29,7 +29,7 @@ class ManagerToDreamerController {
 			body "Hello ${user.toString()},\n\n${manager.toString()} has decided to help you achieve your dreams.\n\nTo accept ${manager.firstName} ${manager.lastName} as your dream manager click here: ${createLink(absolute:true, controller:'managerToDreamer',action:'acceptManagerDreamerRelationshipRequest',id:managerRequest.token)}\n\n\n\n To reject this request click here: ${createLink(absolute:true, controller:'managerToDreamer',action:'rejectManagerDreamerRelationshipRequest',id:managerRequest.token)} \n\n\n\nGood Luck With Your Dreams!\n\n\n\n Click here to reject: \n".toString()
 		}
 		redirect(uri: "/#tabs-3")
-		flash.message = "Request to manage${user.firstName} ${user.lastName} has been sent."
+		flash.message = "Request to manage ${user.firstName} ${user.lastName} has been sent."
 	}
 	/*
 	 * This allows Dreamers to request to be a managed by Dream Manager
