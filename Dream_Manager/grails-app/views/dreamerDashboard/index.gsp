@@ -63,18 +63,9 @@
 					</div>
 					
 					<div class='ui-widget' style="margin-bottom:1em;">
-						<g:formRemote name="ajaxUpcomingDreams" on404="alert('not found!')" update="upcomingDreamsResults"
-		           					url="[controller: 'dream', action:'ajaxUpcomingDreams']">
-						</g:formRemote>								
+						<g:include controller="dream" action="ajaxUpcomingDreams"/>							
 					</div>
-					
-					<div id="upcomingDreamsResults"></div>
-					<script type="text/javascript">
-						$(function(){
-							$("#ajaxUpcomingDreams").submit();
-						});
-					</script>
-					
+
 					
 			</div>
 			<div id="tabs-2">
