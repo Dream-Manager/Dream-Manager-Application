@@ -64,6 +64,7 @@ grails.project.dependency.resolution = {
 		compile ":mail:1.0.1"
 		compile ":codenarc:0.18.1"
 		compile ":code-coverage:1.2.5"
+		compile ":modalbox:0.4"
     }
 }
 

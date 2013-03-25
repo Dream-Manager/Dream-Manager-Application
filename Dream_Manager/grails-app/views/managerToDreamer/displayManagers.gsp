@@ -15,7 +15,7 @@
 	</fieldset>
 
 	<fieldset class="buttons">
-		<g:submitButton name="register" class="singup"
-				value="${message(code: 'default.button.create.label', default: 'Signup')}" />
+		<g:submitButton name="Request Manager" class="request"
+			value="Request" />
 	</fieldset>
 </g:form>

@@ -18,10 +18,17 @@ class DreamManagerTagLib {
 		}
 	}
 
-	def requestManagerDreamerRelation = {attrs, body ->
+	def requestManagerDreamerRelationFromManager = {attrs, body ->
 
 		def claim = ManagerRequest?.findByManager(User?.findByUsername(SecurityUtils.subject.principal))
-		if((claim?.user?.id==attrs["id"])){
+		if((claim?.user?.id==attrs["id"])&&(claim?.requestInitiator!=User?.findByUsername(SecurityUtils.subject.principal))){
+			out << body()
+		}
+	}
+	def requestManagerDreamerRelatiomFromDreamer = {attrs, body ->
+
+		def claim = ManagerRequest?.findByManager(User?.findByUsername(SecurityUtils.subject.principal))
+		if((claim?.user?.id==attrs["id"])&&(claim?.requestInitiator==User?.findByUsername(SecurityUtils.subject.principal))){
 			out << body()
 		}
 	}

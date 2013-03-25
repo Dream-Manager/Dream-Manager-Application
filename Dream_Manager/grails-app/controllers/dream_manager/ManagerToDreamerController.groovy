@@ -21,7 +21,7 @@ class ManagerToDreamerController {
 		if(previousClaim!=null) {
 			previousClaim.delete(fulsh:true)
 		}
-		def managerRequest = new ManagerRequest(manager:manager,user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
+		def managerRequest = new ManagerRequest(requestInitiator:manager, manager:manager,user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
 		sendMail {
 			to user.username
 			from grailsApplication.config.grails.mail.username
@@ -42,7 +42,7 @@ class ManagerToDreamerController {
 			previousClaim.delete(fulsh:true)
 		}
 		if(manager){
-			def managerRequest = new ManagerRequest(manager:manager,user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
+			def managerRequest = new ManagerRequest(requestInitiator:user, manager:manager,user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
 			flash.message = "Request made"
 			redirect(uri:'/')
 		}
@@ -61,7 +61,7 @@ class ManagerToDreamerController {
 			if (relationshipRequest==null){
 				relationshipRequest = ManagerRequest?.findByUser(User.get(params.id))
 			}
-			if (relationshipRequest) {
+			if (relationshipRequest && (User?.findByUsername(SecurityUtils.subject.principal)!=relationshipRequest.requestInitiator)) {
 				def dreamer = relationshipRequest.user
 				dreamer.manager = relationshipRequest.manager
 				dreamer.managerConfirmed = true

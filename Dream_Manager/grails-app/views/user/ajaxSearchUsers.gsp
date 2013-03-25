@@ -7,7 +7,7 @@
 						height="20" />
 				</g:link></td>
 			<td width="60%"><g:link action="show" id="${user.id}">
-					${user.toString()}
+					${user.lastName}, ${user.firstName}
 				</g:link></td>
 			<td width="15%">Dreams</td>
 			<td width="15%"><g:if test="${user?.managerConfirmed}">
@@ -26,18 +26,25 @@
 						height="20" />
 				</g:link></td>
 			<td width="75%"><g:link action="show" id="${user.id}">
-					${user.toString()}
+					${user.lastName}, ${user.firstName}
 				</g:link></td>
 			<g:if test="${!user?.managerConfirmed}">
-				<dreamManager:requestManagerDreamerRelation id="${user?.id}">
+				<dreamManager:requestManagerDreamerRelatiomFromDreamer
+					id="${user?.id}">
 					<td width="15%"><g:link controller="managerToDreamer"
 							action="acceptManagerDreamerRelationshipRequest" id="${user?.id}">Accept Request</g:link></td>
-				</dreamManager:requestManagerDreamerRelation>
+				</dreamManager:requestManagerDreamerRelatiomFromDreamer>
+				<dreamManager:requestManagerDreamerRelationFromManager
+					id="${user?.id}">
+					<td width="15%">Pending</td>
+				</dreamManager:requestManagerDreamerRelationFromManager>
 				<dreamManager:noRequestManagerDreamerRelation id="${user?.id}">
 					<td width="15%"><g:link controller="managerToDreamer"
-							action="claimDreamer" id="${user.id}">Claim</g:link></td>
+							action="claimDreamer" id="${user.id}">Claim</g:link>
 				</dreamManager:noRequestManagerDreamerRelation>
+
 			</g:if>
 		</tr>
 	</g:each>
 </table>
+
