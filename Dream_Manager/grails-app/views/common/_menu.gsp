@@ -7,7 +7,7 @@
 				onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Remove Manager</g:link></li>
 	</dreamManager:hasManager>
 	<dreamManager:hasNoManager>
-		<dreamManager:hasRequestManagerDreamerRelation>
+		<dreamManager:currentUserHasRequest>
 			<dreamManager:currentUserInitiatedRequest>
 				<li><g:link controller="managerToDreamer"
 						action="rejectManagerDreamerRelationshipRequest"
@@ -17,11 +17,11 @@
 				<li><g:link controller="managerToDreamer"
 						action="acceptManagerDreamerRelationshipRequest">Accept Request</g:link></li>
 			</dreamManager:currentUserNotInitiatedRequest>
-		</dreamManager:hasRequestManagerDreamerRelation>
-		<dreamManager:hasNoRequestManagerDreamerRelation>
+		</dreamManager:currentUserHasRequest>
+		<dreamManager:currentUserHasNoRequest>
 			<li><g:link controller="managerToDreamer"
 					action="displayManagers">Request a manager</g:link></li>
-		</dreamManager:hasNoRequestManagerDreamerRelation>
+		</dreamManager:currentUserHasNoRequest>
 	</dreamManager:hasNoManager>
 	<li><g:link controller="Auth" action="signOut">Log Out</g:link></li>
 </ul>

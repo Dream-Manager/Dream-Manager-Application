@@ -30,15 +30,15 @@
 				</g:link></td>
 			<g:if test="${!user?.managerConfirmed}">
 				<dreamManager:requestManagerDreamerRelatiomFromDreamer
-					id="${user?.id}">
+					id="${user.id}">
 					<td width="15%"><g:link controller="managerToDreamer"
 							action="acceptManagerDreamerRelationshipRequest" id="${user?.id}">Accept Request</g:link></td>
 				</dreamManager:requestManagerDreamerRelatiomFromDreamer>
 				<dreamManager:requestManagerDreamerRelationFromManager
-					id="${user?.id}">
+					id="${user.id}">
 					<td width="15%">Pending</td>
 				</dreamManager:requestManagerDreamerRelationFromManager>
-				<dreamManager:hasNoRequestManagerDreamerRelation id="${user?.id}">
+				<dreamManager:hasNoRequestManagerDreamerRelation id="${user.id}">
 					<td width="15%"><g:link controller="managerToDreamer"
 							action="claimDreamer" id="${user.id}">Claim</g:link>
 				</dreamManager:hasNoRequestManagerDreamerRelation>

@@ -19,7 +19,7 @@ class ManagerToDreamerController {
 		def user = User.get(params.id)
 		def previousClaim = ManagerRequest?.findByUser(user)
 		if(previousClaim!=null) {
-			previousClaim.delete(fulsh:true)
+			previousClaim.delete(failOnError:true, flush: true)
 		}
 		if(manager!=user){
 			def managerRequest = new ManagerRequest(requestInitiator:manager, manager:manager,user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
@@ -70,9 +70,10 @@ class ManagerToDreamerController {
 	def acceptManagerDreamerRelationshipRequest = {
 		def relationshipRequest = null
 		if (params?.id){
-			relationshipRequest = ManagerRequest?.findByToken(params.id)}
-		if (relationshipRequest==null){
-			relationshipRequest = ManagerRequest?.findByUser(User.get(params.id))
+			relationshipRequest = ManagerRequest?.findByToken(params.id)
+			if (relationshipRequest==null){
+				relationshipRequest = ManagerRequest?.findByUser(User.get(params?.id))
+			}
 		}
 		if (relationshipRequest==null){
 			relationshipRequest = ManagerRequest?.findByUser(User?.findByUsername(SecurityUtils.subject.principal))

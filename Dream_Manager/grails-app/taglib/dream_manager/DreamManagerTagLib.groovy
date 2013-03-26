@@ -21,26 +21,25 @@ class DreamManagerTagLib {
 	def requestManagerDreamerRelationFromManager = {attrs, body ->
 
 		def claim = ManagerRequest?.findByUser(User?.get(attrs["id"]))
-		if((claim?.requestInitiator==User?.findByUsername(SecurityUtils.subject.principal))){
+		if(claim?.requestInitiator==User?.findByUsername(SecurityUtils.subject.principal)){
 			out << body()
 		}
 	}
 	def requestManagerDreamerRelatiomFromDreamer = {attrs, body ->
-
 		def claim = ManagerRequest?.findByUser(User?.get(attrs["id"]))
-		if((claim?.requestInitiator!=User?.findByUsername(SecurityUtils.subject.principal))){
+		if((claim==null)&&(claim?.requestInitiator==claim?.user)&&(claim?.manager==User?.findByUsername(SecurityUtils.subject.principal))){
 			out << body()
 		}
 	}
 
 	def hasNoRequestManagerDreamerRelation = {attrs, body ->
-		if(!ManagerRequest?.findByUser(User?.findByUsername(SecurityUtils.subject.principal))){
+		if(!ManagerRequest?.findByUser(User?.get(attrs["id"]))){
 			out << body()
 		}
 	}
 
 	def hasRequestManagerDreamerRelation = {attrs, body ->
-		if(ManagerRequest?.findByUser(User?.findByUsername(SecurityUtils.subject.principal))){
+		if(ManagerRequest?.findByUser(User?.get(attrs["id"]))){
 			out << body()
 		}
 	}
@@ -51,10 +50,22 @@ class DreamManagerTagLib {
 			out << body()
 		}
 	}
-	
+
 	def currentUserNotInitiatedRequest = {attrs, body ->
 		def requestRelation = ManagerRequest?.findByUser(User?.findByUsername(SecurityUtils.subject.principal))
 		if(requestRelation?.requestInitiator!=User?.findByUsername(SecurityUtils.subject.principal)){
+			out << body()
+		}
+	}
+	def currentUserHasRequest = {attrs, body ->
+		def requestRelation = ManagerRequest?.findByUser(User?.findByUsername(SecurityUtils.subject.principal))
+		if(requestRelation){
+			out << body()
+		}
+	}
+	def currentUserHasNoRequest = {attrs, body ->
+		def requestRelation = ManagerRequest?.findByUser(User?.findByUsername(SecurityUtils.subject.principal))
+		if(!requestRelation){
 			out << body()
 		}
 	}
