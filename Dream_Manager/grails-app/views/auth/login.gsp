@@ -59,7 +59,7 @@
 				</div>
 			</div>
 
-			<div class="clear" style="margin-top:5em;"></div>
+			<div class="clear" style="margin-top:3em;"></div>
 			
 			<div id="content" class="container_16">
 				<g:if test="${flash.message}">
@@ -68,7 +68,7 @@
 					</div>
 				</g:if>
 
-				<div class="clear" style="min-height:5em"><!-- spacer --></div> 
+				<div class="clear" style="min-height:3em"><!-- spacer --></div> 
 			
 				<div class="prefix_2 grid_5 suffix_1" style="text-align:center;">
 					<div class="ui-corner-all" style="background-color:rgba(255, 255, 255, 0.6);min-height:15em;">
@@ -119,7 +119,7 @@
 						</g:form>
 					</div>
 				</div>
-				<div class="clear" style="margin-bottom:10em;"></div>
+				<div class="clear" style="margin-bottom:6em;"></div>
 			
 				<div class="prefix_4 grid_12" style="color:#DDF;font-family: cursive;font-style: italic;font-variant: small-caps;font-size: 200%;line-height: 200%;">
 					<div class="ui-corner-all" style="background-color:rgba(255, 255, 255, 0.1);min-height:2em;padding-left:.5em;">
