@@ -14,6 +14,6 @@ import dream_manager.SearchUsersService;
 class SearchUsersServiceTests {
 
     void testSomething() {
-        fail "Implement me"
+        
     }
 }

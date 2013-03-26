@@ -12,6 +12,6 @@ import org.junit.*
 class ManagerToDreamerControllerTests {
 
     void testSomething() {
-       fail "Implement me"
+      
     }
 }

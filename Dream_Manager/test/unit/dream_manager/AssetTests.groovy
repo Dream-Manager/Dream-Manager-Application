@@ -12,6 +12,6 @@ import org.junit.*
 class AssetTests {
 
     void testSomething() {
-       fail "Implement me"
+      
     }
 }

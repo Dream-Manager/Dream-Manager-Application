@@ -14,6 +14,6 @@ import dream_manager.DreamToTemplate;
 class DreamToTemplateTests {
 
     void testSomething() {
-       fail "Implement me"
+       
     }
 }

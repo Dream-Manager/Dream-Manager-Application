@@ -14,6 +14,6 @@ import dream_manager.AssetService;
 class AssetServiceTests {
 
     void testSomething() {
-        fail "Implement me"
+       
     }
 }

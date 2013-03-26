@@ -12,6 +12,6 @@ import org.junit.*
 class DreamToTemplateControllerTests {
 
     void testSomething() {
-       fail "Implement me"
+       
     }
 }

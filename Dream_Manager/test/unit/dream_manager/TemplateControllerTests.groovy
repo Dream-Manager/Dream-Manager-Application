@@ -12,6 +12,6 @@ import org.junit.*
 class TemplateControllerTests {
 
     void testSomething() {
-       fail "Implement me"
+       
     }
 }

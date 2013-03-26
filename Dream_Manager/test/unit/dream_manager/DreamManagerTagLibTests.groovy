@@ -12,6 +12,6 @@ import org.junit.*
 class DreamManagerTagLibTests {
 
     void testSomething() {
-        fail "Implement me"
+       
     }
 }

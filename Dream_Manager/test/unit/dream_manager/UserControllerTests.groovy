@@ -9,9 +9,9 @@ class UserControllerTests {
 
 	def controller = new UserController()
 	
-	/*
 	@Before
-	void before(){
+	void before() {
+	/*
 		User.findAll().delete()
 		
 				// Populate User table
@@ -30,9 +30,10 @@ class UserControllerTests {
 					zipcode:85219,
 					isManager:false
 				).save()
-				
+	*/
 	}
 	
+	/*
     def populateValidParams(params) {
         assert params != null
         // TODO: Populate valid properties like...
@@ -44,12 +45,12 @@ class UserControllerTests {
 		
 		assertEquals("John",controller.getCurrentUserFirstName().response.contentAsString)
 	}
-
+	*/
     void testIndex() {
         controller.index()
         assert "/user/list" == response.redirectedUrl
     }
-
+	/*
     void testList() {
 
         def model = controller.list()

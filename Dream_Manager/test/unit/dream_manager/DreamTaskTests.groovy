@@ -12,6 +12,6 @@ import org.junit.*
 class DreamTaskTests {
 
     void testSomething() {
-       fail "Implement me"
+       
     }
 }

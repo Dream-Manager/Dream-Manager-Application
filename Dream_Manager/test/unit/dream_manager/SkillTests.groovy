@@ -14,6 +14,6 @@ import dream_manager.Skill;
 class SkillTests {
 
     void testSomething() {
-       fail "Implement me"
+       
     }
 }

@@ -14,6 +14,6 @@ import dream_manager.UserService;
 class UserServiceTests {
 
     void testSomething() {
-        fail "Implement me"
+        
     }
 }

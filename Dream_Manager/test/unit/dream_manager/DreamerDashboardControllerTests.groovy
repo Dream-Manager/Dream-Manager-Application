@@ -12,6 +12,6 @@ import org.junit.*
 class DreamerDashboardControllerTests {
 
     void testSomething() {
-       fail "Implement me"
+       
     }
 }

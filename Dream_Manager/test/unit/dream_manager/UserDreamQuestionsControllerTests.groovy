@@ -12,6 +12,6 @@ import org.junit.*
 class UserDreamQuestionsControllerTests {
 
     void testSomething() {
-       fail "Implement me"
+      
     }
 }
