@@ -33,6 +33,8 @@
 					id="${user.id}">
 					<td width="15%"><g:link controller="managerToDreamer"
 							action="acceptManagerDreamerRelationshipRequest" id="${user?.id}">Accept Request</g:link></td>
+							<td width="15%"><g:link controller="managerToDreamer"
+							action="rejectManagerDreamerRelationshipRequest" id="${user?.id}">Reject Request</g:link></td>
 				</dreamManager:requestManagerDreamerRelatiomFromDreamer>
 				<dreamManager:requestManagerDreamerRelationFromManager
 					id="${user.id}">

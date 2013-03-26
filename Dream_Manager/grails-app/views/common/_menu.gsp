@@ -16,6 +16,9 @@
 			<dreamManager:currentUserNotInitiatedRequest>
 				<li><g:link controller="managerToDreamer"
 						action="acceptManagerDreamerRelationshipRequest">Accept Request</g:link></li>
+				<li><g:link controller="managerToDreamer"
+						action="rejectManagerDreamerRelationshipRequest"
+						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Reject Request</g:link></li>
 			</dreamManager:currentUserNotInitiatedRequest>
 		</dreamManager:currentUserHasRequest>
 		<dreamManager:currentUserHasNoRequest>

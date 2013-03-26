@@ -57,6 +57,7 @@ class UserController {
 
 		def otherUsers = User.withCriteria {
 			isNull('manager')
+			ne('username', SecurityUtils.subject.principal)
 			or {
 				ilike('firstName', '%' + params.ajaxSearchUsersTerm + '%')
 				ilike('lastName', '%' + params.ajaxSearchUsersTerm + '%')
