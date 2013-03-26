@@ -4,7 +4,7 @@
 			<th>Category</th>
 			<th>Title</th>
 			<th>Estimated Completion</th>
-			<th>Short Term</th>		
+			<th>Term Length</th>		
 		</tr>
 	</thead>
 	<tbody>
@@ -13,7 +13,9 @@
 			<td>${dream.category}</td>
 			<td><g:link action="show" id="${dream.id}">${dream.name}</g:link></td>
 			<td><g:formatDate format="MM-dd-yyyy" date="${dream.estimatedCompletion}" /></td>
-			<td><g:formatBoolean boolean="${dream.isShortTerm}" /></td>
+			<td><g:if test="${dream.isShortTerm}">Short Term</g:if> 
+			<g:else>Long Term</g:else>
+			</td>
 		</tr>
 	</g:each>
 	</tbody>
