@@ -67,7 +67,7 @@
 				<div class="clear" style="min-height:5em"><!-- spacer --></div> 
 			
 				<div class="prefix_2 grid_5 suffix_1" style="text-align:center;">
-					<div style="background-color:rgba(255, 255, 255, 0.6);min-height:15em;">
+					<div class="ui-corner-all" style="background-color:rgba(255, 255, 255, 0.6);min-height:15em;">
 						<g:link controller="User" action="register">
 							<div class="button" style="font-size:130%;margin-top:3em;">
 								Create An Account
@@ -82,7 +82,7 @@
 					</div>
 				</div>
 				<div class="grid_6 suffix_2" style="line-height:220%;">
-					<div style="background-color:rgba(255, 255, 255, 0.6);min-height:20em;padding-left:5em;">
+					<div class="ui-corner-all" style="background-color:rgba(255, 255, 255, 0.6);min-height:20em;padding-left:5em;">
 						<g:form action="signIn">
 							<div class="grid_6" style="font-size:150%;font-weight:600;color:#557;margin-left:3em;margin-top:.5em;">Login</div>
 							
@@ -118,7 +118,7 @@
 				<div class="clear" style="margin-bottom:10em;"></div>
 			
 				<div class="prefix_4 grid_12" style="color:#DDF;font-family: cursive;font-style: italic;font-variant: small-caps;font-size: 200%;line-height: 200%;">
-					<div style="background-color:rgba(255, 255, 255, 0.1);min-height:2em;padding-left:.5em;">
+					<div class="ui-corner-all" style="background-color:rgba(255, 255, 255, 0.1);min-height:2em;padding-left:.5em;">
 						A personal, private tool to help you accomplish your dreams
 					</div>
 				</div>
