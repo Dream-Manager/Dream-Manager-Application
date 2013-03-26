@@ -7,6 +7,7 @@ if (typeof jQuery !== 'undefined') {
 		});
 		
 		$(".datepicker").datepicker();
-		$("#tabs").tabs();
+		$(".tabs").tabs();
+		$(".accordion" ).accordion();  
 	})(jQuery);
 }
