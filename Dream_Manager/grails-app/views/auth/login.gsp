@@ -53,9 +53,13 @@
 	<body>
 		<div id="page">
 			
-			<div style="margin-top:5em;">
-				<g:render template="/common/topbar" />
+			<div class="container_16" style="margin-top:2em;">
+				<div class="grid_16 alpha omega">
+					<g:img dir="images" file="DreamManagerHeader.png" width="960" height="120" />
+				</div>
 			</div>
+
+			<div class="clear" style="margin-top:5em;"></div>
 			
 			<div id="content" class="container_16">
 				<g:if test="${flash.message}">
