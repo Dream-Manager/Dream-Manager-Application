@@ -8,6 +8,5 @@ if (typeof jQuery !== 'undefined') {
 		
 		$(".datepicker").datepicker();
 		$("#tabs").tabs();
-		
 	})(jQuery);
 }
