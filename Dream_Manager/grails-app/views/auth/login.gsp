@@ -34,88 +34,97 @@
 		
 		<style type="text/css">
 			html { 
-				background-color: white; 
-				background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #99F), color-stop(1, #FFF)); 
+				background-color: #3454A2; 
+				background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFF), color-stop(1, #3454A2)); 
 			}
 			body {
 				-moz-box-shadow: none;
 				-webkit-box-shadow: none;
 				        box-shadow: none;
+				background-color: rgba(255, 255, 255, 0.0);
 	        }
 	        #page { 
 	        	background: none; 
+	        	background-color: rgba(255, 255, 255, 0.0);
 	        }
-		<</style>
+		</style>
 		
 	</head>
 	<body>
 		<div id="page">
+			
+			<div style="margin-top:5em;">
+				<g:render template="/common/topbar" />
+			</div>
+			
 			<div id="content" class="container_16"> 
 
-			<g:if test="${flash.message}">
-				<div class="message">
-					${flash.message}
-				</div>
-			</g:if>
-			<div style="min-height:10em"><!-- spacer --></div>
-			<div class="clear"></div>
-			
-			<div>
-				The Dream Manager
-			</div>
-			
-			<div class="prefix_2 grid_5 suffix_1" style="text-align:center;">
-				<g:link controller="User" action="register">
-					<div class="button" style="font-size:130%;margin-top:3em;">
-						Create An Account
+				<g:if test="${flash.message}">
+					<div class="message">
+						${flash.message}
 					</div>
-				</g:link>
-				<script type="text/javascript">
-					$(function(){ $(".button").button(); });
-				</script>
-				<div style="margin-top:1em;">
-					Tell Me More
-				</div>
-			</div>
-			<div class="grid_6 suffix_2" style="line-height:220%;">
-				<g:form action="signIn">
-					<div class="grid_6" style="text-align:center;font-size:110%;">Login To Your Account</div> 
-					
-					<div class="clear"></div>
-					
-					<input type="hidden" name="targetUri" value="${targetUri}" />
-					<shiro:isNotLoggedIn>
-						<label for="username">Email:</label><br />
-						<input type="text" name="username" value="${username}" style="margin-left:1em;"/> 
-						
-						<div class="clear"></div>
-						
-						<label for="password">Password:</label><br />
-						<input type="password" name="password" value="" style="margin-left:1em;" /> 
-						
-						<div class="clear"></div>
-						
-						<g:checkBox name="rememberMe" value="${rememberMe}" /> 
-						<label for="rememberMe">Remember me?</label>
-						
-						<div class="clear"></div>
-						
-						<input type="submit" value="Sign In" style="margin-right:2em;" class="button"/>  			
-						<g:link controller="auth" action="lostPassword">Forgot Password?</g:link>
-					</shiro:isNotLoggedIn>
-					<shiro:isLoggedIn>You are signed in as <shiro:principal></shiro:principal>
-						<g:actionSubmit value="Logout" action="signOut"
-							onclick="return confirm('Are you sure?')" />
-					</shiro:isLoggedIn>
-				</g:form>
-			</div>
-			<div class="clear" style="margin-bottom:10em;"></div>
+				</g:if>
+
+				<div class="clear" style="min-height:5em"><!-- spacer --></div> 
 			
-			<div class="prefix_4 grid_12">
-				<h3>A personal, private tool to help you accomplish your dreams</h3>
+				<div class="prefix_2 grid_5 suffix_1" style="text-align:center;">
+					<div style="background-color:rgba(255, 255, 255, 0.6);min-height:15em;">
+						<g:link controller="User" action="register">
+							<div class="button" style="font-size:130%;margin-top:3em;">
+								Create An Account
+							</div>
+						</g:link>
+						<script type="text/javascript">
+							$(function(){ $(".button").button(); });
+						</script>
+						<div style="margin-top:1em;">
+							Tell Me More
+						</div>
+					</div>
+				</div>
+				<div class="grid_6 suffix_2" style="line-height:220%;">
+					<div style="background-color:rgba(255, 255, 255, 0.6);min-height:20em;padding-left:5em;">
+						<g:form action="signIn">
+							<div class="grid_6" style="font-size:150%;font-weight:600;color:#557;margin-left:3em;margin-top:.5em;">Login</div>
+							
+							<div class="clear"></div>
+							
+							<input type="hidden" name="targetUri" value="${targetUri}" />
+							<shiro:isNotLoggedIn>
+								<label for="username">Email:</label><br />
+								<input type="text" name="username" value="${username}" style="margin-left:1em;"/> 
+								
+								<div class="clear"></div>
+								
+								<label for="password">Password:</label><br />
+								<input type="password" name="password" value="" style="margin-left:1em;" /> 
+								
+								<div class="clear" style="margin-bottom:.5em;"></div>
+								
+								<g:checkBox name="rememberMe" value="${rememberMe}" /> 
+								<label for="rememberMe">Remember me?</label>
+								
+								<div class="clear" style="margin-bottom:.5em;"></div>
+								
+								<input type="submit" value="Sign In" style="margin-right:2em;" class="button"/>  			
+								<g:link controller="auth" action="lostPassword">Forgot Password?</g:link>
+							</shiro:isNotLoggedIn>
+							<shiro:isLoggedIn>You are signed in as <shiro:principal></shiro:principal>
+								<g:actionSubmit value="Logout" action="signOut"
+									onclick="return confirm('Are you sure?')" />
+							</shiro:isLoggedIn>
+						</g:form>
+					</div>
+				</div>
+				<div class="clear" style="margin-bottom:10em;"></div>
+			
+				<div class="prefix_4 grid_12" style="color:#DDF;font-family: cursive;font-style: italic;font-variant: small-caps;font-size: 200%;line-height: 200%;">
+					<div style="background-color:rgba(255, 255, 255, 0.1);min-height:2em;padding-left:.5em;">
+						A personal, private tool to help you accomplish your dreams
+					</div>
+				</div>
 			</div>
 		</div>
-		
 		<g:javascript library="application"/>
 		<r:layoutResources />
 	</body>
