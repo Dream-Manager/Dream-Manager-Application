@@ -1,7 +1,6 @@
 <html>
 	<head>
-		<title>Dream Manager - Dashboard</title>
-		<script>  $(function() {    $( "#shorterm2" ).accordion(); $( "#longterm2" ).accordion();  });  </script>
+		<title>Dream Manager - Dashboard</title
 
 		<!-- Fix tabs not being rendered on first page load, with fallback if no JavaScript availible -->
 		<style type="text/css">
@@ -22,7 +21,7 @@
 	<body>							
 		<div class="grid_12 alpha delayedVisibility">
 						
-			<div id="tabs">
+			<div class="tabs">
 				<ul>
 				    <li><a href="#tabs-1">Your Progress</a></li>
 				    <li><a href="#tabs-2">Search Dreams</a></li>
@@ -36,74 +35,58 @@
 					<!-- Shorterm Dreams -->
 					<div>
 					<h1>Short Term</h1>
+				
+					<div class="accordion"> 
+						<h3>Dream 1</h3>
+						<div>
+							<p>Task Name</p>
+						  	<p>Size</p>
+						  	<p>Completed</p>
+						</div>
+						<h3>Dream 2</h3>
+						<div>
+						  	<p>Task Name</p>
+						  	<p>Size</p>
+						  	<p>Completed</p>
+						</div>
+ 						<h3>Dream 3</h3>
+ 						<div>
+							<p>Task Name</p>
+						  	<p>Size</p>
+							<p>Completed</p>
+						</div>
 					</div>
-					<div>
-					<table id="shortterm" border=1 cellspacing=0 cellpadding=0>
-						<div id="shorterm2"> 
-							<h3>Dream 1</h3>
-							<div>
-								<p>Task Name</p>
-							  	<p>Size</p>
-							  	<p>Completed</p>
-							  </div>
- 							 <h3>Dream 2</h3>
- 							<div>
-							  	<p>Task Name</p>
-							  	<p>Size</p>
-							  	<p>Completed</p>
-							</div>
-  							<h3>Dream 3</h3>
-  							<div>
- 							 	<p>Task Name</p>
-							  	<p>Size</p>
- 							 	<p>Completed</p>
- 							</div>
- 						</div>
-					</table>
-
-					</div>
-					<br>
 
 					<!-- Longterm Dreams -->
-					<div>
 					<h1>Long Term</h1>
-					</div>
-					<div>
-					<table id="longterm" border=1 cellspacing=0 cellpadding=0>
-						<div id="longterm2"> 
-							<h3>Dream 1</h3>
-							<div>
-								<p>Task Name</p>
-							  	<p>Size</p>
-							  	<p>Completed</p>
-							  </div>
- 							 <h3>Dream 2</h3>
- 							<div>
-							  	<p>Task Name</p>
-							  	<p>Size</p>
-							  	<p>Completed</p>
-							</div>
-  							<h3>Dream 3</h3>
-  							<div>
- 							 	<p>Task Name</p>
-							  	<p>Size</p>
- 							 	<p>Completed</p>
- 							</div>
- 						</div>
-					</table>
-
-					</div>
+					<div class="accordion">
+						<h3>Dream 1</h3>
+						<div>
+							<p>Task Name</p>
+						  	<p>Size</p>
+						  	<p>Completed</p>
+						</div>
+						<h3>Dream 2</h3>
+						<div>
+						  	<p>Task Name</p>
+						  	<p>Size</p>
+						  	<p>Completed</p>
+						</div>
+ 						<h3>Dream 3</h3>
+ 						<div>
+							<p>Task Name</p>
+						  	<p>Size</p>
+							<p>Completed</p>
+						</div>
+ 					</div>
 					
 					<!-- Upcoming Dreams -->
-					<div>
 					<h1>Upcoming Dreams</h1>
-					</div>
 					
 					<div class='ui-widget' style="margin-bottom:1em;">
 						<g:include controller="dream" action="ajaxUpcomingDreams"/>							
 					</div>
-
-					
+				</div>
 			</div>
 			<div id="tabs-2">
 				<!-- Search Dreams -->
