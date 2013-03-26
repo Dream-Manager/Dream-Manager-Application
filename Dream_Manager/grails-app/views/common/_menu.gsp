@@ -3,10 +3,25 @@
 	<li><g:link controller="user" action="editCurrentProfile">Account Settings</g:link></li>
 	<dreamManager:hasManager>
 		<li class="ui-state-disabled"><a href="#">Ask Dream Manager</a></li>
-		<li><g:link controller ="managerToDreamer" action="removeManager" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Remove Manager</g:link></li>
+		<li><g:link controller="managerToDreamer" action="removeManager"
+				onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Remove Manager</g:link></li>
 	</dreamManager:hasManager>
 	<dreamManager:hasNoManager>
-		<li><g:link controller ="managerToDreamer" action="displayManagers">Request a manager</g:link></li>
+		<dreamManager:hasRequestManagerDreamerRelation>
+			<dreamManager:currentUserInitiatedRequest>
+				<li><g:link controller="managerToDreamer"
+						action="rejectManagerDreamerRelationshipRequest"
+						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Cancel Request</g:link></li>
+			</dreamManager:currentUserInitiatedRequest>
+			<dreamManager:currentUserNotInitiatedRequest>
+				<li><g:link controller="managerToDreamer"
+						action="acceptManagerDreamerRelationshipRequest">Accept Request</g:link></li>
+			</dreamManager:currentUserNotInitiatedRequest>
+		</dreamManager:hasRequestManagerDreamerRelation>
+		<dreamManager:hasNoRequestManagerDreamerRelation>
+			<li><g:link controller="managerToDreamer"
+					action="displayManagers">Request a manager</g:link></li>
+		</dreamManager:hasNoRequestManagerDreamerRelation>
 	</dreamManager:hasNoManager>
 	<li><g:link controller="Auth" action="signOut">Log Out</g:link></li>
 </ul>

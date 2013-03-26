@@ -38,10 +38,10 @@
 					id="${user?.id}">
 					<td width="15%">Pending</td>
 				</dreamManager:requestManagerDreamerRelationFromManager>
-				<dreamManager:noRequestManagerDreamerRelation id="${user?.id}">
+				<dreamManager:hasNoRequestManagerDreamerRelation id="${user?.id}">
 					<td width="15%"><g:link controller="managerToDreamer"
 							action="claimDreamer" id="${user.id}">Claim</g:link>
-				</dreamManager:noRequestManagerDreamerRelation>
+				</dreamManager:hasNoRequestManagerDreamerRelation>
 
 			</g:if>
 		</tr>

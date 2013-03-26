@@ -6,13 +6,13 @@ class DreamManagerTagLib {
 	static namespace = "dreamManager"
 
 	def hasManager = {attrs, body ->
-		def user = User.findByUsername(SecurityUtils.subject.principal)
+		def user = User?.findByUsername(SecurityUtils.subject.principal)
 		if (user?.manager){
 			out << body()
 		}
 	}
 	def hasNoManager = {attrs, body ->
-		def user = User.findByUsername(SecurityUtils.subject.principal)
+		def user = User?.findByUsername(SecurityUtils.subject.principal)
 		if (!user?.manager){
 			out << body()
 		}
@@ -21,20 +21,40 @@ class DreamManagerTagLib {
 	def requestManagerDreamerRelationFromManager = {attrs, body ->
 
 		def claim = ManagerRequest?.findByUser(User?.get(attrs["id"]))
-		if((claim?.user?.id==attrs["id"])&&(claim?.requestInitiator==User?.findByUsername(SecurityUtils.subject.principal))){
+		if((claim?.requestInitiator==User?.findByUsername(SecurityUtils.subject.principal))){
 			out << body()
 		}
 	}
 	def requestManagerDreamerRelatiomFromDreamer = {attrs, body ->
 
 		def claim = ManagerRequest?.findByUser(User?.get(attrs["id"]))
-		if((claim?.user?.id==attrs["id"])&&(claim?.requestInitiator!=User?.findByUsername(SecurityUtils.subject.principal))){
+		if((claim?.requestInitiator!=User?.findByUsername(SecurityUtils.subject.principal))){
 			out << body()
 		}
 	}
 
-	def noRequestManagerDreamerRelation = {attrs, body ->
-		if(!ManagerRequest?.findByUser(User.get(attrs["id"]))){
+	def hasNoRequestManagerDreamerRelation = {attrs, body ->
+		if(!ManagerRequest?.findByUser(User?.findByUsername(SecurityUtils.subject.principal))){
+			out << body()
+		}
+	}
+
+	def hasRequestManagerDreamerRelation = {attrs, body ->
+		if(ManagerRequest?.findByUser(User?.findByUsername(SecurityUtils.subject.principal))){
+			out << body()
+		}
+	}
+
+	def currentUserInitiatedRequest = {attrs, body ->
+		def requestRelation = ManagerRequest?.findByUser(User?.findByUsername(SecurityUtils.subject.principal))
+		if(requestRelation?.requestInitiator==User?.findByUsername(SecurityUtils.subject.principal)){
+			out << body()
+		}
+	}
+	
+	def currentUserNotInitiatedRequest = {attrs, body ->
+		def requestRelation = ManagerRequest?.findByUser(User?.findByUsername(SecurityUtils.subject.principal))
+		if(requestRelation?.requestInitiator!=User?.findByUsername(SecurityUtils.subject.principal)){
 			out << body()
 		}
 	}

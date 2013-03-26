@@ -21,15 +21,21 @@ class ManagerToDreamerController {
 		if(previousClaim!=null) {
 			previousClaim.delete(fulsh:true)
 		}
-		def managerRequest = new ManagerRequest(requestInitiator:manager, manager:manager,user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
-		sendMail {
-			to user.username
-			from grailsApplication.config.grails.mail.username
-			subject "A Dream Manager has decided to help you out!"
-			body "Hello ${user.toString()},\n\n${manager.toString()} has decided to help you achieve your dreams.\n\nTo accept ${manager.firstName} ${manager.lastName} as your dream manager click here: ${createLink(absolute:true, controller:'managerToDreamer',action:'acceptManagerDreamerRelationshipRequest',id:managerRequest.token)}\n\n\n\n To reject this request click here: ${createLink(absolute:true, controller:'managerToDreamer',action:'rejectManagerDreamerRelationshipRequest',id:managerRequest.token)} \n\n\n\nGood Luck With Your Dreams!\n\n\n\n Click here to reject: \n".toString()
+		if(manager!=user){
+			def managerRequest = new ManagerRequest(requestInitiator:manager, manager:manager,user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
+			sendMail {
+				to user.username
+				from grailsApplication.config.grails.mail.username
+				subject "A Dream Manager has decided to help you out!"
+				body "Hello ${user.toString()},\n\n${manager.toString()} has decided to help you achieve your dreams.\n\nTo accept ${manager.firstName} ${manager.lastName} as your dream manager click here: ${createLink(absolute:true, controller:'managerToDreamer',action:'acceptManagerDreamerRelationshipRequest',id:managerRequest.token)}\n\n\n\n To reject this request click here: ${createLink(absolute:true, controller:'managerToDreamer',action:'rejectManagerDreamerRelationshipRequest',id:managerRequest.token)} \n\n\n\nGood Luck With Your Dreams!\n\n\n\n Click here to reject: \n".toString()
+			}
+			redirect(uri: "/#tabs-3")
+			flash.message = "Request to manage ${user.firstName} ${user.lastName} has been sent."
 		}
-		redirect(uri: "/#tabs-3")
-		flash.message = "Request to manage ${user.firstName} ${user.lastName} has been sent."
+		else{
+			redirect(uri: "/#tabs-3")
+			flash.message = "Cannot Claim YourSelf"
+		}
 	}
 	/*
 	 * This allows Dreamers to request to be a managed by Dream Manager
@@ -37,18 +43,24 @@ class ManagerToDreamerController {
 	def requestManager = {
 		def user = User?.findByUsername(SecurityUtils.subject.principal)
 		def manager =  User?.get(params.manager.id)
-		def previousClaim = ManagerRequest?.findByUser(user)
-		if(previousClaim!=null) {
-			previousClaim.delete(fulsh:true)
+		//def previousClaim = ManagerRequest.findByUser(user)
+		if(user!=manager){
+			if(ManagerRequest?.findByUser(user)) {
+				ManagerRequest.findByUser(user).delete(fulsh:true)
+			}
+			if(manager){
+				def managerRequest = new ManagerRequest(requestInitiator:user, manager:manager,user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
+				flash.message = "Request made"
+				redirect(uri:'/')
+			}
+			else {
+				flash.message = "Request Failed ${previousClaim.toString()}"
+				redirect(uri:'/')
+			}
 		}
-		if(manager){
-			def managerRequest = new ManagerRequest(requestInitiator:user, manager:manager,user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
-			flash.message = "Request made"
+		else{
 			redirect(uri:'/')
-		}
-		else {
-			flash.message = "Request Failed"
-			redirect(uri:'/')
+			flash.message = "Cannot Claim YourSelf"
 		}
 	}
 
@@ -56,26 +68,25 @@ class ManagerToDreamerController {
 	 * This allows both dreamers and managers to accept a request for a relation.
 	 */
 	def acceptManagerDreamerRelationshipRequest = {
-		if (params.id){
-			def relationshipRequest = ManagerRequest?.findByToken(params.id)
-			if (relationshipRequest==null){
-				relationshipRequest = ManagerRequest?.findByUser(User.get(params.id))
-			}
-			if (relationshipRequest && (User?.findByUsername(SecurityUtils.subject.principal)!=relationshipRequest.requestInitiator)) {
-				def dreamer = relationshipRequest.user
-				dreamer.manager = relationshipRequest.manager
-				dreamer.managerConfirmed = true
-				dreamer.save(flush: true)
-				redirect(uri:'/')
-				flash.message = "${relationshipRequest.manager.toString()}  is now ${dreamer.toString()}'s manager."
-				relationshipRequest?.delete()
-			} else {
-				flash.message = "Not a valid request."
-				redirect(uri:'/')
-			}
+		def relationshipRequest = null
+		if (params?.id){
+			relationshipRequest = ManagerRequest?.findByToken(params.id)}
+		if (relationshipRequest==null){
+			relationshipRequest = ManagerRequest?.findByUser(User.get(params.id))
 		}
-		else{
-			flash.message = "Not a valid request id."
+		if (relationshipRequest==null){
+			relationshipRequest = ManagerRequest?.findByUser(User?.findByUsername(SecurityUtils.subject.principal))
+		}
+		if (relationshipRequest && (User?.findByUsername(SecurityUtils.subject.principal)!=relationshipRequest.requestInitiator)) {
+			def dreamer = relationshipRequest.user
+			dreamer.manager = relationshipRequest.manager
+			dreamer.managerConfirmed = true
+			dreamer.save(flush: true)
+			redirect(uri:'/')
+			flash.message = "${relationshipRequest.manager.toString()}  is now ${dreamer.toString()}'s manager."
+			relationshipRequest?.delete()
+		} else {
+			flash.message = "Not a valid request."
 			redirect(uri:'/')
 		}
 	}
@@ -113,13 +124,18 @@ class ManagerToDreamerController {
 	 * This allows either dreamer or manager to reject the request for a relationship.
 	 */
 	def rejectManagerDreamerRelationshipRequest = {
-		if (params.id){
-			def relationshipRequest = ManagerRequest.findByToken(params.id)
-			if (relationshipRequest){
-				redirect(uri:'/')
-				flash.message = "Request for ${relationshipRequest.manager.toString()}  to manage ${relationshipRequest.user.toString()}'s dreams has been rejected."
-				relationshipRequest?.delete()
-			}
+
+		def relationshipRequest = null
+		if (params?.id){
+			relationshipRequest = ManagerRequest?.findByToken(params.id)
+		}
+		if (relationshipRequest==null){
+			relationshipRequest = ManagerRequest?.findByUser(User.findByUsername(SecurityUtils.subject.principal))
+		}
+		if (relationshipRequest){
+			redirect(uri:'/')
+			flash.message = "Request for ${relationshipRequest.manager.toString()}  to manage ${relationshipRequest.user.toString()}'s dreams has been rejected."
+			relationshipRequest?.delete(flush:true)
 		}
 	}
 	def displayManagers = {
