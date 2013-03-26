@@ -2,9 +2,26 @@
 	<head>
 		<title>Dream Manager - Dashboard</title>
 		<script>  $(function() {    $( "#shorterm2" ).accordion(); $( "#longterm2" ).accordion();  });  </script>
+
+		<!-- Fix tabs not being rendered on first page load, with fallback if no JavaScript availible -->
+		<style type="text/css">
+			.delayedVisibility { visibility: hidden; }
+		</style>
+		<noscript>
+			<style type="text/css">
+				.delayedVisibility { visibility: inherit; }
+			</style>
+		</noscript>	
+		<script type="text/javascript">
+			$(function(){
+				$(".delayedVisibility").css("visibility","inherit")
+			});
+		</script>
+
 	</head>
 	<body>							
-		<div class="grid_12 alpha">	
+		<div class="grid_12 alpha delayedVisibility">
+						
 			<div id="tabs">
 				<ul>
 				    <li><a href="#tabs-1">Your Progress</a></li>
