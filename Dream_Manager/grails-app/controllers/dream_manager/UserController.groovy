@@ -189,7 +189,7 @@ class UserController {
 	 * @param isManager	if user is manager or not
 	 * @param isAdmin if user is an administrator
 	 */
-	def managerSave = {
+	def managerCreateUser = {
 		if (!grailsApplication.config.grails.mail.username) {
 			throw new RuntimeException(message(code: 'mail.plugin.not.configured', 'default' : 'Mail plugin not configured'))
 		}

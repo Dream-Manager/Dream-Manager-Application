@@ -45,7 +45,7 @@
 			</g:form>
 		</shiro:notUser>
 		<shiro:user>
-			<g:form action="managerSave">
+			<g:form action="managerCreateUser">
 				<fieldset class="form">
 					<g:render template="form" />
 				</fieldset>
