@@ -116,6 +116,7 @@
          ================================= -->
     <target name="test" depends="-init-grails" description="--> Run a Grails applications unit tests">
         <grails script="TestApp"/>
+    	<grails script="TestApp -coverage"/>
     </target>
 
     <!-- =================================
