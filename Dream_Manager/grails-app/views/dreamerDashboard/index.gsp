@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Dream Manager - Dashboard</title
+		<title>Dream Manager - Dashboard</title>
 
 		<!-- Fix tabs not being rendered on first page load, with fallback if no JavaScript availible -->
 		<style type="text/css">
