@@ -30,6 +30,12 @@
 			});
 		});
 		function createDreamByAjaxResponseHandler(){
+			
+			$.ajax("<dreamManager:linkToAction controller="dream" action="ajaxUpcomingDreams"/>")
+				.done(function(data){
+					$("#ajaxUpcomingDreamsResults").html(data);
+				});
+			
 			$("#createDreamAjaxResponse")
 				.fadeIn({duration:800,complete:function(){
 					$("#createDreamAjaxResponse").fadeOut({duration:800});
