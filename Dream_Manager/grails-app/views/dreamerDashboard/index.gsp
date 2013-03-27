@@ -83,7 +83,7 @@
 					<!-- Upcoming Dreams -->
 					<h1>Upcoming Dreams</h1>
 					
-					<div class='ui-widget' style="margin-bottom:1em;">
+					<div class='ui-widget' style="margin-bottom:1em;" id="ajaxUpcomingDreamsResults">
 						<g:include controller="dream" action="ajaxUpcomingDreams"/>							
 					</div>
 				</div>
