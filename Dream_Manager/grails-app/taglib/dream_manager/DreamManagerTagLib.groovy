@@ -5,6 +5,10 @@ import org.apache.shiro.SecurityUtils
 class DreamManagerTagLib {
 	static namespace = "dreamManager"
 
+	def linkToAction = { attrs, body ->
+		out << "/"+grailsApplication.config.grails.project.groupId+"/"+attrs["controller"]+"/"+attrs["action"]
+	} 
+	
 	def hasManager = { attrs, body ->
 		def user = User?.findByUsername(SecurityUtils.subject.principal)
 		if (user?.manager){
