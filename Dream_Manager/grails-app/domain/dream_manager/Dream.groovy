@@ -10,6 +10,7 @@ class Dream {
 	Date lastUpdated
 	Date completed = null
 	String notes
+	int percentComplete = 0
 	
 	String toString() {
 		name

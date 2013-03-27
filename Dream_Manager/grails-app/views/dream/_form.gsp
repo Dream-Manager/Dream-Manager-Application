@@ -1,5 +1,8 @@
 <%@ page import="dream_manager.Dream" %>
 
+
+<h1>Add New Dream</h1>
+
 <div class="fieldcontain ${hasErrors(bean: dreamInstance, field: 'category', 'error')} ">
 	<label for="category">
 		<g:message code="dream.category.label" default="Category" />

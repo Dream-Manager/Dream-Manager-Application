@@ -133,6 +133,18 @@ class UserController {
 		else {
 			def userInstance = new User(params)
 			userInstance.addToRoles(Role.findByName('ROLE_USER'))
+			if (params?.isAdmin){
+				userInstance.addToRoles(Role.findByName('ROLE_ADMIN'))
+			}
+			else{
+				userInstance.removeFromRoles(Role.findByName('ROLE_ADMIN'))
+			}
+			if(params?.isManager){
+				userInstance.addToRoles(Role.findByName('ROLE_MANAGER'))
+			}
+			else{
+				userInstance.removeFromRoles(Role.findByName('ROLE_MANAGER'))
+			}
 
 			if (!userInstance.save(flush: true)) {
 				render(view: "create", model: [userInstance: userInstance])
@@ -195,8 +207,14 @@ class UserController {
 		if (params?.isAdmin){
 			UserInstance.addToRoles(Role.findByName('ROLE_ADMIN'))
 		}
+		else{
+			UserInstance.removeFromRoles(Role.findByName('ROLE_ADMIN'))
+		}
 		if(params?.isManager){
 			UserInstance.addToRoles(Role.findByName('ROLE_MANAGER'))
+		}
+		else{
+			UserInstance.removeFromRoles(Role.findByName('ROLE_MANAGER'))
 		}
 		sendMail {
 			to UserInstance.username
