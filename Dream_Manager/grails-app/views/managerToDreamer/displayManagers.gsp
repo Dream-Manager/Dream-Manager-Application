@@ -1,5 +1,5 @@
 <%@ page import="dream_manager.User"%>
-<g:form action="requestManager">
+<g:form controller = "managerToDreamer" action="requestManager">
 	<fieldset class="form">
 		<div
 			class="fieldcontain ${hasErrors(bean: userInstance, field: 'manager', 'error')} ">

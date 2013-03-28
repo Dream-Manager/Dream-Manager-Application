@@ -173,5 +173,6 @@
 			</div>
 		</div>
 	</div>
+	<g:include controller="managerToDreamer" action="nagToGetManager" />
 </body>
 </html>

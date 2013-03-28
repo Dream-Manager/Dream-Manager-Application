@@ -82,7 +82,11 @@ class ManagerToDreamerController {
 			def dreamer = relationshipRequest.user
 			dreamer.manager = relationshipRequest.manager
 			dreamer.managerConfirmed = true
-			dreamer.save(flush: true)
+			dreamer.askToGetDreamManager = false
+			if(!dreamer.save(flush: true)){
+				flash.message = "Error not saving relation."
+				redirect(uri:'/')
+			}
 			redirect(uri:'/')
 			flash.message = "${relationshipRequest.manager.toString()}  is now ${dreamer.toString()}'s manager."
 			relationshipRequest?.delete()
@@ -99,14 +103,19 @@ class ManagerToDreamerController {
 		def user = User.get(params.id)
 		user.managerConfirmed = false
 		user.manager = null
-		user.save(flush:true)
-		redirect(uri: "/#tabs-3")
-		flash.message = "${user.firstName} ${user.lastName} is no longer yours to manage."
-		sendMail {
-			to user.username
-			from grailsApplication.config.grails.mail.username
-			subject "Dream Manager Status"
-			body "Hello ${user.toString()},\n\nUnfortunately ${manager.toString()} is no longer your Dream Manager.\n\n\n\n Good luck with your dreams.".toString()
+		user.askToGetDreamManager = true
+		if(user.save(flush:true)){
+			redirect(uri: "/#tabs-3")
+			flash.message = "${user.firstName} ${user.lastName} is no longer yours to manage."
+			sendMail {
+				to user.username
+				from grailsApplication.config.grails.mail.username
+				subject "Dream Manager Status"
+				body "Hello ${user.toString()},\n\nUnfortunately ${manager.toString()} is no longer your Dream Manager.\n\n\n\n Good luck with your dreams.".toString()
+			}
+		}else{
+			redirect(uri: "/#tabs-3")
+			flash.message = "Failed to unclaim dreamer."
 		}
 	}
 	/*
@@ -117,9 +126,14 @@ class ManagerToDreamerController {
 		def manager = user.manager.toString()
 		user.managerConfirmed = false
 		user.manager = null
-		user.save(flush:true)
-		redirect(uri: "/")
-		flash.message = "${user.toString()} you are no longer managed by ${manager}"
+		user.askToGetDreamManager = true
+		if(		user.save(flush:true)){
+			redirect(uri: "/")
+			flash.message = "${user.toString()} you are no longer managed by ${manager}"
+		}else{
+			redirect(uri: "/")
+			flash.message = "Failed to remove Manager."
+		}
 	}
 	/*
 	 * This allows either dreamer or manager to reject the request for a relationship.
@@ -140,11 +154,14 @@ class ManagerToDreamerController {
 		}
 	}
 	def displayManagers = {
-		[userInstance: User.findByUsername(SecurityUtils.subject.principal)
-		]
+		render(view:"displayManagers" , model: ["userInstance": User.findByUsername(SecurityUtils.subject.principal)])
 	}
-	//TODO Make action
 	def nagToGetManager = {
-		
+		def user= User?.findByUsername(SecurityUtils.subject.principal)
+		if(user.nagToGetDreamManager&&(ManagerRequest?.findByUser(user)==null)){
+			render( view:"nagToGetManager")
+		}else{
+			redirect(uri:'/')
+		}
 	}
 }

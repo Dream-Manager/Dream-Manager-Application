@@ -22,7 +22,7 @@ class User {
 	boolean isManager = false
 	boolean isAdmin = false
 	Boolean passwordChangeRequiredOnNextLogon = false
-	Boolean askToGetDreamManager = true
+	Boolean nagToGetDreamManager = true
 
 	/**
 	 * Returns a String containing the user's full name.
