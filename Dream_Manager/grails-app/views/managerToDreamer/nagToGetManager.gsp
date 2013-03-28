@@ -1,3 +1,5 @@
+<!-- //TODO Finish View so it populates username in dialog and checks boolean also option to delay nag or remove -->
+
  <script>
   $(function() {
     $( "#dialog-confirm" ).dialog({

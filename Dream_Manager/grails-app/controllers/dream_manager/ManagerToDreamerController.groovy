@@ -143,4 +143,8 @@ class ManagerToDreamerController {
 		[userInstance: User.findByUsername(SecurityUtils.subject.principal)
 		]
 	}
+	//TODO Make action
+	def nagToGetManager = {
+		
+	}
 }
