@@ -5,6 +5,7 @@ import java.util.Date
 import org.apache.shiro.subject.Subject
 import grails.converters.*
 import org.apache.shiro.SecurityUtils
+import org.springframework.dao.DataIntegrityViolationException
 
 class DreamController {
 
@@ -44,13 +45,47 @@ class DreamController {
 									  notes: params.notes)									  
 		def user = User.findByUsername(SecurityUtils.subject.principal)
 		if(params.estimatedCompletion)
-			dreamInstance.estimatedCompletion = Date.parse("MM/dd/yy",params.estimatedCompletion)
+			dreamInstance.estimatedCompletion = DateFormat.parse(params.estimatedCompletion)
 		dreamInstance.user = user
 		if(!dreamInstance.hasErrors() && dreamInstance.save()) {
 			flash.message = "Success"
 			render(view:'show',model: dreamInstance)
 		}
 	}	
+	/**
+	 * Deletes the dream with the given id.
+	 * @param id
+	 * @return
+	 */
+	def delete(Long id) {
+		def dreamInstance = Dream.get(id)
+		if (!dreamInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [
+				message(code: 'dream.label', default: 'Dream'),
+				id
+			])
+			redirect(controller: "dreamerDashboard")
+			return
+		}
+
+		try {
+			dreamInstance.delete(flush: true)
+			flash.message = message(code: 'default.deleted.message', args: [
+				message(code: 'dream.label', default: 'Dream'),
+				id
+			])
+			redirect(controller: "dreamerDashboard")
+		}
+		catch (DataIntegrityViolationException e) {
+			flash.message = message(code: 'default.not.deleted.message', args: [
+				message(code: 'dream.label', default: 'Dream'),
+				id
+			])
+			redirect(controller: "dreamerDashboard")
+		}
+	}
+	
+	
 	
 	/**
 	 * Creates a new Dream record for the current user

@@ -4,7 +4,8 @@
 			<th>Category</th>
 			<th>Title</th>
 			<th>Estimated Completion</th>
-			<th>Term Length</th>		
+			<th>Term Length</th>
+			<th>Delete</th>	
 		</tr>
 	</thead>
 	<tbody>
@@ -16,6 +17,7 @@
 			<td><g:if test="${dream.isShortTerm}">Short Term</g:if> 
 			<g:else>Long Term</g:else>
 			</td>
+			<td><g:link controller="dream" action="delete" id="${dream.id}" onclick="return confirm('Are you sure you want to delete ${dream.name}?')" >Delete</g:link></td>
 		</tr>
 	</g:each>
 	</tbody>
