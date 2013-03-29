@@ -82,7 +82,6 @@ class ManagerToDreamerController {
 			def dreamer = relationshipRequest.user
 			dreamer.manager = relationshipRequest.manager
 			dreamer.managerConfirmed = true
-			dreamer.askToGetDreamManager = false
 			if(!dreamer.save(flush: true)){
 				flash.message = "Error not saving relation."
 				redirect(uri:'/')
@@ -158,10 +157,16 @@ class ManagerToDreamerController {
 	}
 	def nagToGetManager = {
 		def user= User?.findByUsername(SecurityUtils.subject.principal)
-		if(user.nagToGetDreamManager&&(ManagerRequest?.findByUser(user)==null)){
-			render( view:"nagToGetManager")
+		if(user.nagToGetDreamManager&&(ManagerRequest?.findByUser(user)==null)&&(Math.random()>0.7)){
+			render( view:"nagToGetManager", model: ["userInstance": user])
 		}else{
 			redirect(uri:'/')
 		}
+	}
+	
+	def stopNagging = {
+		def user= User?.findByUsername(SecurityUtils.subject.principal)
+		user.nagToGetDreamManager = false;
+		user.save(failOnError:true, flush:true)
 	}
 }
