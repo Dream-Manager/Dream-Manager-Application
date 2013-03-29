@@ -82,6 +82,7 @@ class ManagerToDreamerController {
 			def dreamer = relationshipRequest.user
 			dreamer.manager = relationshipRequest.manager
 			dreamer.managerConfirmed = true
+			dreamer.nagToGetDreamManager = false 
 			if(!dreamer.save(flush: true)){
 				flash.message = "Error not saving relation."
 				redirect(uri:'/')
@@ -102,7 +103,7 @@ class ManagerToDreamerController {
 		def user = User.get(params.id)
 		user.managerConfirmed = false
 		user.manager = null
-		user.askToGetDreamManager = true
+		user.nagToGetDreamManager = true
 		if(user.save(flush:true)){
 			redirect(uri: "/#tabs-3")
 			flash.message = "${user.firstName} ${user.lastName} is no longer yours to manage."
@@ -125,7 +126,7 @@ class ManagerToDreamerController {
 		def manager = user.manager.toString()
 		user.managerConfirmed = false
 		user.manager = null
-		user.askToGetDreamManager = true
+		user.nagToGetDreamManager = true
 		if(		user.save(flush:true)){
 			redirect(uri: "/")
 			flash.message = "${user.toString()} you are no longer managed by ${manager}"
