@@ -21,7 +21,7 @@ class DreamController {
 			redirect(controller: "dreamerDashboard")
 		
 		def dreams = Dream.findAllByUser(User.findById(params.id))
-		render (view: "list", model: [dreamInstanceList:dreams, total:dreams.size()])
+		render (view: "list", model: [dreamInstanceList:dreams, dreamInstanceTotal:dreams.size()])
 	}
 	
 	def show = {
