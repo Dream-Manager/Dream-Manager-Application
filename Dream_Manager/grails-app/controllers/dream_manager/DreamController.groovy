@@ -13,6 +13,17 @@ class DreamController {
 	
 	static layout = "application"
 	
+	def listForUser = { 
+		// Only allow a user's manager to call this action
+		def currentUser = User.findByUsername(SecurityUtils.subject.principal)
+		def dreamersManager = User.findById(params.id)?.manager
+		if(dreamersManager != currentUser)
+			redirect(controller: "dreamerDashboard")
+		
+		def dreams = Dream.findAllByUser(User.findById(params.id))
+		render (view: "list", model: [dreamInstanceList:dreams, total:dreams.size()])
+	}
+	
 	def show = {
 		def dream = Dream.get(params.id)
 		def currentUser = User.findByUsername(SecurityUtils.subject.principal)
