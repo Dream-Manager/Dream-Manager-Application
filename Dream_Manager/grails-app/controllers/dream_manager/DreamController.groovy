@@ -13,6 +13,16 @@ class DreamController {
 	
 	static layout = "application"
 	
+	def show = {
+		def dream = Dream.get(params.id)
+		def currentUser = User.findByUsername(SecurityUtils.subject.principal)
+		def dreamersManager = User.findById(dream.user.id)?.manager
+		if(dream.user != currentUser && dreamersManager != currentUser)
+			redirect(controller: "dreamerDashboard")	
+		else 
+			render(view:"show", model: [dreamInstance : dream])
+	}
+	
 	def showCreateAjax = {
 		render (view: "createAjax")
 	}
