@@ -28,8 +28,7 @@
 	<p>
 		<span class="ui-icon ui-icon-alert"
 			style="float: left; margin: 0 7px 50px 0;"></span>
-		${userInstance.toString() }
-		you currently do not have a Dream Manager, would you like to request
-		one?
+		${userInstance.firstName }
+		do you want to get a Dream Manager to help with your dreams?
 	</p>
 </div>

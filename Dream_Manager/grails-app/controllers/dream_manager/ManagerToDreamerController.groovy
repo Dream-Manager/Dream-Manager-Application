@@ -15,11 +15,11 @@ class ManagerToDreamerController {
 	 * This allows Managers to request to be a users Dream Manager
 	 */
 	def claimDreamer = {
-		def manager = User.findByUsername(SecurityUtils.subject.principal)
-		def user = User.get(params.id)
+		def manager = User?.findByUsername(SecurityUtils.subject.principal)
+		def user = User?.get(params.id)
 		def previousClaim = ManagerRequest?.findByUser(user)
 		if(previousClaim!=null) {
-			previousClaim.delete(failOnError:true, flush: true)
+			previousClaim?.delete(failOnError:true, flush: true)
 		}
 		if(manager!=user){
 			def managerRequest = new ManagerRequest(requestInitiator:manager, manager:manager,user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)

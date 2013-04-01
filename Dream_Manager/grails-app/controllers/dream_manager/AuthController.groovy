@@ -24,7 +24,7 @@ class AuthController {
 		def authToken = new UsernamePasswordToken(params.username, params.password as String)
 
 		// Support for "remember me"
-		if (params.rememberMe) {
+		if (params?.rememberMe) {
 			authToken.rememberMe = true
 		}
 
