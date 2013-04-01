@@ -17,7 +17,11 @@
 			<td><g:if test="${dream.isShortTerm}">Short Term</g:if> 
 			<g:else>Long Term</g:else>
 			</td>
-			<td><g:link controller="dream" action="delete" id="${dream.id}" onclick="return confirm('Are you sure you want to delete ${dream.name}?')" >Delete</g:link></td>
+			<td>
+				<g:link controller="dream" action="delete" id="${dream.id}" onclick="return confirm('Are you sure you want to delete ${dream.name}?')" >
+					<g:img dir="images" file="delete.png" width="20" height="20" />
+				</g:link>
+			</td>
 		</tr>
 	</g:each>
 	</tbody>

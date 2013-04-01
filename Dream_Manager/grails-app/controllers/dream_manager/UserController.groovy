@@ -170,6 +170,12 @@ class UserController {
 			return
 		}
 
+		// Only show dream list on profile to manager of user
+		def currentUser = User.findByUsername(SecurityUtils.subject.principal)
+		def usersManager = User.findById(userInstance.id)?.manager
+		if(usersManager != currentUser)
+			userInstance.dreams = null
+			
 		[userInstance: userInstance]
 	}
 	/**

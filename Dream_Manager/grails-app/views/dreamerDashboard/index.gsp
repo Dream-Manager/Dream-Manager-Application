@@ -122,8 +122,7 @@
 		<div style="margin-top: .5em">
 			<div class="grid_2 alpha">
 				Welcome back,
-				<g:include controller="user" action="getCurrentUserFirstName" />
-				!
+				<g:include controller="user" action="getCurrentUserFirstName" />!
 			</div>
 			<div class="grid_2 omega">
 				<div style="margin-left: 3em;">
