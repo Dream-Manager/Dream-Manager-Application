@@ -40,50 +40,15 @@
 				<div>
 					<h1>Short Term</h1>
 
-					<div class="accordion">
-						<h3>Dream 1</h3>
-						<div>
-							<p>Task Name</p>
-							<p>Size</p>
-							<p>Completed</p>
-						</div>
-						<h3>Dream 2</h3>
-						<div>
-							<p>Task Name</p>
-							<p>Size</p>
-							<p>Completed</p>
-						</div>
-						<h3>Dream 3</h3>
-						<div>
-							<p>Task Name</p>
-							<p>Size</p>
-							<p>Completed</p>
-						</div>
+					<div>
+						<g:include controller="dream" action="shortermDreams"/>							
 					</div>
 
 					<!-- Longterm Dreams -->
 					<h1>Long Term</h1>
-					<div class="accordion">
-						<h3>Dream 1</h3>
-						<div>
-							<p>Task Name</p>
-							<p>Size</p>
-							<p>Completed</p>
-						</div>
-						<h3>Dream 2</h3>
-						<div>
-							<p>Task Name</p>
-							<p>Size</p>
-							<p>Completed</p>
-						</div>
-						<h3>Dream 3</h3>
-						<div>
-							<p>Task Name</p>
-							<p>Size</p>
-							<p>Completed</p>
-						</div>
+					<div>
+						<g:include controller="dream" action="shortermDreams"/>							
 					</div>
-
 					<!-- Upcoming Dreams -->
 					<h1>Upcoming Dreams</h1>
 

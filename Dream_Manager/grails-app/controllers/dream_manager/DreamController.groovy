@@ -157,7 +157,21 @@ class DreamController {
 		}
 		render(view:'shortermDreams.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
 	}
-	
+
+	def longtermDreams = {
+		def dreamList = Dream.withCriteria {
+			eq('user',User.findByUsername(SecurityUtils.subject.principal))
+			isNotNull("estimatedCompletion")
+			Date currentDate = new Date()
+			ge("estimatedCompletion", currentDate)
+			maxResults(3)
+			order("estimatedCompletion", "asc")
+			order("name", "asc")
+		}
+		render(view:'shortermDreams.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
+	}
+
+		
 	/**
 	 * Executes a search of the current user's dreams for an Autocomplete field.
 	 * @param term	A term to be searched on.

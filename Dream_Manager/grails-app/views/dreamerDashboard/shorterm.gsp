@@ -5,7 +5,7 @@
 <body>
 	<!-- Shorterm Dreams -->
 	<div>Short Term</div>
-		<div >
+		<div>
 			<g:include controller="dream" action="shortermDreams"/>							
 		</div>
 	</div>
