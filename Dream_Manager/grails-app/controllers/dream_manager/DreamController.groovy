@@ -189,7 +189,8 @@ class DreamController {
 			order("estimatedCompletion", "asc")
 			order("name", "asc")
 		}
-		render(view:'shortermDreams.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
+		render(view:'longtermDreams.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
+
 	}
 
 		

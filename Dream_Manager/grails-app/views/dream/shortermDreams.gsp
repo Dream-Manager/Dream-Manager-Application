@@ -1,12 +1,10 @@
-<html>
-<body>
-<div>
+
 	<g:each in="${dreams}" status="i" var="dream">
 		<div class="accordion">
-			<p>${dream.name}  ${dream.percentComplete} %</p>
-
+			<h3>${dream.name}</h3>
+			<div>
+				<p>Task List</p>
+				<p>Completetion</p>
+			</div>
 		</div>
 	</g:each>
-</div>
-</body>
-</html>
