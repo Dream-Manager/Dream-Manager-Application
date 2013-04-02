@@ -47,7 +47,7 @@
 					<!-- Longterm Dreams -->
 					<h1>Long Term</h1>
 					<div>
-						<g:include controller="dream" action="shortermDreams"/>							
+						<g:include controller="dream" action="longtermDreams"/>							
 					</div>
 					<!-- Upcoming Dreams -->
 					<h1>Upcoming Dreams</h1>
