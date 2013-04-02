@@ -167,7 +167,8 @@ class DreamController {
 	}
 
 	def shortermDreams = {
-		def dreamList = Dream.withCriteria {
+
+			def dreamList = Dream.withCriteria {
 			eq('user',User.findByUsername(SecurityUtils.subject.principal))
 			isNotNull("estimatedCompletion")
 			Date currentDate = new Date()
