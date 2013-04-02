@@ -1,13 +1,11 @@
 <div class="accordion">
 	<g:each in="${dreams}" status="i" var="dream">
+	<div id="short"></div>
 	<script>
-	if(dream.isShortTerm==true)
+	var x=document.getElementByID("short")
+	if(dream.isShortTerm==false)
 		{
-			<h3>${dream.name} ${dream.percentComplete} %</h3>
-			<div>
-				<p>Short Term Task</p>
-				<p>Completetion</p>
-			</div>
+			x.innerHTML=""<h3>${dream.name} ${dream.percentComplete} %</h3><div><p>Long Term</p><p>Completetion</p></div>";
 		}
 	</script>
 	</g:each>
