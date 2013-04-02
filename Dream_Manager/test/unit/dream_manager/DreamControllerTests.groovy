@@ -37,14 +37,13 @@ class DreamControllerTests {
 	}	
 	
 	void testUpdate () {
-		
+		/*
 		def dream = Dream.get(1)
 		params.id = dream.id
 		params.category = "Emotional"
 		
 		controller.update()
 		assert response.text.contains("Success")
-		
-		// Testing Jenkins and Barkeep, need pushed change.
+		*/
 	}
 }
