@@ -8,6 +8,7 @@ if (typeof jQuery !== 'undefined') {
 		
 		$(".datepicker").datepicker();
 		$(".tabs").tabs();
-		$(".accordion" ).accordion();  
+		$(".accordion" ).accordion(); 
+		$(".progressbar" ).progressbar();
 	})(jQuery);
 }

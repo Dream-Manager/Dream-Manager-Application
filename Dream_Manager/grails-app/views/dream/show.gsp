@@ -91,6 +91,14 @@
 					aria-labelledby="name-label"><g:fieldValue
 							bean="${dreamInstance}" field="name" /></span></li>
 			</g:if>
+			
+			<g:if test="${dreamInstance?.percentComplete}">
+				<li class="fieldcontain"><span id="percentComplete-label"
+					class="property-label"><g:message code="dream.percentComplete.label"
+							default="Percent Complete" /></span> <span class="property-value"
+					aria-labelledby="percentComplete-label"><g:fieldValue
+							bean="${dreamInstance}" field="percentComplete" /></span></li>
+			</g:if>
 
 			<g:if test="${dreamInstance?.tasks}">
 				<li class="fieldcontain"><span id="tasks-label"

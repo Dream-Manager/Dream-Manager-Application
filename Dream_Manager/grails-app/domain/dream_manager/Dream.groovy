@@ -11,6 +11,7 @@ class Dream {
 	Date completed = null
 	String notes
 	int percentComplete = 0
+	Boolean isComplete = false
 	
 	String toString() {
 		name
@@ -26,6 +27,7 @@ class Dream {
 		completed nullable: true
 		estimatedCompletion nullable: true
 		notes nullable: true	
+		percentComplete nullable: true
 		category inList: ["Adventure","Character","Creative","Emotional","Financial","Intellectual","Legacy","Material","Physical","Professional","Psychological","Spiritual"]
     }
 }

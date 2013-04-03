@@ -63,7 +63,8 @@ class DreamController {
 		def dreamInstance = new Dream(name: params.name,
 									  category:params.category,
 									  isShortTerm: params.isShortTerm,
-									  notes: params.notes)									  
+									  notes: params.notes,
+									  percentComplete: params.percentComplete)									  
 		def user = User.findByUsername(SecurityUtils.subject.principal)
 		if(params.estimatedCompletion)
 			dreamInstance.estimatedCompletion = DateFormat.parse(params.estimatedCompletion)
@@ -116,7 +117,8 @@ class DreamController {
 		def dreamInstance = new Dream(name: params.name,
 									  category:params.category,
 									  isShortTerm: params.isShortTerm,
-									  notes: params.notes)
+									  notes: params.notes,
+									  percentComplete: params.percentComplete)
 		def user = User.findByUsername(SecurityUtils.subject.principal)
 		dreamInstance.user = user
 		if(params.estimatedCompletion) 
