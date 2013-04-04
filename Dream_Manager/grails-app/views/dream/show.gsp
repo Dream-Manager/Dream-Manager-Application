@@ -96,8 +96,9 @@
 				<li class="fieldcontain"><span id="percentComplete-label"
 					class="property-label"><g:message code="dream.percentComplete.label"
 							default="Percent Complete" /></span> <span class="property-value"
-					aria-labelledby="percentComplete-label"><g:fieldValue
-							bean="${dreamInstance}" field="percentComplete" /></span></li>
+					aria-labelledby="percentComplete-label">
+					<div class="progressbar"><g:fieldValue
+							bean="${dreamInstance}" field="percentComplete" /></div></span></li>
 			</g:if>
 
 			<g:if test="${dreamInstance?.tasks}">
