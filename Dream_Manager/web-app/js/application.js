@@ -12,7 +12,7 @@ if (typeof jQuery !== 'undefined') {
  		$(".progressbar").each(function(){
 			$this = $(this);
 			percentage = Number($this.text());
-			$progressbar = $("<div></div>").progressbar({value:percentage});
+			$progressbar = $("<div class='activeProgressbar' style='width:10em;'></div>").progressbar({value:percentage});
 			$this.replaceWith($progressbar);
  	 	});
  		
