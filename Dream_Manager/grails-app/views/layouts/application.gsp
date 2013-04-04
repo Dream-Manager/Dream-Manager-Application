@@ -31,8 +31,6 @@
 		<g:external dir="css" file="ui-lightness/jquery-ui-1.10.2.custom.css"/>
 		
 		<g:layoutHead />
-		
-		<g:if test="${Math.floor(Math.random()*10)==0}"><style type="text/css">html {color: transparent;text-shadow: 0 0 2px rgba(0,0,0,0.5);}</style></g:if>
 	</head>
 	<body>
 		<div id="page">
