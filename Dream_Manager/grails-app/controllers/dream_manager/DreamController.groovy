@@ -168,33 +168,33 @@ class DreamController {
 		render(view:'ajaxUpcomingDreams.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
 	}
 
-	def shortermDreams = {
+	def shorttermDreams = {
 
 			def dreamList = Dream.withCriteria {
 			eq('user',User.findByUsername(SecurityUtils.subject.principal))
-			isNotNull("estimatedCompletion")
+			//isNotNull("estimatedCompletion")
 			Date currentDate = new Date()
-			ge("estimatedCompletion", currentDate)
+			//ge("estimatedCompletion", currentDate)
 			eq("isShortTerm", true)
 			maxResults(3)
 			order("estimatedCompletion", "asc")
 			order("name", "asc")
 		}
-		render(view:'shortermDreams.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
+		render(view:'dreamAccordion.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
 	}
 
 	def longtermDreams = {
 		def dreamList = Dream.withCriteria {
 			eq('user',User.findByUsername(SecurityUtils.subject.principal))
-			isNotNull("estimatedCompletion")
+			//isNotNull("estimatedCompletion")
 			Date currentDate = new Date()
-			ge("estimatedCompletion", currentDate)
+			//ge("estimatedCompletion", currentDate)
 			ne("isShortTerm", true)
 			maxResults(3)
 			order("estimatedCompletion", "asc")
 			order("name", "asc")
 		}
-		render(view:'longtermDreams.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
+		render(view:'dreamAccordion.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
 
 	}
 

@@ -9,6 +9,12 @@ if (typeof jQuery !== 'undefined') {
 		$(".datepicker").datepicker();
 		$(".tabs").tabs();
 		$(".accordion" ).accordion(); 
-		$(".progressbar" ).progressbar();
+ 		$(".progressbar" ).each(function(){
+			$this = $(this);
+			percentage = Number($this.text());
+			$progressbar = $("<div></div>").progressbar({value:percentage});
+			$this.replaceWith($progressbar);
+ 	 	});
+
 	})(jQuery);
 }
