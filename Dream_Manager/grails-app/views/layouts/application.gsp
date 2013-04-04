@@ -39,7 +39,7 @@
 			</div>
 			<div class="clear"></div>
 			
-			<div id="content" class="container_16" style="min-height:40em;"> 
+			<div id="content" class="container_16" style="min-height:60em;"> 
 				<g:layoutBody />
 			</div>
 			<div class="clear"></div>
