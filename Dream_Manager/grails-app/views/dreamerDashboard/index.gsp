@@ -36,22 +36,16 @@
 			<div id="tabs-1">
 				<g:include controller="dream" action="showCreateAjax" />
 				<h2>Dream Progress</h2>
-				<!-- Shorterm Dreams -->
 				<div>
 					<h1>Short Term</h1>
-
 					<div>
-						<g:include controller="dream" action="shortermDreams"/>							
+						<g:include controller="dream" action="shorttermDreams"/>							
 					</div>
-
-					<!-- Longterm Dreams -->
 					<h1>Long Term</h1>
 					<div>
 						<g:include controller="dream" action="longtermDreams"/>							
 					</div>
-					<!-- Upcoming Dreams -->
 					<h1>Upcoming Dreams</h1>
-
 					<div class='ui-widget' style="margin-bottom: 1em;"
 						id="ajaxUpcomingDreamsResults">
 						<g:include controller="dream" action="ajaxUpcomingDreams" />
