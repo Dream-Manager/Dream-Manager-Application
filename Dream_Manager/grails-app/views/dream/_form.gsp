@@ -45,7 +45,7 @@
 	<label for="percentComplete">
 		<g:message code="dream.percentComplete.label" default="Percent Completed" />
 	</label>
-	<g:textField name="percentComplete" value="${dreamInstance?.percentComplete}"/>
+	<input class="slider" name="percentComplete" value="${dreamInstance?.percentComplete}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: dreamInstance, field: 'notes', 'error')} ">

@@ -39,12 +39,12 @@ class DreamController {
 	}
 	
 	def update = {
-		def dreamInstance = Dream.get( params.id )
-		if(dreamInstance) {
-			dreamInstance.properties = params
-			dreamInstance.lastUpdated = new Date()
+		def dream = Dream.get( params.id )
+		if(dream) {
+			dream.properties = params
+			dream.lastUpdated = new Date()
 			
-			if(!dreamInstance.hasErrors() && dreamInstance.save()) {
+			if(!dream.hasErrors() && dream.save()) {
 				flash.message = "Success"
 			} else {
 				flash.message = "Failure"
@@ -52,6 +52,13 @@ class DreamController {
 		} else {
 			flash.message = "Dream not found with id ${params.id}"
 		}
+		
+		def currentUser = User.findByUsername(SecurityUtils.subject.principal)
+		def dreamersManager = User.findById(dream.user.id)?.manager
+		if(dream.user != currentUser && dreamersManager != currentUser)
+			redirect(controller: "dreamerDashboard")	
+		else 
+			render(view:"show", model: [dreamInstance : dream])
 	}
 	  
 	/**
@@ -177,7 +184,7 @@ class DreamController {
 			//ge("estimatedCompletion", currentDate)
 			eq("isShortTerm", true)
 			maxResults(3)
-			order("estimatedCompletion", "asc")
+			order("percentComplete", "desc")
 			order("name", "asc")
 		}
 		render(view:'dreamAccordion.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
@@ -191,7 +198,7 @@ class DreamController {
 			//ge("estimatedCompletion", currentDate)
 			ne("isShortTerm", true)
 			maxResults(3)
-			order("estimatedCompletion", "asc")
+			order("percentComplete", "desc")
 			order("name", "asc")
 		}
 		render(view:'dreamAccordion.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
