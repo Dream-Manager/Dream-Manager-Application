@@ -67,14 +67,16 @@ class DreamController {
 	 * Redirects the user to the "show" view for the created record on completion.
 	 */
 	def create = {
+		def percentComplete = params.percentComplete
+		if(!params.percentComplete)
+			percentComplete = 0
 		def dreamInstance = new Dream(name: params.name,
 									  category:params.category,
 									  isShortTerm: params.isShortTerm,
 									  notes: params.notes,
-									  percentComplete: params.percentComplete)									  
+									  percentComplete: percentComplete)									  
 		def user = User.findByUsername(SecurityUtils.subject.principal)
-		if(params.percentComplete==null)
-			params.percentComplete=0
+		
 		if(params.estimatedCompletion)
 			dreamInstance.estimatedCompletion = DateFormat.parse(params.estimatedCompletion)
 		dreamInstance.user = user
