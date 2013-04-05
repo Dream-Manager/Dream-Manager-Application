@@ -73,6 +73,8 @@ class DreamController {
 									  notes: params.notes,
 									  percentComplete: params.percentComplete)									  
 		def user = User.findByUsername(SecurityUtils.subject.principal)
+		if(params.percentComplete==null)
+			params.percentComplete=0
 		if(params.estimatedCompletion)
 			dreamInstance.estimatedCompletion = DateFormat.parse(params.estimatedCompletion)
 		dreamInstance.user = user
@@ -121,16 +123,20 @@ class DreamController {
 	 * @param params All required fields for the Dream object
 	 */
 	def createAjax = {
+		
+		def percentComplete = params.percentComplete
+		if(!params.percentComplete)
+			percentComplete = 0
+			
 		def dreamInstance = new Dream(name: params.name,
 									  category:params.category,
 									  isShortTerm: params.isShortTerm,
 									  notes: params.notes,
-									  percentComplete: params.percentComplete)
+									  percentComplete: percentComplete)
 		def user = User.findByUsername(SecurityUtils.subject.principal)
 		dreamInstance.user = user
 		if(params.estimatedCompletion) 
 			dreamInstance.estimatedCompletion = Date.parse("MM/dd/yy",params.estimatedCompletion)
-		
 		
 		def output = ""
 		def cssClass = ""
