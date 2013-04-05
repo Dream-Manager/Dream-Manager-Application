@@ -169,5 +169,6 @@ class ManagerToDreamerController {
 		def user= User?.findByUsername(SecurityUtils.subject.principal)
 		user.nagToGetDreamManager = false;
 		user.save(failOnError:true, flush:true)
+		render ""
 	}
 }
