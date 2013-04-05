@@ -50,13 +50,70 @@ class BootStrap {
 				.save(flush: true, failOnError: true)
 				
 				new Dream (
-					name:"Test Dream #1",
+					name:"Climb Mount Everest",
 					category:"Adventure",
 					lastUpdated:new Date(),
-					notes:"Example Notes",
+					notes:"Need to buy hiking boots",
+					percentComplete: 30,
+					estimatedCompletion: "05/20/2014",
+					isShortTerm: false,
 					user:User.findByUsername("dreammanager.noreply@gmail.com")
 				).save()
 				
+				new Dream (
+					name:"Get a Bigger Baseball Bat",
+					category:"Material",
+					lastUpdated:new Date(),
+					notes:"Make sure it has a Yankees logo",
+					percentComplete: 15,
+					estimatedCompletion: "05/02/2013",
+					isShortTerm: true,
+					user:User.findByUsername("dreammanager.noreply@gmail.com")
+				).save()
+				
+				new Dream (
+					name:"Get Permission to Use Bat at work",
+					category:"Professional",
+					lastUpdated:new Date(),
+					notes:"Students are really getting on my nerves...",
+					percentComplete: 5,
+					estimatedCompletion: "05/1/2013",
+					isShortTerm: true,
+					user:User.findByUsername("dreammanager.noreply@gmail.com")
+				).save()
+				
+				new Dream (
+					name:"Push Lazy Students to Finish Projects",
+					category:"Professional",
+					lastUpdated:new Date(),
+					notes:"Yell at students more",
+					percentComplete: 80,
+					estimatedCompletion: "05/2/2013",
+					isShortTerm: true,
+					user:User.findByUsername("dreammanager.noreply@gmail.com")
+				).save()
+				
+				new Dream (
+					name:"Take a Women's Studies Class",
+					category:"Intellectual",
+					lastUpdated:new Date(),
+					notes:"Get more in touch with my feminine side",
+					percentComplete: 50,
+					estimatedCompletion: "06/25/2013",
+					isShortTerm: true,
+					user:User.findByUsername("dreammanager.noreply@gmail.com")
+				).save()
+				
+				new Dream (
+					name:"Complete an Anger Management Course",
+					category:"Emotional",
+					lastUpdated:new Date(),
+					notes:"Stop Beating My Students with said bat",
+					percentComplete: 60,
+					estimatedCompletion: "03/25/2014",
+					isShortTerm: false,
+					user:User.findByUsername("dreammanager.noreply@gmail.com")
+				).save()
 				
 
 
