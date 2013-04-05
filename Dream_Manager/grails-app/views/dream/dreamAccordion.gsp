@@ -4,6 +4,7 @@
 		<div>
 			<div style="height: 10em; position: relative;">
 				<p>${dream.notes}</p>
+				<p>This is where tasks will be displayed in the future.</p>
 				<g:link controller="dream" action="edit" id="${dream.id}" style="position:absolute; right: 0; bottom: 0;">Edit Dream</g:link>
 			</div>
 		</div>
