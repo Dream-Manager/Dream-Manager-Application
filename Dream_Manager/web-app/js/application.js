@@ -8,7 +8,7 @@ if (typeof jQuery !== 'undefined') {
 		
 		$(".datepicker").datepicker();
 		$(".tabs").tabs();
-		$(".accordion").accordion({heightStyle: "content"}); 
+		$(".accordion").accordion({heightStyle: "content",
 									collapsible: true,
 									active: false
 									});
