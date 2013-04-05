@@ -28,7 +28,7 @@
 	<p>
 		<span class="ui-icon ui-icon-alert"
 			style="float: left; margin: 0 7px 50px 0;"></span>
-		${userInstance.firstName }
+		${userInstance.firstName },
 		do you want to get a Dream Manager to help with your dreams?
 	</p>
 </div>
