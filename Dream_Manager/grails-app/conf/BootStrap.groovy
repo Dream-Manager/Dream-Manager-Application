@@ -40,6 +40,24 @@ class BootStrap {
 		// Add role to the standard user
 		assert standardUser.addToRoles(userRole)
 		.save(flush: true, failOnError: true)
+		
+		def testUser = new User(username: "dreammanager.noreply@gmail.com",passwordHash: new Sha256Hash('password').toHex(), firstName:"Kevin", lastName:"Gary", avatarLocation:null, streetAddress1:"123 Fake Street", streetAddress2:null,poBox:null, dateOfBirth:null, city:"Mesa", state:"AZ", zipcode:85212,isManager:false, passwordChangeRequiredOnNextLogon:false , isAdmin:false)
+		
+				testUser.save(flush: true, failOnError: true)
+		
+				// Add role to the standard user
+				assert testUser.addToRoles(userRole)
+				.save(flush: true, failOnError: true)
+				
+				new Dream (
+					name:"Test Dream #1",
+					category:"Adventure",
+					lastUpdated:new Date(),
+					notes:"Example Notes",
+					user:User.findByUsername("dreammanager.noreply@gmail.com")
+				).save()
+				
+				
 
 
 	}
