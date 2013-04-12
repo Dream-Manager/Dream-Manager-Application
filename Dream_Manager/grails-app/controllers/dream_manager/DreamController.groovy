@@ -129,10 +129,14 @@ class DreamController {
 		def percentComplete = params.percentComplete
 		if(!params.percentComplete)
 			percentComplete = 0
+		
+		def isShortTerm = params.isShortTerm	
+		if(!params.isShortTerm)
+			isShortTerm = "true"
 			
 		def dreamInstance = new Dream(name: params.name,
 									  category:params.category,
-									  isShortTerm: params.isShortTerm,
+									  isShortTerm: isShortTerm,
 									  notes: params.notes,
 									  percentComplete: percentComplete)
 		def user = User.findByUsername(SecurityUtils.subject.principal)
