@@ -29,7 +29,7 @@
 	<g:radioGroup name="isShortTerm"
 	              labels="['Short','Long']"
 	              values="[true,false]" 
-	              value="true" >
+	              value="${dreamInstance?.isShortTerm }" >
 		${it.label} ${it.radio}
 	</g:radioGroup>
 </div>
@@ -38,7 +38,7 @@
 	<label for="estimatedCompletion">
 		<g:message code="dream.estimatedCompletion.label" default="Estimated Completion" />
 	</label>
-	<input name="estimatedCompletion" type="text" class="datepicker" />
+	<input name="estimatedCompletion" type="text" class="datepicker" value="${dreamInstance?.estimatedCompletion}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: dreamInstance, field: 'percentComplete', 'error')} required">

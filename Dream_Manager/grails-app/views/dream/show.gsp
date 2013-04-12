@@ -26,13 +26,21 @@
 			<g:message code="default.show.label" args="[entityName]" />
 		</h1>
 		<ol class="property-list dream">
-
-			<g:if test="${dreamInstance?.completed}">
-				<li class="fieldcontain"><span id="completed-label"
+		
+			<g:if test="${dreamInstance?.name}">
+				<li class="fieldcontain"><span id="name-label"
+					class="property-label"><g:message code="dream.name.label"
+							default="Name" /></span> <span class="property-value"
+					aria-labelledby="name-label"><g:fieldValue
+							bean="${dreamInstance}" field="name" /></span></li>
+			</g:if>
+			
+			<g:if test="${dreamInstance?.category}">
+				<li class="fieldcontain"><span id="category-label"
 					class="property-label"><g:message
-							code="dream.completed.label" default="Completed" /></span> <span
-					class="property-value" aria-labelledby="completed-label"><g:formatDate
-							date="${dreamInstance?.completed}" /></span></li>
+							code="dream.category.label" default="Category" /></span> <span
+					class="property-value" aria-labelledby="category-label"><g:fieldValue
+							bean="${dreamInstance}" field="category" /></span></li>
 			</g:if>
 
 			<g:if test="${dreamInstance?.notes}">
@@ -42,21 +50,13 @@
 					aria-labelledby="notes-label"><g:fieldValue
 							bean="${dreamInstance}" field="notes" /></span></li>
 			</g:if>
-
-			<g:if test="${dreamInstance?.category}">
-				<li class="fieldcontain"><span id="category-label"
+			
+			<g:if test="${dreamInstance?.completed}">
+				<li class="fieldcontain"><span id="completed-label"
 					class="property-label"><g:message
-							code="dream.category.label" default="Category" /></span> <span
-					class="property-value" aria-labelledby="category-label"><g:fieldValue
-							bean="${dreamInstance}" field="category" /></span></li>
-			</g:if>
-
-			<g:if test="${dreamInstance?.created}">
-				<li class="fieldcontain"><span id="created-label"
-					class="property-label"><g:message code="dream.created.label"
-							default="Created" /></span> <span class="property-value"
-					aria-labelledby="created-label"><g:formatDate
-							date="${dreamInstance?.created}" /></span></li>
+							code="dream.completed.label" default="Completed" /></span> <span
+					class="property-value" aria-labelledby="completed-label"><g:formatDate
+							date="${dreamInstance?.completed}" /></span></li>
 			</g:if>
 
 			<g:if test="${dreamInstance?.estimatedCompletion}">
@@ -64,33 +64,17 @@
 					class="property-label"><g:message
 							code="dream.estimatedCompletion.label"
 							default="Estimated Completion" /></span> <span class="property-value"
-					aria-labelledby="estimatedCompletion-label"><g:formatDate
+					aria-labelledby="estimatedCompletion-label"><g:formatDate format="MM-dd-yyyy"
 							date="${dreamInstance?.estimatedCompletion}" /></span></li>
 			</g:if>
 
-			<g:if test="${dreamInstance?.isShortTerm}">
 				<li class="fieldcontain"><span id="isShortTerm-label"
 					class="property-label"><g:message
-							code="dream.isShortTerm.label" default="Is Short Term" /></span> <span
-					class="property-value" aria-labelledby="isShortTerm-label"><g:formatBoolean
-							boolean="${dreamInstance?.isShortTerm}" /></span></li>
-			</g:if>
-
-			<g:if test="${dreamInstance?.lastUpdated}">
-				<li class="fieldcontain"><span id="lastUpdated-label"
-					class="property-label"><g:message
-							code="dream.lastUpdated.label" default="Last Updated" /></span> <span
-					class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate
-							date="${dreamInstance?.lastUpdated}" /></span></li>
-			</g:if>
-
-			<g:if test="${dreamInstance?.name}">
-				<li class="fieldcontain"><span id="name-label"
-					class="property-label"><g:message code="dream.name.label"
-							default="Name" /></span> <span class="property-value"
-					aria-labelledby="name-label"><g:fieldValue
-							bean="${dreamInstance}" field="name" /></span></li>
-			</g:if>
+							code="dream.isShortTerm.label" default="Term Length" /></span> <span
+					class="property-value" aria-labelledby="isShortTerm-label">
+						<g:if test="${dreamInstance?.isShortTerm}">Short Term</g:if> 
+						<g:else>Long Term</g:else>
+						</span></li>
 			
 			<g:if test="${dreamInstance?.percentComplete}">
 				<li class="fieldcontain"><span id="percentComplete-label"
