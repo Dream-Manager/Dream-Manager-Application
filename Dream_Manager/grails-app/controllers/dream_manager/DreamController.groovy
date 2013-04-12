@@ -41,7 +41,12 @@ class DreamController {
 	def update = {
 		def dream = Dream.get( params.id )
 		if(dream) {
-			dream.properties = params
+			dream.name = params.name
+			dream.category = params.category
+			dream.isShortTerm = params.isShortTerm
+			dream.notes = params.notes
+			dream.percentComplete = Integer.parseInt(params.percentComplete)
+			dream.estimatedCompletion = (!params.estimatedCompletion?null:Date.parse("MM/dd/yy",params.estimatedCompletion))
 			dream.lastUpdated = new Date()
 			
 			if(!dream.hasErrors() && dream.save()) {
