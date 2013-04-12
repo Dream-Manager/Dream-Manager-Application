@@ -4,8 +4,8 @@ class DreamTask {
 	
 	String name
 	Date estimatedCompletion
-	Integer size
 	Boolean completed = false
+	int percentComplete = 0
 	String description
 	
 	// Each DreamTask is related to a Dream
@@ -16,5 +16,9 @@ class DreamTask {
 	}
 	
     static constraints = {
+		name nullable: false
+		description nullable: true
+		estimatedCompletion nullable: true
+		
     }
 }

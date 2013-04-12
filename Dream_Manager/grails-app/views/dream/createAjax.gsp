@@ -10,6 +10,7 @@
 		<g:formRemote update="createDreamAjaxResponse" name="createDreamByAjax" url="[controller: 'dream', action:'createAjax']" onSuccess="createDreamByAjaxResponseHandler()">
 			<fieldset>
 				<div style="margin-bottom:2em;">
+					<h1>Add New Dream</h1>
 					<g:render template="form"/>
 				</div>
 				<input type="submit" value="Save" style="float:right"/>
