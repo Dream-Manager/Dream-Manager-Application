@@ -4,6 +4,7 @@ import java.security.SecureRandom
 import org.springframework.dao.DataIntegrityViolationException
 import org.apache.shiro.SecurityUtils
 import org.apache.shiro.subject.Subject
+import grails.util.Environment
 /*
  * This controller handles all the requests for dreamers acquiring and losing managers. 
  * The relation ship is binary and requires both sides approve, however only one person has to terminate it. 
@@ -21,20 +22,28 @@ class ManagerToDreamerController {
 		if(previousClaim!=null) {
 			previousClaim?.delete(failOnError:true, flush: true)
 		}
-		if(manager!=user){
-			def managerRequest = new ManagerRequest(requestInitiator:manager, manager:manager,user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
-			sendMail {
-				to user.username
-				from grailsApplication.config.grails.mail.username
-				subject "A Dream Manager has decided to help you out!"
-				body "Hello ${user.toString()},\n\n${manager.toString()} has decided to help you achieve your dreams.\n\nTo accept ${manager.firstName} ${manager.lastName} as your dream manager click here: ${createLink(absolute:true, controller:'managerToDreamer',action:'acceptManagerDreamerRelationshipRequest',id:managerRequest.token)}\n\n\n\n To reject this request click here: ${createLink(absolute:true, controller:'managerToDreamer',action:'rejectManagerDreamerRelationshipRequest',id:managerRequest.token)} \n\n\n\nGood Luck With Your Dreams!\n\n\n\n Click here to reject: \n".toString()
+		if(user.manager==null){
+			if(manager!=user){
+				def managerRequest = new ManagerRequest(requestInitiator:manager, manager:manager,user:user,requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
+				if (Environment.getCurrent()!=Environment.TEST){
+					sendMail {
+						to user.username
+						from grailsApplication.config.grails.mail.username
+						subject "A Dream Manager has decided to help you out!"
+						body "Hello ${user.toString()},\n\n${manager.toString()} has decided to help you achieve your dreams.\n\nTo accept ${manager.firstName} ${manager.lastName} as your dream manager click here: ${createLink(absolute:true, controller:'managerToDreamer',action:'acceptManagerDreamerRelationshipRequest',id:managerRequest.token)}\n\n\n\n To reject this request click here: ${createLink(absolute:true, controller:'managerToDreamer',action:'rejectManagerDreamerRelationshipRequest',id:managerRequest.token)} \n\n\n\nGood Luck With Your Dreams!\n\n\n\n Click here to reject: \n".toString()
+					}
+				}
+				redirect(uri: "/#tabs-3")
+				flash.message = "Request to manage ${user.firstName} ${user.lastName} has been sent."
 			}
-			redirect(uri: "/#tabs-3")
-			flash.message = "Request to manage ${user.firstName} ${user.lastName} has been sent."
+			else{
+				redirect(uri: "/#tabs-3")
+				flash.message = "Cannot Claim Yourself"
+			}
 		}
 		else{
 			redirect(uri: "/#tabs-3")
-			flash.message = "Cannot Claim YourSelf"
+			flash.message = "Cannot Claim already Managed User"
 		}
 	}
 	/*
@@ -60,7 +69,7 @@ class ManagerToDreamerController {
 		}
 		else{
 			redirect(uri:'/')
-			flash.message = "Cannot Claim YourSelf"
+			flash.message = "Cannot request Yourself"
 		}
 	}
 
@@ -82,7 +91,7 @@ class ManagerToDreamerController {
 			def dreamer = relationshipRequest.user
 			dreamer.manager = relationshipRequest.manager
 			dreamer.managerConfirmed = true
-			dreamer.nagToGetDreamManager = false 
+			dreamer.nagToGetDreamManager = false
 			if(!dreamer.save(flush: true)){
 				flash.message = "Error not saving relation."
 				redirect(uri:'/')
@@ -107,11 +116,13 @@ class ManagerToDreamerController {
 		if(user.save(flush:true)){
 			redirect(uri: "/#tabs-3")
 			flash.message = "${user.firstName} ${user.lastName} is no longer yours to manage."
-			sendMail {
-				to user.username
-				from grailsApplication.config.grails.mail.username
-				subject "Dream Manager Status"
-				body "Hello ${user.toString()},\n\nUnfortunately ${manager.toString()} is no longer your Dream Manager.\n\n\n\n Good luck with your dreams.".toString()
+			if (Environment.getCurrent()!=Environment.TEST){
+				sendMail {
+					to user.username
+					from grailsApplication.config.grails.mail.username
+					subject "Dream Manager Status"
+					body "Hello ${user.toString()},\n\nUnfortunately ${manager.toString()} is no longer your Dream Manager.\n\n\n\n Good luck with your dreams.".toString()
+				}
 			}
 		}else{
 			redirect(uri: "/#tabs-3")
@@ -164,7 +175,7 @@ class ManagerToDreamerController {
 			redirect(uri:'/')
 		}
 	}
-	
+
 	def stopNagging = {
 		def user= User?.findByUsername(SecurityUtils.subject.principal)
 		user.nagToGetDreamManager = false;

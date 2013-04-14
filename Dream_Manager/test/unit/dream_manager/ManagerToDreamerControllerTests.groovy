@@ -35,11 +35,12 @@ class ManagerToDreamerControllerTests {
 		// Create the user role
 		def userRole = new Role(name: 'ROLE_USER').save(flush: true, failOnError: true)
 
-		def adminUser = new User(username: "adminuser@gmail.com", passwordHash: new Sha256Hash("password").toHex(), firstName:"James", lastName:"Harris", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219,isManager:false, passwordChangeRequiredOnNextLogon:false, isAdmin:true)
+		def adminUser = new User(username: "adminuser@gmail.com", passwordHash: new Sha256Hash("password").toHex(), firstName:"James", lastName:"Harris", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219, passwordChangeRequiredOnNextLogon:false, isAdmin:true, isManager:true)
 		adminUser.save(flush: true, failOnError: true)
 
 		// Add roles to the admin user
-		assert adminUser.addToRoles(adminRole)
+		assert adminUser.addToRoles(adminRole).
+		addToRoles(managerRole)
 		.addToRoles(userRole)
 		.save(flush: true, failOnError: true)
 
@@ -61,9 +62,19 @@ class ManagerToDreamerControllerTests {
 		// Add role to the standard user
 		assert standardUser.addToRoles(userRole)
 		.save(flush: true, failOnError: true)
+
+		def standardUser2 = new User(username: "standarduser2@gmail.com",passwordHash: new Sha256Hash('password').toHex(), firstName:"Joe", lastName:"Smoe", avatarLocation:null, streetAddress1:null, streetAddress2:null,poBox:null, dateOfBirth:null, city:null, state:null, zipcode:85219,isManager:false, passwordChangeRequiredOnNextLogon:false , isAdmin:false, manager:User.get(1), managerConfirmed:true)
+
+		standardUser2.save(flush: true, failOnError: true)
+
+		// Add role to the standard user
+		assert standardUser2.addToRoles(userRole)
+		.save(flush: true, failOnError: true)
 	}
 
-
+	/*
+	 * Tests when a manager trys to claim a user in the correct way.
+	 */
 	void testClaimDreamer() {
 		def shiroSecurityManager
 		def subject = [ getPrincipal: { "manageruser@gmail.com" },
@@ -72,9 +83,135 @@ class ManagerToDreamerControllerTests {
 		ThreadContext.put( ThreadContext.SECURITY_MANAGER_KEY,
 				[ getSubject: { subject } ] as SecurityManager )
 		SecurityUtils.metaClass.static.getSubject = { subject }
-		
+
 		params.id = 1
 		def manager = User.findByUsername(SecurityUtils.subject.principal)
-		assertEquals "manageruser@gmail.com" , manager.username
+		controller.claimDreamer()
+		assertEquals ManagerRequest.findByUser(User.get(1)).requestInitiator, manager
 	}
+	/*
+	 * Tests when a manager tries to claim themself.
+	 */
+	void testClaimDreamer2() {
+		def shiroSecurityManager
+		def subject = [ getPrincipal: { "manageruser@gmail.com" },
+			isAuthenticated: { true }
+		] as Subject
+		ThreadContext.put( ThreadContext.SECURITY_MANAGER_KEY,
+				[ getSubject: { subject } ] as SecurityManager )
+		SecurityUtils.metaClass.static.getSubject = { subject }
+
+		params.id = 2
+		def manager = User.findByUsername(SecurityUtils.subject.principal)
+		controller.claimDreamer()
+		assertEquals ManagerRequest.findByUser(User.get(2)), null
+	}
+	/*
+	 * Tests when a manager tries to claim an already claimed user.(This isn't allowed)
+	 */
+	void testClaimDreamer3() {
+		def shiroSecurityManager
+		def subject = [ getPrincipal: { "manageruser@gmail.com" },
+			isAuthenticated: { true }
+		] as Subject
+		ThreadContext.put( ThreadContext.SECURITY_MANAGER_KEY,
+				[ getSubject: { subject } ] as SecurityManager )
+		SecurityUtils.metaClass.static.getSubject = { subject }
+
+		params.id = 4
+		def manager = User.findByUsername(SecurityUtils.subject.principal)
+		controller.claimDreamer()
+		assertEquals ManagerRequest.findByUser(User.get(4)), null
+	}
+	/*
+	 * Tests when a manager releases a user.
+	 */
+	void testUnclaimDreamer() {
+		def shiroSecurityManager
+		def subject = [ getPrincipal: { "adminuser@gmail.com" },
+			isAuthenticated: { true }
+		] as Subject
+		ThreadContext.put( ThreadContext.SECURITY_MANAGER_KEY,
+				[ getSubject: { subject } ] as SecurityManager )
+		SecurityUtils.metaClass.static.getSubject = { subject }
+
+		params.id = 4
+		def manager = User.findByUsername(SecurityUtils.subject.principal)
+		controller.unclaimDreamer()
+		assertEquals User.get(4).manager, null
+	}
+
+	/*
+	 * Tests when a dreamer Accepts a relationship.
+	 */
+	void testAcceptManagerDreamerRelationshipRequest() {
+		def shiroSecurityManager
+		def subject = [ getPrincipal: { "manageruser@gmail.com" },
+			isAuthenticated: { true }
+		] as Subject
+		ThreadContext.put( ThreadContext.SECURITY_MANAGER_KEY,
+				[ getSubject: { subject } ] as SecurityManager )
+		SecurityUtils.metaClass.static.getSubject = { subject }
+
+		params.id = 1
+		def manager = User.findByUsername(SecurityUtils.subject.principal)
+		def managerRequest = new ManagerRequest(requestInitiator:manager, manager:manager,user:User.get(1),requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
+		subject = [ getPrincipal: { "adminuser@gmail.com" },
+			isAuthenticated: { true }
+		] as Subject
+		ThreadContext.put( ThreadContext.SECURITY_MANAGER_KEY,
+				[ getSubject: { subject } ] as SecurityManager )
+		SecurityUtils.metaClass.static.getSubject = { subject }
+		controller.acceptManagerDreamerRelationshipRequest()
+		assertEquals User.findByUsername(SecurityUtils.subject.principal).manager , manager
+	}
+	
+	/*
+	 * Tests when an accept contoller request is called and there is no request for user.
+	 */
+	void testAcceptManagerDreamerRelationshipRequest2() {
+		def shiroSecurityManager
+		def subject = [ getPrincipal: { "manageruser@gmail.com" },
+			isAuthenticated: { true }
+		] as Subject
+		ThreadContext.put( ThreadContext.SECURITY_MANAGER_KEY,
+				[ getSubject: { subject } ] as SecurityManager )
+		SecurityUtils.metaClass.static.getSubject = { subject }
+
+		params.id = 3
+		def manager = User.findByUsername(SecurityUtils.subject.principal)
+		subject = [ getPrincipal: { "adminuser@gmail.com" },
+			isAuthenticated: { true }
+		] as Subject
+		ThreadContext.put( ThreadContext.SECURITY_MANAGER_KEY,
+				[ getSubject: { subject } ] as SecurityManager )
+		SecurityUtils.metaClass.static.getSubject = { subject }
+		
+		controller.acceptManagerDreamerRelationshipRequest()
+		assertEquals User.findByUsername(SecurityUtils.subject.principal).manager , null
+	}
+	/*
+	 * Tests when a dreamer Rejects a relationship.
+	 */
+	void testRejectManagerDreamerRelationshipRequest() {
+		def shiroSecurityManager
+		def subject = [ getPrincipal: { "manageruser@gmail.com" },
+			isAuthenticated: { true }
+		] as Subject
+		ThreadContext.put( ThreadContext.SECURITY_MANAGER_KEY,
+				[ getSubject: { subject } ] as SecurityManager )
+		SecurityUtils.metaClass.static.getSubject = { subject }
+
+		params.id = 1
+		def manager = User.findByUsername(SecurityUtils.subject.principal)
+		def managerRequest = new ManagerRequest(requestInitiator:manager, manager:manager,user:User.get(1),requestDate : new Date(),token:new BigInteger(130, new SecureRandom()).toString(32)).save(failOnError:true, flush: true)
+		subject = [ getPrincipal: { "adminuser@gmail.com" },
+			isAuthenticated: { true }
+		] as Subject
+		ThreadContext.put( ThreadContext.SECURITY_MANAGER_KEY,
+				[ getSubject: { subject } ] as SecurityManager )
+		SecurityUtils.metaClass.static.getSubject = { subject }
+		controller.rejectManagerDreamerRelationshipRequest()
+		assertEquals ManagerRequest.findByUser(User.findByUsername(SecurityUtils.subject.principal)) , null
+	}	
 }
