@@ -169,7 +169,10 @@ class ManagerToDreamerController {
 	}
 	def nagToGetManager = {
 		def user= User?.findByUsername(SecurityUtils.subject.principal)
-		if(user.nagToGetDreamManager&&(ManagerRequest?.findByUser(user)==null)&&(Math.random()>0.9)){
+		def managers = User?.withCriteria {
+			eq('isManager',true)
+		}
+		if(user.nagToGetDreamManager&&(ManagerRequest?.findByUser(user)==null)&&(Math.random()>0.9)&&managers){
 			render( view:"nagToGetManager", model: ["userInstance": user])
 		}else{
 			redirect(uri:'/')
