@@ -125,18 +125,6 @@
 		value="${userInstance?.zipcode}" />
 </div>
 
-<div
-	class="fieldcontain ${hasErrors(bean: userInstance, field: 'manager', 'error')} ">
-	<label for="manager"> <g:message code="user.manager.label"
-			default="Manager" />
-
-	</label>
-	<g:select id="manager" name="manager.id"
-		from="${User.createCriteria().list(){eq("isManager",true)}}"
-		optionKey="id" value="${userInstance?.manager?.id}"
-		class="many-to-one" noSelection="['null': '']" />
-</div>
-
 <shiro:hasAnyRole in="['ROLE_ADMIN', 'ROLE_MANAGER']">
 	<div
 		class="fieldcontain ${hasErrors(bean: userInstance, field: 'isManager', 'error')} ">
