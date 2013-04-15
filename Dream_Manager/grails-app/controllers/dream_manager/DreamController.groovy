@@ -83,7 +83,7 @@ class DreamController {
 		def user = User.findByUsername(SecurityUtils.subject.principal)
 		
 		if(params.estimatedCompletion)
-			dreamInstance.estimatedCompletion = DateFormat.parse(params.estimatedCompletion)
+			dreamInstance.estimatedCompletion = Date.parse("MM/dd/yy",params.estimatedCompletion)
 		dreamInstance.user = user
 		if(!dreamInstance.hasErrors() && dreamInstance.save()) {
 			flash.message = "Success"
