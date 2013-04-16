@@ -23,9 +23,8 @@
 
 </head>
 <body>
-	<div class="grid_12 alpha delayedVisibility">
-
-		<div class="tabs">
+	<div class="grid_12 alpha delayedVisibility" style="height:100%;">
+		<div class="tabs" style="height:99%;">
 			<ul>
 				<li><a href="#tabs-1">Your Progress</a></li>
 				<li><a href="#tabs-2">Search Dreams</a></li>
@@ -70,10 +69,9 @@
 				<script type="text/javascript">
 					$(function() {
 						$('#ajaxSearchDreams')
-								.autocomplete(
-										{
-											source : '<g:createLink controller='dream' action='ajaxSearchDreamsAutocomplete'/>'
-										});
+							.autocomplete({
+								source : '<g:createLink controller='dream' action='ajaxSearchDreamsAutocomplete'/>'})
+							.submit();
 					});
 				</script>
 			</div>
@@ -112,8 +110,8 @@
 		</div>
 	</div>
 
-	<div class="grid_4 omega">
-		<div style="margin-top: .5em">
+	<div class="grid_4 omega" style="height:100%;">
+		<div style="margin-top: .5em; height:100%;">
 			<div class="grid_2 alpha">
 				Welcome back,
 				<g:include controller="user" action="getCurrentUserFirstName" />!
@@ -125,9 +123,10 @@
 			</div>
 			<div class="clear"></div>
 
-			<div class="grid_4 alpha omega" class="social">
-				<div style="margin-top: 1em; padding: 1em; border: 2px solid gray;">Share
-					Accomplishments</div>
+			<div class="grid_4 alpha omega social" style="height:100%;">
+				<div style="margin-top: 1em; padding: 1em; border: 2px solid gray;min-height:10em;max-height:90%;">
+					Share Accomplishments
+				</div>
 			</div>
 		</div>
 	</div>

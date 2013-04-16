@@ -11,11 +11,12 @@ h1, h2, h3, h4, h5, h6 {
 /* BASE LAYOUT */
 
 html {
-	background-color: #ddd;
-	background-image: -moz-linear-gradient(center top, #aaa, #ddd);
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(1, #ddd));
-	background-image: linear-gradient(top, #aaa, #ddd);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaaaaa', EndColorStr = '#dddddd');
+	background-color: #3454A2; 
+	background-image: -moz-linear-gradient(center top, #3454A2, #fff);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #3454A2), color-stop(1, #fff));
+	background-image: linear-gradient(top, #3454A2, #fff);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#3454A2', EndColorStr = '#FFFFFF');
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFF), color-stop(1, #3454A2)); 
 	background-repeat: no-repeat;
 	height: 100%;
 	/* change the box model to exclude the padding from the calculation of 100% height (IE8+) */

@@ -32,18 +32,16 @@
 		
 		<g:layoutHead />
 	</head>
-	<body>
-		<div id="page">
-			<div id="topbar">
+	<body style="height:100%;">
+		<div id="page" style="height:100%;">
+			<div id="topbar" style="margin-bottom:.5em;">
 				<g:render template="/common/topbar" />
 			</div>
-			<div class="clear"></div>
-			
-			<div id="content" class="container_16" style="min-height:60em;"> 
+						
+			<div id="content" class="container_16" style="min-height:60em;height:100%;background:white;"> 
 				<g:layoutBody />
 			</div>
-			<div class="clear"></div>
-
+			
 			<div id="footer">
 				<g:render template="/common/footer" />
 			</div>
