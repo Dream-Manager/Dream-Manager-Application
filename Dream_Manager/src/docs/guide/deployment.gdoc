@@ -1,0 +1,54 @@
+h1. Unbuntu Server
+h2. Install Java
+{code}
+sudo apt-get install lynx
+sudo mkdir /usr/java
+cd /tmp
+lynx http://download.oracle.com/otn-pub/java/jdk/7u17-b02/jdk-7u17-linux-x64.tar.gz
+{code}
+Save file as “jdk-7u17-linux-x64.tar.gz”, quit
+{code}
+sudo tar vxf jdk-7u17-linux-x64.tar.gz -C /usr/java
+sudo export JAVA_HOME=/usr/java/jdk1.7.0_17
+sudo export PATH=$JAVA_HOME/bin:$PATH
+{code}
+h2. Install Tomcat
+{code}
+sudo apt-get install tomcat6
+sudo apt-get install tomcat6-admin
+sudo vi /etc/tomcat6/tomcat-users.xml
+{code}
+Add a user to the config file:
+<user username="admin" password="sekretpasswerd" roles="manager,admin,manager-gui" />
+{code}
+sudo chgrp -R tomcat6 /etc/tomcat6
+sudo chmod -R g+w /etc/tomcat6
+sudo iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
+sudo sh -c '/sbin/iptables-save > /etc/iptables.save'
+sudo vi /etc/network/if-up.d/firewall
+{code}
+Add to the file:
+/sbin/iptables-restore < /etc/iptables_rules
+{code}
+sudo chmod +x /etc/network/if-up.d/firewall
+{code}
+h2. Deploy WAR File
+Download current binary
+Rename file to Dream_Manager.war
+Log in to manager console (hostname/manager/html)
+Upload and deploy WAR file
+h2. Set Dream Manager as Root Application
+{code}
+sudo rm -rf /var/lib/tomcat6/webapps/ROOT
+sudo ln -s /var/lib/tomcat6/webapps/Dream_Manager /var/lib/tomcat6/webapps/ROOT
+sudo /etc/init.d/tomcat6 restart
+{code}
+h2. Install MySQL
+{code}
+sudo apt-get install mysql-server
+{code}
+Set password for root account during installation.
+{code}
+sudo vi /etc/mysql/my.cnf
+sudo /etc/init.d/mysql restart
+{code}
