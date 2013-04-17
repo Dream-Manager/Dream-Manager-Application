@@ -65,6 +65,8 @@ grails.project.dependency.resolution = {
 		compile ":codenarc:0.18.1"
 		compile ":code-coverage:1.2.5"
 		compile ":modalbox:0.4"
+		compile ":spring-mobile:0.4"
+		
     }
 }
 
