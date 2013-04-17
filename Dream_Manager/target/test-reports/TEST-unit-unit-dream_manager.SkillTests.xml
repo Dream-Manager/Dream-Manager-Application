@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="ROMzombie-PC" name="dream_manager.SkillTests" tests="1" time="0.237" timestamp="2013-04-17T19:32:18">
+  <properties />
+  <testcase classname="dream_manager.SkillTests" name="testSomething" time="0.112" />
+  <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+  <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+</testsuite>

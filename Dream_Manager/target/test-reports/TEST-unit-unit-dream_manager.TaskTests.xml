@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="1" hostname="ROMzombie-PC" name="dream_manager.TaskTests" tests="1" time="0.255" timestamp="2013-04-17T19:32:19">
+  <properties />
+  <testcase classname="dream_manager.TaskTests" name="testSomething" time="0.131">
+    <failure message="junit.framework.AssertionFailedError: Implement me" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at dream_manager.TaskTests.testSomething(TaskTests.groovy:15)
+</failure>
+  </testcase>
+  <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+  <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+</testsuite>

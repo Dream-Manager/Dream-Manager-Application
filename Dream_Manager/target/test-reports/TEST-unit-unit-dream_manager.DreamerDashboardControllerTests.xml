@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="ROMzombie-PC" name="dream_manager.DreamerDashboardControllerTests" tests="1" time="0.318" timestamp="2013-04-17T19:32:13">
+  <properties />
+  <testcase classname="dream_manager.DreamerDashboardControllerTests" name="testSomething" time="0.189" />
+  <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+  <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+</testsuite>

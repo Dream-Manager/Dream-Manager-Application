@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="5" hostname="ROMzombie-PC" name="dream_manager.TaskControllerTests" tests="8" time="1.002" timestamp="2013-04-17T19:32:18">
+  <properties />
+  <testcase classname="dream_manager.TaskControllerTests" name="testIndex" time="0.323" />
+  <testcase classname="dream_manager.TaskControllerTests" name="testUpdate" time="0.22">
+    <failure message="Assertion failed: &#xa;&#xa;assert task.save() != null&#xa;       |    |      |&#xa;       |    null   false&#xa;       dream_manager.Task@3426b6db (toString() == null)&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@3426b6db (toString() == null)
+
+	at dream_manager.TaskControllerTests.testUpdate(TaskControllerTests.groovy:100)
+</failure>
+  </testcase>
+  <testcase classname="dream_manager.TaskControllerTests" name="testCreate" time="0.042" />
+  <testcase classname="dream_manager.TaskControllerTests" name="testSave" time="0.079">
+    <failure message="Assertion failed: &#xa;&#xa;assert response.redirectedUrl == &apos;/task/show/1&apos;&#xa;       |        |             |&#xa;       |        null          false&#xa;       org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@f51d94d&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert response.redirectedUrl == &apos;/task/show/1&apos;
+       |        |             |
+       |        null          false
+       org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@f51d94d
+
+	at dream_manager.TaskControllerTests.testSave(TaskControllerTests.groovy:48)
+</failure>
+  </testcase>
+  <testcase classname="dream_manager.TaskControllerTests" name="testList" time="0.077" />
+  <testcase classname="dream_manager.TaskControllerTests" name="testShow" time="0.065">
+    <failure message="Assertion failed: &#xa;&#xa;assert task.save() != null&#xa;       |    |      |&#xa;       |    null   false&#xa;       dream_manager.Task@1161d025 (toString() == null)&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@1161d025 (toString() == null)
+
+	at dream_manager.TaskControllerTests.testShow(TaskControllerTests.groovy:62)
+</failure>
+  </testcase>
+  <testcase classname="dream_manager.TaskControllerTests" name="testDelete" time="0.052">
+    <failure message="Assertion failed: &#xa;&#xa;assert task.save() != null&#xa;       |    |      |&#xa;       |    null   false&#xa;       dream_manager.Task@7b438cc7 (toString() == null)&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@7b438cc7 (toString() == null)
+
+	at dream_manager.TaskControllerTests.testDelete(TaskControllerTests.groovy:144)
+</failure>
+  </testcase>
+  <testcase classname="dream_manager.TaskControllerTests" name="testEdit" time="0.049">
+    <failure message="Assertion failed: &#xa;&#xa;assert task.save() != null&#xa;       |    |      |&#xa;       |    null   false&#xa;       dream_manager.Task@684e8b72 (toString() == null)&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@684e8b72 (toString() == null)
+
+	at dream_manager.TaskControllerTests.testEdit(TaskControllerTests.groovy:80)
+</failure>
+  </testcase>
+  <system-out><![CDATA[--Output from testIndex--
+--Output from testUpdate--
+--Output from testCreate--
+--Output from testSave--
+--Output from testList--
+--Output from testShow--
+--Output from testDelete--
+--Output from testEdit--
+]]></system-out>
+  <system-err><![CDATA[--Output from testIndex--
+--Output from testUpdate--
+--Output from testCreate--
+--Output from testSave--
+--Output from testList--
+--Output from testShow--
+--Output from testDelete--
+--Output from testEdit--
+]]></system-err>
+</testsuite>

@@ -1,0 +1,116 @@
+Testsuite: dream_manager.TaskControllerTests
+Tests run: 8, Failures: 5, Errors: 0, Time elapsed: 1.002 sec
+------------- Standard Output ---------------
+--Output from testIndex--
+--Output from testUpdate--
+--Output from testCreate--
+--Output from testSave--
+--Output from testList--
+--Output from testShow--
+--Output from testDelete--
+--Output from testEdit--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testIndex--
+--Output from testUpdate--
+--Output from testCreate--
+--Output from testSave--
+--Output from testList--
+--Output from testShow--
+--Output from testDelete--
+--Output from testEdit--
+------------- ---------------- ---------------
+
+Testcase: testIndex took 0.323 sec
+Testcase: testUpdate took 0.219 sec
+	FAILED
+Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@3426b6db (toString() == null)
+
+junit.framework.AssertionFailedError: Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@3426b6db (toString() == null)
+
+	at dream_manager.TaskControllerTests.testUpdate(TaskControllerTests.groovy:100)
+
+Testcase: testCreate took 0.042 sec
+Testcase: testSave took 0.079 sec
+	FAILED
+Assertion failed: 
+
+assert response.redirectedUrl == '/task/show/1'
+       |        |             |
+       |        null          false
+       org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@f51d94d
+
+junit.framework.AssertionFailedError: Assertion failed: 
+
+assert response.redirectedUrl == '/task/show/1'
+       |        |             |
+       |        null          false
+       org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@f51d94d
+
+	at dream_manager.TaskControllerTests.testSave(TaskControllerTests.groovy:48)
+
+Testcase: testList took 0.077 sec
+Testcase: testShow took 0.064 sec
+	FAILED
+Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@1161d025 (toString() == null)
+
+junit.framework.AssertionFailedError: Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@1161d025 (toString() == null)
+
+	at dream_manager.TaskControllerTests.testShow(TaskControllerTests.groovy:62)
+
+Testcase: testDelete took 0.052 sec
+	FAILED
+Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@7b438cc7 (toString() == null)
+
+junit.framework.AssertionFailedError: Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@7b438cc7 (toString() == null)
+
+	at dream_manager.TaskControllerTests.testDelete(TaskControllerTests.groovy:144)
+
+Testcase: testEdit took 0.049 sec
+	FAILED
+Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@684e8b72 (toString() == null)
+
+junit.framework.AssertionFailedError: Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@684e8b72 (toString() == null)
+
+	at dream_manager.TaskControllerTests.testEdit(TaskControllerTests.groovy:80)
+

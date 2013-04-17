@@ -1,0 +1,10 @@
+Testsuite: dream_manager.DreamControllerTests
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 1.464 sec
+------------- Standard Output ---------------
+--Output from testUpdate--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testUpdate--
+------------- ---------------- ---------------
+
+Testcase: testUpdate took 1.329 sec

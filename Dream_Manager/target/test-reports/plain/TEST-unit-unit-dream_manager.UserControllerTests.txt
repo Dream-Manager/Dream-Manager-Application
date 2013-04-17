@@ -1,0 +1,10 @@
+Testsuite: dream_manager.UserControllerTests
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.447 sec
+------------- Standard Output ---------------
+--Output from testIndex--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testIndex--
+------------- ---------------- ---------------
+
+Testcase: testIndex took 0.31 sec

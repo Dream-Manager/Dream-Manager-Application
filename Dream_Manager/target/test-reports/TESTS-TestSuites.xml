@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="0" name="ApiControllerTests" package="dream_manager" tests="1" time="1.287" timestamp="2013-04-17T19:32:09">
+      <properties />
+
+      <testcase classname="dream_manager.ApiControllerTests" name="testSomething" time="1.112" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="1" name="AssetControllerTests" package="dream_manager" tests="1" time="0.285" timestamp="2013-04-17T19:32:11">
+      <properties />
+
+      <testcase classname="dream_manager.AssetControllerTests" name="testSomething" time="0.188" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="2" name="AssetServiceTests" package="dream_manager" tests="1" time="0.262" timestamp="2013-04-17T19:32:11">
+      <properties />
+
+      <testcase classname="dream_manager.AssetServiceTests" name="testSomething" time="0.036" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="3" name="AssetTests" package="dream_manager" tests="1" time="0.571" timestamp="2013-04-17T19:32:11">
+      <properties />
+
+      <testcase classname="dream_manager.AssetTests" name="testSomething" time="0.392" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="4" name="DreamControllerTests" package="dream_manager" tests="1" time="1.464" timestamp="2013-04-17T19:32:12">
+      <properties />
+
+      <testcase classname="dream_manager.DreamControllerTests" name="testUpdate" time="1.329" />
+
+      <system-out><![CDATA[--Output from testUpdate--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testUpdate--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="5" name="DreamManagerTagLibTests" package="dream_manager" tests="1" time="0.402" timestamp="2013-04-17T19:32:14">
+      <properties />
+
+      <testcase classname="dream_manager.DreamManagerTagLibTests" name="testSomething" time="0.318" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="6" name="DreamServiceTests" package="dream_manager" tests="1" time="0.096" timestamp="2013-04-17T19:32:14">
+      <properties />
+
+      <testcase classname="dream_manager.DreamServiceTests" name="testSomething" time="0.015" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="7" name="DreamTests" package="dream_manager" tests="1" time="0.234" timestamp="2013-04-17T19:32:14">
+      <properties />
+
+      <testcase classname="dream_manager.DreamTests" name="testSomething" time="0.113" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="8" name="DreamToTemplateControllerTests" package="dream_manager" tests="1" time="0.308" timestamp="2013-04-17T19:32:14">
+      <properties />
+
+      <testcase classname="dream_manager.DreamToTemplateControllerTests" name="testSomething" time="0.224" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="9" name="DreamToTemplateTests" package="dream_manager" tests="1" time="0.189" timestamp="2013-04-17T19:32:15">
+      <properties />
+
+      <testcase classname="dream_manager.DreamToTemplateTests" name="testSomething" time="0.069" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="10" name="DreamerDashboardControllerTests" package="dream_manager" tests="1" time="0.318" timestamp="2013-04-17T19:32:13">
+      <properties />
+
+      <testcase classname="dream_manager.DreamerDashboardControllerTests" name="testSomething" time="0.189" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="11" name="ManagerToDreamerControllerTests" package="dream_manager" tests="7" time="2.638" timestamp="2013-04-17T19:32:15">
+      <properties />
+
+      <testcase classname="dream_manager.ManagerToDreamerControllerTests" name="testRejectManagerDreamerRelationshipRequest" time="1.006" />
+
+      <testcase classname="dream_manager.ManagerToDreamerControllerTests" name="testAcceptManagerDreamerRelationshipRequest2" time="0.233" />
+
+      <testcase classname="dream_manager.ManagerToDreamerControllerTests" name="testAcceptManagerDreamerRelationshipRequest" time="0.233" />
+
+      <testcase classname="dream_manager.ManagerToDreamerControllerTests" name="testClaimDreamer3" time="0.551" />
+
+      <testcase classname="dream_manager.ManagerToDreamerControllerTests" name="testClaimDreamer2" time="0.162" />
+
+      <testcase classname="dream_manager.ManagerToDreamerControllerTests" name="testUnclaimDreamer" time="0.166" />
+
+      <testcase classname="dream_manager.ManagerToDreamerControllerTests" name="testClaimDreamer" time="0.171" />
+
+      <system-out><![CDATA[--Output from testRejectManagerDreamerRelationshipRequest--
+--Output from testAcceptManagerDreamerRelationshipRequest2--
+--Output from testAcceptManagerDreamerRelationshipRequest--
+--Output from testClaimDreamer3--
+--Output from testClaimDreamer2--
+--Output from testUnclaimDreamer--
+--Output from testClaimDreamer--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testRejectManagerDreamerRelationshipRequest--
+--Output from testAcceptManagerDreamerRelationshipRequest2--
+--Output from testAcceptManagerDreamerRelationshipRequest--
+--Output from testClaimDreamer3--
+--Output from testClaimDreamer2--
+--Output from testUnclaimDreamer--
+--Output from testClaimDreamer--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="12" name="SearchDreamsServiceTests" package="dream_manager" tests="1" time="0.101" timestamp="2013-04-17T19:32:17">
+      <properties />
+
+      <testcase classname="dream_manager.SearchDreamsServiceTests" name="testSomething" time="0.019" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="13" name="SearchTemplatesServiceTests" package="dream_manager" tests="1" time="0.102" timestamp="2013-04-17T19:32:18">
+      <properties />
+
+      <testcase classname="dream_manager.SearchTemplatesServiceTests" name="testSomething" time="0.019" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="14" name="SearchUsersServiceTests" package="dream_manager" tests="1" time="0.183" timestamp="2013-04-17T19:32:18">
+      <properties />
+
+      <testcase classname="dream_manager.SearchUsersServiceTests" name="testSomething" time="0.017" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="15" name="SkillControllerTests" package="dream_manager" tests="1" time="0.259" timestamp="2013-04-17T19:32:18">
+      <properties />
+
+      <testcase classname="dream_manager.SkillControllerTests" name="testSomething" time="0.178" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="16" name="SkillServiceTests" package="dream_manager" tests="1" time="0.092" timestamp="2013-04-17T19:32:18">
+      <properties />
+
+      <testcase classname="dream_manager.SkillServiceTests" name="testSomething" time="0.015" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="17" name="SkillTests" package="dream_manager" tests="1" time="0.237" timestamp="2013-04-17T19:32:18">
+      <properties />
+
+      <testcase classname="dream_manager.SkillTests" name="testSomething" time="0.112" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="5" hostname="ROMzombie-PC" id="18" name="TaskControllerTests" package="dream_manager" tests="8" time="1.002" timestamp="2013-04-17T19:32:18">
+      <properties />
+
+      <testcase classname="dream_manager.TaskControllerTests" name="testIndex" time="0.323" />
+
+      <testcase classname="dream_manager.TaskControllerTests" name="testUpdate" time="0.22">
+          <failure message="Assertion failed: &#xa;&#xa;assert task.save() != null&#xa;       |    |      |&#xa;       |    null   false&#xa;       dream_manager.Task@3426b6db (toString() == null)&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@3426b6db (toString() == null)
+
+	at dream_manager.TaskControllerTests.testUpdate(TaskControllerTests.groovy:100)
+</failure>
+
+      </testcase>
+
+      <testcase classname="dream_manager.TaskControllerTests" name="testCreate" time="0.042" />
+
+      <testcase classname="dream_manager.TaskControllerTests" name="testSave" time="0.079">
+          <failure message="Assertion failed: &#xa;&#xa;assert response.redirectedUrl == &apos;/task/show/1&apos;&#xa;       |        |             |&#xa;       |        null          false&#xa;       org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@f51d94d&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert response.redirectedUrl == &apos;/task/show/1&apos;
+       |        |             |
+       |        null          false
+       org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@f51d94d
+
+	at dream_manager.TaskControllerTests.testSave(TaskControllerTests.groovy:48)
+</failure>
+
+      </testcase>
+
+      <testcase classname="dream_manager.TaskControllerTests" name="testList" time="0.077" />
+
+      <testcase classname="dream_manager.TaskControllerTests" name="testShow" time="0.065">
+          <failure message="Assertion failed: &#xa;&#xa;assert task.save() != null&#xa;       |    |      |&#xa;       |    null   false&#xa;       dream_manager.Task@1161d025 (toString() == null)&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@1161d025 (toString() == null)
+
+	at dream_manager.TaskControllerTests.testShow(TaskControllerTests.groovy:62)
+</failure>
+
+      </testcase>
+
+      <testcase classname="dream_manager.TaskControllerTests" name="testDelete" time="0.052">
+          <failure message="Assertion failed: &#xa;&#xa;assert task.save() != null&#xa;       |    |      |&#xa;       |    null   false&#xa;       dream_manager.Task@7b438cc7 (toString() == null)&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@7b438cc7 (toString() == null)
+
+	at dream_manager.TaskControllerTests.testDelete(TaskControllerTests.groovy:144)
+</failure>
+
+      </testcase>
+
+      <testcase classname="dream_manager.TaskControllerTests" name="testEdit" time="0.049">
+          <failure message="Assertion failed: &#xa;&#xa;assert task.save() != null&#xa;       |    |      |&#xa;       |    null   false&#xa;       dream_manager.Task@684e8b72 (toString() == null)&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
+
+assert task.save() != null
+       |    |      |
+       |    null   false
+       dream_manager.Task@684e8b72 (toString() == null)
+
+	at dream_manager.TaskControllerTests.testEdit(TaskControllerTests.groovy:80)
+</failure>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from testIndex--
+--Output from testUpdate--
+--Output from testCreate--
+--Output from testSave--
+--Output from testList--
+--Output from testShow--
+--Output from testDelete--
+--Output from testEdit--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testIndex--
+--Output from testUpdate--
+--Output from testCreate--
+--Output from testSave--
+--Output from testList--
+--Output from testShow--
+--Output from testDelete--
+--Output from testEdit--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="1" hostname="ROMzombie-PC" id="19" name="TaskTests" package="dream_manager" tests="1" time="0.255" timestamp="2013-04-17T19:32:19">
+      <properties />
+
+      <testcase classname="dream_manager.TaskTests" name="testSomething" time="0.131">
+          <failure message="junit.framework.AssertionFailedError: Implement me" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at dream_manager.TaskTests.testSomething(TaskTests.groovy:15)
+</failure>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="20" name="TemplateControllerTests" package="dream_manager" tests="1" time="0.288" timestamp="2013-04-17T19:32:20">
+      <properties />
+
+      <testcase classname="dream_manager.TemplateControllerTests" name="testSomething" time="0.19" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="21" name="TemplateServiceTests" package="dream_manager" tests="1" time="0.095" timestamp="2013-04-17T19:32:20">
+      <properties />
+
+      <testcase classname="dream_manager.TemplateServiceTests" name="testSomething" time="0.017" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="22" name="TemplateTests" package="dream_manager" tests="1" time="0.222" timestamp="2013-04-17T19:32:20">
+      <properties />
+
+      <testcase classname="dream_manager.TemplateTests" name="testSomething" time="0.067" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="23" name="UserControllerTests" package="dream_manager" tests="1" time="0.447" timestamp="2013-04-17T19:32:20">
+      <properties />
+
+      <testcase classname="dream_manager.UserControllerTests" name="testIndex" time="0.31" />
+
+      <system-out><![CDATA[--Output from testIndex--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testIndex--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="24" name="UserDreamQuestionsControllerTests" package="dream_manager" tests="1" time="0.26" timestamp="2013-04-17T19:32:21">
+      <properties />
+
+      <testcase classname="dream_manager.UserDreamQuestionsControllerTests" name="testSomething" time="0.182" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="25" name="UserServiceTests" package="dream_manager" tests="1" time="0.09" timestamp="2013-04-17T19:32:21">
+      <properties />
+
+      <testcase classname="dream_manager.UserServiceTests" name="testSomething" time="0.014" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ROMzombie-PC" id="26" name="UserTests" package="dream_manager" tests="1" time="0.118" timestamp="2013-04-17T19:32:21">
+      <properties />
+
+      <testcase classname="dream_manager.UserTests" name="testToString" time="0.115" />
+
+      <system-out><![CDATA[--Output from testToString--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testToString--
+]]></system-err>
+
+  </testsuite>
+</testsuites>

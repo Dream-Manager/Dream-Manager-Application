@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="ROMzombie-PC" name="dream_manager.UserControllerTests" tests="1" time="0.447" timestamp="2013-04-17T19:32:20">
+  <properties />
+  <testcase classname="dream_manager.UserControllerTests" name="testIndex" time="0.31" />
+  <system-out><![CDATA[--Output from testIndex--
+]]></system-out>
+  <system-err><![CDATA[--Output from testIndex--
+]]></system-err>
+</testsuite>

@@ -1,0 +1,28 @@
+Testsuite: dream_manager.ManagerToDreamerControllerTests
+Tests run: 7, Failures: 0, Errors: 0, Time elapsed: 2.638 sec
+------------- Standard Output ---------------
+--Output from testRejectManagerDreamerRelationshipRequest--
+--Output from testAcceptManagerDreamerRelationshipRequest2--
+--Output from testAcceptManagerDreamerRelationshipRequest--
+--Output from testClaimDreamer3--
+--Output from testClaimDreamer2--
+--Output from testUnclaimDreamer--
+--Output from testClaimDreamer--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testRejectManagerDreamerRelationshipRequest--
+--Output from testAcceptManagerDreamerRelationshipRequest2--
+--Output from testAcceptManagerDreamerRelationshipRequest--
+--Output from testClaimDreamer3--
+--Output from testClaimDreamer2--
+--Output from testUnclaimDreamer--
+--Output from testClaimDreamer--
+------------- ---------------- ---------------
+
+Testcase: testRejectManagerDreamerRelationshipRequest took 1.006 sec
+Testcase: testAcceptManagerDreamerRelationshipRequest2 took 0.233 sec
+Testcase: testAcceptManagerDreamerRelationshipRequest took 0.233 sec
+Testcase: testClaimDreamer3 took 0.552 sec
+Testcase: testClaimDreamer2 took 0.162 sec
+Testcase: testUnclaimDreamer took 0.166 sec
+Testcase: testClaimDreamer took 0.171 sec

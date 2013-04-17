@@ -1,0 +1,10 @@
+Testsuite: dream_manager.UserTests
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.118 sec
+------------- Standard Output ---------------
+--Output from testToString--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testToString--
+------------- ---------------- ---------------
+
+Testcase: testToString took 0.115 sec

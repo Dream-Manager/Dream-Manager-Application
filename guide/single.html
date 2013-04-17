@@ -25,7 +25,9 @@ function addJsClass(el) {
                             
                             <div class="toc-item" style="margin-left:0"><a href="#introduction"><strong>1</strong><span>Introduction</span></a></div>
                             
-                            <div class="toc-item" style="margin-left:0"><a href="#development"><strong>2</strong><span>Development</span></a></div>
+                            <div class="toc-item" style="margin-left:0"><a href="#deployment"><strong>2</strong><span>Deployment</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0"><a href="#development"><strong>3</strong><span>Development</span></a></div>
                             
                         </div>
                     </div>
@@ -64,11 +66,13 @@ function addJsClass(el) {
                             
                             <div class="toc-item" style="margin-left:0px"><a href="#introduction"><strong>1</strong><span>Introduction</span></a></div>
                             
-                            <div class="toc-item" style="margin-left:0px"><a href="#development"><strong>2</strong><span>Development</span></a></div>
+                            <div class="toc-item" style="margin-left:0px"><a href="#deployment"><strong>2</strong><span>Deployment</span></a></div>
                             
-                            <div class="toc-item" style="margin-left:10px"><a href="#api"><strong>2.1</strong><span>API Documentation</span></a></div>
+                            <div class="toc-item" style="margin-left:0px"><a href="#development"><strong>3</strong><span>Development</span></a></div>
                             
-                            <div class="toc-item" style="margin-left:10px"><a href="#contribution"><strong>2.2</strong><span>Configuring for Contribution</span></a></div>
+                            <div class="toc-item" style="margin-left:10px"><a href="#api"><strong>3.1</strong><span>API Documentation</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#contribution"><strong>3.2</strong><span>Configuring for Contribution</span></a></div>
                             
                             <div style="clear:both" ></div>
                         </div>
@@ -89,15 +93,57 @@ This application is designed to assist users ("Dreamers") in accomplishing their
 </ul><p class="paragraph"/>
 
 
-<h1 id="development">2 Development</h1>
+<h1 id="deployment">2 Deployment</h1>
+<h1>Unbuntu Server</h1>
+<h2>Install Java</h2>
+<div class="code"><pre>sudo apt&#45;get install lynx
+sudo mkdir /usr/java
+cd /tmp
+lynx http://download.oracle.com/otn&#45;pub/java/jdk/7u17&#45;b02/jdk&#45;7u17&#45;linux&#45;x64.tar.gz</pre></div>
+Save file as �jdk-7u17-linux-x64.tar.gz�, quit
+<div class="code"><pre>sudo tar vxf jdk&#45;7u17&#45;linux&#45;x64.tar.gz &#45;C /usr/java
+sudo export JAVA_HOME=/usr/java/jdk1.7.0_17
+sudo export PATH=$JAVA_HOME/bin:$PATH</pre></div>
+<h2>Install Tomcat</h2>
+<div class="code"><pre>sudo apt&#45;get install tomcat6
+sudo apt&#45;get install tomcat6&#45;admin
+sudo vi /etc/tomcat6/tomcat&#45;users.xml</pre></div>
+Add a user to the config file:
+&#60;user username="admin" password="sekretpasswerd" roles="manager,admin,manager-gui" /&#62;
+<div class="code"><pre>sudo chgrp &#45;R tomcat6 /etc/tomcat6
+sudo chmod &#45;R g+w /etc/tomcat6
+sudo iptables &#45;t nat &#45;I PREROUTING &#45;p tcp &#45;&#45;dport 80 &#45;j REDIRECT &#45;&#45;to&#45;ports 8080
+sudo sh &#45;c '/sbin/iptables&#45;save &#62; /etc/iptables.save'
+sudo vi /etc/network/<span class="java&#45;keyword">if</span>&#45;up.d/firewall</pre></div>
+Add to the file:
+/sbin/iptables-restore &#60; /etc/iptables_rules
+<div class="code"><pre>sudo chmod +x /etc/network/<span class="java&#45;keyword">if</span>&#45;up.d/firewall</pre></div>
+<h2>Deploy WAR File</h2>
+Download current binary
+Rename file to Dream_Manager.war
+Log in to manager console (hostname/manager/html)
+Upload and deploy WAR file
+<h2>Set Dream Manager as Root Application</h2>
+<div class="code"><pre>sudo rm &#45;rf /<span class="java&#45;keyword">var</span>/lib/tomcat6/webapps/ROOT
+sudo ln &#45;s /<span class="java&#45;keyword">var</span>/lib/tomcat6/webapps/Dream_Manager /<span class="java&#45;keyword">var</span>/lib/tomcat6/webapps/ROOT
+sudo /etc/init.d/tomcat6 restart</pre></div>
+<h2>Install MySQL</h2>
+<div class="code"><pre>sudo apt&#45;get install mysql&#45;server</pre></div>
+Set password for root account during installation.
+<div class="code"><pre>sudo vi /etc/mysql/my.cnf
+sudo /etc/init.d/mysql restart</pre></div>
+
+
+
+<h1 id="development">3 Development</h1>
 Specifics about development.
 
 
-<h2 id="api">2.1 API Documentation</h2>
+<h2 id="api">3.1 API Documentation</h2>
 <a href="http://dream-manager.github.com/Dream-Manager-Application/gapi/index.html" target="blank">API Documentation</a>
 
 
-<h2 id="contribution">2.2 Configuring for Contribution</h2>
+<h2 id="contribution">3.2 Configuring for Contribution</h2>
 <h1>Generating SSH Key</h1>
 <div class="code"><pre>ssh&#45;keygen &#45;t rsa &#45;C <span class="java&#45;quote">"email@email.com"</span></pre></div>
 Copy contents of C:&#85;sers&#117;sername&#46;ssh&#105;d_rsa.pub and add to https://github.com/settings/ssh<p class="paragraph"/><h2>Setting Up Local Git Repository</h2>

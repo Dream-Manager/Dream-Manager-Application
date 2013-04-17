@@ -1,0 +1,15 @@
+Testsuite: dream_manager.TaskTests
+Tests run: 1, Failures: 1, Errors: 0, Time elapsed: 0.255 sec
+------------- Standard Output ---------------
+--Output from testSomething--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testSomething--
+------------- ---------------- ---------------
+
+Testcase: testSomething took 0.131 sec
+	FAILED
+junit.framework.AssertionFailedError: Implement me
+junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at dream_manager.TaskTests.testSomething(TaskTests.groovy:15)
+
