@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <title>Dream_Manager 0.1</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8" />
+        <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8" />
+    <script type="text/javascript">
+function addJsClass(el) {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+    </head>
+
+    <body class="body" onload="addJsClass();">
+        <div id="navigation">
+            <ul>
+                <li>
+                    <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                        <a href="../guide/index.html" class="button">Table of contents</a>
+                        <div id="nav-summary-childs" style="display:none;">
+                            
+                            <div class="toc-item" style="margin-left:0"><a href="#introduction"><strong>1</strong><span>Introduction</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0"><a href="#deployment"><strong>2</strong><span>Deployment</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0"><a href="#development"><strong>3</strong><span>Development</span></a></div>
+                            
+                        </div>
+                    </div>
+                </li>
+                <li class="separator selected">
+                    <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+                </li>
+            </ul>
+        </div>
+        <div id="header">
+            <div class="images clearfix">
+                
+                
+            </div>
+            <p>Dream_Manager</p>
+        </div>
+
+
+        <table id="colset" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td id="col1">
+                    <div id="main" class="corner-all">
+
+                        <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                        <div class="project">
+                            <h1>Dream_Manager - Reference Documentation</h1>
+                            <p><strong>Authors:</strong> </p>
+                            <p><strong>Version:</strong> 0.1</p>
+                            
+                        </div>
+
+                        
+                        <div id="table-of-content">
+                            <h2>Table of Contents</h2>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="#introduction"><strong>1</strong><span>Introduction</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="#deployment"><strong>2</strong><span>Deployment</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="#development"><strong>3</strong><span>Development</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#api"><strong>3.1</strong><span>API Documentation</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#contribution"><strong>3.2</strong><span>Configuring for Contribution</span></a></div>
+                            
+                            <div style="clear:both" ></div>
+                        </div>
+                        
+                        
+
+<h1 id="introduction">1 Introduction</h1>
+This application is designed to assist users ("Dreamers") in accomplishing their life goals by promoting accountability towards accomplishing those dreams, as described in <a href="http://www.amazon.com/The-Dream-Manager-Matthew-Kelly/dp/B003XU7VZQ" target="blank">The Dream Manager</a> by Matthew Kelly.<p class="paragraph"/>Development is primarily by students at <a href="http://campus.asu.edu/polytechnic/" target="blank">Arizona State University&#39;s Polytechnic</a> campus focused on Software Engineering, and is sponsored by <a href="http://www.infusionsoft.com/" target="blank">Infusionsoft</a>.<p class="paragraph"/><strong class="bold">Project Sponsors</strong>
+<ul class="star">
+<li>Dr. Perry Reinert</li>
+<li>Lennard Fuller</li>
+</ul><p class="paragraph"/><strong class="bold">Development Team</strong>
+<ul class="star">
+<li>Robbie Miller</li>
+<li>Tom Scott</li>
+<li>Tuan Nguyen</li>
+<li>James Harris</li>
+</ul><p class="paragraph"/>
+
+
+<h1 id="deployment">2 Deployment</h1>
+<h2>Unbuntu Server</h2>
+<h3>Install Java</h3>
+<div class="code"><pre>sudo apt&#45;get install lynx
+sudo mkdir /usr/java
+cd /tmp
+lynx http://download.oracle.com/otn&#45;pub/java/jdk/7u17&#45;b02/jdk&#45;7u17&#45;linux&#45;x64.tar.gz</pre></div>
+Save file as 'jdk-7u17-linux-x64.tar.gz', quit
+<div class="code"><pre>sudo tar vxf jdk&#45;7u17&#45;linux&#45;x64.tar.gz &#45;C /usr/java
+sudo export JAVA_HOME=/usr/java/jdk1.7.0_17
+sudo export PATH=$JAVA_HOME/bin:$PATH</pre></div>
+<h3>Install Tomcat</h3>
+<div class="code"><pre>sudo apt&#45;get install tomcat6
+sudo apt&#45;get install tomcat6&#45;admin
+sudo vi /etc/tomcat6/tomcat&#45;users.xml</pre></div>
+Add a user to the config file:
+<blockquote class="note">
+&#60;user username="admin" password="sekretpasswerd" roles="manager,admin,manager-gui" /&#62;
+</blockquote>
+<div class="code"><pre>sudo chgrp &#45;R tomcat6 /etc/tomcat6
+sudo chmod &#45;R g+w /etc/tomcat6
+sudo iptables &#45;t nat &#45;I PREROUTING &#45;p tcp &#45;&#45;dport 80 &#45;j REDIRECT &#45;&#45;to&#45;ports 8080
+sudo sh &#45;c '/sbin/iptables&#45;save &#62; /etc/iptables.save'
+sudo vi /etc/network/<span class="java&#45;keyword">if</span>&#45;up.d/firewall</pre></div>
+Add to the file:
+<blockquote class="note">
+/sbin/iptables-restore &#60; /etc/iptables_rules
+</blockquote>
+<div class="code"><pre>sudo chmod +x /etc/network/<span class="java&#45;keyword">if</span>&#45;up.d/firewall</pre></div>
+<h3>Deploy WAR File</h3>
+<ol>
+<li>Download current binary</li>
+<li>Rename file to Dream_Manager.war</li>
+<li>Log in to manager console (http://hostname/manager/html)</li>
+<li>Upload and deploy WAR file</li>
+</ol><p class="paragraph"/><h3>Set Dream Manager as Root Application</h3>
+<div class="code"><pre>sudo rm &#45;rf /<span class="java&#45;keyword">var</span>/lib/tomcat6/webapps/ROOT
+sudo ln &#45;s /<span class="java&#45;keyword">var</span>/lib/tomcat6/webapps/Dream_Manager /<span class="java&#45;keyword">var</span>/lib/tomcat6/webapps/ROOT
+sudo /etc/init.d/tomcat6 restart</pre></div>
+<h3>Install MySQL</h3>
+<div class="code"><pre>sudo apt&#45;get install mysql&#45;server</pre></div>
+Set password for root account during installation.
+<div class="code"><pre>sudo vi /etc/mysql/my.cnf
+sudo /etc/init.d/mysql restart</pre></div>
+
+
+
+<h1 id="development">3 Development</h1>
+Specifics about development.
+
+
+<h2 id="api">3.1 API Documentation</h2>
+<a href="http://dream-manager.github.com/Dream-Manager-Application/gapi/index.html" target="blank">API Documentation</a>
+
+
+<h2 id="contribution">3.2 Configuring for Contribution</h2>
+<h1>Generating SSH Key</h1>
+<div class="code"><pre>ssh&#45;keygen &#45;t rsa &#45;C <span class="java&#45;quote">"email@email.com"</span></pre></div>
+Copy contents of C:&#85;sers&#117;sername&#46;ssh&#105;d_rsa.pub and add to https://github.com/settings/ssh<p class="paragraph"/><h2>Setting Up Local Git Repository</h2>
+<div class="code"><pre>mkdir Dream Manager
+cd Dream Manager
+git init
+git remote add origin https://github.com/Dream&#45;Manager/Dream&#45;Manager&#45;Application.git
+git pull origin master</pre></div><p class="paragraph"/><h3>Grails Domain</h3>
+dream_manager
+
+
+                    </div>
+                </td>
+                <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                </div>
+            </div>
+        </td>
+            </tr>
+        </table>
+
+        <div id="footer">
+            
+            
+        </div>
+
+
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+    </body>
+</html>
