@@ -21,7 +21,7 @@ class Dream {
 	static belongsTo = [user:User]
 	
 	// Each Dream can have many Tasks
-	static hasMany = [tasks:DreamTask]
+	static hasMany = [tasks:Task]
 	
     static constraints = {
 		completed nullable: true
