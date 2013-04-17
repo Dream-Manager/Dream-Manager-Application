@@ -81,40 +81,45 @@ function addJsClass() {
                 
 
 <h1 id="deployment">2 Deployment</h1>
-<h1>Unbuntu Server</h1>
-<h2>Install Java</h2>
+<h2>Unbuntu Server</h2>
+<h3>Install Java</h3>
 <div class="code"><pre>sudo apt&#45;get install lynx
 sudo mkdir /usr/java
 cd /tmp
 lynx http://download.oracle.com/otn&#45;pub/java/jdk/7u17&#45;b02/jdk&#45;7u17&#45;linux&#45;x64.tar.gz</pre></div>
-Save file as �jdk-7u17-linux-x64.tar.gz�, quit
+Save file as 'jdk-7u17-linux-x64.tar.gz', quit
 <div class="code"><pre>sudo tar vxf jdk&#45;7u17&#45;linux&#45;x64.tar.gz &#45;C /usr/java
 sudo export JAVA_HOME=/usr/java/jdk1.7.0_17
 sudo export PATH=$JAVA_HOME/bin:$PATH</pre></div>
-<h2>Install Tomcat</h2>
+<h3>Install Tomcat</h3>
 <div class="code"><pre>sudo apt&#45;get install tomcat6
 sudo apt&#45;get install tomcat6&#45;admin
 sudo vi /etc/tomcat6/tomcat&#45;users.xml</pre></div>
 Add a user to the config file:
+<blockquote class="note">
 &#60;user username="admin" password="sekretpasswerd" roles="manager,admin,manager-gui" /&#62;
+</blockquote>
 <div class="code"><pre>sudo chgrp &#45;R tomcat6 /etc/tomcat6
 sudo chmod &#45;R g+w /etc/tomcat6
 sudo iptables &#45;t nat &#45;I PREROUTING &#45;p tcp &#45;&#45;dport 80 &#45;j REDIRECT &#45;&#45;to&#45;ports 8080
 sudo sh &#45;c '/sbin/iptables&#45;save &#62; /etc/iptables.save'
 sudo vi /etc/network/<span class="java&#45;keyword">if</span>&#45;up.d/firewall</pre></div>
 Add to the file:
+<blockquote class="note">
 /sbin/iptables-restore &#60; /etc/iptables_rules
+</blockquote>
 <div class="code"><pre>sudo chmod +x /etc/network/<span class="java&#45;keyword">if</span>&#45;up.d/firewall</pre></div>
-<h2>Deploy WAR File</h2>
-Download current binary
-Rename file to Dream_Manager.war
-Log in to manager console (hostname/manager/html)
-Upload and deploy WAR file
-<h2>Set Dream Manager as Root Application</h2>
+<h3>Deploy WAR File</h3>
+<ol>
+<li>Download current binary</li>
+<li>Rename file to Dream_Manager.war</li>
+<li>Log in to manager console (http://hostname/manager/html)</li>
+<li>Upload and deploy WAR file</li>
+</ol><p class="paragraph"/><h3>Set Dream Manager as Root Application</h3>
 <div class="code"><pre>sudo rm &#45;rf /<span class="java&#45;keyword">var</span>/lib/tomcat6/webapps/ROOT
 sudo ln &#45;s /<span class="java&#45;keyword">var</span>/lib/tomcat6/webapps/Dream_Manager /<span class="java&#45;keyword">var</span>/lib/tomcat6/webapps/ROOT
 sudo /etc/init.d/tomcat6 restart</pre></div>
-<h2>Install MySQL</h2>
+<h3>Install MySQL</h3>
 <div class="code"><pre>sudo apt&#45;get install mysql&#45;server</pre></div>
 Set password for root account during installation.
 <div class="code"><pre>sudo vi /etc/mysql/my.cnf
