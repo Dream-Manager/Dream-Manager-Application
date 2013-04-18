@@ -4,11 +4,12 @@ import java.util.Date;
 
 class Task {
 
-   String name
+    String name
 	Date estimatedCompletion
 	Boolean completed = false
 	int percentComplete = 0
 	String description
+	int orderNumber
 	
 	// Each DreamTask is related to a Dream
 	static belongsTo = [dream:Dream]
@@ -18,7 +19,6 @@ class Task {
 	}
 	
     static constraints = {
-		name nullable: false
 		description nullable: true
 		estimatedCompletion nullable: true
 		

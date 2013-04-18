@@ -34,6 +34,8 @@
 						<th><g:message code="task.dream.label" default="Dream" /></th>
 					
 						<g:sortableColumn property="percentComplete" title="${message(code: 'task.percentComplete.label', default: 'Percent Complete')}" />
+						
+						<g:sortableColumn property="orderNumber" title="${message(code: 'task.orderNumber.label', default: 'Order Number')}" />
 					
 					</tr>
 				</thead>
@@ -52,8 +54,11 @@
 						<td>${fieldValue(bean: taskInstance, field: "dream")}</td>
 					
 						<td>${fieldValue(bean: taskInstance, field: "percentComplete")}</td>
+						
+						<td>${fieldValue(bean: taskInstance, field: "orderNumber")}</td>
 					
 					</tr>
+					
 				</g:each>
 				</tbody>
 			</table>

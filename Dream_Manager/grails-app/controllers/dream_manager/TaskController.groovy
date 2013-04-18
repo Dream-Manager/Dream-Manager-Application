@@ -3,6 +3,8 @@ package dream_manager
 import org.springframework.dao.DataIntegrityViolationException
 
 class TaskController {
+	
+	def taskService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -17,10 +19,14 @@ class TaskController {
 
     def create() {
         [taskInstance: new Task(params)]
+		
     }
 
     def save() {
+		
         def taskInstance = new Task(params)
+		if(!params.orderNumber)
+			taskInstance.orderNumber = taskService.getMaxOrder(params.dream.id.toInteger())
         if (!taskInstance.save(flush: true)) {
             render(view: "create", model: [taskInstance: taskInstance])
             return
