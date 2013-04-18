@@ -2,12 +2,12 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'name', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'name', 'error')} required">
 	<label for="name">
-		<g:message code="task.name.label" default="Name" />
-		
+		<g:message code="task.name.label" default="Task Name" />
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="name" value="${taskInstance?.name}"/>
+	<g:textField name="name" required="" value="${taskInstance?.name}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'description', 'error')} ">
@@ -24,14 +24,6 @@
 		
 	</label>
 	<g:datePicker name="estimatedCompletion" precision="day"  value="${taskInstance?.estimatedCompletion}" default="none" noSelection="['': '']" />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'completed', 'error')} ">
-	<label for="completed">
-		<g:message code="task.completed.label" default="Completed" />
-		
-	</label>
-	<g:checkBox name="completed" value="${taskInstance?.completed}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'dream', 'error')} required">

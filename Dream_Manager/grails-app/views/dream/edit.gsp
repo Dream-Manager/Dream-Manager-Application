@@ -41,6 +41,9 @@
 			<fieldset class="form">
 				<g:render template="form" />
 			</fieldset>
+			<div>
+				<g:link controller="task" action="create">Add New Task</g:link>
+			</div>
 			<fieldset class="buttons">
 				<g:actionSubmit class="save" action="update"
 					value="${message(code: 'default.button.update.label', default: 'Update')}" />
