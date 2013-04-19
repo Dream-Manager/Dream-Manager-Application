@@ -26,13 +26,7 @@
 	<g:datePicker name="estimatedCompletion" precision="day"  value="${taskInstance?.estimatedCompletion}" default="none" noSelection="['': '']" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'dream', 'error')} required">
-	<label for="dream">
-		<g:message code="task.dream.label" default="Dream" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="dream" name="dream.id" from="${dream_manager.Dream.list()}" optionKey="id" required="" value="${taskInstance?.dream?.id}" class="many-to-one"/>
-</div>
+<input type="hidden" name="dream.id" value="${params.dreamID}"/>
 
 <div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'percentComplete', 'error')} required">
 	<label for="percentComplete">

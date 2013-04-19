@@ -42,7 +42,8 @@
 				<g:render template="form" />
 			</fieldset>
 			<div>
-				<g:link controller="task" action="create">Add New Task</g:link>
+				<g:set var="dreamID" value="${dreamInstance.id}"/>
+				<g:link controller="task" action="create" params="[dreamID:dreamID]">Add New Task</g:link>
 			</div>
 			<fieldset class="buttons">
 				<g:actionSubmit class="save" action="update"

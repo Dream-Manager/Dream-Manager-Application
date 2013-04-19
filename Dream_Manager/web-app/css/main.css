@@ -480,6 +480,10 @@ th:hover, tr:hover {
 	background: #B9EDF0;
 }
 
+.task-draggable {
+	padding: .5em;
+}
+
 /* PAGINATION */
 
 .pagination {
