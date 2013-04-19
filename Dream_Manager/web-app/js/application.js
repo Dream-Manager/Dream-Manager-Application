@@ -7,6 +7,7 @@ if (typeof jQuery !== 'undefined') {
 		});
 		
 		$(".datepicker").datepicker();
+		$(".sortable").sortable();
 		$(".tabs").tabs();
 		$(".accordion").accordion({heightStyle: "content",
 									collapsible: true,
