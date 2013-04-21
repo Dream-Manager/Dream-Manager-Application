@@ -13,5 +13,18 @@ git remote add origin https://github.com/Dream-Manager/Dream-Manager-Application
 git pull origin master
 {code}
 
+h2. Setting up local MySQL Instance
+Download installation package:
+http://www.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.6.11.0.msi/from/http://cdn.mysql.com/
+{code}
+CREATE USER 'dream_manager'@'localhost';
+CREATE DATABASE dream_manager;
+CREATE DATABASE dream_manager_test;
+CREATE DATABASE dream_manager_development;
+GRANT ALL ON dream_manager.* TO 'dream_manager'@'localhost';
+GRANT ALL ON dream_manager_test.* TO 'dream_manager'@'localhost';
+GRANT ALL ON dream_manager_development.* TO 'dream_manager'@'localhost';
+{code}
+	
 h3. Grails Domain
 dream_manager

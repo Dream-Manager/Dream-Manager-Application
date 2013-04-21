@@ -55,4 +55,14 @@ Set password for root account during installation.
 {code}
 sudo vi /etc/mysql/my.cnf
 sudo /etc/init.d/mysql restart
+mysql --user=root --password
+	CREATE USER 'dream_manager'@'localhost';
+	CREATE DATABASE dream_manager;
+	CREATE DATABASE dream_manager_test;
+	CREATE DATABASE dream_manager_development;
+	GRANT ALL ON dream_manager.* TO 'dream_manager'@'localhost';
+	GRANT ALL ON dream_manager_test.* TO 'dream_manager'@'localhost';
+	GRANT ALL ON dream_manager_development.* TO 'dream_manager'@'localhost';
+	EXIT
 {code}
+
