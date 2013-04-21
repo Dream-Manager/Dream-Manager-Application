@@ -7,7 +7,7 @@
 				<div>
 					<ul class="sortable">
 					  <g:each in="${dream.tasks}" var="task">
-					  	<li class="ui-state-default task-draggable">${task.name}</li>
+					  	<li class="ui-state-default task-draggable">${task.name} <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:1em;margin-top:-1em">${task.percentComplete}</span></li>
 					  </g:each>
 					</ul>
 				</div>
