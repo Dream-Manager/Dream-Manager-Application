@@ -480,8 +480,10 @@ th:hover, tr:hover {
 	background: #B9EDF0;
 }
 
-.task-draggable {
+.task-sortable {
 	padding: .5em;
+	margin: .15em;
+	width: 450px;
 }
 
 /* PAGINATION */
