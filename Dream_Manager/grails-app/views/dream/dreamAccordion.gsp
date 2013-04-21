@@ -3,11 +3,13 @@
 		<h3 style="position:relative;">${dream.name} <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:1em;margin-top:-1em">${dream.percentComplete}</span></h3>
 		<div>
 			<div style="height: 10em; position: relative;">
+				<h6>Dream Notes:</h6>
 				<p>${dream.notes}</p>
+				<h6>Dream Tasks:</h6>
 				<div>
 					<ul class="sortable">
 					  <g:each in="${dream.tasks.sort{a,b-> a.orderNumber.compareTo(b.orderNumber)}}" var="task">
-					  	<li class="ui-state-default task-draggable">${task.name} <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:1em;margin-top:-1em">${task.percentComplete}</span></li>
+					  	<li class="ui-state-default task-sortable">${task.orderNumber}. ${task.name} <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:8em;margin-top:-1em">${task.percentComplete}</span></li>
 					  </g:each>
 					</ul>
 				</div>
