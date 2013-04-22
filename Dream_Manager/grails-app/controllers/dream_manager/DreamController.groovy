@@ -204,7 +204,7 @@ class DreamController {
 			order("percentComplete", "desc")
 			order("name", "asc")
 		}
-		render(view:'dreamAccordion.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
+		render(view:'dreamAccordion.gsp', model: ['dreams': dreamList, 'length':"Short Term"], contentType: 'text/plain')
 	}
 
 	def longtermDreams = {
@@ -218,7 +218,7 @@ class DreamController {
 			order("percentComplete", "desc")
 			order("name", "asc")
 		}
-		render(view:'dreamAccordion.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
+		render(view:'dreamAccordion.gsp', model: ['dreams': dreamList, 'length':"Long Term"], contentType: 'text/plain')
 
 	}
 

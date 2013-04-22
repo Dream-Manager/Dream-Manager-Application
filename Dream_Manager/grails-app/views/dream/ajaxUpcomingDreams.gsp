@@ -1,3 +1,5 @@
+<g:if test="${dreams!=null}">
+<h1>Upcoming Dreams</h1>
 <table>
 	<thead>
 		<tr>
@@ -16,3 +18,4 @@
 	</g:each>
 	</tbody>
 </table>
+</g:if>

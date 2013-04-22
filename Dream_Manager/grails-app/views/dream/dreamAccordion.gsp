@@ -1,3 +1,5 @@
+<h1>${length}</h1>
+<div>
 <div class="accordion">
 	<g:each in="${dreams}" status="i" var="dream">
 		<h3 style="position:relative;">${dream.name} <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:1em;margin-top:-1em">${dream.percentComplete}</span></h3>
@@ -18,4 +20,4 @@
 		</div>
 	</g:each>
 </div>
-	
+</div>
