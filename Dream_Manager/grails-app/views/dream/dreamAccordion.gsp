@@ -1,3 +1,4 @@
+<g:if test="${dreams!=null}">
 <h1>${length}</h1>
 <div>
 <div class="accordion">
@@ -21,3 +22,4 @@
 	</g:each>
 </div>
 </div>
+</g:if>
