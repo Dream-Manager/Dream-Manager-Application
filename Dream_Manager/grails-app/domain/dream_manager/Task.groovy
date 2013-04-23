@@ -21,6 +21,7 @@ class Task {
     static constraints = {
 		description nullable: true
 		estimatedCompletion nullable: true
+		percentComplete range:0..100
 		
     }
 }
