@@ -74,6 +74,7 @@ class DreamControllerTests {
 		
 		controller.shorttermDreams
 		assert model.dreams == null
+		assert model.dreams(name:"Swimming",category:"Physical",user:User.findByUsername("testuser@gmail.com"))
 
 		
 	}

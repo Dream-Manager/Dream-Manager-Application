@@ -205,7 +205,7 @@ class DreamController {
 		if(dreamList.size()>0)
 			render(view:'dreamAccordion.gsp', model: ['dreams': dreamList, 'length':"Short Term"], contentType: 'text/plain')
 		else
-			render(view:'dreamAccordion.gsp', model: ['dreams': null, 'length':"Long Term"], contentType: 'text/plain')
+			render(view:'dreamAccordion.gsp', model: ['dreams': null, 'length':"Short Term"], contentType: 'text/plain')
 	}
 
 	def longtermDreams = {
@@ -222,7 +222,7 @@ class DreamController {
 		if(dreamList.size()>0)
 			render(view:'dreamAccordion.gsp', model: ['dreams': dreamList, 'length':"Long Term"], contentType: 'text/plain')
 		else
-			render(view:'dreamAccordion.gsp', model: ['dreams': null, 'length':"Short Term"], contentType: 'text/plain')
+			render(view:'dreamAccordion.gsp', model: ['dreams': null, 'length':"Long Term"], contentType: 'text/plain')
 	}
 
 
