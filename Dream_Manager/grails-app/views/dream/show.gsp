@@ -90,7 +90,7 @@
 					class="property-label"><g:message code="dream.tasks.label"
 							default="Tasks" /></span> <g:each in="${dreamInstance.tasks}" var="t">
 						<span class="property-value" aria-labelledby="tasks-label"><g:link
-								controller="dreamTask" action="show" id="${t.id}">
+								controller="task" action="show" id="${t.id}">
 								${t?.encodeAsHTML()}
 							</g:link></span>
 					</g:each></li>
