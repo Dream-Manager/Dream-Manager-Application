@@ -2,6 +2,21 @@ package dream_manager
 
 import java.util.Date;
 import org.apache.shiro.crypto.hash.Sha256Hash
+import org.apache.shiro.subject.Subject
+import org.apache.shiro.crypto.hash.Sha256Hash
+import org.junit.Before
+import org.apache.shiro.SecurityUtils
+import org.apache.shiro.authc.AuthenticationException
+import org.apache.shiro.authc.UsernamePasswordToken
+import org.apache.shiro.crypto.hash.Sha256Hash
+import org.apache.shiro.subject.Subject
+import org.apache.shiro.web.util.SavedRequest
+import org.apache.shiro.web.util.WebUtils
+import org.apache.shiro.grails.ConfigUtils
+import org.apache.shiro.util.ThreadContext
+import org.apache.shiro.SecurityUtils
+import org.apache.shiro.crypto.hash.Sha256Hash
+
 
 @TestFor(DreamController)
 @Mock([Dream,User])
@@ -46,4 +61,35 @@ class DreamControllerTests {
 		assert response.text.contains("Success")
 		*/
 	}
+
+	void testShorttermDreams()
+	{
+		def shiroSecurityManager
+		
+		def subject = [ getPrincipal: { "testuser@gmail.com" },
+			isAuthenticated: { true }] as Subject
+		ThreadContext.put( ThreadContext.SECURITY_MANAGER_KEY,
+				[ getSubject: { subject } ] as SecurityManager )
+		SecurityUtils.metaClass.static.getSubject = { subject }
+		
+		controller.shorttermDreams
+		assert model.dreams == null
+
+		
+	}
+	void testLongtermDreams ()
+	{
+		def shiroSecurityManager
+		
+		def subject = [ getPrincipal: { "testuser@gmail.com" },
+			isAuthenticated: { true }] as Subject
+		ThreadContext.put( ThreadContext.SECURITY_MANAGER_KEY,
+				[ getSubject: { subject } ] as SecurityManager )
+		SecurityUtils.metaClass.static.getSubject = { subject }
+		
+		controller.longtermDreams
+		assert model.dreams == null
+
+	}
+	
 }
