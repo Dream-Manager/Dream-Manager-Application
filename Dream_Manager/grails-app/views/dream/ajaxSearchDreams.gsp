@@ -13,7 +13,7 @@
 		<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 			<td>${dream.category}</td>
 			<td><g:link action="show" id="${dream.id}">${dream.name}</g:link></td>
-			<td><g:formatDate format="MM-dd-yyyy" date="${dream.estimatedCompletion}" /></td>
+			<td><g:formatDate format="MM/dd/yyyy" date="${dream.estimatedCompletion}" /></td>
 			<td><g:if test="${dream.isShortTerm}">Short Term</g:if> 
 			<g:else>Long Term</g:else>
 			</td>

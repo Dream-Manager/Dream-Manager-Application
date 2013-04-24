@@ -35,7 +35,7 @@
 	<label for="estimatedCompletion">
 		<g:message code="dream.estimatedCompletion.label" default="Estimated Completion" />
 	</label>
-	<input name="estimatedCompletion" type="text" class="datepicker" value="<g:formatDate format="MM-dd-yyyy"
+	<input name="estimatedCompletion" type="text" class="datepicker" value="<g:formatDate format="MM/dd/yyyy"
 							date="${dreamInstance?.estimatedCompletion}" />" />
 </div>
 

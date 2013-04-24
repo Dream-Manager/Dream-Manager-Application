@@ -60,14 +60,14 @@
 								${fieldValue(bean: dreamInstance, field: "name")}
 							</g:link></td>
 
-						<td><g:formatDate format="MM-dd-yyyy"
+						<td><g:formatDate format="MM/dd/yyyy"
 								date="${dreamInstance.completed}" /></td>
 
 						<td>
 							${fieldValue(bean: dreamInstance, field: "notes")}
 						</td>
 
-						<td><g:formatDate format="MM-dd-yyyy"
+						<td><g:formatDate format="MM/dd/yyyy"
 								date="${dreamInstance.estimatedCompletion}" /></td>
 
 						<td><g:formatBoolean boolean="${dreamInstance.isShortTerm}" /></td>

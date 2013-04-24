@@ -64,7 +64,7 @@
 					class="property-label"><g:message
 							code="dream.estimatedCompletion.label"
 							default="Estimated Completion" /></span> <span class="property-value"
-					aria-labelledby="estimatedCompletion-label"><g:formatDate format="MM-dd-yyyy"
+					aria-labelledby="estimatedCompletion-label"><g:formatDate format="MM/dd/yyyy"
 							date="${dreamInstance?.estimatedCompletion}" /></span></li>
 			</g:if>
 
