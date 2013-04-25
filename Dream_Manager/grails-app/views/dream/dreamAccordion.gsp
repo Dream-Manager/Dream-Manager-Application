@@ -11,6 +11,17 @@
 					<ul class="sortable">
 					  <g:each in="${dream.tasks.sort{a,b-> a.orderNumber.compareTo(b.orderNumber)}}" var="task">
 					  	<li class="ui-state-default task-sortable">${task.orderNumber}. ${task.name} <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:8em;margin-top:-1em">${task.percentComplete}</span></li>
+					 	<script type="text/javascript">
+						$( ".sortable" ).sortable({
+						  stop: function( event, ui ) {
+							var sortedIDs = $(this).sortable( "toArray" );
+							$.ajax({
+							    url: "<dreamManager:linkToAction controller="Task" action="reorderTasks" />",
+							    data: "sortedIDs="+sortedIDs.join(",")
+							});
+						  }
+						});
+						</script>
 					  </g:each>
 					</ul>
 					<h1>Dream Notes:</h1>
@@ -23,3 +34,4 @@
 </div>
 </div>
 </g:if>
+
