@@ -12,7 +12,6 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost/dream_manager_development"
 			username = "dream_manager"
 			password = ""
@@ -23,7 +22,6 @@ environments {
     }
     test {
         dataSource {
-            dbCreate = "update"
             url = "jdbc:mysql://localhost/dream_manager_test"
 			username = "dream_manager"
 			password = ""
@@ -31,7 +29,6 @@ environments {
     }
     production {
         dataSource {
-            dbCreate = "update"
             url = "jdbc:mysql://localhost/dream_manager"
 			username = "dream_manager"
 			password = ""

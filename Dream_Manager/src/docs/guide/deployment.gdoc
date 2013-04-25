@@ -18,10 +18,17 @@ sudo apt-get install tomcat6
 sudo apt-get install tomcat6-admin
 sudo vi /etc/tomcat6/tomcat-users.xml
 {code}
-Add a user to the config file:
+Add a user to tomcat-users.xml:
 {note}
 <user username="admin" password="sekretpasswerd" roles="manager,admin,manager-gui" />
 {note}
+{code}
+sudo vi /etc/default/tomcat6
+{code}
+Change the default Java environment variables:
+{note}
+JAVA_OPTS="-Djava.awt.headless=true -Xmx512m -Xms512m -XX:PermSize=512m -XX:MaxPermSize=512m -XX:+UseConcMarkSweepGC"
+{node}
 {code}
 sudo chgrp -R tomcat6 /etc/tomcat6
 sudo chmod -R g+w /etc/tomcat6
@@ -45,6 +52,13 @@ h3. Set Dream Manager as Root Application
 {code}
 sudo rm -rf /var/lib/tomcat6/webapps/ROOT
 sudo ln -s /var/lib/tomcat6/webapps/Dream_Manager /var/lib/tomcat6/webapps/ROOT
+sudo vi /etc/tomcat6/server.conf
+{code}
+Add to the file inside the HOST section:
+{note}
+<Context path="" docBase="Dream_Manager" />
+{note}
+{code}
 sudo /etc/init.d/tomcat6 restart
 {code}
 h3. Install MySQL
