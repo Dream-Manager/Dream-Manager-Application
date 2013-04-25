@@ -2,24 +2,18 @@
 <table>
 	<g:each in="${managedUsers}" status="i" var="user">
 		<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-			<td width="10%">
-				<g:link action="show" id="${user.id}">
-					<g:img dir="images" file="user-silhouette.png" width="20" height="20" />
+			<td width="10%"><g:link action="show" id="${user.id}">
+					<avatar:gravatar email="${user.username}" size="20" />
 				</g:link></td>
-			<td width="60%">
-				<g:link action="show" id="${user.id}">
+			<td width="60%"><g:link action="show" id="${user.id}">
 					${user.lastName}, ${user.firstName}
-				</g:link>
-			</td>
-			<td width="15%">
-				<g:link controller="dream" action="listForUser" id="${user.id}">Dreams</g:link>
-			</td>
-			<td width="15%">
-				<g:if test="${user?.managerConfirmed}">
-					<g:link controller="managerToDreamer" action="unclaimDreamer" id="${user.id}">Release</g:link>
-				</g:if>
-				<g:else>&nbsp;</g:else>
-			</td>
+				</g:link></td>
+			<td width="15%"><g:link controller="dream" action="listForUser"
+					id="${user.id}">Dreams</g:link></td>
+			<td width="15%"><g:if test="${user?.managerConfirmed}">
+					<g:link controller="managerToDreamer" action="unclaimDreamer"
+						id="${user.id}">Release</g:link>
+				</g:if> <g:else>&nbsp;</g:else></td>
 		</tr>
 	</g:each>
 </table>
@@ -28,8 +22,7 @@
 	<g:each in="${otherUsers}" status="i" var="user">
 		<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 			<td width="10%"><g:link action="show" id="${user.id}">
-					<g:img dir="images" file="user-silhouette.png" width="20"
-						height="20" />
+					<avatar:gravatar email="${user.username}" size="20" />
 				</g:link></td>
 			<td width="75%"><g:link action="show" id="${user.id}">
 					${user.lastName}, ${user.firstName}
@@ -39,7 +32,7 @@
 					id="${user.id}">
 					<td width="15%"><g:link controller="managerToDreamer"
 							action="acceptManagerDreamerRelationshipRequest" id="${user?.id}">Accept Request</g:link></td>
-							<td width="15%"><g:link controller="managerToDreamer"
+					<td width="15%"><g:link controller="managerToDreamer"
 							action="rejectManagerDreamerRelationshipRequest" id="${user?.id}">Reject Request</g:link></td>
 				</dreamManager:requestManagerDreamerRelatiomFromDreamer>
 				<dreamManager:requestManagerDreamerRelationFromManager
