@@ -3,7 +3,7 @@
 	<g:each in="${managedUsers}" status="i" var="user">
 		<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 			<td width="10%"><g:link action="show" id="${user.id}">
-					<avatar:gravatar email="${user.username}" size="20" />
+					<avatar:gravatar email="${user.username}" size="20" gravatarRating="pg"/>
 				</g:link></td>
 			<td width="60%"><g:link action="show" id="${user.id}">
 					${user.lastName}, ${user.firstName}
@@ -22,7 +22,7 @@
 	<g:each in="${otherUsers}" status="i" var="user">
 		<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 			<td width="10%"><g:link action="show" id="${user.id}">
-					<avatar:gravatar email="${user.username}" size="20" />
+					<avatar:gravatar email="${user.username}" size="20" gravatarRating="pg"/>
 				</g:link></td>
 			<td width="75%"><g:link action="show" id="${user.id}">
 					${user.lastName}, ${user.firstName}
