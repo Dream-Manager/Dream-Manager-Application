@@ -111,4 +111,24 @@ class TaskController {
             redirect(action: "show", id: id)
         }
     }
+	
+	/**
+	 * Sets the order on a set of tasks
+	 * @param taskIDs string containing a common deliminated list of ids of tasks
+	 */
+	def reorderTasks(String taskIDs){
+
+		def idStringArray=taskIDs?.split(",")
+		//render taskIDs.size()
+		//render idStringArray.length
+
+		
+		if(idStringArray) {
+			def idLongArray = []
+			for(i in idStringArray)
+				idLongArray.push(i.toLong())	
+			taskService.sortIDs(idLongArray)
+		}
+		render(controller:'DreamerDashboard', action:'index')
+	}
 }
