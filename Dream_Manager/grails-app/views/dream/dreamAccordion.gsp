@@ -3,14 +3,14 @@
 <div>
 <div class="accordion">
 	<g:each in="${dreams}" status="i" var="dream">
-		<h3 style="position:relative;">${dream.name} <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:1em;margin-top:-1em">${dream.percentComplete}</span></h3>
+		<h3 style="position:relative;" title="${dream.percentComplete}% complete">${dream.name} <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:1em;margin-top:-1em">${dream.percentComplete}</span></h3>
 		<div>
 			<div style="position: relative;">
 				<h1>Dream Tasks:</h1>
 				<div>
 					<ul class="sortable">
 					  <g:each in="${dream.tasks.sort{a,b-> a.orderNumber.compareTo(b.orderNumber)}}" var="task">
-					  	<li class="ui-state-default task-sortable">${task.orderNumber}. ${task.name} <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:8em;margin-top:-1em">${task.percentComplete}</span></li>
+					  	<li class="ui-state-default task-sortable" title="Drag around to sort tasks.">${task.orderNumber}. ${task.name} <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:8em;margin-top:-1em">${task.percentComplete}</span></li>
 					  </g:each>
 					</ul>
 					<h1>Dream Notes:</h1>
