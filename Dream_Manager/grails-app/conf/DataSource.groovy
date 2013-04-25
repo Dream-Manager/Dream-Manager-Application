@@ -14,6 +14,7 @@ environments {
         dataSource {
             url = "jdbc:mysql://localhost/dream_manager_development"
 			username = "dream_manager"
+			dbCreate = "create-drop"
 			password = ""
         }
 		hibernate {
@@ -24,6 +25,7 @@ environments {
         dataSource {
             url = "jdbc:mysql://localhost/dream_manager_test"
 			username = "dream_manager"
+			dbCreate = "create-drop"
 			password = ""
         }
     }
@@ -32,6 +34,7 @@ environments {
             url = "jdbc:mysql://localhost/dream_manager"
 			username = "dream_manager"
 			password = ""
+			dbCreate = "update"
             pooled = true
             properties {
                maxActive = -1
