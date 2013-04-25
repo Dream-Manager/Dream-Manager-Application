@@ -385,6 +385,17 @@ class UserController {
 					// Login user
 					def authToken = new UsernamePasswordToken(user.username, params.password)
 					SecurityUtils.subject.login(authToken)
+					
+					new Dream (
+						name:"Create First Dream",
+						category:"Character",
+						lastUpdated:new Date(),
+						notes:"This is the first dream to accomplish on your way to accomplishing many more.",
+						percentComplete: 0,
+						isShortTerm: true,
+						user:User.findByUsername(params.username)
+					).save()
+					
 					redirect(controller:'DreamerDashboard', action:'index')
 					flash.message = "Account created"
 				}
