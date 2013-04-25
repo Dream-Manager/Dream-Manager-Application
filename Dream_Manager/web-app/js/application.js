@@ -63,7 +63,7 @@ if (typeof jQuery !== 'undefined') {
 				position : {
 					my : "left+15 center",
 					at : "right center"
-				},
+				}
 			});
 		}
 		;
