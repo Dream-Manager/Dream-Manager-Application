@@ -154,14 +154,21 @@ class ManagerToDreamerController {
 		def relationshipRequest = null
 		if (params?.id){
 			relationshipRequest = ManagerRequest?.findByToken(params.id)
+			if (relationshipRequest==null){
+				relationshipRequest = ManagerRequest?.findByUser(User.get(params?.id))
+			}
 		}
 		if (relationshipRequest==null){
-			relationshipRequest = ManagerRequest?.findByUser(User.findByUsername(SecurityUtils.subject.principal))
+			relationshipRequest = ManagerRequest?.findByUser(User?.findByUsername(SecurityUtils.subject.principal))
 		}
 		if (relationshipRequest){
-			redirect(uri:'/')
 			flash.message = "Request for ${relationshipRequest.manager.toString()}  to manage ${relationshipRequest.user.toString()}'s dreams has been rejected."
 			relationshipRequest?.delete(flush:true)
+			redirect(uri:'/')
+		}
+		else{
+			flash.message = "Failed to reject request."
+			redirect(uri: "/")
 		}
 	}
 	def displayManagers = {
