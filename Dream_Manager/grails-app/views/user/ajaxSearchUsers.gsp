@@ -1,3 +1,4 @@
+<g:if test= "${managedUsers.size()>0}">
 <h2>My Dreamers</h2>
 <table>
 	<g:each in="${managedUsers}" status="i" var="user">
@@ -17,6 +18,8 @@
 		</tr>
 	</g:each>
 </table>
+</g:if>
+<g:if test= "${otherUsers.size()>0}">
 <h2>Other Users</h2>
 <table>
 	<g:each in="${otherUsers}" status="i" var="user">
@@ -48,4 +51,5 @@
 		</tr>
 	</g:each>
 </table>
+</g:if>
 
