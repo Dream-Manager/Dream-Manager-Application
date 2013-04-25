@@ -33,6 +33,6 @@
 		<g:message code="task.percentComplete.label" default="Percent Complete" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="percentComplete" type="number" value="${taskInstance.percentComplete}" required=""/>
+	<input type="text" class="slider" name="percentComplete" value="${taskInstance.percentComplete}" />
 </div>
 

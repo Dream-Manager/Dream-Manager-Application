@@ -26,7 +26,7 @@
 			<g:message code="default.show.label" args="[entityName]" />
 		</h1>
 		<ol class="property-list dream">
-		
+
 			<g:if test="${dreamInstance?.name}">
 				<li class="fieldcontain"><span id="name-label"
 					class="property-label"><g:message code="dream.name.label"
@@ -34,7 +34,7 @@
 					aria-labelledby="name-label"><g:fieldValue
 							bean="${dreamInstance}" field="name" /></span></li>
 			</g:if>
-			
+
 			<g:if test="${dreamInstance?.category}">
 				<li class="fieldcontain"><span id="category-label"
 					class="property-label"><g:message
@@ -50,7 +50,7 @@
 					aria-labelledby="notes-label"><g:fieldValue
 							bean="${dreamInstance}" field="notes" /></span></li>
 			</g:if>
-			
+
 			<g:if test="${dreamInstance?.completed}">
 				<li class="fieldcontain"><span id="completed-label"
 					class="property-label"><g:message
@@ -64,25 +64,28 @@
 					class="property-label"><g:message
 							code="dream.estimatedCompletion.label"
 							default="Estimated Completion" /></span> <span class="property-value"
-					aria-labelledby="estimatedCompletion-label"><g:formatDate format="MM/dd/yyyy"
-							date="${dreamInstance?.estimatedCompletion}" /></span></li>
+					aria-labelledby="estimatedCompletion-label"><g:formatDate
+							format="MM/dd/yyyy" date="${dreamInstance?.estimatedCompletion}" /></span></li>
 			</g:if>
 
-				<li class="fieldcontain"><span id="isShortTerm-label"
-					class="property-label"><g:message
-							code="dream.isShortTerm.label" default="Term Length" /></span> <span
-					class="property-value" aria-labelledby="isShortTerm-label">
-						<g:if test="${dreamInstance?.isShortTerm}">Short Term</g:if> 
-						<g:else>Long Term</g:else>
-						</span></li>
-			
+			<li class="fieldcontain"><span id="isShortTerm-label"
+				class="property-label"><g:message
+						code="dream.isShortTerm.label" default="Term Length" /></span> <span
+				class="property-value" aria-labelledby="isShortTerm-label"> <g:if
+						test="${dreamInstance?.isShortTerm}">Short Term</g:if> <g:else>Long Term</g:else>
+			</span></li>
+
 			<g:if test="${dreamInstance?.percentComplete}">
 				<li class="fieldcontain"><span id="percentComplete-label"
-					class="property-label"><g:message code="dream.percentComplete.label"
-							default="Percent Complete" /></span> <span class="property-value"
+					class="property-label"><g:message
+							code="dream.percentComplete.label" default="Percent Complete" /></span>
+					<span class="property-value"
 					aria-labelledby="percentComplete-label">
-					<div class="progressbar"><g:fieldValue
-							bean="${dreamInstance}" field="percentComplete" /></div></span></li>
+						<div class="progressbar" style="width:20em">
+							<g:fieldValue bean="${dreamInstance}" field="percentComplete" />
+						</div>
+						<g:fieldValue bean="${dreamInstance}" field="percentComplete" />%
+				</span></li>
 			</g:if>
 
 			<g:if test="${dreamInstance?.tasks}">

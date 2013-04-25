@@ -27,7 +27,7 @@ class TaskController {
 		
         def taskInstance = new Task(params)
 		if(!params.orderNumber)
-			taskInstance.orderNumber = taskService.getMaxOrder(params.dream.id.toInteger())
+			taskInstance.orderNumber = taskService.getMaxOrder(params.dream.id.toLong())
         if (!taskInstance.save(flush: true)) {
             render(view: "create", model: [taskInstance: taskInstance])
             return
@@ -87,7 +87,7 @@ class TaskController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'task.label', default: 'Task'), taskInstance.id])
-		dreamService.markCompletionBasedOnTasks(taskInstance.dream.getId())
+		dreamService.markCompletionBasedOnTasks(taskInstance.dream.id)
 		redirect(action: "show", id: taskInstance.id)
     }
 

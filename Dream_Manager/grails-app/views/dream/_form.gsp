@@ -39,12 +39,6 @@
 							date="${dreamInstance?.estimatedCompletion}" />" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: dreamInstance, field: 'percentComplete', 'error')} required">
-	<label for="percentComplete">
-		<g:message code="dream.percentComplete.label" default="Percent Completed" />
-	</label>
-	<input class="slider" name="percentComplete" value="${dreamInstance?.percentComplete}" />
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: dreamInstance, field: 'notes', 'error')} ">
 	<label for="notes">

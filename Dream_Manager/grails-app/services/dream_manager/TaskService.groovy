@@ -6,7 +6,7 @@ class TaskService {
 
     }
 	
-	def getMaxOrder(int dream){
+	def getMaxOrder(long dream){
 		def taskList = Task.withCriteria{eq('dream', Dream.findById(dream))}
 		taskList.size()+1
 	}

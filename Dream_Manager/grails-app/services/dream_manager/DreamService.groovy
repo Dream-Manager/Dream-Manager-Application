@@ -14,10 +14,12 @@ class DreamService {
 	 *
 	 */
 	def markCompletionBasedOnTasks (id)  {
-		Hibernate.initialize(Dream)
 		def dreamToUpdate = Dream.get(id)
 		def totalPercent = 0
-		each(task: dreamToUpdate.getTasks()){ totalPercent += task.percentComplete }
+		Hibernate.initialize(dreamToUpdate)
+		def tasks = dreamToUpdate.getTasks();
+		Hibernate.initialize(tasks)
+		for(task in tasks){ totalPercent += task.percentComplete }
 		totalPercent /= dreamToUpdate.tasks.size()
 		dreamToUpdate.percentComplete = totalPercent
 		dreamToUpdate.save(flush:true)
