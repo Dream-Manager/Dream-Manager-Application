@@ -106,6 +106,8 @@
 	<div class="grid_4 omega" style="height:100%;">
 		<div style="margin-top: .5em; height:100%;">
 			<div class="grid_2 alpha">
+			<g:set var="useremail"><shiro:principal/></g:set>
+				<a href="https://en.gravatar.com/site/signup" target="_blank"><avatar:gravatar email="${useremail}" size="50" d="mm"/></a>
 				Welcome back,
 				<g:include controller="user" action="getCurrentUserFirstName" />!
 			</div>
