@@ -54,7 +54,7 @@
 						<label for="ajaxSearchDreamsTerm">Search Dreams: </label>
 						<input type="text" name="ajaxSearchDreamsTerm"
 							id="ajaxSearchDreamsTerm" />
-						<input type="submit" />
+						<input type="submit" title="Click here to search your Dreams."/>
 					</g:formRemote>
 				</div>
 				<div id="searchDreamsResults"></div>
@@ -107,7 +107,7 @@
 		<div style="margin-top: .5em; height:100%;">
 			<div class="grid_2 alpha">
 			<g:set var="useremail"><shiro:principal/></g:set>
-				<a href="https://en.gravatar.com/site/signup" target="_blank" onclick="return confirm('Do you want to got to signup for a Gravatar?')"><avatar:gravatar email="${useremail}" size="50"/></a>
+				<a href="https://en.gravatar.com/site/signup" target="_blank" onclick="return confirm('Do you want to got to signup for a Gravatar?')"><avatar:gravatar title="Click to signup with gravatar /n and have your picture here!" email="${useremail}" size="50"/></a>
 				Welcome back,
 				<g:include controller="user" action="getCurrentUserFirstName" />!
 			</div>
