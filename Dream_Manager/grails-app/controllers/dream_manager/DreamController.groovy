@@ -173,7 +173,7 @@ class DreamController {
 			order("category", "asc")
 			order("name", "asc")
 		}
-		render(view:'ajaxSearchDreams.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
+		render(view:'ajaxSearchDreams.gsp', model: ['dreams': dreamList , 'searchTerm':params.ajaxSearchDreamsTerm], contentType: 'text/plain')
 	}
 
 	def ajaxUpcomingDreams = {
