@@ -15,7 +15,7 @@
 					<td>
 						${dream.category}
 					</td>
-					<td><g:link action="show" id="${dream.id}">
+					<td><g:link action="show" id="${dream.id}" title="Click to view dream.">
 							${dream.name}
 						</g:link></td>
 					<td><g:formatDate format="MM/dd/yyyy"
