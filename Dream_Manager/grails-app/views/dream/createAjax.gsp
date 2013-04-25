@@ -1,7 +1,7 @@
 <%@ page import="dream_manager.Dream" %>
 <div id="createDreamAjaxResponse" style="display:none;position:absolute;top:0px;left:0px;width:100%;text-align:center;"></div>
 
-<div id="create-dream" class="content scaffold-create" role="main">
+<div id="create-dream" class="content scaffold-create" role="main" title="Click to toggle add dream form.">
 	<div id="inline_create_dream_toggle" style="float:right">
 		<g:img file="add.png" width="15" height="15" />
 		<g:img file="remove.png" width="15" height="15" style="display:none;"/>
