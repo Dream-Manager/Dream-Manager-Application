@@ -1,5 +1,5 @@
 <g:if test="${dreams!=null}">
-<h1>${length}</h1>
+<h1 title="Displays list of the 3 most complete ${length} dreams.">${length}</h1>
 <div>
 <div class="accordion">
 	<g:each in="${dreams}" status="i" var="dream">
