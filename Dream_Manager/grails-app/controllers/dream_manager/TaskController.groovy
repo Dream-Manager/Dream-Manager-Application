@@ -79,8 +79,11 @@ class TaskController {
             }
         }
 
-        taskInstance.properties = params
-
+        taskInstance.name = params.name
+		taskInstance.estimatedCompletion = params.estimatedCompletion
+		taskInstance.description = params.description
+		taskInstance.percentComplete = params.percentComplete.toInteger()
+		
         if (!taskInstance.save(flush: true)) {
             render(view: "edit", model: [taskInstance: taskInstance])
             return
