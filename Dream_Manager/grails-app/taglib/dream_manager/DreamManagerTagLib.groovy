@@ -89,4 +89,11 @@ class DreamManagerTagLib {
 			out << body()
 		}
 	}
+	/**
+	 * Out puts the current user's dream manager's email.
+	 */
+	def managerEmail = {
+		def currentUser = User?.findByUsername(SecurityUtils.subject.principal)
+		out << currentUser.manager.username
+	}
 }

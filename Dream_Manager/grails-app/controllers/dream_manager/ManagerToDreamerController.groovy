@@ -80,8 +80,8 @@ class ManagerToDreamerController {
 		def relationshipRequest = null
 		if (params?.id){
 			relationshipRequest = ManagerRequest?.findByToken(params.id)
-			if (relationshipRequest==null && params.id.class!=String){
-				relationshipRequest = ManagerRequest?.findByUser(User.get(params?.id))
+			if (relationshipRequest==null){
+				relationshipRequest = ManagerRequest?.findByUser(User.get(params?.id.toLong()))
 			}
 		}
 		if (relationshipRequest==null){
@@ -100,7 +100,7 @@ class ManagerToDreamerController {
 			flash.message = "${relationshipRequest.manager.toString()}  is now ${dreamer.toString()}'s manager."
 			relationshipRequest?.delete()
 		} else {
-			flash.message = "Not a valid request."
+			flash.message = "Not a valid request. ${params.id.class}"
 			redirect(uri:'/')
 		}
 	}
@@ -154,8 +154,8 @@ class ManagerToDreamerController {
 		def relationshipRequest = null
 		if (params?.id){
 			relationshipRequest = ManagerRequest?.findByToken(params.id)
-			if (relationshipRequest==null && params.id.class!=String){
-				relationshipRequest = ManagerRequest?.findByUser(User.get(params?.id))
+			if (relationshipRequest==null){
+				relationshipRequest = ManagerRequest?.findByUser(User.get(params?.id.toLong()))
 			}
 		}
 		if (relationshipRequest==null){
