@@ -436,6 +436,58 @@ class UserController {
 						dream:dreamInstance
 					).save()
 					
+					def dreamLong = new Dream(
+						name:"Complete 25 Dreams",
+						category:"Legacy",
+						lastUpdated:new Date(),
+						notes:"",
+						percentComplete: 0,
+						isShortTerm: false,
+						user:User.findByUsername(params.username)
+					).save()
+					
+					new Task (
+						name:"Complete 5 Dreams",
+						description:"",
+						percentComplete: 0,
+						orderNumber: 1,
+						dream:dreamLong
+					).save()
+					
+					new Task (
+						name:"Complete 10 Dreams",
+						description:"",
+						percentComplete: 0,
+						orderNumber: 2,
+						dream:dreamLong
+					).save()
+					
+					new Task (
+						name:"Complete 15 Dreams",
+						description:"",
+						percentComplete: 0,
+						orderNumber: 3,
+						dream:dreamLong
+					).save()
+					
+					new Task (
+						name:"Complete 20 Dreams",
+						description:"",
+						percentComplete: 0,
+						orderNumber: 4,
+						dream:dreamLong
+					).save()
+					
+					new Task (
+						name:"Complete 25 Dreams",
+						description:"",
+						percentComplete: 0,
+						orderNumber: 5,
+						dream:dreamLong
+					).save()
+					
+					
+					
 					redirect(controller:'DreamerDashboard', action:'index')
 					flash.message = "Account created"
 				}

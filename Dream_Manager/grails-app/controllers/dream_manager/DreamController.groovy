@@ -30,6 +30,12 @@ class DreamController {
 		def dreams = Dream.findAllByUser(User.findById(params.id))
 		render (view: "list", model: [dreamInstanceList:dreams, dreamInstanceTotal:dreams.size(), userId: params.id])
 	}
+	
+	def list = {
+		def currentUser = User.findByUsername(SecurityUtils.subject.principal)
+		def dreams = Dream.findAllByUser(currentUser)
+		render (view: "list", model: [dreamInstanceList:dreams, dreamInstanceTotal:dreams.size(), userId: params.id])
+	}
 
 	def show = {
 		def dream = Dream.get(params.id)
