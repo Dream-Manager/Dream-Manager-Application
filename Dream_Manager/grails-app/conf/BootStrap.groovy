@@ -246,12 +246,12 @@ class BootStrap {
 				).save()
 				
 				new Dream (
-					name:"Complete an Anger Management Course",
-					category:"Emotional",
+					name:"Shave Tom from Head to Toe",
+					category:"Adventure",
 					lastUpdated:new Date(),
-					notes:"Stop Beating My Students with said bat",
-					percentComplete: 20,
-					estimatedCompletion: "03/25/2014",
+					notes:"Its a jungle!!!",
+					percentComplete: 10,
+					estimatedCompletion: "03/25/2018",
 					isShortTerm: false,
 					user:User.findByUsername("dreammanager.noreply@gmail.com")
 				).save()
