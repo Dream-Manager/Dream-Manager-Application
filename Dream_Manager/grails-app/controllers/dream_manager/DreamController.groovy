@@ -13,6 +13,13 @@ class DreamController {
 
 	static layout = "application"
 
+	/**
+	 * Renders the Dream List for a user other than the current, if that user is 
+	 * managed by the curent user.
+	 * 
+	 * @param	id	The user ID to render for
+	 * @return	the List view with the user's dreams
+	 */
 	def listForUser = {
 		// Only allow a user's manager to call this action
 		def currentUser = User.findByUsername(SecurityUtils.subject.principal)
@@ -21,7 +28,7 @@ class DreamController {
 			redirect(controller: "dreamerDashboard")
 
 		def dreams = Dream.findAllByUser(User.findById(params.id))
-		render (view: "list", model: [dreamInstanceList:dreams, dreamInstanceTotal:dreams.size()])
+		render (view: "list", model: [dreamInstanceList:dreams, dreamInstanceTotal:dreams.size(), userId: params.id])
 	}
 
 	def show = {
@@ -66,18 +73,32 @@ class DreamController {
 	/**
 	 * Creates a new Dream record for the current user
 	 * @param params All required fields for the Dream object
-	 * Redirects the user to the "show" view for the created record on completion.
+	 * @param userId	If the current user is a manager of a user, the id of the user to create for
+	 * @return	Renders the the "show" view for the created record.
 	 */
 	def create = {
+		def currentUser = User.findByUsername(SecurityUtils.subject.principal)
+		def user = currentUser
+		
+		if(params.userId)
+		{	
+			def dreamersManager = User.get(params.userId)?.manager
+			if(dreamersManager != currentUser)
+				redirect(controller: "dreamerDashboard")
+			else
+				user = User.get(params.userId)
+		}
+		
 		def percentComplete = params.percentComplete
 		if(!params.percentComplete)
 			percentComplete = 0
-		def dreamInstance = new Dream(name: params.name,
-		category:params.category,
-		isShortTerm: params.isShortTerm,
-		notes: params.notes,
-		percentComplete: percentComplete)
-		def user = User.findByUsername(SecurityUtils.subject.principal)
+		def dreamInstance = new Dream (
+			name: params.name,
+			category:params.category,
+			isShortTerm: params.isShortTerm,
+			notes: params.notes,
+			percentComplete: percentComplete
+		)
 
 		if(params.estimatedCompletion)
 			dreamInstance.estimatedCompletion = Date.parse("MM/dd/yy",params.estimatedCompletion)
