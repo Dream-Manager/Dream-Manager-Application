@@ -103,16 +103,16 @@ Add a user to tomcat-users.xml:
 Change the default Java environment variables:
 <blockquote class="note">
 JAVA_OPTS="-Djava.awt.headless=true -Xmx512m -Xms512m -XX:PermSize=512m -XX:MaxPermSize=512m -XX:+UseConcMarkSweepGC"
-{node}
+</blockquote>
 <div class="code"><pre>sudo chgrp &#45;R tomcat6 /etc/tomcat6
 sudo chmod &#45;R g+w /etc/tomcat6
 sudo iptables &#45;t nat &#45;I PREROUTING &#45;p tcp &#45;&#45;dport 80 &#45;j REDIRECT &#45;&#45;to&#45;ports 8080
 sudo sh &#45;c '/sbin/iptables&#45;save &#62; /etc/iptables.save'
 sudo vi /etc/network/<span class="java&#45;keyword">if</span>&#45;up.d/firewall</pre></div>
 Add to the file:
-</blockquote>
-/sbin/iptables-restore &#60; /etc/iptables_rules
 <blockquote class="note">
+/sbin/iptables-restore &#60; /etc/iptables_rules
+</blockquote>
 <div class="code"><pre>sudo chmod +x /etc/network/<span class="java&#45;keyword">if</span>&#45;up.d/firewall</pre></div>
 <h3>Deploy WAR File</h3>
 <ol>
@@ -125,9 +125,9 @@ Add to the file:
 sudo ln &#45;s /<span class="java&#45;keyword">var</span>/lib/tomcat6/webapps/Dream_Manager /<span class="java&#45;keyword">var</span>/lib/tomcat6/webapps/ROOT
 sudo vi /etc/tomcat6/server.conf</pre></div>
 Add to the file inside the HOST section:
-</blockquote>
+<blockquote class="note">
 &#60;Context path="" docBase="Dream_Manager" /&#62;
-<blockquote class="note">null</blockquote>
+</blockquote>
 <div class="code"><pre>sudo /etc/init.d/tomcat6 restart</pre></div>
 <h3>Install MySQL</h3>
 <div class="code"><pre>sudo apt&#45;get install mysql&#45;server</pre></div>
