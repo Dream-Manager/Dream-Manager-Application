@@ -35,12 +35,12 @@ p { margin-left: 6em; color: #3454A2; }
 	dashboard. Fill out the form and click save. Then you can add another or click on <br>
 	the minus sign to close the form.</p>
 <h3>How do I delete a Dream?</h3>
-<p>From the edit screen you can click the delete button or the <g:img file="delete.png" width="20" height="20" />  in the search dream<br>
+<p>From the view screen you can click the delete button or the <g:img file="delete.png" width="20" height="20" />  in the search dream<br>
 	tab on the dashboard. Be careful deleting things as there is no UNDO in the current <br>
 	version of the software.</p>
 <h3>How do I edit a Dream?</h3>
-<p>From the dream in progress tab click on the dream and then click the <g:img file="edit.png" width="20" height="20" />, or from the <br>
-	search dream view simply click on the <g:img file="edit.png" width="20" height="20" />.</p>
+<p>From the dream in progress tab click on the dream and then click the Edit This Dream link, or from the <br>
+	search dream view simply click on the Title, then click on <g:img file="skin/database_edit.png" width="20" heigth="20"/>.</p>
 <h3>How do I mark a Dream complete?</h3>
 <p>This will be done automatically when all dream tasks are 100% done.</p>
 <h3>Who can see my Dreams?</h3>
@@ -55,7 +55,7 @@ p { margin-left: 6em; color: #3454A2; }
 <p>Click on the <g:img file="add.png" width="20" height="20" /> next to "Dream tasks:" header on your short/long term lists,<br>
 	or when editing a dream click on the <g:img file="add.png" width="20" height="20" />.</p>
 <h3>How do I edit a Task?</h3>
-<p>Click on the <g:img file="edit.png" width="20" height="20" />.</p>
+<p>Click on the Task Name.</p>
 <h3>How do I delete a Task?</h3>
 <p>Click on the <g:img file="delete.png" width="20" height="20" /> next to it in dream progress tab. Or View a dream from the search <br>
 	page click on the dream, then click on the task name to view, then click delete.</p>

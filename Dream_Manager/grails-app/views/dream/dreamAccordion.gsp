@@ -13,7 +13,7 @@
 				<div>
 					<ul class="sortable">
 					  <g:each in="${dream.tasks.sort{a,b-> a.orderNumber.compareTo(b.orderNumber)}}" var="task">
-					  	<li class="ui-state-default task-sortable" title="Drag around to sort tasks.">${task.name} <g:link controller="task" action = "edit" id="${task.id}" title="Edit this task."><g:img file="edit.png" width="20" height="20" /></g:link> <g:link controller="task" action="delete" id="${task.id}" title="Delete this task from this Dream."  onclick="return confirm('Are you sure you want to delete this task?')"><g:img file="delete.png" width="20" height="20" /></g:link> <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:2em;margin-top:-1em">${task.percentComplete}</span></li>
+					  	<li class="ui-state-default task-sortable" title="Drag around to sort tasks."><g:link controller="task" action = "edit" id="${task.id}" title="Edit this task.">${task.name}</g:link> <g:link controller="task" action="delete" id="${task.id}" title="Delete this task from this Dream."  onclick="return confirm('Are you sure you want to delete this task?')"><g:img file="delete.png" width="20" height="20" /></g:link> <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:2em;margin-top:-1em">${task.percentComplete}</span></li>
 					 	<script type="text/javascript">
 						$( ".sortable" ).sortable({
 						  stop: function( event, ui ) {
@@ -30,7 +30,7 @@
 					<h6>Dream Notes:</h6>
 				<p>${dream.notes}</p>
 				</div>
-				<g:link controller="dream" action="edit" id="${dream.id}" style="position:absolute; right: 0; bottom: 0;" title="Edit this dream." ><g:img file="edit.png" width="20" height="20" /></g:link>
+				<g:link controller="dream" action="edit" id="${dream.id}" style="position:absolute; right: 0; bottom: 0;" title="Edit this dream." >Edit this Dream</g:link>
 			</div>
 		</div>
 	</g:each>
