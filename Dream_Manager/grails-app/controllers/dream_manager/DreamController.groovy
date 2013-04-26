@@ -158,10 +158,10 @@ class DreamController {
 			isShortTerm = "true"
 
 		def dreamInstance = new Dream(name: params.name,
-		category:params.category,
-		isShortTerm: isShortTerm,
-		notes: params.notes,
-		percentComplete: percentComplete)
+			category:params.category,
+			isShortTerm: isShortTerm,
+			notes: params.notes,
+			percentComplete: percentComplete)
 		def user = User.findByUsername(SecurityUtils.subject.principal)
 		dreamInstance.user = user
 		if(params.estimatedCompletion)
@@ -179,7 +179,7 @@ class DreamController {
 			cssClass = "ui-state-error"
 		}
 
-		render ("<div class='"+cssClass+"'>"+output+"</div>")
+		render contentType: "text/plain", text: "<div class='"+cssClass+"'>"+output+"</div>"
 	}
 
 	/**
