@@ -1,6 +1,7 @@
 package dream_manager
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.apache.shiro.SecurityUtils
 
 class TaskController {
 	
@@ -130,5 +131,19 @@ class TaskController {
 			// Once working, remove this render
 			render taskService.sortIDs(idLongArray)
 		}
+	}
+	
+	def ajaxUpcomingTasks = {
+		def taskList = Task.withCriteria {
+			dream{user{eq('id',User.findByUsername(SecurityUtils.subject.principal).id)}}
+			isNotNull("estimatedCompletion")
+			Date currentDate = new Date()
+			ge("estimatedCompletion", currentDate)
+			maxResults(3)
+			order("estimatedCompletion", "asc")
+			order("name", "asc")
+		}
+		if(taskList.size()>0)
+			render(view:'ajaxUpcomingTasks.gsp', model: ['tasks': taskList], contentType: 'text/plain')
 	}
 }

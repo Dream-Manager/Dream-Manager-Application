@@ -179,7 +179,7 @@ class BootStrap {
 				).save()
 				
 				new Task (
-					name:"Tell James to be stop talking",
+					name:"Tell James to stop talking",
 					description:"That James sure can talk.",
 					percentComplete: 40,
 					orderNumber: 2,

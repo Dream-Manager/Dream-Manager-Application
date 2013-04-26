@@ -39,8 +39,8 @@
 						<g:include controller="dream" action="shorttermDreams"/>							
 						<g:include controller="dream" action="longtermDreams"/>							
 					<div class='ui-widget' style="margin-bottom: 1em;"
-						id="ajaxUpcomingDreamsResults">
-						<g:include controller="dream" action="ajaxUpcomingDreams" />
+						id="ajaxUpcomingTasksResults">
+						<g:include controller="task" action="ajaxUpcomingTasks" />
 					</div>
 				</div>
 			</div>
