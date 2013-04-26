@@ -15,9 +15,19 @@
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
 						code="default.home.label" /></a></li>
-			<li><g:link class="list" action="list">
-					<g:message code="default.list.label" args="[entityName]" />
-				</g:link></li>
+			<g:def var="userId" value="${params.userId}" />
+			<li>
+				<g:if test="${userId}">
+					<a href="<dreamManager:linkToAction controller="dream" action="listForUser"/>/${userId}">
+						<g:message code="default.list.label" args="[entityName]" />
+					</a>
+				</g:if>
+				<g:else>
+					<g:link class="list" action="list">
+						<g:message code="default.list.label" args="[entityName]" />
+					</g:link>
+				</g:else>
+			</li>
 		</ul>
 	</div>
 	<div id="create-dream" class="content scaffold-create" role="main">
@@ -34,6 +44,7 @@
 			</ul>
 		</g:hasErrors>
 		<g:form action="create">
+			<input type="hidden" name="userId" value="${params.userId}" />
 			<fieldset class="form">
 				<g:render template="form" />
 			</fieldset>

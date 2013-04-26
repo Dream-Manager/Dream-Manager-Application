@@ -5,6 +5,14 @@ import org.apache.shiro.SecurityUtils
 class DreamManagerTagLib {
 	static namespace = "dreamManager"
 
+	/**
+	 * Generates a relative link including the application's directory 
+	 * (primarily for use with anchors tags)
+	 * 
+	 * @param	controller	The desired controller
+	 * @param	action		The specified controller's action to call
+	 * @return	A string containing the generated link
+	 */
 	def linkToAction = { attrs, body ->
 		out << "/"+grailsApplication.config.grails.project.groupId+"/"+attrs["controller"]+"/"+attrs["action"]
 	} 
