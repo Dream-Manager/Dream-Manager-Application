@@ -13,7 +13,7 @@
 				<div>
 					<ul class="sortable">
 					  <g:each in="${dream.tasks.sort{a,b-> a.orderNumber.compareTo(b.orderNumber)}}" var="task">
-					  	<li class="ui-state-default task-sortable" title="Drag around to sort tasks.">${task.orderNumber}. ${task.name} <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:10em;margin-top:-1em">${task.percentComplete}</span></li>
+					  	<li class="ui-state-default task-sortable" title="Drag around to sort tasks."> <g:link controller="task" action = "edit" id="${task.id}">${task.name}</g:link> <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:10em;margin-top:-1em">${task.percentComplete}</span></li>
 					 	<script type="text/javascript">
 						$( ".sortable" ).sortable({
 						  stop: function( event, ui ) {
