@@ -54,16 +54,13 @@ if (typeof jQuery !== 'undefined') {
 		{
 			$(document).tooltip({
 				show : {
-					delay : 1000
+					delay : 800
 				},
 				hide : {
 					effect : "fade",
 					duration : 200
 				},
-				position : {
-					my : "left+15 center",
-					at : "right center"
-				}
+				track: true
 			});
 		}
 		;
