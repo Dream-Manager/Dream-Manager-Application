@@ -60,7 +60,10 @@ if (typeof jQuery !== 'undefined') {
 					effect : "fade",
 					duration : 200
 				},
-				track: true
+				position : {
+					my : "left center",
+					at : "right center"
+				}
 			});
 		}
 		;
