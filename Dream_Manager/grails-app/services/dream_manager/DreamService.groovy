@@ -20,7 +20,11 @@ class DreamService {
 		def tasks = dreamToUpdate.getTasks();
 		Hibernate.initialize(tasks)
 		for(task in tasks){ totalPercent += task.percentComplete }
-		totalPercent /= dreamToUpdate.tasks.size()
+		if (dreamToUpdate.tasks.size()!=0){
+		totalPercent /= dreamToUpdate.tasks.size()}
+		else{
+			totalPercent = 0
+		}
 		dreamToUpdate.percentComplete = totalPercent
 		dreamToUpdate.save(flush:true)
 	}
