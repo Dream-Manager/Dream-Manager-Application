@@ -39,7 +39,7 @@ p { margin-left: 6em; color: #3454A2; }
 	tab on the dashboard. Be careful deleting things as there is no UNDO in the current <br>
 	version of the software.</p>
 <h3>How do I edit a Dream?</h3>
-<p>From the dream in progress tab click on the dream and then click the Edit This Dream link, or from the <br>
+<p>From the dream in progress tab click on the dream and then click the <g:img file="skin/database_edit.png" width="20" heigth="20"/>, or from the <br>
 	search dream view simply click on the Title, then click on <g:img file="skin/database_edit.png" width="20" heigth="20"/>.</p>
 <h3>How do I mark a Dream complete?</h3>
 <p>This will be done automatically when all dream tasks are 100% done.</p>
@@ -64,6 +64,19 @@ p { margin-left: 6em; color: #3454A2; }
 	the way to the right.</p>
 <h3>Who can see my Tasks?</h3>
 <p>Only you and your dream manager.</p>
+</div>
+<h3>Icon Legend</h3>
+<div>
+<p>	<g:img file="add.png" width="20" heigth="20"/>= Add Icon(Create)<br>
+	<g:img file="skin/database_edit.png" width="20" heigth="20"/> = Edit icon<br>
+	<g:img file="skin/database_save.png" width="20" heigth="20"/>= Save Icon<br>
+	<g:img file="delete.png" width="20" heigth="20"/>= Delete Icon<br>
+	<g:img file="heart.png" width="20" heigth="20"/>= Claim Icon<br>
+	<g:img file="accept.png" width="20" heigth="20"/>= Accept Icon<br>
+	<g:img file="reject.png" width="20" heigth="20"/>= Reject Icon<br>
+	<g:img file="pending.png" width="20" heigth="20"/>= Pending Icon<br>
+	
+</p>
 </div>
 <h2>Managing Dreamers</h2>
 <div>
