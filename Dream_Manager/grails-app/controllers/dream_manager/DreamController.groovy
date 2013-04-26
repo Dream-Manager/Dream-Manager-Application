@@ -48,13 +48,13 @@ class DreamController {
 		if(dream) {
 			dream.name = params.name
 			dream.category = params.category
-			dream.isShortTerm = params.isShortTerm
+			dream.isShortTerm = params.isShortTerm.toBoolean()
 			dream.notes = params.notes
 			dream.estimatedCompletion = (!params.estimatedCompletion?null:Date.parse("MM/dd/yy",params.estimatedCompletion))
 			dream.lastUpdated = new Date()
 
 			if(!dream.hasErrors() && dream.save()) {
-				flash.message = "Success"
+				flash.message = "Success ${params.isShortTerm}"
 			} else {
 				flash.message = "Failure"
 			}
