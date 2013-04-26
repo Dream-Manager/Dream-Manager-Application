@@ -386,7 +386,7 @@ class UserController {
 					def authToken = new UsernamePasswordToken(user.username, params.password)
 					SecurityUtils.subject.login(authToken)
 					
-					new Dream (
+					def dreamInstance = new Dream(
 						name:"Create First Dream",
 						category:"Character",
 						lastUpdated:new Date(),
@@ -394,6 +394,46 @@ class UserController {
 						percentComplete: 0,
 						isShortTerm: true,
 						user:User.findByUsername(params.username)
+					).save()
+					
+					new Task (
+						name:"Click on the Plus button on the dashboard",
+						description:"The Plus button is located next to the right of the Dreamer Dashboard Title",
+						percentComplete: 0,
+						orderNumber: 1,
+						dream:dreamInstance
+					).save()
+					
+					new Task (
+						name:"Fill out the form",
+						description:"Only the name is required for a new dream",
+						percentComplete: 0,
+						orderNumber: 2,
+						dream:dreamInstance
+					).save()
+					
+					new Task (
+						name:"Click the save button",
+						description:"",
+						percentComplete: 0,
+						orderNumber: 3,
+						dream:dreamInstance
+					).save()
+					
+					new Task (
+						name:"Click the minus button to exit dream creation",
+						description:"The minus button is where the plus button was",
+						percentComplete: 0,
+						orderNumber: 4,
+						dream:dreamInstance
+					).save()
+					
+					new Task (
+						name:"Add tasks to your new dream",
+						description:"Open the accordian and click the plus button to add tasks.",
+						percentComplete: 0,
+						orderNumber: 5,
+						dream:dreamInstance
 					).save()
 					
 					redirect(controller:'DreamerDashboard', action:'index')
