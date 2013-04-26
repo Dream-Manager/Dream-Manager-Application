@@ -80,7 +80,7 @@ class ManagerToDreamerController {
 		def relationshipRequest = null
 		if (params?.id){
 			relationshipRequest = ManagerRequest?.findByToken(params.id)
-			if (relationshipRequest==null){
+			if (relationshipRequest==null && params.id.class!=String){
 				relationshipRequest = ManagerRequest?.findByUser(User.get(params?.id))
 			}
 		}
@@ -154,7 +154,7 @@ class ManagerToDreamerController {
 		def relationshipRequest = null
 		if (params?.id){
 			relationshipRequest = ManagerRequest?.findByToken(params.id)
-			if (relationshipRequest==null){
+			if (relationshipRequest==null && params.id.class!=String){
 				relationshipRequest = ManagerRequest?.findByUser(User.get(params?.id))
 			}
 		}

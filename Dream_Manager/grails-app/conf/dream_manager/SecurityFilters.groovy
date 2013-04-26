@@ -32,7 +32,8 @@ class SecurityFilters {
 		 [controller: 'api', action: '*', roles: ['ROLE_ADMIN']],
 		 [controller: 'asset', action: '*', roles: ['ROLE_ADMIN']],
 		 [controller: 'user', action: '*', roles: ['ROLE_ADMIN']],
-		 [controller: 'userDreamQuestions', action: '*', roles: ['ROLE_ADMIN']]
+		 [controller: 'userDreamQuestions', action: '*', roles: ['ROLE_ADMIN']],
+		 [controller: 'managerToDreamer', action: '*', roles: ['ROLE_USER']]
 	]
 
     def filters = {
