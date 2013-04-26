@@ -32,9 +32,9 @@
 		});
 		function createDreamByAjaxResponseHandler(){
 			
-			$.ajax("<dreamManager:linkToAction controller="dream" action="ajaxUpcomingDreams"/>")
+			$.ajax('<dreamManager:linkToAction controller="dream" action="ajaxUpcomingDreams"/>')
 				.done(function(data){
-					$("#ajaxUpcomingDreamsResults").html(data);
+					//$("#ajaxUpcomingDreamsResults").html(data);
 				});
 			
 			$("#createDreamAjaxResponse")
