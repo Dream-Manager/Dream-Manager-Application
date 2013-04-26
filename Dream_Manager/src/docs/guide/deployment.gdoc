@@ -28,7 +28,7 @@ sudo vi /etc/default/tomcat6
 Change the default Java environment variables:
 {note}
 JAVA_OPTS="-Djava.awt.headless=true -Xmx512m -Xms512m -XX:PermSize=512m -XX:MaxPermSize=512m -XX:+UseConcMarkSweepGC"
-{node}
+{note}
 {code}
 sudo chgrp -R tomcat6 /etc/tomcat6
 sudo chmod -R g+w /etc/tomcat6
