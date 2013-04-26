@@ -33,9 +33,9 @@ class TaskController {
             return
         }
 		
-        flash.message = message(code: 'default.created.message', args: [message(code: 'task.label', default: 'Task'), taskInstance.id])
+        flash.message = "Task for Dream ${taskInstance.dream.name} created."
 		dreamService.markCompletionBasedOnTasks(taskInstance.dream.id)
-        redirect(action: "show", id: taskInstance.id)
+        redirect(controller:"dreamerDashboard")
 		
     }
 

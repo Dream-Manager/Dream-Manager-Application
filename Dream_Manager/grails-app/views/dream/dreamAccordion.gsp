@@ -3,10 +3,13 @@
 <div>
 <div class="accordion">
 	<g:each in="${dreams}" status="i" var="dream">
+	<g:set var="dreamID" value="${dream.id}"/>
 		<h3 style="position:relative;" title="${dream.percentComplete}% complete">${dream.name} <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:1em;margin-top:-1em">${dream.percentComplete}</span></h3>
 		<div>
 			<div style="position: relative;">
-				<h1>Dream Tasks:</h1>
+				<h1>Dream Tasks: 
+				<g:link controller="task" action="create" params="[dreamID:dreamID]" title="Add a task to this dream.">+</g:link>
+				</h1>
 				<div>
 					<ul class="sortable">
 					  <g:each in="${dream.tasks.sort{a,b-> a.orderNumber.compareTo(b.orderNumber)}}" var="task">
