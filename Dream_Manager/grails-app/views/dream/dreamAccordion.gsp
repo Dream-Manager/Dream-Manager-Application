@@ -8,7 +8,7 @@
 		<div>
 			<div style="position: relative;">
 				<h6>Dream Tasks: 
-				<g:link controller="task" action="create" params="[dreamID:dreamID]" title="Add a task to this dream.">+</g:link>
+				<g:link controller="task" action="create" params="[dreamID:dreamID]" title="Add a task to this dream." class="button">Add a Task</g:link>
 				</h6>
 				<div>
 					<ul class="sortable">
