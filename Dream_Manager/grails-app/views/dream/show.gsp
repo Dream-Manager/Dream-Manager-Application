@@ -13,12 +13,26 @@
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
 						code="default.home.label" /></a></li>
-			<li><g:link class="list" action="list">
-					<g:message code="default.list.label" args="[entityName]" />
-				</g:link></li>
-			<li><g:link class="create" action="create">
+						
+			<g:def var="userId" value="${userId}" />
+			<li>				
+				<g:if test="${userId}">
+					<a href="<dreamManager:linkToAction controller="dream" action="listForUser"/>/${userId}">
+						<g:message code="default.list.label" args="[entityName]" />
+					</a>
+				</g:if>
+				<g:else>
+					<g:link class="list" action="list">
+						<g:message code="default.list.label" args="[entityName]" />
+					</g:link>
+				</g:else>
+			</li>
+			<li>
+				<g:link class="create" action="create" params="[userId:userId]">
 					<g:message code="default.new.label" args="[entityName]" />
-				</g:link></li>
+				</g:link>
+			</li>
+			
 		</ul>
 	</div>
 	<div id="show-dream" class="content scaffold-show" role="main">
