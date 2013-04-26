@@ -7,13 +7,13 @@
 		<h3 style="position:relative;" title="${dream.percentComplete}% complete">${dream.name} <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:1em;margin-top:-1em">${dream.percentComplete}</span></h3>
 		<div>
 			<div style="position: relative;">
-				<h1>Dream Tasks: 
+				<h6>Dream Tasks: 
 				<g:link controller="task" action="create" params="[dreamID:dreamID]" title="Add a task to this dream.">+</g:link>
-				</h1>
+				</h6>
 				<div>
 					<ul class="sortable">
 					  <g:each in="${dream.tasks.sort{a,b-> a.orderNumber.compareTo(b.orderNumber)}}" var="task">
-					  	<li class="ui-state-default task-sortable" title="Drag around to sort tasks."> <g:link controller="task" action = "edit" id="${task.id}">${task.name}</g:link> <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:10em;margin-top:-1em">${task.percentComplete}</span></li>
+					  	<li class="ui-state-default task-sortable" title="Drag around to sort tasks."> <g:link controller="task" action = "edit" id="${task.id}">${task.name}</g:link> <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:2em;margin-top:-1em">${task.percentComplete}</span></li>
 					 	<script type="text/javascript">
 						$( ".sortable" ).sortable({
 						  stop: function( event, ui ) {
@@ -27,7 +27,7 @@
 						</script>
 					  </g:each>
 					</ul>
-					<h1>Dream Notes:</h1>
+					<h6>Dream Notes:</h6>
 				<p>${dream.notes}</p>
 				</div>
 				<g:link controller="dream" action="edit" id="${dream.id}" style="position:absolute; right: 0; bottom: 0;">Edit Dream</g:link>
