@@ -105,7 +105,16 @@ Copy contents of C:&#85;sers&#117;sername&#46;ssh&#105;d_rsa.pub and add to http
 cd Dream Manager
 git init
 git remote add origin https://github.com/Dream&#45;Manager/Dream&#45;Manager&#45;Application.git
-git pull origin master</pre></div><p class="paragraph"/><h3>Grails Domain</h3>
+git pull origin master</pre></div><p class="paragraph"/><h2>Setting up local MySQL Instance</h2>
+Download installation package:
+http://www.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.6.11.0.msi/from/http://cdn.mysql.com/
+<div class="code"><pre>CREATE USER 'dream_manager'@'localhost';
+CREATE DATABASE dream_manager;
+CREATE DATABASE dream_manager_test;
+CREATE DATABASE dream_manager_development;
+GRANT ALL ON dream_manager.&#42; TO 'dream_manager'@'localhost';
+GRANT ALL ON dream_manager_test.&#42; TO 'dream_manager'@'localhost';
+GRANT ALL ON dream_manager_development.&#42; TO 'dream_manager'@'localhost';</pre></div><p class="paragraph"/><h3>Grails Domain</h3>
 dream_manager
 
 

@@ -95,19 +95,24 @@ sudo export PATH=$JAVA_HOME/bin:$PATH</pre></div>
 <div class="code"><pre>sudo apt&#45;get install tomcat6
 sudo apt&#45;get install tomcat6&#45;admin
 sudo vi /etc/tomcat6/tomcat&#45;users.xml</pre></div>
-Add a user to the config file:
+Add a user to tomcat-users.xml:
 <blockquote class="note">
 &#60;user username="admin" password="sekretpasswerd" roles="manager,admin,manager-gui" /&#62;
 </blockquote>
+<div class="code"><pre>sudo vi /etc/<span class="java&#45;keyword">default</span>/tomcat6</pre></div>
+Change the default Java environment variables:
+<blockquote class="note">
+JAVA_OPTS="-Djava.awt.headless=true -Xmx512m -Xms512m -XX:PermSize=512m -XX:MaxPermSize=512m -XX:+UseConcMarkSweepGC"
+{node}
 <div class="code"><pre>sudo chgrp &#45;R tomcat6 /etc/tomcat6
 sudo chmod &#45;R g+w /etc/tomcat6
 sudo iptables &#45;t nat &#45;I PREROUTING &#45;p tcp &#45;&#45;dport 80 &#45;j REDIRECT &#45;&#45;to&#45;ports 8080
 sudo sh &#45;c '/sbin/iptables&#45;save &#62; /etc/iptables.save'
 sudo vi /etc/network/<span class="java&#45;keyword">if</span>&#45;up.d/firewall</pre></div>
 Add to the file:
-<blockquote class="note">
-/sbin/iptables-restore &#60; /etc/iptables_rules
 </blockquote>
+/sbin/iptables-restore &#60; /etc/iptables_rules
+<blockquote class="note">
 <div class="code"><pre>sudo chmod +x /etc/network/<span class="java&#45;keyword">if</span>&#45;up.d/firewall</pre></div>
 <h3>Deploy WAR File</h3>
 <ol>
@@ -118,13 +123,26 @@ Add to the file:
 </ol><p class="paragraph"/><h3>Set Dream Manager as Root Application</h3>
 <div class="code"><pre>sudo rm &#45;rf /<span class="java&#45;keyword">var</span>/lib/tomcat6/webapps/ROOT
 sudo ln &#45;s /<span class="java&#45;keyword">var</span>/lib/tomcat6/webapps/Dream_Manager /<span class="java&#45;keyword">var</span>/lib/tomcat6/webapps/ROOT
-sudo /etc/init.d/tomcat6 restart</pre></div>
+sudo vi /etc/tomcat6/server.conf</pre></div>
+Add to the file inside the HOST section:
+</blockquote>
+&#60;Context path="" docBase="Dream_Manager" /&#62;
+<blockquote class="note">null</blockquote>
+<div class="code"><pre>sudo /etc/init.d/tomcat6 restart</pre></div>
 <h3>Install MySQL</h3>
 <div class="code"><pre>sudo apt&#45;get install mysql&#45;server</pre></div>
 Set password for root account during installation.
 <div class="code"><pre>sudo vi /etc/mysql/my.cnf
-sudo /etc/init.d/mysql restart</pre></div>
-
+sudo /etc/init.d/mysql restart
+mysql &#45;&#45;user=root &#45;&#45;password
+	CREATE USER 'dream_manager'@'localhost';
+	CREATE DATABASE dream_manager;
+	CREATE DATABASE dream_manager_test;
+	CREATE DATABASE dream_manager_development;
+	GRANT ALL ON dream_manager.&#42; TO 'dream_manager'@'localhost';
+	GRANT ALL ON dream_manager_test.&#42; TO 'dream_manager'@'localhost';
+	GRANT ALL ON dream_manager_development.&#42; TO 'dream_manager'@'localhost';
+	EXIT</pre></div><p class="paragraph"/>
 
 
                 <div style="clear:both;margin-top:15px;"></div>
