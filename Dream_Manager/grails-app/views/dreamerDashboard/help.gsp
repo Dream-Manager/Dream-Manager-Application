@@ -15,16 +15,16 @@ p { margin-left: 6em; color: #3454A2; }
 <p>A dream manager is a person you choose to help you accomplish/manage your dreams.<br>
    They are there to help you along your journey of accomplishing dreams.</p>
 <h3>How do I request a Dream Manager?</h3>
-<p>You request a dream manager by clicking on the Menu and selecting request dream <br>
-	manager. This will create a request and if the manager accepts it they will be <br>
+<p>You request a dream manager by clicking on the Menu and selecting "request dream <br>
+	manager". This will create a request and if the manager accepts it they will be <br>
 	your dream manager. This means they can do everything that you can to your dreams<br>
 	and tasks.</p>
 <h3>How do I get a new Dream Manager?</h3>
 <p>You can get a new dream manager by removing your current one from the menu<br>
-	Then requesting a new one from the menu.</p>
-<h3>How do accept/reject a Dream Managers claim on me?</h3>
-<p>Open your menu and click accept or reject. There is also a email sent to you when<br>
-	a dream manager claims you with accept/reject links.</p>
+	and then requesting a new one from the menu.</p>
+<h3>How do I accept/reject a Dream Manager's claim on me?</h3>
+<p>Open your menu and click accept or reject. There is also an email sent to you when<br>
+	a dream manager claims you that has accept/reject links.</p>
 </div>
 <h2>Dreams</h2><div>
 <h3>What is a Dream?</h3>
