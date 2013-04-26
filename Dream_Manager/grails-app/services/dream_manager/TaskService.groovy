@@ -14,12 +14,18 @@ class TaskService {
 	
 	/**
 	 * Sets the order on a set of tasks
-	 * @param taskIDs array of task ids
+	 * @param	taskIDs	ArrayList of task IDs in order to be set
 	 */
 	def sortIDs(taskIDs){
+				
+		def tasksToUpdate = Task.createCriteria().list{ 
+			'in'('id', taskIDs.collect{ it.toLong() } ) 
+		} 
+		Hibernate.initialize(tasksToUpdate)
 		
-		def taskToUpdate = Task.createCriteria().list{'in'("id",taskIDs)}
-		Hibernate.initialize(taskToUpdate)
+		// Remove once working
+		return tasksToUpdate?.size()
+		
 		for(int i = 0; i<taskIDs.size(); i++){
 			Task.get(taskIDs[i]).orderNumber=i+1
 		}
