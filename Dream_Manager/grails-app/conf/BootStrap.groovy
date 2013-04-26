@@ -52,7 +52,7 @@ class BootStrap {
 				.save(flush: true, failOnError: true)
 				
 				//Climb Mount Everest Dream
-				new Dream (
+				def mount = new Dream (
 					name:"Climb Mount Everest",
 					category:"Adventure",
 					lastUpdated:new Date(),
@@ -67,28 +67,31 @@ class BootStrap {
 					name:"Buy Hiking Boots",
 					description:"Sale on boots next weekend",
 					percentComplete: 45,
+					orderNumber: 1,
 					estimatedCompletion: "05/10/2014",
-					dream:Dream.findByName("Climb Mount Everest")
+					dream:mount
 				).save()
 				
 				new Task (
 					name:"Find a Guide",
 					description:"",
 					percentComplete: 20,
+					orderNumber: 2,
 					estimatedCompletion: "03/20/2014",
-					dream:Dream.findByName("Climb Mount Everest")
+					dream:mount
 				).save()
 				
 				new Task (
 					name:"Build up Cardio",
 					description:"Be able to run 10 miles",
 					percentComplete: 60,
+					orderNumber: 3,
 					estimatedCompletion: "04/10/2014",
-					dream:Dream.findByName("Climb Mount Everest")
+					dream:mount
 				).save()
 				
 				//But a new bat
-				new Dream (
+				def newBat = new Dream (
 					name:"Buy a new Baseball Bat",
 					category:"Material",
 					lastUpdated:new Date(),
@@ -103,19 +106,21 @@ class BootStrap {
 					name:"Save up 100 Dollars",
 					description:"Has to be a nice bat.",
 					percentComplete: 65,
+					orderNumber: 1,
 					estimatedCompletion: "06/3/2013",
-					dream:Dream.findByName("Buy a new Baseball Bat")
+					dream:newBat
 				).save()
 				
 				new Task (
 					name:"Find a bat with a Yankees Logo on it",
 					description:"My favorite!!!",
 					percentComplete: 100,
+					orderNumber: 2,
 					estimatedCompletion: "06/1/2013",
-					dream:Dream.findByName("Buy a new Baseball Bat")
+					dream:newBat
 				).save()
 
-				new Dream (
+				def useBat=new Dream (
 					name:"Get Permission to Use Bat at work",
 					category:"Professional",
 					lastUpdated:new Date(),
@@ -130,27 +135,30 @@ class BootStrap {
 					name:"Ask boss if I can use bat on students",
 					description:"Why else would I need it.",
 					percentComplete: 45,
+					orderNumber: 1,
 					estimatedCompletion: "05/3/2013",
-					dream:Dream.findByName("Get Permission to Use Bat at work")
+					dream:useBat
 				).save()
 				
 				new Task (
 					name:"Create speech for when boss turns me down",
 					description:"Lets be real, he is going to turn me down.",
 					percentComplete: 30,
+					orderNumber: 2,
 					estimatedCompletion: "05/1/2013",
-					dream:Dream.findByName("Get Permission to Use Bat at work")
+					dream:useBat
 				).save()
 				
 				new Task (
 					name:"Go above the bosses head",
 					description:"",
 					percentComplete: 0,
+					orderNumber: 3,
 					estimatedCompletion: "05/5/2013",
-					dream:Dream.findByName("Get Permission to Use Bat at work")
+					dream:useBat
 				).save()
 				
-				new Dream (
+				def lazy=new Dream (
 					name:"Push Lazy Students to Finish Projects",
 					category:"Professional",
 					lastUpdated:new Date(),
@@ -165,27 +173,30 @@ class BootStrap {
 					name:"Yell at students more",
 					description:"Students love a good yelling.",
 					percentComplete: 95,
+					orderNumber: 1,
 					estimatedCompletion: "04/26/2013",
-					dream:Dream.findByName("Push Lazy Students to Finish Projects")
+					dream:lazy
 				).save()
 				
 				new Task (
 					name:"Tell James to be stop talking",
 					description:"That James sure can talk.",
 					percentComplete: 40,
+					orderNumber: 2,
 					estimatedCompletion: "04/28/2013",
-					dream:Dream.findByName("Push Lazy Students to Finish Projects")
+					dream:lazy
 				).save()
 				
 				new Task (
 					name:"Threaten to beat students with the bat",
 					description:"",
 					percentComplete: 0,
+					orderNumber: 3,
 					estimatedCompletion: "04/30/2013",
-					dream:Dream.findByName("Push Lazy Students to Finish Projects")
+					dream:lazy
 				).save()
 				
-				new Dream (
+				def yankees=new Dream (
 					name:"Go to a Yankees Game!!!",
 					category:"Spiritual",
 					lastUpdated:new Date(),
@@ -200,24 +211,27 @@ class BootStrap {
 					name:"Save money to afford premium tickets",
 					description:"",
 					percentComplete: 50,
+					orderNumber: 1,
 					estimatedCompletion: "04/30/2014",
-					dream:Dream.findByName("Go to a Yankees Game!!!")
+					dream:yankees
 				).save()
 				
 				new Task (
 					name:"Buy a Jeter Jersey",
 					description:"My Hero",
 					percentComplete: 100,
+					orderNumber: 2,
 					estimatedCompletion: "04/30/2013",
-					dream:Dream.findByName("Go to a Yankees Game!!!")
+					dream:yankees
 				).save()
 				
 				new Task (
 					name:"Boo the Red Sox at Yankee Stadium",
 					description:"Red Sox suck!!!",
 					percentComplete: 100,
+					orderNumber: 3,
 					estimatedCompletion: "04/30/2014",
-					dream:Dream.findByName("Go to a Yankees Game!!!")
+					dream:yankees
 				).save()
 				
 				new Dream (

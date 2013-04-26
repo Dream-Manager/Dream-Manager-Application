@@ -48,7 +48,7 @@
 						title="${message(code: 'dream.estimatedCompletion.label', default: 'Estimated Completion')}" />
 
 					<g:sortableColumn property="isShortTerm"
-						title="${message(code: 'dream.isShortTerm.label', default: 'Is Short Term')}" />
+						title="${message(code: 'dream.isShortTerm.label', default: 'Term Length')}" />
 
 				</tr>
 			</thead>
@@ -74,7 +74,8 @@
 						<td><g:formatDate format="MM/dd/yyyy"
 								date="${dreamInstance.estimatedCompletion}" /></td>
 
-						<td><g:formatBoolean boolean="${dreamInstance.isShortTerm}" /></td>
+						<td><g:if test="${dreamInstance.isShortTerm}">Short Term</g:if> <g:else>Long Term</g:else>
+						</td>
 
 					</tr>
 				</g:each>
