@@ -6,7 +6,7 @@
 				<th>Title</th>
 				<th>Estimated Completion</th>
 				<th>Term Length</th>
-				<th>Delete</th>
+				<th>Edit/Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -15,18 +15,24 @@
 					<td>
 						${dream.category}
 					</td>
-					<td><g:link action="show" id="${dream.id}" title="Click to view dream.">
+					<td><g:link action="show" id="${dream.id}"
+							title="Click to view dream.">
 							${dream.name}
 						</g:link></td>
 					<td><g:formatDate format="MM/dd/yyyy"
 							date="${dream.estimatedCompletion}" /></td>
 					<td><g:if test="${dream.isShortTerm}">Short Term</g:if> <g:else>Long Term</g:else>
 					</td>
-					<td><g:link controller="dream" action="delete"
-							id="${dream.id}"
-							onclick="return confirm('Are you sure you want to delete ${dream.name}?')">
+					<td><g:link action="edit" id="${dream.id}"
+							title="Edit this dream.">
+							<g:img file="edit.png" width="20" height="20" />
+						</g:link> 
+						<g:link controller="dream" action="delete" id="${dream.id}"
+							onclick="return confirm('Are you sure you want to delete ${dream.name}?')"
+							title="Delete this dream.">
 							<g:img dir="images" file="delete.png" width="20" height="20" />
-						</g:link></td>
+						</g:link>
+						</td>
 				</tr>
 			</g:each>
 		</tbody>

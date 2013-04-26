@@ -43,7 +43,7 @@
 			</fieldset>
 			<div>
 				<g:set var="dreamID" value="${dreamInstance.id}"/>
-				<g:link controller="task" action="create" params="[dreamID:dreamID]" class="button" style="margin:1em;">Add New Task</g:link>
+				<g:link controller="task" action="create" params="[dreamID:dreamID]" class="button" style="margin:1em;" title="Add new Task."><g:img file="add.png" width="20" height="20" /></g:link>
 			</div>
 			<fieldset class="buttons">
 				<g:actionSubmit class="save" action="update"

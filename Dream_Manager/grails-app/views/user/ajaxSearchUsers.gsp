@@ -34,17 +34,17 @@
 				<dreamManager:requestManagerDreamerRelatiomFromDreamer
 					id="${user.id}">
 					<td width="15%"><g:link controller="managerToDreamer"
-							action="acceptManagerDreamerRelationshipRequest" id="${user?.id}">Accept</g:link>
+							action="acceptManagerDreamerRelationshipRequest" id="${user?.id}" title="Accept to manage this user."><g:img file="accept.png" width="20" height="20" /></g:link>
 					<g:link controller="managerToDreamer"
-							action="rejectManagerDreamerRelationshipRequest" id="${user?.id}">Reject</g:link></td>
+							action="rejectManagerDreamerRelationshipRequest" id="${user?.id}" title="Reject to manage this user."><g:img file="reject.png" width="20" height="20" /></g:link></td>
 				</dreamManager:requestManagerDreamerRelatiomFromDreamer>
 				<dreamManager:requestManagerDreamerRelationFromManager
 					id="${user.id}">
-					<td width="15%">Pending</td>
+					<td width="15%"><g:img file="pending.png" width="20" height="20" title="Pending approval from ${user.toString() }"/></td>
 				</dreamManager:requestManagerDreamerRelationFromManager>
 				<dreamManager:hasNoRequestManagerDreamerRelation id="${user.id}">
 					<td width="15%"><g:link controller="managerToDreamer"
-							action="claimDreamer" id="${user.id}">Claim</g:link>
+							action="claimDreamer" id="${user.id}" title="Request to be this users Manager."><g:img file="heart.png" width="20" height="20" /></g:link>
 				</dreamManager:hasNoRequestManagerDreamerRelation>
 
 			</g:if>
