@@ -8,12 +8,12 @@
 		<div>
 			<div style="position: relative;">
 				<h6>Dream Tasks: 
-				<g:link controller="task" action="create" params="[dreamID:dreamID]" title="Add a task to this dream." class="button">Add a Task</g:link>
+				<g:link controller="task" action="create" params="[dreamID:dreamID]" title="Add a task to this dream." class="button"><g:img file="add.png" width="15" height="15" /></g:link>
 				</h6>
 				<div>
 					<ul class="sortable">
 					  <g:each in="${dream.tasks.sort{a,b-> a.orderNumber.compareTo(b.orderNumber)}}" var="task">
-					  	<li class="ui-state-default task-sortable" title="Drag around to sort tasks."> <g:link controller="task" action = "edit" id="${task.id}">${task.name}</g:link> <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:2em;margin-top:-1em">${task.percentComplete}</span></li>
+					  	<li class="ui-state-default task-sortable" title="Drag around to sort tasks."> <g:link controller="task" action = "edit" id="${task.id}">${task.name}</g:link> <g:link controller="task" action="delete" id="${task.id}" title="Delete this task from this Dream."  onclick="return confirm('Are you sure you want to delete this task?')"><g:img file="delete.png" width="20" height="20" /></g:link> <span class="progressbar" style="position:absolute;right:0;width:15em;height:.8em;margin-right:2em;margin-top:-1em">${task.percentComplete}</span></li>
 					 	<script type="text/javascript">
 						$( ".sortable" ).sortable({
 						  stop: function( event, ui ) {
