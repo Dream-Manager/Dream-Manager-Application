@@ -52,12 +52,13 @@ p { margin-left: 6em; color: #3454A2; }
 <p>A task is anything that upon being done will help further the accomplishment of <br>
 	the dream it belongs to.</p>
 <h3>How do I add a Task?</h3>
-<p>Click on the plus sign next to "Dream tasks:" header on your short/long term lists,<br>
+<p>Click on the Plus Button next to "Dream tasks:" header on your short/long term lists,<br>
 	or when editing a dream click on the Add new task link.</p>
 <h3>How do I edit a Task?</h3>
 <p>Click on the task name. This will take you view task screen, then click on edit.</p>
 <h3>How do I delete a Task?</h3>
-<p>Click on the task name, then click on the delete button on the new page.</p>
+<p>Click on the red x next to it in dream progress tab. Or View a dream from the search <br>
+	page click on the dream, then click on the task name to view, then click delete.</p>
 <h3>How do I mark a Task Complete?</h3>
 <p>This is done by editing the percent complete to 100% by dragging the slider all<br>
 	the way to the right.</p>
