@@ -1,15 +1,9 @@
-<a href="http://dream-manager.github.io/Dream-Manager-Application/" target="_blank" title="Takes you to documentation on github.com">Documentation</a>
-
-<dreamManager:hasManager>
-<a href="mailto:<dreamManager:managerEmail/>" target="_blank">Ask My Dream Manager a Question.</a>
-</dreamManager:hasManager>
-
 <style type="text/css">
 h2 { text-size: 120%; color: #3454A2;}
 h3 {  text-size: 110%; margin-left: 1.5em; position:relative; color:#708FDB; }
 p { margin-left: 6em; color: #3454A2; }
 </style>
-<div class="accordion">
+<div class="accordion" >
 <h2>Dream Manager Application</h2><div>
 <h3>What is a Dream Manager?</h3>
 <p>A dream manager is a person you choose to help you accomplish/manage your dreams.<br>
@@ -55,7 +49,7 @@ p { margin-left: 6em; color: #3454A2; }
 <p>Click on the <g:img file="add.png" width="20" height="20" /> next to "Dream tasks:" header on your short/long term lists,<br>
 	or when editing a dream click on the <g:img file="add.png" width="20" height="20" />.</p>
 <h3>How do I edit a Task?</h3>
-<p>Click on the Task Name.</p>
+<p>Click on the <g:img file="skin/database_edit.png" width="20" height="20" />.</p>
 <h3>How do I delete a Task?</h3>
 <p>Click on the <g:img file="delete.png" width="20" height="20" /> next to it in dream progress tab. Or View a dream from the search <br>
 	page click on the dream, then click on the task name to view, then click delete.</p>
@@ -91,5 +85,13 @@ p { margin-left: 6em; color: #3454A2; }
 	and giving them encouragement.As well as answering their questions. </p>
 <h3>How do I accept/reject to manage a user?</h3>
 <p>You click on the <g:img file="accept.png" width="20" height="20" /> or <g:img file="reject.png" width="20" height="20" /> next to their name.</p>
+</div>
+<h3>Still need help?</h3>
+<div>
+<h4><a href="http://dream-manager.github.io/Dream-Manager-Application/" target="_blank" title="Takes you to documentation on github.com">Documentation</a><br>
+<br>
+<dreamManager:hasManager>
+Ask my Dream Manager a <a href="mailto:<dreamManager:managerEmail/>?subject=I have a Question"  target="_blank" title="Opens a new window to send your Dream Manager an email.">Question</a>.
+</dreamManager:hasManager></h4>
 </div>
 </div>
