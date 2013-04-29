@@ -73,8 +73,10 @@ class DreamControllerTests {
 		SecurityUtils.metaClass.static.getSubject = { subject }
 		
 		controller.shorttermDreams
-		assert model.dreams == null
-		assert model.dreams(name:"Swimming",category:"Physical",user:User.findByUsername("testuser@gmail.com"))
+		dream = null
+		assertEquals = null
+		dream = [name:"Marathon 10K",category:"Physical",isShortTerm:true, user:User.findByUsername("testuser@gmail.com")]
+		assertEquals = 'true'
 
 		
 	}
@@ -89,8 +91,10 @@ class DreamControllerTests {
 		SecurityUtils.metaClass.static.getSubject = { subject }
 		
 		controller.longtermDreams
-		assert model.dreams == null
-		assert model.dreams(name:"Marathon 10K",category:"Physical",user:User.findByUsername("testuser@gmail.com"))
+		dream = null
+		assertEquals = 'null'
+		dream = [name:"Marathon 10K",category:"Physical",isShortTerm:false, user:User.findByUsername("testuser@gmail.com")]
+		assertEquals = 'true'
 		
 	}
 	
