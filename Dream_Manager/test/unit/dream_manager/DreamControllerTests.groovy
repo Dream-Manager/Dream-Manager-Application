@@ -90,7 +90,8 @@ class DreamControllerTests {
 		
 		controller.longtermDreams
 		assert model.dreams == null
-
+		assert model.dreams(name:"Marathon 10K",category:"Physical",user:User.findByUsername("testuser@gmail.com"))
+		
 	}
 	
 }

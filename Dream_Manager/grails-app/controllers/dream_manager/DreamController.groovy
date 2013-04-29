@@ -216,13 +216,14 @@ class DreamController {
 		if(dreamList.size()>0)
 			render(view:'ajaxUpcomingDreams.gsp', model: ['dreams': dreamList], contentType: 'text/plain')
 	}
-
+/*
+ * Display a list of top 3 short term dreams closest to the completion date
+ * If there is no short term dreams then nothing will be shown.
+ */
 	def shorttermDreams = {
 		def dreamList = Dream.withCriteria {
 			eq('user',User.findByUsername(SecurityUtils.subject.principal))
-			//isNotNull("estimatedCompletion")
 			Date currentDate = new Date()
-			//ge("estimatedCompletion", currentDate)
 			eq("isShortTerm", true)
 			maxResults(3)
 			order("percentComplete", "desc")
@@ -234,12 +235,14 @@ class DreamController {
 			render(view:'dreamAccordion.gsp', model: ['dreams': null, 'length':"Short Term"], contentType: 'text/plain')
 	}
 
+/*
+ * Display a list of top 3 long term dreams closest to the completion date
+ * If there is no long term dreams then nothing will be shown.
+ */
 	def longtermDreams = {
 		def dreamList = Dream.withCriteria {
 			eq('user',User.findByUsername(SecurityUtils.subject.principal))
-			//isNotNull("estimatedCompletion")
 			Date currentDate = new Date()
-			//ge("estimatedCompletion", currentDate)
 			ne("isShortTerm", true)
 			maxResults(3)
 			order("percentComplete", "desc")
