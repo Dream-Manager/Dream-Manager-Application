@@ -75,11 +75,12 @@ class DreamControllerTests {
 		controller.shorttermDreams
 		dream = null
 		assertEquals = null
-		dream = [name:"Marathon 10K",category:"Physical",isShortTerm:true, user:User.findByUsername("testuser@gmail.com")]
+		dream = [name:"Marathon 10K",category:"Physical",isShortTerm:true, estimatedCompletion:"04/30/2013",  user:User.findByUsername("testuser@gmail.com")]
 		assertEquals = 'true'
 
 		
 	}
+	
 	void testLongtermDreams ()
 	{
 		def shiroSecurityManager
@@ -93,7 +94,7 @@ class DreamControllerTests {
 		controller.longtermDreams
 		dream = null
 		assertEquals = 'null'
-		dream = [name:"Marathon 10K",category:"Physical",isShortTerm:false, user:User.findByUsername("testuser@gmail.com")]
+		dream = [name:"Marathon 10K",category:"Physical",isShortTerm:false,  estimatedCompletion:"04/30/2014", user:User.findByUsername("testuser@gmail.com")]
 		assertEquals = 'true'
 		
 	}
