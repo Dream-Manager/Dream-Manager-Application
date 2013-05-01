@@ -18,12 +18,12 @@
 	<g:textField name="description" value="${taskInstance?.description}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'estimatedCompletion', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'estimatedCompletion', 'error')}">
 	<label for="estimatedCompletion">
 		<g:message code="task.estimatedCompletion.label" default="Estimated Completion" />
-		
 	</label>
-	<g:datePicker name="estimatedCompletion" precision="day"  value="${taskInstance?.estimatedCompletion}" default="none" noSelection="['': '']" />
+	<input name="estimatedCompletion" type="text" class="datepicker" value="<g:formatDate format="MM/dd/yyyy"
+							date="${taskInstance?.estimatedCompletion}" />" />
 </div>
 
 <input type="hidden" name="dream.id" value="${params.dreamID}"/>

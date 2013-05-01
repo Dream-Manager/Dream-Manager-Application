@@ -25,9 +25,17 @@ class TaskController {
 
 	def save() {
 
-		def taskInstance = new Task(params)
+		def taskInstance = new Task(
+				name:params.name,
+				percentComplete:params.percentComplete,
+				description:params.description,
+				dream:Dream.get(params.dream.id)			
+			)
+		
 		if(!params.orderNumber)
 			taskInstance.orderNumber = taskService.getMaxOrder(params.dream.id.toLong())
+		if(params.estimatedCompletion)
+			taskInstance.estimatedCompletion = Date.parse("MM/dd/yyyy",params.estimatedCompletion)
 		if (!taskInstance.save(flush: true)) {
 			render(view: "create", model: [taskInstance: taskInstance])
 			return
@@ -89,10 +97,10 @@ class TaskController {
 		}
 
 		taskInstance.name = params.name
-		taskInstance.estimatedCompletion = params.estimatedCompletion
+		taskInstance.estimatedCompletion = (!params.estimatedCompletion?null:Date.parse("MM/dd/yyyy",params.estimatedCompletion))
 		taskInstance.description = params.description
 		taskInstance.percentComplete = params.percentComplete.toInteger()
-
+		
 		if (!taskInstance.save(flush: true)) {
 			render(view: "edit", model: [taskInstance: taskInstance])
 			return
@@ -164,5 +172,13 @@ class TaskController {
 		}
 		if(taskList.size()>0)
 			render(view:'ajaxUpcomingTasks.gsp', model: ['tasks': taskList], contentType: 'text/plain')
+	}
+	
+	def markComplete(long id){
+		def taskInstance = Task.get(id)
+		taskInstance.percentComplete = 100
+		taskInstance.save();
+		dreamService.markCompletionBasedOnTasks(taskInstance.dream.id)
+		redirect (controller:"dreamerDashboard")
 	}
 }

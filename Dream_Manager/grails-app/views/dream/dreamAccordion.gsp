@@ -32,9 +32,15 @@
 									<li class="ui-state-default task-sortable"
 										title="Drag around to sort tasks.">
 										${task.name} <span class="progressbar"
-										style="position: absolute; right: 0; width: 15em; height: .8em; margin-right: 4em; margin-top: -1em">
+										style="position: absolute; right: 0; width: 14em; height: .8em; margin-right: 5em; margin-top: -1em">
 											${task.percentComplete}
-									</span> <g:link controller="task" action="edit" id="${task.id}"
+									</span><g:if test="${task.percentComplete!=100 }">
+									<g:link controller="task" action="markComplete" id="${task.id}"
+											title="Mark this Dream Complete."
+											onclick="return confirm('Are you sure you want to mark this task as complete?')"
+											style="position: absolute; right: 0; margin-right: 3em;">
+											<g:img file="complete.jpg" width="20" height="20" />
+										</g:link></g:if> <g:link controller="task" action="edit" id="${task.id}"
 											title="Edit this task."
 											style="position: absolute; right: 0; margin-right: 2em;">
 											<g:img file="skin/database_edit.png" width="15" height="15" />
@@ -74,7 +80,9 @@
 						</div>
 						<g:link controller="dream" action="edit" id="${dream.id}"
 							style="position:absolute; right: 0; bottom: 0;"
-							title="Edit this dream."><g:img file="skin/database_edit.png" width="20" heigth="20"/></g:link>
+							title="Edit this dream.">
+							<g:img file="skin/database_edit.png" width="20" heigth="20" />
+						</g:link>
 					</div>
 				</div>
 			</g:each>

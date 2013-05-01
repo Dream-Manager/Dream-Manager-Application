@@ -387,7 +387,7 @@ class UserController {
 					SecurityUtils.subject.login(authToken)
 					
 					def dreamInstance = new Dream(
-						name:"Create First Dream",
+						name:"Example Dream - Create Your First Dream",
 						category:"Character",
 						lastUpdated:new Date(),
 						notes:"This is the first dream to accomplish on your way to accomplishing many more.",

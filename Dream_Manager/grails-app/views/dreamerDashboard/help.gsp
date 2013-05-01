@@ -54,8 +54,7 @@ p { margin-left: 6em; color: #3454A2; }
 <p>Click on the <g:img file="delete.png" width="20" height="20" /> next to it in dream progress tab. Or View a dream from the search <br>
 	page click on the dream, then click on the task name to view, then click delete.</p>
 <h3>How do I mark a Task Complete?</h3>
-<p>This is done by editing the percent complete to 100% by dragging the slider all<br>
-	the way to the right.</p>
+<p>This is done by clicking on <g:img file="complete.jpg" width="20" height="20" /> inside the dream on the Dreamer Dashboard.</p>
 <h3>Who can see my Tasks?</h3>
 <p>Only you and your dream manager.</p>
 </div>
@@ -65,6 +64,7 @@ p { margin-left: 6em; color: #3454A2; }
 	<g:img file="skin/database_edit.png" width="20" heigth="20"/> = Edit icon<br>
 	<g:img file="skin/database_save.png" width="20" heigth="20"/>= Save Icon<br>
 	<g:img file="delete.png" width="20" heigth="20"/>= Delete Icon<br>
+	<g:img file="complete.jpg" width="20" height="20" /> = Mark Task Complete Icon<br>
 	<g:img file="heart.png" width="20" heigth="20"/>= Claim Icon<br>
 	<g:img file="accept.png" width="20" heigth="20"/>= Accept Icon<br>
 	<g:img file="reject.png" width="20" heigth="20"/>= Reject Icon<br>
@@ -95,3 +95,6 @@ Ask my Dream Manager a <a href="mailto:<dreamManager:managerEmail/>?subject=I ha
 </dreamManager:hasManager></h4>
 </div>
 </div>
+<script type="text/javascript">
+$(function(){ $(".accordion").accordion( "option", "active", 0 ); });
+</script>
