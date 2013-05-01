@@ -15,8 +15,8 @@ class DreamManagerTagLib {
 	 */
 	def linkToAction = { attrs, body ->
 		out << "/"+grailsApplication.config.grails.project.groupId+"/"+attrs["controller"]+"/"+attrs["action"]
-	} 
-	
+	}
+
 	def hasManager = { attrs, body ->
 		def user = User?.findByUsername(SecurityUtils.subject.principal)
 		if (user?.manager){
@@ -95,5 +95,13 @@ class DreamManagerTagLib {
 	def managerEmail = {
 		def currentUser = User?.findByUsername(SecurityUtils.subject.principal)
 		out << currentUser.manager.username
+	}
+
+	def currentUserRequestManager = { attrs, body ->
+		def currentUser = User?.findByUsername(SecurityUtils.subject.principal)
+		def requestRelation = ManagerRequest?.findByUser(currentUser)
+		if(requestRelation){
+			out << requestRelation.manager.toString()
+		}
 	}
 }

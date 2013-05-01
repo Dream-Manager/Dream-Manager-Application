@@ -11,19 +11,22 @@
 			<dreamManager:currentUserInitiatedRequest>
 				<li><g:link controller="managerToDreamer"
 						action="rejectManagerDreamerRelationshipRequest"
-						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Cancel Request</g:link></li>
+						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Cancel Request for <br>
+						<dreamManager:currentUserRequestManager /> as a Manager</g:link></li>
 			</dreamManager:currentUserInitiatedRequest>
 			<dreamManager:currentUserNotInitiatedRequest>
 				<li><g:link controller="managerToDreamer"
-						action="acceptManagerDreamerRelationshipRequest">Accept Request</g:link></li>
+						action="acceptManagerDreamerRelationshipRequest">Accept Request for <dreamManager:currentUserRequestManager />
+						<br>to be your Dream Manager</g:link></li>
 				<li><g:link controller="managerToDreamer"
 						action="rejectManagerDreamerRelationshipRequest"
-						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Reject Request</g:link></li>
+						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Reject Request for <dreamManager:currentUserRequestManager />
+						<br>to be your Dream Manager</g:link></li>
 			</dreamManager:currentUserNotInitiatedRequest>
 		</dreamManager:currentUserHasRequest>
 		<dreamManager:currentUserHasNoRequest>
 			<li><g:link controller="managerToDreamer"
-					action="displayManagers">Request a manager</g:link></li>
+					action="displayManagers" title="Lets you send a request for a Dream Manager.">Request a manager</g:link></li>
 		</dreamManager:currentUserHasNoRequest>
 	</dreamManager:hasNoManager>
 	<li><g:link controller="Auth" action="signOut">Log Out</g:link></li>
