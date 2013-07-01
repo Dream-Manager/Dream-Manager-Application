@@ -2,10 +2,23 @@
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
 
-// grails.config.locations = [ "classpath:${appName}-config.properties",
+//grails.config.locations = [ "classpath:${appName}-config.properties",
 //                             "classpath:${appName}-config.groovy",
 //                             "file:${userHome}/.grails/${appName}-config.properties",
 //                             "file:${userHome}/.grails/${appName}-config.groovy"]
+
+oauth {
+	providers {
+		twitter {
+			api = org.scribe.builder.api.TwitterApi
+			key = 'aaQakYjASJzKbNrvMdGyA'
+			secret = 'Yp3HM9vJnIur91uqCPb82fYkVPoiDEOxXjcLu7xo'
+			callback = 'http://address.com/oauth/callback?provider=twitter'
+		}
+	}
+}
+// These need to be moved to this file -->
+grails.config.locations = ["file:${userHome}/.grails/${appName}-config.properties"]
 
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
@@ -110,3 +123,4 @@ coverage {
 }
 
 grails.sitemesh.default.layout='application'
+

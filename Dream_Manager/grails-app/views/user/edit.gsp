@@ -39,8 +39,12 @@
 			<g:hiddenField name="id" value="${userInstance?.id}" />
 			<g:hiddenField name="version" value="${userInstance?.version}" />
 			<fieldset class="form">
+				<oauth:connect provider="twitter">
+					<g:img dir="images" file="twitter-bird-light-bgs.png" width="28" height="28" />Connect to Twitter
+				</oauth:connect>
 				<g:render template="formedit" />
 			</fieldset>
+						
 			<fieldset class="buttons">
 				<g:actionSubmit class="save" action="update"
 					value="${message(code: 'default.button.update.label', default: 'Update')}" />
