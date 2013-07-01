@@ -14,9 +14,9 @@ oauth {
 			api = org.scribe.builder.api.TwitterApi
 			key = 'aaQakYjASJzKbNrvMdGyA'
 			secret = 'Yp3HM9vJnIur91uqCPb82fYkVPoiDEOxXjcLu7xo'
-			callback = '${grails.serverURL}/oauth/twitter/callback'
-			successUri = '${grails.serverURL}/oauth/success?provider=twitter'
-			failureUri = '${grails.serverURL}/oauth/failure'
+			callback = "http://localhost:8080/Dream_Manager/oauth/callback?provider=twitter&"
+			successUri = "http://localhost:8080/Dream_Manager/user/editCurrentProfile"
+			failureUri = "http://localhost:8080/Dream_Manager/"
 		}
 	}
 }

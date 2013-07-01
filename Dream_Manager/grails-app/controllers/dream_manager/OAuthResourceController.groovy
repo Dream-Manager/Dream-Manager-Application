@@ -9,8 +9,4 @@ class OAuthResourceController {
 		OAuthResourceService.saveSessionKey(params.provider)
 		OAuthResourceService.getTwitterResource(params.provider, "test")
 	}	
-	
-	def showKeys () {
-		session*.collect()
-	}
 }
