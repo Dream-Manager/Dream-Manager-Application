@@ -11,6 +11,7 @@ class OAuthResourceService {
 	def OauthService
 	
     def getSessionKey (String provider) { 
+		def session = RequestContextHolder.currentRequestAttributes().getSession()
 		String sessionKey = OauthService.findSessionKeyForAccessToken(provider)
 		return session[sessionKey]
 	}
@@ -23,26 +24,20 @@ class OAuthResourceService {
 		).save()
 	}
 	
-	def loadSessionKeys () {
+	def updateSessionKeys () {
 		OAuthKey.findAllByUser(User.findByUsername(SecurityUtils.subject.principal)).each {
 			validateKey(it)
 			//set session
 		}
 	}
 	
-	def validateKey (OAuthKey oAuthKey) {
-		// for each key in session
-		//	attempt validation
-		//	if fails
-		//		remove from session
-	}
-	
 	def removeKey (String provider) {
+		def session = RequestContextHolder.currentRequestAttributes().getSession()
 		// if key exists in session and/or database
 		//	remove
 	}
 		
-	def getResourceFromProvider (String method, String provider, String resource) {
-		OauthService.${method}${provider}Resource(getSessionKey(provider), resource)
+	def accessResource (method, provider, resource) {
+		//OauthService.${method}${provider}Resource(getSessionKey(provider), resource)
 	}
 }

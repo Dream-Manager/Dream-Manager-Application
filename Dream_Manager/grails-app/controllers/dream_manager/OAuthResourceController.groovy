@@ -4,9 +4,11 @@ class OAuthResourceController {
 	
 	static layout = "application"
 	
-	def callback () {		
-
-		OAuthResourceService.saveSessionKey(params.provider)
-		OAuthResourceService.getTwitterResource(params.provider, "test")
-	}	
+	def OAuthResourceService
+	
+	def postToTwitter = {
+		
+		//	OAuthResourceService.accessResource("post", "twitter", "test")
+		OAuthResourceService.saveSessionKey('twitter')
+	}
 }
