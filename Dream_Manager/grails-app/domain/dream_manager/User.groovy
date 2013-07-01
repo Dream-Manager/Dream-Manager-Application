@@ -34,7 +34,13 @@ class User {
 	}
 
 	// Each User has many Dreams, Skills
-	static hasMany = [dreams:Dream, skills:Skill, roles: Role, permissions: String ]
+	static hasMany = [
+		dreams:Dream, 
+		skills:Skill, 
+		keys: OAuthKey, 
+		roles: Role, 
+		permissions: String
+	]
 
 	static constraints = {
 		username(email: true, blank: false, unique: true, nullable: false, size:1..50)

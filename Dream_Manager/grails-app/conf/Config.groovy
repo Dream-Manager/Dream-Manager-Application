@@ -8,12 +8,15 @@
 //                             "file:${userHome}/.grails/${appName}-config.groovy"]
 
 oauth {
+	debug = true
 	providers {
 		twitter {
 			api = org.scribe.builder.api.TwitterApi
 			key = 'aaQakYjASJzKbNrvMdGyA'
 			secret = 'Yp3HM9vJnIur91uqCPb82fYkVPoiDEOxXjcLu7xo'
-			callback = 'http://address.com/oauth/callback?provider=twitter'
+			callback = '${grails.serverURL}/oauth/twitter/callback'
+			successUri = '${grails.serverURL}/oauth/success?provider=twitter'
+			failureUri = '${grails.serverURL}/oauth/failure'
 		}
 	}
 }
