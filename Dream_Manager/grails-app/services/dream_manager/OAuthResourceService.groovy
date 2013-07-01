@@ -17,17 +17,21 @@ class OAuthResourceService {
 	}
 	
 	def saveSessionKey (String provider) {
+		def session = RequestContextHolder.currentRequestAttributes().getSession()
+		String sessionKey = OauthService.findSessionKeyForAccessToken(provider)
+		
 		new OAuthKey (
 			user: User.findByUsername(SecurityUtils.subject.principal),
-			key: getSessionKey(provider),
+			sessionKey: sessionKey,
+			accessKey: session[sessionKey],
 			provider: provider			
 		).save()
 	}
 	
-	def updateSessionKeys () {
+	def loadSessionKeys (session) {
+		//def session = RequestContextHolder.currentRequestAttributes().getSession()
 		OAuthKey.findAllByUser(User.findByUsername(SecurityUtils.subject.principal)).each {
-			validateKey(it)
-			//set session
+			session[it.sessionKey] = it.accessKey
 		}
 	}
 	

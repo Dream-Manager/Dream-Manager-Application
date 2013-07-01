@@ -4,7 +4,8 @@ class OAuthKey {
 
 	static belongsTo = [user: User]
 	
-	String oAuthKey
+	String sessionKey
+	String accessKey
 	String provider
 	Date dateCreated = new Date()
 		

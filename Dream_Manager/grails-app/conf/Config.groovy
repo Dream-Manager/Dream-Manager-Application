@@ -15,7 +15,7 @@ oauth {
 			key = 'aaQakYjASJzKbNrvMdGyA'
 			secret = 'Yp3HM9vJnIur91uqCPb82fYkVPoiDEOxXjcLu7xo'
 			callback = "http://localhost:8080/Dream_Manager/oauth/callback?provider=twitter&"
-			successUri = "http://localhost:8080/Dream_Manager/user/editCurrentProfile"
+			successUri = "http://localhost:8080/Dream_Manager/user/persistSessionKeys"
 			failureUri = "http://localhost:8080/Dream_Manager/"
 		}
 	}

@@ -10,7 +10,8 @@ import org.apache.shiro.subject.Subject
 
 class UserController {
 	def shiroSecurityService
-
+	def OAuthResourceService
+	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
 	def index() {
@@ -534,6 +535,13 @@ class UserController {
 			isManager:false,
 			admin:false)
 		]
+	}
+	
+	
+	def persistSessionKeys = {
+		
+		
+		render editCurrentProfile()
 	}
 }
 
