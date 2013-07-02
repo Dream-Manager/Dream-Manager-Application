@@ -12,7 +12,7 @@ class SocialTagLib {
 		if(!OauthService.findSessionKeyForAccessToken('twitter'))
 			out	<< oauth.connect( provider:"twitter", { g.img(dir:'images',file:'twitter-bird-light-bgs.png',width:'28',height:'28') + "Connect to Twitter" } )
 		else 
-			out << oauth.connect( provider:"twitter", { g.img(dir:'images',file:'twitter-bird-light-bgs.png',width:'28',height:'28') + "Connected to Twitter" } )
+			out << g.link( href:"http://www.twitter.com", { g.img(dir:'images',file:'twitter-bird-light-bgs.png',width:'28',height:'28') + "TwitterUserName" + "TwitterUserIcon" } )
 		
 		out << "</div>"
 	}

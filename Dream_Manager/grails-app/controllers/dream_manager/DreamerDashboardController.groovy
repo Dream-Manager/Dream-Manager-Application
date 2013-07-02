@@ -10,7 +10,7 @@ class DreamerDashboardController {
 	
     def index() {
 		loadSessionKeys()
-		//OAuthResourceService.getFromTwitter("test")
+		render OAuthResourceService.getFromTwitter("https://api.twitter.com/1.1/account/settings.json")
 	}
 	
 	def shorterm() { }
