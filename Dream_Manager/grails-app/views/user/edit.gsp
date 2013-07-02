@@ -39,8 +39,12 @@
 			<g:hiddenField name="id" value="${userInstance?.id}" />
 			<g:hiddenField name="version" value="${userInstance?.version}" />
 			<fieldset class="form">
+			
+				<dreamManager:socialConnections/>
+				
 				<g:render template="formedit" />
 			</fieldset>
+						
 			<fieldset class="buttons">
 				<g:actionSubmit class="save" action="update"
 					value="${message(code: 'default.button.update.label', default: 'Update')}" />

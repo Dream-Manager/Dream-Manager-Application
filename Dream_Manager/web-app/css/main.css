@@ -610,3 +610,7 @@ a.skip {
 .social {
 	padding-top:1em;
 }
+
+.socialConnections {
+	float: right;
+}

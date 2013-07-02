@@ -2,10 +2,26 @@
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
 
-// grails.config.locations = [ "classpath:${appName}-config.properties",
+//grails.config.locations = [ "classpath:${appName}-config.properties",
 //                             "classpath:${appName}-config.groovy",
 //                             "file:${userHome}/.grails/${appName}-config.properties",
 //                             "file:${userHome}/.grails/${appName}-config.groovy"]
+
+oauth {
+	debug = true
+	providers {
+		twitter {
+			api = org.scribe.builder.api.TwitterApi
+			key = 'aaQakYjASJzKbNrvMdGyA'
+			secret = 'Yp3HM9vJnIur91uqCPb82fYkVPoiDEOxXjcLu7xo'
+			callback = "http://localhost:8080/Dream_Manager/oauth/callback?provider=twitter&"
+			successUri = "http://localhost:8080/Dream_Manager/user/persistSessionKeys"
+			failureUri = "http://localhost:8080/Dream_Manager/"
+		}
+	}
+}
+// These need to be moved to this file -->
+grails.config.locations = ["file:${userHome}/.grails/${appName}-config.properties"]
 
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
@@ -87,12 +103,13 @@ environments {
 log4j = {
     // Example of changing the log pattern for the default console appender:
     //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
+    appenders {
+        console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+    }
 
-    error  'org.codehaus.groovy.grails.web.servlet',        // controllers
-           'org.codehaus.groovy.grails.web.pages',          // GSP
+    error  'org.codehaus.groovy.grails.web.servlet',          // controllers
+	       'org.codehaus.groovy.grails.service',
+		   'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
            'org.codehaus.groovy.grails.web.mapping',        // URL mapping
@@ -110,3 +127,4 @@ coverage {
 }
 
 grails.sitemesh.default.layout='application'
+

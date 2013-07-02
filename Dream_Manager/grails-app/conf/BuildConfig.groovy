@@ -58,6 +58,7 @@ grails.project.dependency.resolution = {
         build ":tomcat:$grailsVersion"
 
         runtime ":database-migration:1.2.1"
+		compile ":oauth:2.1.0"
 		compile ":shiro:1.1.4"
         compile ':cache:1.0.1'
 		compile: "shiro-ui:1.2.0-SNAPSHOT"

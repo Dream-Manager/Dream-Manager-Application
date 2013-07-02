@@ -6,11 +6,14 @@ import org.apache.shiro.crypto.hash.Sha256Hash
 import org.springframework.dao.DataIntegrityViolationException
 import org.apache.shiro.SecurityUtils
 import org.apache.shiro.subject.Subject
+import org.scribe.model.Token
 
 
 class UserController {
 	def shiroSecurityService
-
+	def OAuthResourceService
+	def OauthService
+	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
 	def index() {
@@ -534,6 +537,34 @@ class UserController {
 			isManager:false,
 			admin:false)
 		]
+	}
+	
+	def persistSessionKeys = {
+		
+		if(OauthService.findSessionKeyForAccessToken('twitter'))
+		{
+			// Clear any old versions
+			OAuthKey.withCriteria {
+				eq( 'user', User.findByUsername(SecurityUtils.subject.principal)) 
+				eq( 'provider', 'twitter')
+			}*.delete()
+			
+			// Save the new one
+			String sessionKey = OauthService.findSessionKeyForAccessToken('twitter')
+			def key = new OAuthKey (
+				sessionKey: sessionKey,
+				accessKey: session[sessionKey].getToken(),
+				accessSecret: session[sessionKey].getSecret(),
+				provider: 'twitter'
+			)
+			key.user = User.findByUsername(SecurityUtils.subject.principal)
+			
+			key.validate()
+			if(key.hasErrors() || !key.save())
+				log.error(key.getErrors().collect())		
+		}		
+		
+		redirect(action: "editCurrentProfile")
 	}
 }
 
