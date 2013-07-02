@@ -10,7 +10,6 @@ class DreamerDashboardController {
 	
     def index() {
 		loadSessionKeys()
-		render OAuthResourceService.getFromTwitter("https://api.twitter.com/1.1/account/settings.json")
 	}
 	
 	def shorterm() { }
@@ -23,7 +22,22 @@ class DreamerDashboardController {
 	def private loadSessionKeys() {
 		OAuthKey.findByUser(User.findByUsername(SecurityUtils.subject.principal)).each{
 			org.scribe.model.Token token = new org.scribe.model.Token (it.accessKey, it.accessSecret)
-			session[it.sessionKey] = token
+			
+			/* TODO: When next provider is added, break out each to inherited classes */
+			boolean valid = false;
+			switch(it.provider) {
+				case 'twitter':
+					if(OAuthResourceService.getFromTwitter("https://api.twitter.com/1.1/account/verify_credentials.json").getCode() == 200)
+						valid = true;
+					break;
+			}
+			
+			if (valid) {
+				session[it.sessionKey] = token
+			} else {
+				session[it.sessionKey] = null
+				it.delete()
+			}
 		}
 	}
 }

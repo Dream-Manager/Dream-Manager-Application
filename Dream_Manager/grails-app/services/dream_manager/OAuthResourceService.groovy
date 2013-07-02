@@ -22,6 +22,6 @@ class OAuthResourceService {
 	}
 			
 	def getFromTwitter (resource) {
-		return OauthService.getTwitterResource(getTokenForProvider('twitter'), resource).getBody();
+		return OauthService.getTwitterResource(getTokenForProvider('twitter'), resource);
 	}
 }
