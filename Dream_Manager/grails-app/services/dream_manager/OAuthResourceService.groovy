@@ -11,36 +11,13 @@ class OAuthResourceService {
 	
 	def OauthService
 	
-    def getSessionKey (String provider) { 
-		def session = RequestContextHolder.currentRequestAttributes().getSession()
-		String sessionKey = OauthService.findSessionKeyForAccessToken(provider)
-		return session[sessionKey]
-	}
-	
-	def saveSessionKey (String provider) {
-		def session = RequestContextHolder.currentRequestAttributes().getSession()
-		String sessionKey = OauthService.findSessionKeyForAccessToken(provider)
-		
-		def key = new OAuthKey (
-			user: User.findByUsername(SecurityUtils.subject.principal),
-			sessionKey: sessionKey,
-			accessKey: session[sessionKey],
-			provider: provider			
-		)
-		
-		if(!key.hasErrors() && key.save())
-			return key.id
-		else log.error(session.user + " " + key.sessionKey + " " + key.accessKey + " " + key.provider + " " + key.user.id)
-	}
-	
-	def loadSessionKeys (session) {
-		//def session = RequestContextHolder.currentRequestAttributes().getSession()
-		OAuthKey.findAllByUser(User.findByUsername(SecurityUtils.subject.principal)).each {
-			session[it.sessionKey] = it.accessKey
-		}
+    def private getTokenForProvider (String provider) { 
+		return OAuthKey.withCriteria{ 
+			eq('user', User.findByUsername(SecurityUtils.subject.principal))
+			eq('provider', provider) }?.accessToken
 	}
 			
-	def accessResource (method, provider, resource) {
-		//OauthService.${method}${provider}Resource(getSessionKey(provider), resource)
+	def getFromTwitter (resource) {
+		return OauthService.getTwitterResource(getTokenForProvider('twitter'), resource)
 	}
 }

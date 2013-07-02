@@ -6,6 +6,7 @@ import org.apache.shiro.crypto.hash.Sha256Hash
 import org.springframework.dao.DataIntegrityViolationException
 import org.apache.shiro.SecurityUtils
 import org.apache.shiro.subject.Subject
+import org.scribe.model.Token
 
 
 class UserController {
@@ -552,14 +553,15 @@ class UserController {
 			String sessionKey = OauthService.findSessionKeyForAccessToken('twitter')
 			def key = new OAuthKey (
 				sessionKey: sessionKey,
-				accessKey: session[sessionKey],
+				accessKey: session[sessionKey].getToken(),
+				accessSecret: session[sessionKey].getSecret(),
 				provider: 'twitter'
 			)
 			key.user = User.findByUsername(SecurityUtils.subject.principal)
+			
 			key.validate()
 			if(key.hasErrors() || !key.save())
-				log.error(key.getErrors().collect())
-				log.error(sessionKey + " | " + session[sessionKey])			
+				log.error(key.getErrors().collect())		
 		}		
 		
 		redirect(action: "editCurrentProfile")

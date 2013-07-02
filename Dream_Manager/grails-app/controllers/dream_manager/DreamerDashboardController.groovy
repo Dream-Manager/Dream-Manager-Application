@@ -1,5 +1,7 @@
 package dream_manager
 import org.apache.shiro.subject.Subject
+import org.apache.shiro.SecurityUtils
+import org.scribe.model.Token
 
 class DreamerDashboardController {
 	
@@ -7,12 +9,21 @@ class DreamerDashboardController {
 	def OAuthResourceService
 	
     def index() {
-		// Verify social connection keys are persisted and loaded
-		OAuthResourceService.loadSessionKeys(session)
+		loadSessionKeys()
+		//OAuthResourceService.getFromTwitter("test")
 	}
-	
 	
 	def shorterm() { }
 	def longterm() { }
 	def help() { }
+	
+	/** 
+	 * Loads OAuth Session tokens, since Session is not available in Service layer.
+	 */
+	def private loadSessionKeys() {
+		OAuthKey.findByUser(User.findByUsername(SecurityUtils.subject.principal)).each{
+			org.scribe.model.Token token = new org.scribe.model.Token (it.accessKey, it.accessSecret)
+			session[it.sessionKey] = token
+		}
+	}
 }
