@@ -5,6 +5,7 @@ import org.scribe.model.*
 import org.scribe.oauth.*
 import org.apache.shiro.subject.Subject
 import org.apache.shiro.SecurityUtils
+import org.springframework.web.context.request.RequestContextHolder
 
 class OAuthResourceService {
 	
@@ -20,12 +21,16 @@ class OAuthResourceService {
 		def session = RequestContextHolder.currentRequestAttributes().getSession()
 		String sessionKey = OauthService.findSessionKeyForAccessToken(provider)
 		
-		new OAuthKey (
+		def key = new OAuthKey (
 			user: User.findByUsername(SecurityUtils.subject.principal),
 			sessionKey: sessionKey,
 			accessKey: session[sessionKey],
 			provider: provider			
-		).save()
+		)
+		
+		if(!key.hasErrors() && key.save())
+			return key.id
+		else log.error(session.user + " " + key.sessionKey + " " + key.accessKey + " " + key.provider + " " + key.user.id)
 	}
 	
 	def loadSessionKeys (session) {
@@ -34,13 +39,7 @@ class OAuthResourceService {
 			session[it.sessionKey] = it.accessKey
 		}
 	}
-	
-	def removeKey (String provider) {
-		def session = RequestContextHolder.currentRequestAttributes().getSession()
-		// if key exists in session and/or database
-		//	remove
-	}
-		
+			
 	def accessResource (method, provider, resource) {
 		//OauthService.${method}${provider}Resource(getSessionKey(provider), resource)
 	}

@@ -11,6 +11,7 @@ import org.apache.shiro.subject.Subject
 class UserController {
 	def shiroSecurityService
 	def OAuthResourceService
+	def OauthService
 	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -537,11 +538,31 @@ class UserController {
 		]
 	}
 	
-	
 	def persistSessionKeys = {
 		
+		if(OauthService.findSessionKeyForAccessToken('twitter'))
+		{
+			// Clear any old versions
+			OAuthKey.withCriteria {
+				eq( 'user', User.findByUsername(SecurityUtils.subject.principal)) 
+				eq( 'provider', 'twitter')
+			}*.delete()
+			
+			// Save the new one
+			String sessionKey = OauthService.findSessionKeyForAccessToken('twitter')
+			def key = new OAuthKey (
+				sessionKey: sessionKey,
+				accessKey: session[sessionKey],
+				provider: 'twitter'
+			)
+			key.user = User.findByUsername(SecurityUtils.subject.principal)
+			key.validate()
+			if(key.hasErrors() || !key.save())
+				log.error(key.getErrors().collect())
+				log.error(sessionKey + " | " + session[sessionKey])			
+		}		
 		
-		render editCurrentProfile()
+		redirect(action: "editCurrentProfile")
 	}
 }
 

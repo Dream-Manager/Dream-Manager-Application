@@ -8,6 +8,4 @@ class OAuthKey {
 	String accessKey
 	String provider
 	Date dateCreated = new Date()
-		
-    static constraints = {}
 }
